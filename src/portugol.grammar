@@ -3,41 +3,32 @@ Package portugol;
 Helpers
 	digit_excluding_zero = ['1'..'9'];
 	digit = ['0'..'9'];
-	lower_case_letter = ['a'..'z'];
-	upper_case_letter = ['A'..'Z'];
-	letter = (lower_case_letter | upper_case_letter);
+	lowercase = ['a'..'z'];
+	uppercase = ['A'..'Z'];
+	letter = lowercase | uppercase ;
+	cr = 13;
+	lf = 10;
+	tab = 9;
 
 Tokens
-	id = (letter | '_') (letter | digit | '_')*;
-	number = digit_excluding_zero digit*;
-	plus = '+';
-	minus = '-';
-	mult = '*';
-	div = '/';
-	mod = '%';
-	l_par = '(';
-	r_par = ')';
-	line_comment = '//';
-	start_block_comment = '/*';
-	end_block_comment = '*/';
-	blank = (' ' | 13 | 10)+;
-
+	ID = (letter | '_') (letter | digit | '_')*;
+	N_INT = -? digit_excluding_zero digit*;
+	N_REAL = digit digit* '.' digit digit*;
+	BLANK = (' ' | cr | lf | tab)+;
 
 Ignored Tokens
-	blank;
+	BLANK;
 
 Productions
-	expr =
-		{factor} factor |
-		{plus} expr plus factor |
-		{minus} expr minus factor;
 
-	factor =
-		{term} term |
-		{mult} factor mult term |
-		{div} factor div term |
-		{mod} factor mod term;
+	programa = 'programa' ID 'inicio' {declaracao} {comando} 'fim' '.';
+	
+	declaracao = tipo ':' var {var ','} ';'
+		| 'const' ID valor ';';
 
-	term =
-  	{number} number |
-  	{expr} l_par expr r_par;
+	tipo = 'real' | 'inteiro' | 'caractere';
+
+	var = ID | ID '['N_INT']';
+	
+	valor = STRING | N_INT | N_REAL ;
+
