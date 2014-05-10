@@ -86,7 +86,9 @@ Productions
 
 	exp_comma = exp comma;
 	
-	tipo = real | integer | char;
+	tipo =  {real} real|
+			{integer} integer| 
+			{char} char;
 
 	var = id | id l_bkt n_int r_bkt;
 
