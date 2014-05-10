@@ -71,11 +71,12 @@ Tokens
 Ignored Tokens
 	blank;
 
+/*
 Productions
 
-	//programa = program id begin {declaracao} {comando} end dot;
+	programa = program id begin declaracao* comando* end dot;
 
-	//declaracao = tipo colon { var comma } var semicolon;
+	declaracao = tipo colon {var comma} var semicolon;
 	
 	tipo = real | integer | char;
 
@@ -113,22 +114,4 @@ Productions
 							 | exp-logica and exp-logica
 							 | exp-logica or exp-logica
 							 | exp-logica xor exp-logica
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+*/
