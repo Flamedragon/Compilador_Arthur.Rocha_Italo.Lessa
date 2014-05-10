@@ -7,7 +7,7 @@ import portugol.analysis.*;
 @SuppressWarnings("nls")
 public final class Start extends Node
 {
-    private PExpr _pExpr_;
+    private PHell _pHell_;
     private EOF _eof_;
 
     public Start()
@@ -16,37 +16,37 @@ public final class Start extends Node
     }
 
     public Start(
-        @SuppressWarnings("hiding") PExpr _pExpr_,
+        @SuppressWarnings("hiding") PHell _pHell_,
         @SuppressWarnings("hiding") EOF _eof_)
     {
-        setPExpr(_pExpr_);
+        setPHell(_pHell_);
         setEOF(_eof_);
     }
 
-    
+    @Override
     public Object clone()
     {
         return new Start(
-            cloneNode(this._pExpr_),
+            cloneNode(this._pHell_),
             cloneNode(this._eof_));
     }
 
-    
+    @Override
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseStart(this);
     }
 
-    public PExpr getPExpr()
+    public PHell getPHell()
     {
-        return this._pExpr_;
+        return this._pHell_;
     }
 
-    public void setPExpr(PExpr node)
+    public void setPHell(PHell node)
     {
-        if(this._pExpr_ != null)
+        if(this._pHell_ != null)
         {
-            this._pExpr_.parent(null);
+            this._pHell_.parent(null);
         }
 
         if(node != null)
@@ -59,7 +59,7 @@ public final class Start extends Node
             node.parent(this);
         }
 
-        this._pExpr_ = node;
+        this._pHell_ = node;
     }
 
     public EOF getEOF()
@@ -87,12 +87,12 @@ public final class Start extends Node
         this._eof_ = node;
     }
 
-    
+    @Override
     void removeChild(Node child)
     {
-        if(this._pExpr_ == child)
+        if(this._pHell_ == child)
         {
-            this._pExpr_ = null;
+            this._pHell_ = null;
             return;
         }
 
@@ -105,12 +105,12 @@ public final class Start extends Node
         throw new RuntimeException("Not a child.");
     }
 
-    
+    @Override
     void replaceChild(Node oldChild, Node newChild)
     {
-        if(this._pExpr_ == oldChild)
+        if(this._pHell_ == oldChild)
         {
-            setPExpr((PExpr) newChild);
+            setPHell((PHell) newChild);
             return;
         }
 
@@ -123,11 +123,11 @@ public final class Start extends Node
         throw new RuntimeException("Not a child.");
     }
 
-    
+    @Override
     public String toString()
     {
         return "" +
-            toString(this._pExpr_) +
+            toString(this._pHell_) +
             toString(this._eof_);
     }
 }

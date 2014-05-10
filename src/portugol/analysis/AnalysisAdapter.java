@@ -10,7 +10,7 @@ public class AnalysisAdapter implements Analysis
     private Hashtable<Node,Object> in;
     private Hashtable<Node,Object> out;
 
-    
+    @Override
     public Object getIn(Node node)
     {
         if(this.in == null)
@@ -21,7 +21,7 @@ public class AnalysisAdapter implements Analysis
         return this.in.get(node);
     }
 
-    
+    @Override
     public void setIn(Node node, Object o)
     {
         if(this.in == null)
@@ -39,7 +39,7 @@ public class AnalysisAdapter implements Analysis
         }
     }
 
-    
+    @Override
     public Object getOut(Node node)
     {
         if(this.out == null)
@@ -50,7 +50,7 @@ public class AnalysisAdapter implements Analysis
         return this.out.get(node);
     }
 
-    
+    @Override
     public void setOut(Node node, Object o)
     {
         if(this.out == null)
@@ -68,145 +68,67 @@ public class AnalysisAdapter implements Analysis
         }
     }
 
-    
+    @Override
     public void caseStart(Start node)
     {
         defaultCase(node);
     }
 
-    
-    public void caseAFactorExpr(AFactorExpr node)
+    @Override
+    public void caseAHell(AHell node)
     {
         defaultCase(node);
     }
 
-    
-    public void caseAPlusExpr(APlusExpr node)
+    @Override
+    public void caseTId(TId node)
     {
         defaultCase(node);
     }
 
-    
-    public void caseAMinusExpr(AMinusExpr node)
-    {
-        defaultCase(node);
-    }
-
-    
-    public void caseATermFactor(ATermFactor node)
-    {
-        defaultCase(node);
-    }
-
-    
-    public void caseAMultFactor(AMultFactor node)
-    {
-        defaultCase(node);
-    }
-
-    
-    public void caseADivFactor(ADivFactor node)
-    {
-        defaultCase(node);
-    }
-
-    
-    public void caseAModFactor(AModFactor node)
-    {
-        defaultCase(node);
-    }
-
-    
-    public void caseANumberTerm(ANumberTerm node)
-    {
-        defaultCase(node);
-    }
-
-    
-    public void caseAExprTerm(AExprTerm node)
-    {
-        defaultCase(node);
-    }
-
-    
-    public void caseTNumber(TNumber node)
-    {
-        defaultCase(node);
-    }
-
-    
-    public void caseTPlus(TPlus node)
-    {
-        defaultCase(node);
-    }
-
-    
-    public void caseTMinus(TMinus node)
-    {
-        defaultCase(node);
-    }
-
-    
-    public void caseTMult(TMult node)
-    {
-        defaultCase(node);
-    }
-
-    
-    public void caseTDiv(TDiv node)
-    {
-        defaultCase(node);
-    }
-
-    
-    public void caseTMod(TMod node)
-    {
-        defaultCase(node);
-    }
-
-    
-    public void caseTLPar(TLPar node)
-    {
-        defaultCase(node);
-    }
-
-    
-    public void caseTRPar(TRPar node)
-    {
-        defaultCase(node);
-    }
-
-    
+    @Override
     public void caseTLineComment(TLineComment node)
     {
         defaultCase(node);
     }
 
-    
-    public void caseTStartBlockComment(TStartBlockComment node)
+    @Override
+    public void caseTBlockCommnet(TBlockCommnet node)
     {
         defaultCase(node);
     }
 
-    
-    public void caseTEndBlockComment(TEndBlockComment node)
+    @Override
+    public void caseTVector(TVector node)
     {
         defaultCase(node);
     }
 
-    
+    @Override
+    public void caseTNInt(TNInt node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseTNReal(TNReal node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
     public void caseTBlank(TBlank node)
     {
         defaultCase(node);
     }
 
-    
+    @Override
     public void caseEOF(EOF node)
     {
         defaultCase(node);
     }
 
-    
+    @Override
     public void caseInvalidToken(InvalidToken node)
     {
         defaultCase(node);

@@ -7,33 +7,27 @@ import portugol.analysis.*;
 @SuppressWarnings("nls")
 public final class TLineComment extends Token
 {
-    public TLineComment()
+    public TLineComment(String text)
     {
-        super.setText("//");
+        setText(text);
     }
 
-    public TLineComment(int line, int pos)
+    public TLineComment(String text, int line, int pos)
     {
-        super.setText("//");
+        setText(text);
         setLine(line);
         setPos(pos);
     }
 
-    
+    @Override
     public Object clone()
     {
-      return new TLineComment(getLine(), getPos());
+      return new TLineComment(getText(), getLine(), getPos());
     }
 
-    
+    @Override
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseTLineComment(this);
-    }
-
-    
-    public void setText(@SuppressWarnings("unused") String text)
-    {
-        throw new RuntimeException("Cannot change TLineComment text.");
     }
 }

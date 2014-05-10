@@ -19,13 +19,13 @@ public final class TBlank extends Token
         setPos(pos);
     }
 
-    
+    @Override
     public Object clone()
     {
       return new TBlank(getText(), getLine(), getPos());
     }
 
-    
+    @Override
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseTBlank(this);

@@ -3,40 +3,24 @@ Package portugol;
 Helpers
 	digit_excluding_zero = ['1'..'9'];
 	digit = ['0'..'9'];
-	lower_case_letter = ['a'..'z'];
-	upper_case_letter = ['A'..'Z'];
-	letter = (lower_case_letter | upper_case_letter);
+	lowercase = ['a'..'z'];
+	uppercase = ['A'..'Z'];
+	letter = lowercase | uppercase ;
+	cr = 13;
+	lf = 10;
+	tab = 9;
+	anything = [0..0xffff];
 
 Tokens
-	number = digit_excluding_zero digit*;
-	plus = '+';
-	minus = '-';
-	mult = '*';
-	div = '/';
-	mod = '%';
-	l_par = '(';
-	r_par = ')';
-	line_comment = '//';
-	start_block_comment = '/*';
-	end_block_comment = '*/';
-	blank = (' ' | 13 | 10)+;
-
+	program = 'programa';
+	dot = '.';
+	id = (letter | '_') (letter | digit | '_')*;
+	line_comment = '//' [anything - [cr + lf ]]*  (lf cr | lf | cr );
+	block_commnet = '/*' [anything - ['*' + '/']]* '*/';
+	vector = (letter | '_') (letter | digit | '_')* '[' digit* ']';
+	n_int = '-'? digit_excluding_zero digit*;
+	n_real = digit digit* '.' digit digit*;
+	blank = (' ' | cr | lf | tab)+;
 
 Ignored Tokens
 	blank;
-
-Productions
-	expr =
-		{factor} factor |
-		{plus} expr plus factor |
-		{minus} expr minus factor;
-
-	factor =
-		{term} term |
-		{mult} factor mult term |
-		{div} factor div term |
-		{mod} factor mod term;
-
-	term =
-  	{number} number |
-  	{expr} l_par expr r_par;

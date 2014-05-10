@@ -12,27 +12,14 @@ public interface Analysis extends Switch
     void setOut(Node node, Object o);
 
     void caseStart(Start node);
-    void caseAFactorExpr(AFactorExpr node);
-    void caseAPlusExpr(APlusExpr node);
-    void caseAMinusExpr(AMinusExpr node);
-    void caseATermFactor(ATermFactor node);
-    void caseAMultFactor(AMultFactor node);
-    void caseADivFactor(ADivFactor node);
-    void caseAModFactor(AModFactor node);
-    void caseANumberTerm(ANumberTerm node);
-    void caseAExprTerm(AExprTerm node);
+    void caseAHell(AHell node);
 
-    void caseTNumber(TNumber node);
-    void caseTPlus(TPlus node);
-    void caseTMinus(TMinus node);
-    void caseTMult(TMult node);
-    void caseTDiv(TDiv node);
-    void caseTMod(TMod node);
-    void caseTLPar(TLPar node);
-    void caseTRPar(TRPar node);
+    void caseTId(TId node);
     void caseTLineComment(TLineComment node);
-    void caseTStartBlockComment(TStartBlockComment node);
-    void caseTEndBlockComment(TEndBlockComment node);
+    void caseTBlockCommnet(TBlockCommnet node);
+    void caseTVector(TVector node);
+    void caseTNInt(TNInt node);
+    void caseTNReal(TNReal node);
     void caseTBlank(TBlank node);
     void caseEOF(EOF node);
     void caseInvalidToken(InvalidToken node);

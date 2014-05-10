@@ -182,7 +182,7 @@ public class Parser
                 case ACCEPT:
                     {
                         EOF node2 = (EOF) this.lexer.next();
-                        PExpr node1 = (PExpr) pop().get(0);
+                        PHell node1 = (PHell) pop().get(0);
                         Start node = new Start(node1, node2);
                         return node;
                     }
@@ -198,276 +198,32 @@ public class Parser
     {
         switch(reduction)
         {
-            case 0: /* reduce AFactorExpr */
+            case 0: /* reduce AHell */
             {
                 ArrayList<Object> list = new0();
                 push(goTo(0), list, false);
             }
             break;
-            case 1: /* reduce APlusExpr */
-            {
-                ArrayList<Object> list = new1();
-                push(goTo(0), list, false);
-            }
-            break;
-            case 2: /* reduce AMinusExpr */
-            {
-                ArrayList<Object> list = new2();
-                push(goTo(0), list, false);
-            }
-            break;
-            case 3: /* reduce ATermFactor */
-            {
-                ArrayList<Object> list = new3();
-                push(goTo(1), list, false);
-            }
-            break;
-            case 4: /* reduce AMultFactor */
-            {
-                ArrayList<Object> list = new4();
-                push(goTo(1), list, false);
-            }
-            break;
-            case 5: /* reduce ADivFactor */
-            {
-                ArrayList<Object> list = new5();
-                push(goTo(1), list, false);
-            }
-            break;
-            case 6: /* reduce AModFactor */
-            {
-                ArrayList<Object> list = new6();
-                push(goTo(1), list, false);
-            }
-            break;
-            case 7: /* reduce ANumberTerm */
-            {
-                ArrayList<Object> list = new7();
-                push(goTo(2), list, false);
-            }
-            break;
-            case 8: /* reduce AExprTerm */
-            {
-                ArrayList<Object> list = new8();
-                push(goTo(2), list, false);
-            }
-            break;
         }
     }
 
 
 
     @SuppressWarnings({ "unchecked", "rawtypes" })
-    ArrayList<Object> new0() /* reduce AFactorExpr */
+    ArrayList<Object> new0() /* reduce AHell */
     {
         @SuppressWarnings("hiding") ArrayList<Object> nodeList = new ArrayList<Object>();
 
         @SuppressWarnings("unused") ArrayList<Object> nodeArrayList1 = pop();
-        PExpr pexprNode1;
+        PHell phellNode1;
         {
             // Block
-        PFactor pfactorNode2;
-        pfactorNode2 = (PFactor)nodeArrayList1.get(0);
+        TId tidNode2;
+        tidNode2 = (TId)nodeArrayList1.get(0);
 
-        pexprNode1 = new AFactorExpr(pfactorNode2);
+        phellNode1 = new AHell(tidNode2);
         }
-	nodeList.add(pexprNode1);
-        return nodeList;
-    }
-
-
-
-    @SuppressWarnings({ "unchecked", "rawtypes" })
-    ArrayList<Object> new1() /* reduce APlusExpr */
-    {
-        @SuppressWarnings("hiding") ArrayList<Object> nodeList = new ArrayList<Object>();
-
-        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList3 = pop();
-        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList2 = pop();
-        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList1 = pop();
-        PExpr pexprNode1;
-        {
-            // Block
-        PExpr pexprNode2;
-        TPlus tplusNode3;
-        PFactor pfactorNode4;
-        pexprNode2 = (PExpr)nodeArrayList1.get(0);
-        tplusNode3 = (TPlus)nodeArrayList2.get(0);
-        pfactorNode4 = (PFactor)nodeArrayList3.get(0);
-
-        pexprNode1 = new APlusExpr(pexprNode2, tplusNode3, pfactorNode4);
-        }
-	nodeList.add(pexprNode1);
-        return nodeList;
-    }
-
-
-
-    @SuppressWarnings({ "unchecked", "rawtypes" })
-    ArrayList<Object> new2() /* reduce AMinusExpr */
-    {
-        @SuppressWarnings("hiding") ArrayList<Object> nodeList = new ArrayList<Object>();
-
-        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList3 = pop();
-        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList2 = pop();
-        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList1 = pop();
-        PExpr pexprNode1;
-        {
-            // Block
-        PExpr pexprNode2;
-        TMinus tminusNode3;
-        PFactor pfactorNode4;
-        pexprNode2 = (PExpr)nodeArrayList1.get(0);
-        tminusNode3 = (TMinus)nodeArrayList2.get(0);
-        pfactorNode4 = (PFactor)nodeArrayList3.get(0);
-
-        pexprNode1 = new AMinusExpr(pexprNode2, tminusNode3, pfactorNode4);
-        }
-	nodeList.add(pexprNode1);
-        return nodeList;
-    }
-
-
-
-    @SuppressWarnings({ "unchecked", "rawtypes" })
-    ArrayList<Object> new3() /* reduce ATermFactor */
-    {
-        @SuppressWarnings("hiding") ArrayList<Object> nodeList = new ArrayList<Object>();
-
-        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList1 = pop();
-        PFactor pfactorNode1;
-        {
-            // Block
-        PTerm ptermNode2;
-        ptermNode2 = (PTerm)nodeArrayList1.get(0);
-
-        pfactorNode1 = new ATermFactor(ptermNode2);
-        }
-	nodeList.add(pfactorNode1);
-        return nodeList;
-    }
-
-
-
-    @SuppressWarnings({ "unchecked", "rawtypes" })
-    ArrayList<Object> new4() /* reduce AMultFactor */
-    {
-        @SuppressWarnings("hiding") ArrayList<Object> nodeList = new ArrayList<Object>();
-
-        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList3 = pop();
-        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList2 = pop();
-        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList1 = pop();
-        PFactor pfactorNode1;
-        {
-            // Block
-        PFactor pfactorNode2;
-        TMult tmultNode3;
-        PTerm ptermNode4;
-        pfactorNode2 = (PFactor)nodeArrayList1.get(0);
-        tmultNode3 = (TMult)nodeArrayList2.get(0);
-        ptermNode4 = (PTerm)nodeArrayList3.get(0);
-
-        pfactorNode1 = new AMultFactor(pfactorNode2, tmultNode3, ptermNode4);
-        }
-	nodeList.add(pfactorNode1);
-        return nodeList;
-    }
-
-
-
-    @SuppressWarnings({ "unchecked", "rawtypes" })
-    ArrayList<Object> new5() /* reduce ADivFactor */
-    {
-        @SuppressWarnings("hiding") ArrayList<Object> nodeList = new ArrayList<Object>();
-
-        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList3 = pop();
-        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList2 = pop();
-        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList1 = pop();
-        PFactor pfactorNode1;
-        {
-            // Block
-        PFactor pfactorNode2;
-        TDiv tdivNode3;
-        PTerm ptermNode4;
-        pfactorNode2 = (PFactor)nodeArrayList1.get(0);
-        tdivNode3 = (TDiv)nodeArrayList2.get(0);
-        ptermNode4 = (PTerm)nodeArrayList3.get(0);
-
-        pfactorNode1 = new ADivFactor(pfactorNode2, tdivNode3, ptermNode4);
-        }
-	nodeList.add(pfactorNode1);
-        return nodeList;
-    }
-
-
-
-    @SuppressWarnings({ "unchecked", "rawtypes" })
-    ArrayList<Object> new6() /* reduce AModFactor */
-    {
-        @SuppressWarnings("hiding") ArrayList<Object> nodeList = new ArrayList<Object>();
-
-        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList3 = pop();
-        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList2 = pop();
-        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList1 = pop();
-        PFactor pfactorNode1;
-        {
-            // Block
-        PFactor pfactorNode2;
-        TMod tmodNode3;
-        PTerm ptermNode4;
-        pfactorNode2 = (PFactor)nodeArrayList1.get(0);
-        tmodNode3 = (TMod)nodeArrayList2.get(0);
-        ptermNode4 = (PTerm)nodeArrayList3.get(0);
-
-        pfactorNode1 = new AModFactor(pfactorNode2, tmodNode3, ptermNode4);
-        }
-	nodeList.add(pfactorNode1);
-        return nodeList;
-    }
-
-
-
-    @SuppressWarnings({ "unchecked", "rawtypes" })
-    ArrayList<Object> new7() /* reduce ANumberTerm */
-    {
-        @SuppressWarnings("hiding") ArrayList<Object> nodeList = new ArrayList<Object>();
-
-        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList1 = pop();
-        PTerm ptermNode1;
-        {
-            // Block
-        TNumber tnumberNode2;
-        tnumberNode2 = (TNumber)nodeArrayList1.get(0);
-
-        ptermNode1 = new ANumberTerm(tnumberNode2);
-        }
-	nodeList.add(ptermNode1);
-        return nodeList;
-    }
-
-
-
-    @SuppressWarnings({ "unchecked", "rawtypes" })
-    ArrayList<Object> new8() /* reduce AExprTerm */
-    {
-        @SuppressWarnings("hiding") ArrayList<Object> nodeList = new ArrayList<Object>();
-
-        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList3 = pop();
-        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList2 = pop();
-        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList1 = pop();
-        PTerm ptermNode1;
-        {
-            // Block
-        TLPar tlparNode2;
-        PExpr pexprNode3;
-        TRPar trparNode4;
-        tlparNode2 = (TLPar)nodeArrayList1.get(0);
-        pexprNode3 = (PExpr)nodeArrayList2.get(0);
-        trparNode4 = (TRPar)nodeArrayList3.get(0);
-
-        ptermNode1 = new AExprTerm(tlparNode2, pexprNode3, trparNode4);
-        }
-	nodeList.add(ptermNode1);
+	nodeList.add(phellNode1);
         return nodeList;
     }
 
@@ -475,41 +231,22 @@ public class Parser
 
     private static int[][][] actionTable;
 /*      {
-			{{-1, ERROR, 0}, {0, SHIFT, 1}, {6, SHIFT, 2}, },
-			{{-1, REDUCE, 7}, },
-			{{-1, ERROR, 2}, {0, SHIFT, 1}, {6, SHIFT, 2}, },
-			{{-1, ERROR, 3}, {1, SHIFT, 7}, {2, SHIFT, 8}, {11, ACCEPT, -1}, },
-			{{-1, REDUCE, 0}, {3, SHIFT, 9}, {4, SHIFT, 10}, {5, SHIFT, 11}, },
-			{{-1, REDUCE, 3}, },
-			{{-1, ERROR, 6}, {1, SHIFT, 7}, {2, SHIFT, 8}, {7, SHIFT, 12}, },
-			{{-1, ERROR, 7}, {0, SHIFT, 1}, {6, SHIFT, 2}, },
-			{{-1, ERROR, 8}, {0, SHIFT, 1}, {6, SHIFT, 2}, },
-			{{-1, ERROR, 9}, {0, SHIFT, 1}, {6, SHIFT, 2}, },
-			{{-1, ERROR, 10}, {0, SHIFT, 1}, {6, SHIFT, 2}, },
-			{{-1, ERROR, 11}, {0, SHIFT, 1}, {6, SHIFT, 2}, },
-			{{-1, REDUCE, 8}, },
-			{{-1, REDUCE, 1}, {3, SHIFT, 9}, {4, SHIFT, 10}, {5, SHIFT, 11}, },
-			{{-1, REDUCE, 2}, {3, SHIFT, 9}, {4, SHIFT, 10}, {5, SHIFT, 11}, },
-			{{-1, REDUCE, 4}, },
-			{{-1, REDUCE, 5}, },
-			{{-1, REDUCE, 6}, },
+			{{-1, ERROR, 0}, {0, SHIFT, 1}, },
+			{{-1, REDUCE, 0}, },
+			{{-1, ERROR, 2}, {6, ACCEPT, -1}, },
         };*/
     private static int[][][] gotoTable;
 /*      {
-			{{-1, 3}, {2, 6}, },
-			{{-1, 4}, {7, 13}, {8, 14}, },
-			{{-1, 5}, {9, 15}, {10, 16}, {11, 17}, },
+			{{-1, 2}, },
         };*/
     private static String[] errorMessages;
 /*      {
-			"expecting: number, '('",
-			"expecting: '+', '-', '*', '/', '%', ')', EOF",
-			"expecting: '+', '-', EOF",
-			"expecting: '+', '-', ')'",
+			"expecting: id",
+			"expecting: EOF",
         };*/
     private static int[] errors;
 /*      {
-			0, 1, 0, 2, 1, 1, 3, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 
+			0, 1, 1, 
         };*/
 
     static 

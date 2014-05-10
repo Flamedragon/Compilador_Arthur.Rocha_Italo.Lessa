@@ -10,74 +10,44 @@ class TokenIndex extends AnalysisAdapter
     int index;
 
     @Override
-    public void caseTNumber(@SuppressWarnings("unused") TNumber node)
+    public void caseTId(@SuppressWarnings("unused") TId node)
     {
         this.index = 0;
     }
 
     @Override
-    public void caseTPlus(@SuppressWarnings("unused") TPlus node)
+    public void caseTLineComment(@SuppressWarnings("unused") TLineComment node)
     {
         this.index = 1;
     }
 
     @Override
-    public void caseTMinus(@SuppressWarnings("unused") TMinus node)
+    public void caseTBlockCommnet(@SuppressWarnings("unused") TBlockCommnet node)
     {
         this.index = 2;
     }
 
     @Override
-    public void caseTMult(@SuppressWarnings("unused") TMult node)
+    public void caseTVector(@SuppressWarnings("unused") TVector node)
     {
         this.index = 3;
     }
 
     @Override
-    public void caseTDiv(@SuppressWarnings("unused") TDiv node)
+    public void caseTNInt(@SuppressWarnings("unused") TNInt node)
     {
         this.index = 4;
     }
 
     @Override
-    public void caseTMod(@SuppressWarnings("unused") TMod node)
+    public void caseTNReal(@SuppressWarnings("unused") TNReal node)
     {
         this.index = 5;
     }
 
     @Override
-    public void caseTLPar(@SuppressWarnings("unused") TLPar node)
-    {
-        this.index = 6;
-    }
-
-    @Override
-    public void caseTRPar(@SuppressWarnings("unused") TRPar node)
-    {
-        this.index = 7;
-    }
-
-    @Override
-    public void caseTLineComment(@SuppressWarnings("unused") TLineComment node)
-    {
-        this.index = 8;
-    }
-
-    @Override
-    public void caseTStartBlockComment(@SuppressWarnings("unused") TStartBlockComment node)
-    {
-        this.index = 9;
-    }
-
-    @Override
-    public void caseTEndBlockComment(@SuppressWarnings("unused") TEndBlockComment node)
-    {
-        this.index = 10;
-    }
-
-    @Override
     public void caseEOF(@SuppressWarnings("unused") EOF node)
     {
-        this.index = 11;
+        this.index = 6;
     }
 }
