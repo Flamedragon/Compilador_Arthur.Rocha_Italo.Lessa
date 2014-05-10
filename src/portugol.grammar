@@ -92,17 +92,17 @@ Productions
 
 	valor = string | n_int | n_real;
 
-	else_comando_colon = else comando_colon* comando semicolon
-	else_colon_comando = else colon comando_semicolon* comando semicolon
-	case_valor = case valor colon comando_semicolon* comando semicolon 
+	else_comando_colon = else comando_colon* comando semicolon;
+	else_colon_comando = else colon comando_semicolon* comando semicolon;
+	case_valor = case valor colon comando_semicolon* comando semicolon;
 	
 	comando = var l_arrow exp semicolon
 						| read l_par var_comma* var r_par semicolon
 						| write l_par exp_comma* exp r_par  
-						| if l_par exp-logica r_par then comando_semicolon* comando semicolon else_comando_colon? end_if semicolon
+						| if l_par exp_logica r_par then comando_semicolon* comando semicolon else_comando_colon? end_if semicolon
 						| evaluate l_par exp r_par case_valor* else_colon_comando? end_evaluate semicolon
-						| while l_par exp-logica r_par do comando_semicolon* comando semicolon end_while semicolon
-						| repeat comando_semicolon* comando semicolon until l_par exp-logica r_par semicolon
+						| while l_par exp_logica r_par do comando_semicolon* comando semicolon end_while semicolon
+						| repeat comando_semicolon* comando semicolon until l_par exp_logica r_par semicolon
 						| for var of n_int until n_int do comando_semicolon* comando semicolon end_for semicolon
 						| for var of n_int step n_int until n_int do comando_semicolon* comando semicolon end_for semicolon;
 
@@ -114,16 +114,16 @@ Productions
 				| exp minus exp
 				| exp star exp
 				| exp bar exp
-				| exp-logica;
+				| exp_logica;
 
-	exp-logica = exp equal exp
+	exp_logica = exp equal exp
 							 | exp not_equal exp
 							 | exp l_equal exp
 							 | exp g_equal exp
 							 | exp less exp
 							 | exp greater exp
-							 | not exp-logica
-							 | exp-logica and exp-logica
-							 | exp-logica or exp-logica
-							 | exp-logica xor exp-logica
+							 | not exp_logica
+							 | exp_logica and exp_logica
+							 | exp_logica or exp_logica
+							 | exp_logica xor exp_logica;
 
