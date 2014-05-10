@@ -71,12 +71,20 @@ Tokens
 Ignored Tokens
 	blank;
 
-/*
+
 Productions
 
 	programa = program id begin declaracao* comando* end dot;
 
-	declaracao = tipo colon {var comma} var semicolon;
+	declaracao = tipo colon var_comma* var semicolon;
+
+	var_comma = var comma;
+
+	comando_semicolon = comando semicolon;
+
+	camando_colon = comando colon;
+
+	exp_comma = exp comma;
 	
 	tipo = real | integer | char;
 
@@ -85,14 +93,14 @@ Productions
 	valor = string | n_int | n_real;
 
 	comando = var l_arrow exp semicolon
-						| read l_par {var comma} var r_par semicolon
-						| write l_par {exp comma} exp r_par  
-						| if l_par exp-logica r_par then { comando semicolon } comando semicolon [ else { comando colon } comando semicolon] end_if semicolon
-						| evaluate l_par exp r_par { case valor colon { comando semicolon } comando semicolon } [ else colon { comando semicolon } comando semicolon] end_evaluate semicolon
-						| while l_par exp-logica r_par do { comando semicolon } comando semicolon end_while semicolon
-						| repeat { comando semicolon } comando semicolon until l_par exp-logica r_par semicolon
-						| for var of n_int until n_int do {comando semicolon} comando semicolon end_for semicolon
-						| for var of n_int step n_int until n_int do { comando semicolon } comando semicolon end_for semicolon;
+						| read l_par var_comma* var r_par semicolon
+						| write l_par exp_comma* exp r_par  
+						| if l_par exp-logica r_par then comando_semicolon* comando semicolon [ else comando_colon* comando semicolon] end_if semicolon
+						| evaluate l_par exp r_par { case valor colon comando_semicolon* comando semicolon } [ else colon comando_semicolon* comando semicolon] end_evaluate semicolon
+						| while l_par exp-logica r_par do comando_semicolon* comando semicolon end_while semicolon
+						| repeat comando_semicolon* comando semicolon until l_par exp-logica r_par semicolon
+						| for var of n_int until n_int do comando_semicolon* comando semicolon end_for semicolon
+						| for var of n_int step n_int until n_int do comando_semicolon* comando semicolon end_for semicolon;
 
 	exp = valor
 				| var
@@ -114,4 +122,4 @@ Productions
 							 | exp-logica and exp-logica
 							 | exp-logica or exp-logica
 							 | exp-logica xor exp-logica
-*/
+
