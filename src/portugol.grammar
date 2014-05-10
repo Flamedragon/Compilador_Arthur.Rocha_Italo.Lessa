@@ -80,9 +80,9 @@ Productions
 
 	var_comma = var comma;
 
-	comando_semicolon = comando semicolon;
+	comando_semicolon = {comando_semicolon} comando semicolon;
 
-	camando_colon = comando colon;
+	comando_colon = {comando_colon} comando colon;
 
 	exp_comma = exp comma;
 	
@@ -90,42 +90,42 @@ Productions
 			{integer} integer| 
 			{char} char;
 
-	var = id | id l_bkt n_int r_bkt;
+	var = {id} id| id l_bkt n_int r_bkt;
 
-	valor = string | n_int | n_real;
+	valor = {string} string | {n_int} n_int | {n_real} n_real;
 
 	else_comando_colon = else comando_colon* comando semicolon;
 	else_colon_comando = else colon comando_semicolon* comando semicolon;
 	case_valor = case valor colon comando_semicolon* comando semicolon;
 	
-	comando = var l_arrow exp semicolon
-						| read l_par var_comma* var r_par semicolon
-						| write l_par exp_comma* exp r_par  
-						| if l_par exp_logica r_par then comando_semicolon* comando semicolon else_comando_colon? end_if semicolon
-						| evaluate l_par exp r_par case_valor* else_colon_comando? end_evaluate semicolon
-						| while l_par exp_logica r_par do comando_semicolon* comando semicolon end_while semicolon
-						| repeat comando_semicolon* comando semicolon until l_par exp_logica r_par semicolon
-						| for var of n_int until n_int do comando_semicolon* comando semicolon end_for semicolon
-						| for var of n_int step n_int until n_int do comando_semicolon* comando semicolon end_for semicolon;
+	comando = {var} var l_arrow exp semicolon
+						| {read} read l_par var_comma* var r_par semicolon
+						| {write} write l_par exp_comma* exp r_par  
+						| {if} if l_par exp_logica r_par then comando_semicolon+ else_comando_colon? end_if semicolon
+						| {evaluate} evaluate l_par exp r_par case_valor* else_colon_comando? end_evaluate semicolon
+						| {while} while l_par exp_logica r_par do comando_semicolon+ end_while semicolon
+						| {repeat} repeat comando_semicolon+ until l_par exp_logica r_par semicolon
+						| {for} for var of [startn]:n_int until [end_n]:n_int do comando_semicolon+ end_for semicolon
+						| {for_each} var of [startn]:n_int step n_int until [end_n]:n_int do comando_semicolon+ end_for semicolon;
 
-	exp = valor
-				| var
-				| l_par exp r_par
-				| minus exp 
-				| exp plus exp
-				| exp minus exp
-				| exp star exp
-				| exp bar exp
-				| exp_logica;
+	exp = {valor} valor
+				|{exp_var} var
+				| {exp_par} l_par exp r_par
+				| {negative_exp} minus exp 
+				| {add} [termo1]:exp plus exp
+				| {subtract} [termo1]:exp minus exp
+				| {mult} [termo1]:exp star exp
+				| {div} [termo1]:exp bar exp
+				| {logical_exp} exp_logica;
 
-	exp_logica = exp equal exp
-							 | exp not_equal exp
-							 | exp l_equal exp
-							 | exp g_equal exp
-							 | exp less exp
-							 | exp greater exp
-							 | not exp_logica
-							 | exp_logica and exp_logica
-							 | exp_logica or exp_logica
-							 | exp_logica xor exp_logica;
+	exp_logica = {equal_exp} [termo1]:exp equal exp
+							| {not_equal_exp} [termo1]:exp not_equal exp
+							 | {l_equal_exp} [termo1]:exp l_equal exp
+							 | {g_equal_exp}[termo1]:exp g_equal exp
+							 | {less_exp}[termo1]:exp less exp
+							 | {greater_exp}[termo1]:exp greater exp
+							 | {not_exp} not exp_logica
+							 | {and_exp}[termo1]:exp_logica and exp_logica
+							 | {or_exp}[termo1]:exp_logica or exp_logica
+							 | {xor_exp}[termo1]:exp_logica xor exp_logica;
 
