@@ -1,6 +1,6 @@
 package portugol;
-import portugol.parser.*;
 import portugol.lexer.*;
+import portugol.parser.*;
 import portugol.node.*;
 import java.io.*;
 
@@ -11,8 +11,7 @@ public class Compiler
   try
   {
    System.out.println("Type an arithmetic expression:");
-
-
+   
    // Create a Parser instance.
    Parser p =
     new Parser(

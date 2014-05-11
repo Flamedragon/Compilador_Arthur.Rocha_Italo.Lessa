@@ -182,7 +182,7 @@ public class Parser
                 case ACCEPT:
                     {
                         EOF node2 = (EOF) this.lexer.next();
-                        PHell node1 = (PHell) pop().get(0);
+                        PPrograma node1 = (PPrograma) pop().get(0);
                         Start node = new Start(node1, node2);
                         return node;
                     }
@@ -198,7 +198,7 @@ public class Parser
     {
         switch(reduction)
         {
-            case 0: /* reduce AHell */
+            case 0: /* reduce APrograma */
             {
                 ArrayList<Object> list = new0();
                 push(goTo(0), list, false);
@@ -210,20 +210,32 @@ public class Parser
 
 
     @SuppressWarnings({ "unchecked", "rawtypes" })
-    ArrayList<Object> new0() /* reduce AHell */
+    ArrayList<Object> new0() /* reduce APrograma */
     {
         @SuppressWarnings("hiding") ArrayList<Object> nodeList = new ArrayList<Object>();
 
+        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList5 = pop();
+        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList4 = pop();
+        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList3 = pop();
+        @SuppressWarnings("unused") ArrayList<Object> nodeArrayList2 = pop();
         @SuppressWarnings("unused") ArrayList<Object> nodeArrayList1 = pop();
-        PHell phellNode1;
+        PPrograma pprogramaNode1;
         {
             // Block
-        TId tidNode2;
-        tidNode2 = (TId)nodeArrayList1.get(0);
+        TProgram tprogramNode2;
+        TId tidNode3;
+        TBegin tbeginNode4;
+        TEnd tendNode5;
+        TDot tdotNode6;
+        tprogramNode2 = (TProgram)nodeArrayList1.get(0);
+        tidNode3 = (TId)nodeArrayList2.get(0);
+        tbeginNode4 = (TBegin)nodeArrayList3.get(0);
+        tendNode5 = (TEnd)nodeArrayList4.get(0);
+        tdotNode6 = (TDot)nodeArrayList5.get(0);
 
-        phellNode1 = new AHell(tidNode2);
+        pprogramaNode1 = new APrograma(tprogramNode2, tidNode3, tbeginNode4, tendNode5, tdotNode6);
         }
-	nodeList.add(phellNode1);
+	nodeList.add(pprogramaNode1);
         return nodeList;
     }
 
@@ -232,8 +244,12 @@ public class Parser
     private static int[][][] actionTable;
 /*      {
 			{{-1, ERROR, 0}, {0, SHIFT, 1}, },
+			{{-1, ERROR, 1}, {48, SHIFT, 3}, },
+			{{-1, ERROR, 2}, {55, ACCEPT, -1}, },
+			{{-1, ERROR, 3}, {1, SHIFT, 4}, },
+			{{-1, ERROR, 4}, {2, SHIFT, 5}, },
+			{{-1, ERROR, 5}, {3, SHIFT, 6}, },
 			{{-1, REDUCE, 0}, },
-			{{-1, ERROR, 2}, {6, ACCEPT, -1}, },
         };*/
     private static int[][][] gotoTable;
 /*      {
@@ -241,12 +257,16 @@ public class Parser
         };*/
     private static String[] errorMessages;
 /*      {
+			"expecting: 'programa'",
 			"expecting: id",
 			"expecting: EOF",
+			"expecting: 'inicio'",
+			"expecting: 'fim'",
+			"expecting: '.'",
         };*/
     private static int[] errors;
 /*      {
-			0, 1, 1, 
+			0, 1, 2, 3, 4, 5, 2, 
         };*/
 
     static 

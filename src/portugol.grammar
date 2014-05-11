@@ -44,6 +44,7 @@ Tokens
 	until = 'ate';
 	for = 'para';
 	of = 'de';
+	step = 'passo';
 	end_for = 'fim para';	
 	minus = '-';
 	plus = '+';
@@ -63,6 +64,7 @@ Tokens
 	id = (letter | '_') (letter | digit | '_')*;
 	line_comment = '//' [anything - [cr + lf ]]*  (lf cr | lf | cr );
 	block_commnet = '/*' [anything - ['*' + '/']]* '*/';
+	string = ''' ( letter | digit )* ''';
 	vector = (letter | '_') (letter | digit | '_')* '[' digit* ']';
 	n_int = '-'? digit_excluding_zero digit*;
 	n_real = digit digit* '.' digit digit*;
@@ -73,7 +75,8 @@ Ignored Tokens
 
 
 Productions
-
+	programa = program id begin end dot;
+/*
 	programa = program id begin declaracao* comando* end dot;
 
 	declaracao = tipo colon var_comma* var semicolon;
@@ -128,4 +131,4 @@ Productions
 							 | {and_exp}[termo1]:exp_logica and exp_logica
 							 | {or_exp}[termo1]:exp_logica or exp_logica
 							 | {xor_exp}[termo1]:exp_logica xor exp_logica;
-
+*/

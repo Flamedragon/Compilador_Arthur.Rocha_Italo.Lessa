@@ -69,6 +69,18 @@ public class AnalysisAdapter implements Analysis
     }
 
     @Override
+    public void caseStart(Start node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAPrograma(APrograma node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
     public void caseTProgram(TProgram node)
     {
         defaultCase(node);
@@ -261,6 +273,12 @@ public class AnalysisAdapter implements Analysis
     }
 
     @Override
+    public void caseTStep(TStep node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
     public void caseTEndFor(TEndFor node)
     {
         defaultCase(node);
@@ -364,6 +382,12 @@ public class AnalysisAdapter implements Analysis
 
     @Override
     public void caseTBlockCommnet(TBlockCommnet node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseTString(TString node)
     {
         defaultCase(node);
     }
