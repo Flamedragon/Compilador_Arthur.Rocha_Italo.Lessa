@@ -1,0 +1,18 @@
+programa hell
+inicio
+	const DAMN 'damn';
+	x <- 'x';
+
+	leia (x);
+	leia (x,y);
+	escreva(x);
+	escreva('damn');
+	escreva( 2 + 3 );
+
+	2 = 2;
+	x <> y;
+	nao 2 = 3;
+	0 e 1;
+	0 ou 1;
+	0 xor 0;
+fim.

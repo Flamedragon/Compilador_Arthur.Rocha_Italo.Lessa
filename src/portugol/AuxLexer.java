@@ -22,12 +22,13 @@ public class AuxLexer extends Lexer {
 		if(previousLine == -1){
 			previousLine = token.getLine();
 		}
-		
-        System.out.printf(this.token.getClass().getName()+" ");
         
         if(previousLine != token.getLine()){
         	System.out.println();
+        	previousLine = token.getLine();
         }
+        
+        System.out.printf(this.token.getClass().getSimpleName()+" ");
     }
 
 }

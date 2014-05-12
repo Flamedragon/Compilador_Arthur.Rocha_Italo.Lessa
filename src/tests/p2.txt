@@ -1,0 +1,9 @@
+programa hell
+inicio
+	inteiro : x;
+	real : y, z;
+	x = 1;
+	y = 1.0;
+	z = 0.1;
+	array[3] = 'hue';
+fim.
