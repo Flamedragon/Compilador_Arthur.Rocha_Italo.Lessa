@@ -10,7 +10,6 @@ public class Compiler
  {
   try
   {
-	  System.out.println("Starting lexer.");
 	  //FileReader fr = new FileReader("/Users/Stomp/code/compilador/src/test.txt");
 	  AuxLexer l = new AuxLexer(new PushbackReader(new InputStreamReader(System.in), 1024));
 	  
