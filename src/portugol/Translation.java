@@ -2,7 +2,7 @@ package portugol;
 
 import portugol.analysis.*;
 import portugol.node.*;
-
+/*
 public class Translation extends DepthFirstAdapter
 {
 	
@@ -47,3 +47,4 @@ public class Translation extends DepthFirstAdapter
 	//	System.out.print(node.getMod());
 	//}
 }
+*/

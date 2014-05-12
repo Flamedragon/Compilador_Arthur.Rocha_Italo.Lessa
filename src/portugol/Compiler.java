@@ -1,15 +1,23 @@
 package portugol;
 import portugol.lexer.*;
-import portugol.parser.*;
-import portugol.node.*;
 import java.io.*;
 
 public class Compiler
 {
  public static void main(String[] arguments)
  {
-  try
-  {
+	  System.out.println("Starting lexer.");
+	  FileReader fr = new FileReader("/Users/Stomp/code/compilador/src/test.txt");
+	  AuxLexer l = new AuxLexer(new PushbackReader(fr, 1024));
+	  
+	  while(l.peek().getClass().getCanonicalName() != "portugol.node.EOF"){
+		  try{
+			  l.next();
+		  }catch(LexerException le){
+			  System.out.println(le.getMessage());
+		  }
+	  }
+/*
    System.out.println("Type an arithmetic expression:");
    
    // Create a Parser instance.
@@ -25,11 +33,13 @@ public class Compiler
 
 
    // Apply the translation.
-   tree.apply(new Translation());
+  tree.apply(new Translation());
+*/
   }
   catch(Exception e)
   {
    System.out.println(e.getMessage());
   }
+  
  }
 }

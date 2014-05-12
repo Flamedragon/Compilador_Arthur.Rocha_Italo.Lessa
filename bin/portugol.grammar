@@ -73,10 +73,9 @@ Tokens
 Ignored Tokens
 	blank;
 
-
-Productions
-	programa = program id begin end dot;
 /*
+Productions
+
 	programa = program id begin declaracao* comando* end dot;
 
 	declaracao = tipo colon var_comma* var semicolon;

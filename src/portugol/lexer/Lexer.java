@@ -21,7 +21,7 @@ public class Lexer
     @SuppressWarnings("unused")
     protected void filter() throws LexerException, IOException
     {
-        System.out.printf(this.token.getClass().getName()+"\n");
+        // Do nothing
     }
 
     public Lexer(@SuppressWarnings("hiding") final PushbackReader in)
