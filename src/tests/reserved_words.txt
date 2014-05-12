@@ -1,0 +1,48 @@
+programa 
+inicio
+fim
+.
+:
+;
+const
+,
+real
+inteiro
+charactere
+[
+]
+<-
+leia
+(
+)
+escreva
+se
+entao
+senao
+fim se
+avalie
+caso
+fim avalie
+enquanto
+faca
+fim enquanto
+repita
+ate
+para
+de
+passo
+fim para
+-
++
+*
+/
+=
+<>
+<=
+>=
+<
+>
+nao
+e
+ou
+xor
