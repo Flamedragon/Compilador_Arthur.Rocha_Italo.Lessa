@@ -5,14 +5,14 @@ package portugol.node;
 import portugol.analysis.*;
 
 @SuppressWarnings("nls")
-public final class TBlockCommnet extends Token
+public final class TBlockCommentBody extends Token
 {
-    public TBlockCommnet(String text)
+    public TBlockCommentBody(String text)
     {
         setText(text);
     }
 
-    public TBlockCommnet(String text, int line, int pos)
+    public TBlockCommentBody(String text, int line, int pos)
     {
         setText(text);
         setLine(line);
@@ -22,12 +22,12 @@ public final class TBlockCommnet extends Token
     @Override
     public Object clone()
     {
-      return new TBlockCommnet(getText(), getLine(), getPos());
+      return new TBlockCommentBody(getText(), getLine(), getPos());
     }
 
     @Override
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseTBlockCommnet(this);
+        ((Analysis) sw).caseTBlockCommentBody(this);
     }
 }

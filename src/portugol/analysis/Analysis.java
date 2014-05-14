@@ -61,7 +61,9 @@ public interface Analysis extends Switch
     void caseTXor(TXor node);
     void caseTId(TId node);
     void caseTLineComment(TLineComment node);
-    void caseTBlockCommnet(TBlockCommnet node);
+    void caseTBlockCommnetStart(TBlockCommnetStart node);
+    void caseTBlockCommentEnd(TBlockCommentEnd node);
+    void caseTBlockCommentBody(TBlockCommentBody node);
     void caseTString(TString node);
     void caseTVector(TVector node);
     void caseTNInt(TNInt node);

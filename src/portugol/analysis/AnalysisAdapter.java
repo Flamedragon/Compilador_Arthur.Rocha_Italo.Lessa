@@ -369,7 +369,19 @@ public class AnalysisAdapter implements Analysis
     }
 
     @Override
-    public void caseTBlockCommnet(TBlockCommnet node)
+    public void caseTBlockCommnetStart(TBlockCommnetStart node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseTBlockCommentEnd(TBlockCommentEnd node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseTBlockCommentBody(TBlockCommentBody node)
     {
         defaultCase(node);
     }
