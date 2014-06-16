@@ -69,6 +69,84 @@ public class AnalysisAdapter implements Analysis
     }
 
     @Override
+    public void caseStart(Start node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAPrograma(APrograma node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAIdVar(AIdVar node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAIdArrayVar(AIdArrayVar node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAStringValor(AStringValor node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseANIntValor(ANIntValor node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseANRealValor(ANRealValor node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseARealTipo(ARealTipo node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAIntegerTipo(AIntegerTipo node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseACharTipo(ACharTipo node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAVariableDeclaration(AVariableDeclaration node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAConstDeclaration(AConstDeclaration node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAVarList(AVarList node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
     public void caseTProgram(TProgram node)
     {
         defaultCase(node);

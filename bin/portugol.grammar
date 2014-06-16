@@ -26,7 +26,7 @@ Tokens
 	{normal}comma = ',';
 	{normal}real = 'real';
 	{normal}integer = 'inteiro';
-	{normal}char = 'charactere';
+	{normal}char = 'caractere';
 	{normal}l_bkt = '[';
 	{normal}r_bkt = ']';
 	{normal}l_arrow = '<-';
@@ -81,61 +81,27 @@ Tokens
 Ignored Tokens
 	blank;
 
-/*
+
 Productions
 
-	programa = program id begin declaracao* comando* end dot;
+programa = program id begin declaration* end dot;
 
-	declaracao = tipo colon var_comma* var semicolon;
+var = 
+	{id} id |
+	{id_array} id l_bkt n_int r_bkt;
 
-	var_comma = var comma;
-
-	comando_semicolon = {comando_semicolon} comando semicolon;
-
-	comando_colon = {comando_colon} comando colon;
-
-	exp_comma = exp comma;
+valor = 
+	{string} string |
+	{n_int} n_int |
+	{n_real} n_real;
 	
-	tipo =  {real} real|
-			{integer} integer| 
-			{char} char;
-
-	var = {id} id| id l_bkt n_int r_bkt;
-
-	valor = {string} string | {n_int} n_int | {n_real} n_real;
-
-	else_comando_colon = else comando_colon* comando semicolon;
-	else_colon_comando = else colon comando_semicolon* comando semicolon;
-	case_valor = case valor colon comando_semicolon* comando semicolon;
+tipo = 
+	{real} real |
+	{integer} integer |
+	{char} char;
 	
-	comando = {var} var l_arrow exp semicolon
-						| {read} read l_par var_comma* var r_par semicolon
-						| {write} write l_par exp_comma* exp r_par  
-						| {if} if l_par exp_logica r_par then comando_semicolon+ else_comando_colon? end_if semicolon
-						| {evaluate} evaluate l_par exp r_par case_valor* else_colon_comando? end_evaluate semicolon
-						| {while} while l_par exp_logica r_par do comando_semicolon+ end_while semicolon
-						| {repeat} repeat comando_semicolon+ until l_par exp_logica r_par semicolon
-						| {for} for var of [startn]:n_int until [end_n]:n_int do comando_semicolon+ end_for semicolon
-						| {for_each} var of [startn]:n_int step n_int until [end_n]:n_int do comando_semicolon+ end_for semicolon;
+declaration = 
+	{variable} tipo colon var_list+|
+	{const} const id valor;
 
-	exp = {valor} valor
-				|{exp_var} var
-				| {exp_par} l_par exp r_par
-				| {negative_exp} minus exp 
-				| {add} [termo1]:exp plus exp
-				| {subtract} [termo1]:exp minus exp
-				| {mult} [termo1]:exp star exp
-				| {div} [termo1]:exp bar exp
-				| {logical_exp} exp_logica;
-
-	exp_logica = {equal_exp} [termo1]:exp equal exp
-							| {not_equal_exp} [termo1]:exp not_equal exp
-							 | {l_equal_exp} [termo1]:exp l_equal exp
-							 | {g_equal_exp}[termo1]:exp g_equal exp
-							 | {less_exp}[termo1]:exp less exp
-							 | {greater_exp}[termo1]:exp greater exp
-							 | {not_exp} not exp_logica
-							 | {and_exp}[termo1]:exp_logica and exp_logica
-							 | {or_exp}[termo1]:exp_logica or exp_logica
-							 | {xor_exp}[termo1]:exp_logica xor exp_logica;
-*/
+var_list = var semicolon;

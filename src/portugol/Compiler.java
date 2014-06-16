@@ -1,6 +1,7 @@
 package portugol;
 import portugol.lexer.*;
 import portugol.node.*;
+import portugol.parser.Parser;
 
 import java.io.*;
 
@@ -10,6 +11,7 @@ public class Compiler
  {
   try
   {
+/*
 	  //FileReader fr = new FileReader("/Users/Stomp/code/compilador/src/test.txt");
 	  AuxLexer l = new AuxLexer(new PushbackReader(new InputStreamReader(System.in), 1024));
 	  
@@ -20,8 +22,7 @@ public class Compiler
 	  }catch(LexerException le){
 		  System.out.println(le.getMessage());
 	  }
-/*
-   System.out.println("Type an arithmetic expression:");
+*/
    
    // Create a Parser instance.
    Parser p =
@@ -37,7 +38,7 @@ public class Compiler
 
    // Apply the translation.
   tree.apply(new Translation());
-*/
+  
   }
   catch(Exception e)
   {
