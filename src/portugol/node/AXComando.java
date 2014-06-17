@@ -5,22 +5,30 @@ package portugol.node;
 import portugol.analysis.*;
 
 @SuppressWarnings("nls")
-public final class AVarList extends PVarList
+public final class AXComando extends PComando
 {
     private PVar _var_;
+    private TLArrow _lArrow_;
+    private PExp _exp_;
     private TSemicolon _semicolon_;
 
-    public AVarList()
+    public AXComando()
     {
         // Constructor
     }
 
-    public AVarList(
+    public AXComando(
         @SuppressWarnings("hiding") PVar _var_,
+        @SuppressWarnings("hiding") TLArrow _lArrow_,
+        @SuppressWarnings("hiding") PExp _exp_,
         @SuppressWarnings("hiding") TSemicolon _semicolon_)
     {
         // Constructor
         setVar(_var_);
+
+        setLArrow(_lArrow_);
+
+        setExp(_exp_);
 
         setSemicolon(_semicolon_);
 
@@ -29,15 +37,17 @@ public final class AVarList extends PVarList
     @Override
     public Object clone()
     {
-        return new AVarList(
+        return new AXComando(
             cloneNode(this._var_),
+            cloneNode(this._lArrow_),
+            cloneNode(this._exp_),
             cloneNode(this._semicolon_));
     }
 
     @Override
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseAVarList(this);
+        ((Analysis) sw).caseAXComando(this);
     }
 
     public PVar getVar()
@@ -63,6 +73,56 @@ public final class AVarList extends PVarList
         }
 
         this._var_ = node;
+    }
+
+    public TLArrow getLArrow()
+    {
+        return this._lArrow_;
+    }
+
+    public void setLArrow(TLArrow node)
+    {
+        if(this._lArrow_ != null)
+        {
+            this._lArrow_.parent(null);
+        }
+
+        if(node != null)
+        {
+            if(node.parent() != null)
+            {
+                node.parent().removeChild(node);
+            }
+
+            node.parent(this);
+        }
+
+        this._lArrow_ = node;
+    }
+
+    public PExp getExp()
+    {
+        return this._exp_;
+    }
+
+    public void setExp(PExp node)
+    {
+        if(this._exp_ != null)
+        {
+            this._exp_.parent(null);
+        }
+
+        if(node != null)
+        {
+            if(node.parent() != null)
+            {
+                node.parent().removeChild(node);
+            }
+
+            node.parent(this);
+        }
+
+        this._exp_ = node;
     }
 
     public TSemicolon getSemicolon()
@@ -95,6 +155,8 @@ public final class AVarList extends PVarList
     {
         return ""
             + toString(this._var_)
+            + toString(this._lArrow_)
+            + toString(this._exp_)
             + toString(this._semicolon_);
     }
 
@@ -105,6 +167,18 @@ public final class AVarList extends PVarList
         if(this._var_ == child)
         {
             this._var_ = null;
+            return;
+        }
+
+        if(this._lArrow_ == child)
+        {
+            this._lArrow_ = null;
+            return;
+        }
+
+        if(this._exp_ == child)
+        {
+            this._exp_ = null;
             return;
         }
 
@@ -124,6 +198,18 @@ public final class AVarList extends PVarList
         if(this._var_ == oldChild)
         {
             setVar((PVar) newChild);
+            return;
+        }
+
+        if(this._lArrow_ == oldChild)
+        {
+            setLArrow((TLArrow) newChild);
+            return;
+        }
+
+        if(this._exp_ == oldChild)
+        {
+            setExp((PExp) newChild);
             return;
         }
 

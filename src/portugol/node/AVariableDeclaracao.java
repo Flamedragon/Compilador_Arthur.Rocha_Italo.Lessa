@@ -6,44 +6,44 @@ import java.util.*;
 import portugol.analysis.*;
 
 @SuppressWarnings("nls")
-public final class AVariableDeclaration extends PDeclaration
+public final class AVariableDeclaracao extends PDeclaracao
 {
     private PTipo _tipo_;
     private TColon _colon_;
-    private final LinkedList<PVarList> _varList_ = new LinkedList<PVarList>();
+    private final LinkedList<PVarSemicolon> _varSemicolon_ = new LinkedList<PVarSemicolon>();
 
-    public AVariableDeclaration()
+    public AVariableDeclaracao()
     {
         // Constructor
     }
 
-    public AVariableDeclaration(
+    public AVariableDeclaracao(
         @SuppressWarnings("hiding") PTipo _tipo_,
         @SuppressWarnings("hiding") TColon _colon_,
-        @SuppressWarnings("hiding") List<?> _varList_)
+        @SuppressWarnings("hiding") List<?> _varSemicolon_)
     {
         // Constructor
         setTipo(_tipo_);
 
         setColon(_colon_);
 
-        setVarList(_varList_);
+        setVarSemicolon(_varSemicolon_);
 
     }
 
     @Override
     public Object clone()
     {
-        return new AVariableDeclaration(
+        return new AVariableDeclaracao(
             cloneNode(this._tipo_),
             cloneNode(this._colon_),
-            cloneList(this._varList_));
+            cloneList(this._varSemicolon_));
     }
 
     @Override
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseAVariableDeclaration(this);
+        ((Analysis) sw).caseAVariableDeclaracao(this);
     }
 
     public PTipo getTipo()
@@ -96,29 +96,29 @@ public final class AVariableDeclaration extends PDeclaration
         this._colon_ = node;
     }
 
-    public LinkedList<PVarList> getVarList()
+    public LinkedList<PVarSemicolon> getVarSemicolon()
     {
-        return this._varList_;
+        return this._varSemicolon_;
     }
 
-    public void setVarList(List<?> list)
+    public void setVarSemicolon(List<?> list)
     {
-        for(PVarList e : this._varList_)
+        for(PVarSemicolon e : this._varSemicolon_)
         {
             e.parent(null);
         }
-        this._varList_.clear();
+        this._varSemicolon_.clear();
 
         for(Object obj_e : list)
         {
-            PVarList e = (PVarList) obj_e;
+            PVarSemicolon e = (PVarSemicolon) obj_e;
             if(e.parent() != null)
             {
                 e.parent().removeChild(e);
             }
 
             e.parent(this);
-            this._varList_.add(e);
+            this._varSemicolon_.add(e);
         }
     }
 
@@ -128,7 +128,7 @@ public final class AVariableDeclaration extends PDeclaration
         return ""
             + toString(this._tipo_)
             + toString(this._colon_)
-            + toString(this._varList_);
+            + toString(this._varSemicolon_);
     }
 
     @Override
@@ -147,7 +147,7 @@ public final class AVariableDeclaration extends PDeclaration
             return;
         }
 
-        if(this._varList_.remove(child))
+        if(this._varSemicolon_.remove(child))
         {
             return;
         }
@@ -171,13 +171,13 @@ public final class AVariableDeclaration extends PDeclaration
             return;
         }
 
-        for(ListIterator<PVarList> i = this._varList_.listIterator(); i.hasNext();)
+        for(ListIterator<PVarSemicolon> i = this._varSemicolon_.listIterator(); i.hasNext();)
         {
             if(i.next() == oldChild)
             {
                 if(newChild != null)
                 {
-                    i.set((PVarList) newChild);
+                    i.set((PVarSemicolon) newChild);
                     newChild.parent(this);
                     oldChild.parent(null);
                     return;

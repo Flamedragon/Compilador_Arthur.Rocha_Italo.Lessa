@@ -9,12 +9,12 @@ public final class TChar extends Token
 {
     public TChar()
     {
-        super.setText("charactere");
+        super.setText("caractere");
     }
 
     public TChar(int line, int pos)
     {
-        super.setText("charactere");
+        super.setText("caractere");
         setLine(line);
         setPos(pos);
     }

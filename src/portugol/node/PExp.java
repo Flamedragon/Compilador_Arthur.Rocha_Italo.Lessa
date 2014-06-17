@@ -2,7 +2,7 @@
 
 package portugol.node;
 
-public abstract class PVarList extends Node
+public abstract class PExp extends Node
 {
     // Empty body
 }

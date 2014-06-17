@@ -2,7 +2,7 @@
 
 package portugol.node;
 
-public abstract class PDeclaration extends Node
+public abstract class PDiv extends Node
 {
     // Empty body
 }

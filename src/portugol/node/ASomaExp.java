@@ -5,56 +5,56 @@ package portugol.node;
 import portugol.analysis.*;
 
 @SuppressWarnings("nls")
-public final class AConstDeclaration extends PDeclaration
+public final class ASomaExp extends PExp
 {
-    private TConst _const_;
-    private TId _id_;
-    private PValor _valor_;
+    private PExp _exp_;
+    private PSoma _soma_;
+    private PTermo _termo_;
 
-    public AConstDeclaration()
+    public ASomaExp()
     {
         // Constructor
     }
 
-    public AConstDeclaration(
-        @SuppressWarnings("hiding") TConst _const_,
-        @SuppressWarnings("hiding") TId _id_,
-        @SuppressWarnings("hiding") PValor _valor_)
+    public ASomaExp(
+        @SuppressWarnings("hiding") PExp _exp_,
+        @SuppressWarnings("hiding") PSoma _soma_,
+        @SuppressWarnings("hiding") PTermo _termo_)
     {
         // Constructor
-        setConst(_const_);
+        setExp(_exp_);
 
-        setId(_id_);
+        setSoma(_soma_);
 
-        setValor(_valor_);
+        setTermo(_termo_);
 
     }
 
     @Override
     public Object clone()
     {
-        return new AConstDeclaration(
-            cloneNode(this._const_),
-            cloneNode(this._id_),
-            cloneNode(this._valor_));
+        return new ASomaExp(
+            cloneNode(this._exp_),
+            cloneNode(this._soma_),
+            cloneNode(this._termo_));
     }
 
     @Override
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseAConstDeclaration(this);
+        ((Analysis) sw).caseASomaExp(this);
     }
 
-    public TConst getConst()
+    public PExp getExp()
     {
-        return this._const_;
+        return this._exp_;
     }
 
-    public void setConst(TConst node)
+    public void setExp(PExp node)
     {
-        if(this._const_ != null)
+        if(this._exp_ != null)
         {
-            this._const_.parent(null);
+            this._exp_.parent(null);
         }
 
         if(node != null)
@@ -67,19 +67,19 @@ public final class AConstDeclaration extends PDeclaration
             node.parent(this);
         }
 
-        this._const_ = node;
+        this._exp_ = node;
     }
 
-    public TId getId()
+    public PSoma getSoma()
     {
-        return this._id_;
+        return this._soma_;
     }
 
-    public void setId(TId node)
+    public void setSoma(PSoma node)
     {
-        if(this._id_ != null)
+        if(this._soma_ != null)
         {
-            this._id_.parent(null);
+            this._soma_.parent(null);
         }
 
         if(node != null)
@@ -92,19 +92,19 @@ public final class AConstDeclaration extends PDeclaration
             node.parent(this);
         }
 
-        this._id_ = node;
+        this._soma_ = node;
     }
 
-    public PValor getValor()
+    public PTermo getTermo()
     {
-        return this._valor_;
+        return this._termo_;
     }
 
-    public void setValor(PValor node)
+    public void setTermo(PTermo node)
     {
-        if(this._valor_ != null)
+        if(this._termo_ != null)
         {
-            this._valor_.parent(null);
+            this._termo_.parent(null);
         }
 
         if(node != null)
@@ -117,37 +117,37 @@ public final class AConstDeclaration extends PDeclaration
             node.parent(this);
         }
 
-        this._valor_ = node;
+        this._termo_ = node;
     }
 
     @Override
     public String toString()
     {
         return ""
-            + toString(this._const_)
-            + toString(this._id_)
-            + toString(this._valor_);
+            + toString(this._exp_)
+            + toString(this._soma_)
+            + toString(this._termo_);
     }
 
     @Override
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._const_ == child)
+        if(this._exp_ == child)
         {
-            this._const_ = null;
+            this._exp_ = null;
             return;
         }
 
-        if(this._id_ == child)
+        if(this._soma_ == child)
         {
-            this._id_ = null;
+            this._soma_ = null;
             return;
         }
 
-        if(this._valor_ == child)
+        if(this._termo_ == child)
         {
-            this._valor_ = null;
+            this._termo_ = null;
             return;
         }
 
@@ -158,21 +158,21 @@ public final class AConstDeclaration extends PDeclaration
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._const_ == oldChild)
+        if(this._exp_ == oldChild)
         {
-            setConst((TConst) newChild);
+            setExp((PExp) newChild);
             return;
         }
 
-        if(this._id_ == oldChild)
+        if(this._soma_ == oldChild)
         {
-            setId((TId) newChild);
+            setSoma((PSoma) newChild);
             return;
         }
 
-        if(this._valor_ == oldChild)
+        if(this._termo_ == oldChild)
         {
-            setValor((PValor) newChild);
+            setTermo((PTermo) newChild);
             return;
         }
 

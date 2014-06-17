@@ -84,7 +84,7 @@ Ignored Tokens
 
 Productions
 
-programa = program id begin declaration* end dot;
+programa = program id begin end dot;
 
 var = 
 	{id} id |
@@ -100,8 +100,44 @@ tipo =
 	{integer} integer |
 	{char} char;
 	
-declaration = 
-	{variable} tipo colon var_list+|
+declaracao = 
+	{variable} tipo colon var_semicolon+|
 	{const} const id valor;
+	
+var_semicolon = var semicolon;
 
-var_list = var semicolon;
+comando = 
+	{x} var l_arrow exp semicolon |
+	{read} read l_par var comma_var* r_par semicolon ;
+	 
+
+comma_var = comma var;
+
+exp = 
+	{soma} exp soma termo |
+	{termo} termo;
+soma = 
+	{mais} plus |
+	{menos} minus;
+	
+termo = 
+	{termo} termo div fator |
+	{fator} fator;
+
+div = bar;
+
+fator = 
+	{fator} fator mult elem |
+	{elem} elem;
+
+mult = star;
+
+elem = 
+	{parenteses_exp} l_par exp r_par |
+	{valor} valor |
+	{var} var |
+	{exp_logica} exp_logica;
+	
+exp_logica = bar;
+	
+	

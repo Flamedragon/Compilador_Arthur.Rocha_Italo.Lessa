@@ -129,19 +129,127 @@ public class AnalysisAdapter implements Analysis
     }
 
     @Override
-    public void caseAVariableDeclaration(AVariableDeclaration node)
+    public void caseAVariableDeclaracao(AVariableDeclaracao node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseAConstDeclaration(AConstDeclaration node)
+    public void caseAConstDeclaracao(AConstDeclaracao node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseAVarList(AVarList node)
+    public void caseAVarSemicolon(AVarSemicolon node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAXComando(AXComando node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAReadComando(AReadComando node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseACommaVar(ACommaVar node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseASomaExp(ASomaExp node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseATermoExp(ATermoExp node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAMaisSoma(AMaisSoma node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAMenosSoma(AMenosSoma node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseATermoTermo(ATermoTermo node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAFatorTermo(AFatorTermo node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseADiv(ADiv node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAFatorFator(AFatorFator node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAElemFator(AElemFator node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAMult(AMult node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAParentesesExpElem(AParentesesExpElem node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAValorElem(AValorElem node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAVarElem(AVarElem node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAExpLogicaElem(AExpLogicaElem node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAExpLogica(AExpLogica node)
     {
         defaultCase(node);
     }
