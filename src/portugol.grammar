@@ -101,11 +101,11 @@ tipo =
 	{char} char;
 	
 declaracao = 
-	{variable} tipo colon var_semicolon+|
-	{const} const id valor;
+	{variable} tipo colon var_comma* var_semicolon|
+	{const} const id valor semicolon;
 	
 var_semicolon = var semicolon;
-
+var_comma = var comma;
 comando = 
 	{x} var l_arrow exp semicolon |
 	{read} read l_par var comma_var* r_par semicolon ;
