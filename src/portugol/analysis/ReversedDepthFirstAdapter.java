@@ -58,9 +58,21 @@ public class ReversedDepthFirstAdapter extends AnalysisAdapter
         {
             node.getEnd().apply(this);
         }
-        if(node.getExp1() != null)
         {
-            node.getExp1().apply(this);
+            List<PComando> copy = new ArrayList<PComando>(node.getComando());
+            Collections.reverse(copy);
+            for(PComando e : copy)
+            {
+                e.apply(this);
+            }
+        }
+        {
+            List<PDeclaracao> copy = new ArrayList<PDeclaracao>(node.getDeclaracao());
+            Collections.reverse(copy);
+            for(PDeclaracao e : copy)
+            {
+                e.apply(this);
+            }
         }
         if(node.getBegin() != null)
         {
@@ -1179,6 +1191,48 @@ public class ReversedDepthFirstAdapter extends AnalysisAdapter
         outAMenosSoma(node);
     }
 
+    public void inAOuLogica(AOuLogica node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAOuLogica(AOuLogica node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAOuLogica(AOuLogica node)
+    {
+        inAOuLogica(node);
+        if(node.getOr() != null)
+        {
+            node.getOr().apply(this);
+        }
+        outAOuLogica(node);
+    }
+
+    public void inAXorLogica(AXorLogica node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAXorLogica(AXorLogica node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAXorLogica(AXorLogica node)
+    {
+        inAXorLogica(node);
+        if(node.getXor() != null)
+        {
+            node.getXor().apply(this);
+        }
+        outAXorLogica(node);
+    }
+
     public void inAIgualComparacao(AIgualComparacao node)
     {
         defaultIn(node);
@@ -1489,85 +1543,6 @@ public class ReversedDepthFirstAdapter extends AnalysisAdapter
         outAVarExp5(node);
     }
 
-    public void inAExpComparacaoExpLogica1(AExpComparacaoExpLogica1 node)
-    {
-        defaultIn(node);
-    }
-
-    public void outAExpComparacaoExpLogica1(AExpComparacaoExpLogica1 node)
-    {
-        defaultOut(node);
-    }
-
-    @Override
-    public void caseAExpComparacaoExpLogica1(AExpComparacaoExpLogica1 node)
-    {
-        inAExpComparacaoExpLogica1(node);
-        if(node.getExpComparacao() != null)
-        {
-            node.getExpComparacao().apply(this);
-        }
-        outAExpComparacaoExpLogica1(node);
-    }
-
-    public void inAOuExpLogica1(AOuExpLogica1 node)
-    {
-        defaultIn(node);
-    }
-
-    public void outAOuExpLogica1(AOuExpLogica1 node)
-    {
-        defaultOut(node);
-    }
-
-    @Override
-    public void caseAOuExpLogica1(AOuExpLogica1 node)
-    {
-        inAOuExpLogica1(node);
-        if(node.getExpLogica1() != null)
-        {
-            node.getExpLogica1().apply(this);
-        }
-        if(node.getOr() != null)
-        {
-            node.getOr().apply(this);
-        }
-        if(node.getExpLogica2() != null)
-        {
-            node.getExpLogica2().apply(this);
-        }
-        outAOuExpLogica1(node);
-    }
-
-    public void inAXorExpLogica1(AXorExpLogica1 node)
-    {
-        defaultIn(node);
-    }
-
-    public void outAXorExpLogica1(AXorExpLogica1 node)
-    {
-        defaultOut(node);
-    }
-
-    @Override
-    public void caseAXorExpLogica1(AXorExpLogica1 node)
-    {
-        inAXorExpLogica1(node);
-        if(node.getExpLogica1() != null)
-        {
-            node.getExpLogica1().apply(this);
-        }
-        if(node.getXor() != null)
-        {
-            node.getXor().apply(this);
-        }
-        if(node.getExpLogica2() != null)
-        {
-            node.getExpLogica2().apply(this);
-        }
-        outAXorExpLogica1(node);
-    }
-
     public void inAExpLogica2ExpLogica1(AExpLogica2ExpLogica1 node)
     {
         defaultIn(node);
@@ -1589,33 +1564,62 @@ public class ReversedDepthFirstAdapter extends AnalysisAdapter
         outAExpLogica2ExpLogica1(node);
     }
 
-    public void inAEExpLogica2(AEExpLogica2 node)
+    public void inAOrExpLogica1(AOrExpLogica1 node)
     {
         defaultIn(node);
     }
 
-    public void outAEExpLogica2(AEExpLogica2 node)
+    public void outAOrExpLogica1(AOrExpLogica1 node)
     {
         defaultOut(node);
     }
 
     @Override
-    public void caseAEExpLogica2(AEExpLogica2 node)
+    public void caseAOrExpLogica1(AOrExpLogica1 node)
     {
-        inAEExpLogica2(node);
+        inAOrExpLogica1(node);
+        if(node.getExpLogica1() != null)
+        {
+            node.getExpLogica1().apply(this);
+        }
+        if(node.getOr() != null)
+        {
+            node.getOr().apply(this);
+        }
         if(node.getExpLogica2() != null)
         {
             node.getExpLogica2().apply(this);
         }
-        if(node.getAnd() != null)
+        outAOrExpLogica1(node);
+    }
+
+    public void inAXorExpLogica2(AXorExpLogica2 node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAXorExpLogica2(AXorExpLogica2 node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAXorExpLogica2(AXorExpLogica2 node)
+    {
+        inAXorExpLogica2(node);
+        if(node.getExpLogica2() != null)
         {
-            node.getAnd().apply(this);
+            node.getExpLogica2().apply(this);
+        }
+        if(node.getXor() != null)
+        {
+            node.getXor().apply(this);
         }
         if(node.getExpLogica3() != null)
         {
             node.getExpLogica3().apply(this);
         }
-        outAEExpLogica2(node);
+        outAXorExpLogica2(node);
     }
 
     public void inAExpLogica3ExpLogica2(AExpLogica3ExpLogica2 node)
@@ -1639,49 +1643,99 @@ public class ReversedDepthFirstAdapter extends AnalysisAdapter
         outAExpLogica3ExpLogica2(node);
     }
 
-    public void inANotExpLogica3(ANotExpLogica3 node)
+    public void inAOrExpLogica3(AOrExpLogica3 node)
     {
         defaultIn(node);
     }
 
-    public void outANotExpLogica3(ANotExpLogica3 node)
+    public void outAOrExpLogica3(AOrExpLogica3 node)
     {
         defaultOut(node);
     }
 
     @Override
-    public void caseANotExpLogica3(ANotExpLogica3 node)
+    public void caseAOrExpLogica3(AOrExpLogica3 node)
     {
-        inANotExpLogica3(node);
-        if(node.getExpLogica1() != null)
+        inAOrExpLogica3(node);
+        if(node.getExpLogica3() != null)
         {
-            node.getExpLogica1().apply(this);
+            node.getExpLogica3().apply(this);
+        }
+        if(node.getOr() != null)
+        {
+            node.getOr().apply(this);
+        }
+        if(node.getExpLogica4() != null)
+        {
+            node.getExpLogica4().apply(this);
+        }
+        outAOrExpLogica3(node);
+    }
+
+    public void inAExpLogica3ExpLogica3(AExpLogica3ExpLogica3 node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAExpLogica3ExpLogica3(AExpLogica3ExpLogica3 node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAExpLogica3ExpLogica3(AExpLogica3ExpLogica3 node)
+    {
+        inAExpLogica3ExpLogica3(node);
+        if(node.getExpLogica4() != null)
+        {
+            node.getExpLogica4().apply(this);
+        }
+        outAExpLogica3ExpLogica3(node);
+    }
+
+    public void inANotExpLogica4(ANotExpLogica4 node)
+    {
+        defaultIn(node);
+    }
+
+    public void outANotExpLogica4(ANotExpLogica4 node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseANotExpLogica4(ANotExpLogica4 node)
+    {
+        inANotExpLogica4(node);
+        if(node.getExpLogica4() != null)
+        {
+            node.getExpLogica4().apply(this);
         }
         if(node.getNot() != null)
         {
             node.getNot().apply(this);
         }
-        outANotExpLogica3(node);
+        outANotExpLogica4(node);
     }
 
-    public void inAExpLogica1ExpLogica3(AExpLogica1ExpLogica3 node)
+    public void inAExp4ExpLogica4(AExp4ExpLogica4 node)
     {
         defaultIn(node);
     }
 
-    public void outAExpLogica1ExpLogica3(AExpLogica1ExpLogica3 node)
+    public void outAExp4ExpLogica4(AExp4ExpLogica4 node)
     {
         defaultOut(node);
     }
 
     @Override
-    public void caseAExpLogica1ExpLogica3(AExpLogica1ExpLogica3 node)
+    public void caseAExp4ExpLogica4(AExp4ExpLogica4 node)
     {
-        inAExpLogica1ExpLogica3(node);
-        if(node.getExpLogica1() != null)
+        inAExp4ExpLogica4(node);
+        if(node.getExpComparacao() != null)
         {
-            node.getExpLogica1().apply(this);
+            node.getExpComparacao().apply(this);
         }
-        outAExpLogica1ExpLogica3(node);
+        outAExp4ExpLogica4(node);
     }
 }

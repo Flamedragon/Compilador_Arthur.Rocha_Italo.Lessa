@@ -5,22 +5,26 @@ package portugol.node;
 import portugol.analysis.*;
 
 @SuppressWarnings("nls")
-public final class ANotExpLogica3 extends PExpLogica3
+public final class AOrExpLogica3 extends PExpLogica3
 {
-    private TNot _not_;
+    private PExpLogica4 _expLogica4_;
+    private TOr _or_;
     private PExpLogica3 _expLogica3_;
 
-    public ANotExpLogica3()
+    public AOrExpLogica3()
     {
         // Constructor
     }
 
-    public ANotExpLogica3(
-        @SuppressWarnings("hiding") TNot _not_,
+    public AOrExpLogica3(
+        @SuppressWarnings("hiding") PExpLogica4 _expLogica4_,
+        @SuppressWarnings("hiding") TOr _or_,
         @SuppressWarnings("hiding") PExpLogica3 _expLogica3_)
     {
         // Constructor
-        setNot(_not_);
+        setExpLogica4(_expLogica4_);
+
+        setOr(_or_);
 
         setExpLogica3(_expLogica3_);
 
@@ -29,27 +33,28 @@ public final class ANotExpLogica3 extends PExpLogica3
     @Override
     public Object clone()
     {
-        return new ANotExpLogica3(
-            cloneNode(this._not_),
+        return new AOrExpLogica3(
+            cloneNode(this._expLogica4_),
+            cloneNode(this._or_),
             cloneNode(this._expLogica3_));
     }
 
     @Override
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseANotExpLogica3(this);
+        ((Analysis) sw).caseAOrExpLogica3(this);
     }
 
-    public TNot getNot()
+    public PExpLogica4 getExpLogica4()
     {
-        return this._not_;
+        return this._expLogica4_;
     }
 
-    public void setNot(TNot node)
+    public void setExpLogica4(PExpLogica4 node)
     {
-        if(this._not_ != null)
+        if(this._expLogica4_ != null)
         {
-            this._not_.parent(null);
+            this._expLogica4_.parent(null);
         }
 
         if(node != null)
@@ -62,7 +67,32 @@ public final class ANotExpLogica3 extends PExpLogica3
             node.parent(this);
         }
 
-        this._not_ = node;
+        this._expLogica4_ = node;
+    }
+
+    public TOr getOr()
+    {
+        return this._or_;
+    }
+
+    public void setOr(TOr node)
+    {
+        if(this._or_ != null)
+        {
+            this._or_.parent(null);
+        }
+
+        if(node != null)
+        {
+            if(node.parent() != null)
+            {
+                node.parent().removeChild(node);
+            }
+
+            node.parent(this);
+        }
+
+        this._or_ = node;
     }
 
     public PExpLogica3 getExpLogica3()
@@ -94,7 +124,8 @@ public final class ANotExpLogica3 extends PExpLogica3
     public String toString()
     {
         return ""
-            + toString(this._not_)
+            + toString(this._expLogica4_)
+            + toString(this._or_)
             + toString(this._expLogica3_);
     }
 
@@ -102,9 +133,15 @@ public final class ANotExpLogica3 extends PExpLogica3
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._not_ == child)
+        if(this._expLogica4_ == child)
         {
-            this._not_ = null;
+            this._expLogica4_ = null;
+            return;
+        }
+
+        if(this._or_ == child)
+        {
+            this._or_ = null;
             return;
         }
 
@@ -121,9 +158,15 @@ public final class ANotExpLogica3 extends PExpLogica3
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._not_ == oldChild)
+        if(this._expLogica4_ == oldChild)
         {
-            setNot((TNot) newChild);
+            setExpLogica4((PExpLogica4) newChild);
+            return;
+        }
+
+        if(this._or_ == oldChild)
+        {
+            setOr((TOr) newChild);
             return;
         }
 

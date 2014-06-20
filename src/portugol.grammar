@@ -140,6 +140,10 @@ soma =
 	{mais} plus |
 	{menos} minus;
 	
+logica = {ou} or |
+	    {xor} xor;
+
+	
 comparacao = 
 			{igual} equal |
 			{diferente} not_equal |
@@ -165,16 +169,23 @@ exp5 =
 	{var} var ;
 			
 exp_logica1 = 
-			{exp_comparacao} exp_comparacao |
-			{ou} exp_logica2 or exp_logica1 |
-			{xor} exp_logica2 xor exp_logica1 |
+			{or} exp_logica2 or exp_logica1 |
 			{exp_logica2} exp_logica2;
 
 exp_logica2 = 
-			{e} exp_logica3 and exp_logica2 |
+			{xor} exp_logica3 xor exp_logica2 |
 			{exp_logica3} exp_logica3;
 
 exp_logica3 = 
-			{not} not exp_logica1 |
-			{exp_logica1} exp_logica1;
+			{or} exp_logica4 or exp_logica3 |
+			{exp_logica3} exp_logica4;
+
+exp_logica4 = 
+			{not} not exp_logica4 |
+			{exp4} exp_comparacao;
+			
+
+
+
+			
 
