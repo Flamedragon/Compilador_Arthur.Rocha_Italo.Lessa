@@ -113,14 +113,14 @@ comando =
 
 comma_var = comma var;
 
-exp1 =
-	{comparacao} exp2 comparacao exp1 |
-	{exp1} exp2;
+exp1 = 
+	{minus} minus exp1 |
+	{exp2} exp2 |
+	{comparacao} exp2 comparacao exp1 ;
 
 exp2 = 
 	{soma} exp3 soma exp2 |
-	{exp2} exp3 |
-	{exp_logica} exp_logica1;
+	{exp2} exp3 ;
 
 
 soma = 

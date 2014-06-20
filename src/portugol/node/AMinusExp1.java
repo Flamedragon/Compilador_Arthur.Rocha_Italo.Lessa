@@ -5,39 +5,39 @@ package portugol.node;
 import portugol.analysis.*;
 
 @SuppressWarnings("nls")
-public final class ANegativoExp1 extends PExp1
+public final class AMinusExp1 extends PExp1
 {
     private TMinus _minus_;
-    private PExp2 _exp2_;
+    private PExp1 _exp1_;
 
-    public ANegativoExp1()
+    public AMinusExp1()
     {
         // Constructor
     }
 
-    public ANegativoExp1(
+    public AMinusExp1(
         @SuppressWarnings("hiding") TMinus _minus_,
-        @SuppressWarnings("hiding") PExp2 _exp2_)
+        @SuppressWarnings("hiding") PExp1 _exp1_)
     {
         // Constructor
         setMinus(_minus_);
 
-        setExp2(_exp2_);
+        setExp1(_exp1_);
 
     }
 
     @Override
     public Object clone()
     {
-        return new ANegativoExp1(
+        return new AMinusExp1(
             cloneNode(this._minus_),
-            cloneNode(this._exp2_));
+            cloneNode(this._exp1_));
     }
 
     @Override
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseANegativoExp1(this);
+        ((Analysis) sw).caseAMinusExp1(this);
     }
 
     public TMinus getMinus()
@@ -65,16 +65,16 @@ public final class ANegativoExp1 extends PExp1
         this._minus_ = node;
     }
 
-    public PExp2 getExp2()
+    public PExp1 getExp1()
     {
-        return this._exp2_;
+        return this._exp1_;
     }
 
-    public void setExp2(PExp2 node)
+    public void setExp1(PExp1 node)
     {
-        if(this._exp2_ != null)
+        if(this._exp1_ != null)
         {
-            this._exp2_.parent(null);
+            this._exp1_.parent(null);
         }
 
         if(node != null)
@@ -87,7 +87,7 @@ public final class ANegativoExp1 extends PExp1
             node.parent(this);
         }
 
-        this._exp2_ = node;
+        this._exp1_ = node;
     }
 
     @Override
@@ -95,7 +95,7 @@ public final class ANegativoExp1 extends PExp1
     {
         return ""
             + toString(this._minus_)
-            + toString(this._exp2_);
+            + toString(this._exp1_);
     }
 
     @Override
@@ -108,9 +108,9 @@ public final class ANegativoExp1 extends PExp1
             return;
         }
 
-        if(this._exp2_ == child)
+        if(this._exp1_ == child)
         {
-            this._exp2_ = null;
+            this._exp1_ = null;
             return;
         }
 
@@ -127,9 +127,9 @@ public final class ANegativoExp1 extends PExp1
             return;
         }
 
-        if(this._exp2_ == oldChild)
+        if(this._exp1_ == oldChild)
         {
-            setExp2((PExp2) newChild);
+            setExp1((PExp1) newChild);
             return;
         }
 

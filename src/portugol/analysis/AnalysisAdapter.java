@@ -165,13 +165,19 @@ public class AnalysisAdapter implements Analysis
     }
 
     @Override
-    public void caseAComparacaoExp1(AComparacaoExp1 node)
+    public void caseAMinusExp1(AMinusExp1 node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseAExp1Exp1(AExp1Exp1 node)
+    public void caseAExp2Exp1(AExp2Exp1 node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAComparacaoExp1(AComparacaoExp1 node)
     {
         defaultCase(node);
     }
@@ -184,12 +190,6 @@ public class AnalysisAdapter implements Analysis
 
     @Override
     public void caseAExp2Exp2(AExp2Exp2 node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseAExpLogicaExp2(AExpLogicaExp2 node)
     {
         defaultCase(node);
     }

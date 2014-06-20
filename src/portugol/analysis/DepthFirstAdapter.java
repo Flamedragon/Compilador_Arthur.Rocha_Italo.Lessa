@@ -445,6 +445,52 @@ public class DepthFirstAdapter extends AnalysisAdapter
         outACommaVar(node);
     }
 
+    public void inAMinusExp1(AMinusExp1 node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAMinusExp1(AMinusExp1 node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAMinusExp1(AMinusExp1 node)
+    {
+        inAMinusExp1(node);
+        if(node.getMinus() != null)
+        {
+            node.getMinus().apply(this);
+        }
+        if(node.getExp1() != null)
+        {
+            node.getExp1().apply(this);
+        }
+        outAMinusExp1(node);
+    }
+
+    public void inAExp2Exp1(AExp2Exp1 node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAExp2Exp1(AExp2Exp1 node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAExp2Exp1(AExp2Exp1 node)
+    {
+        inAExp2Exp1(node);
+        if(node.getExp2() != null)
+        {
+            node.getExp2().apply(this);
+        }
+        outAExp2Exp1(node);
+    }
+
     public void inAComparacaoExp1(AComparacaoExp1 node)
     {
         defaultIn(node);
@@ -472,27 +518,6 @@ public class DepthFirstAdapter extends AnalysisAdapter
             node.getExp1().apply(this);
         }
         outAComparacaoExp1(node);
-    }
-
-    public void inAExp1Exp1(AExp1Exp1 node)
-    {
-        defaultIn(node);
-    }
-
-    public void outAExp1Exp1(AExp1Exp1 node)
-    {
-        defaultOut(node);
-    }
-
-    @Override
-    public void caseAExp1Exp1(AExp1Exp1 node)
-    {
-        inAExp1Exp1(node);
-        if(node.getExp2() != null)
-        {
-            node.getExp2().apply(this);
-        }
-        outAExp1Exp1(node);
     }
 
     public void inASomaExp2(ASomaExp2 node)
@@ -543,27 +568,6 @@ public class DepthFirstAdapter extends AnalysisAdapter
             node.getExp3().apply(this);
         }
         outAExp2Exp2(node);
-    }
-
-    public void inAExpLogicaExp2(AExpLogicaExp2 node)
-    {
-        defaultIn(node);
-    }
-
-    public void outAExpLogicaExp2(AExpLogicaExp2 node)
-    {
-        defaultOut(node);
-    }
-
-    @Override
-    public void caseAExpLogicaExp2(AExpLogicaExp2 node)
-    {
-        inAExpLogicaExp2(node);
-        if(node.getExpLogica1() != null)
-        {
-            node.getExpLogica1().apply(this);
-        }
-        outAExpLogicaExp2(node);
     }
 
     public void inAMaisSoma(AMaisSoma node)
