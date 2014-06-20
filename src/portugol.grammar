@@ -83,8 +83,7 @@ Ignored Tokens
 
 
 Productions
-
-programa = program id begin exp1 end dot;
+programa = program id begin declaracao* comando* end dot;
 
 var = 
 	{id} id |
