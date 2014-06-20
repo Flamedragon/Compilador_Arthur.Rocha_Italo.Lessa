@@ -160,7 +160,7 @@ exp_logica1 =
 exp_logica2 = 
 			{e} exp_logica2 and exp_logica3 |
 			{exp_logica3} exp_logica3;
-
+ 
 exp_logica3 = 
 			{not} not exp_comparacao |
 			{exp4} exp_comparacao;
