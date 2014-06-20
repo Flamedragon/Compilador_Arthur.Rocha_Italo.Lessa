@@ -1,0 +1,4 @@
+programa exp1
+inicio
+2 + 5 * 3
+fim.

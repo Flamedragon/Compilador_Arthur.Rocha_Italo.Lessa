@@ -9,7 +9,8 @@ public class Translation extends DepthFirstAdapter
 
 	public void defaultIn(@SuppressWarnings("unused") Node node)
 	{
-		System.out.println(node.getClass().toString());
+//		System.out.println(node.getClass().toString());
+		System.out.println(node);
 	}
 
 	//public void caseTNumber(TNumber node)
