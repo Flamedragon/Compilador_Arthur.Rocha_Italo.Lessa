@@ -5,46 +5,46 @@ package portugol.node;
 import portugol.analysis.*;
 
 @SuppressWarnings("nls")
-public final class AExp2Exp2 extends PExp2
+public final class AValorExp4 extends PExp4
 {
-    private PExp3 _exp3_;
+    private PValor _valor_;
 
-    public AExp2Exp2()
+    public AValorExp4()
     {
         // Constructor
     }
 
-    public AExp2Exp2(
-        @SuppressWarnings("hiding") PExp3 _exp3_)
+    public AValorExp4(
+        @SuppressWarnings("hiding") PValor _valor_)
     {
         // Constructor
-        setExp3(_exp3_);
+        setValor(_valor_);
 
     }
 
     @Override
     public Object clone()
     {
-        return new AExp2Exp2(
-            cloneNode(this._exp3_));
+        return new AValorExp4(
+            cloneNode(this._valor_));
     }
 
     @Override
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseAExp2Exp2(this);
+        ((Analysis) sw).caseAValorExp4(this);
     }
 
-    public PExp3 getExp3()
+    public PValor getValor()
     {
-        return this._exp3_;
+        return this._valor_;
     }
 
-    public void setExp3(PExp3 node)
+    public void setValor(PValor node)
     {
-        if(this._exp3_ != null)
+        if(this._valor_ != null)
         {
-            this._exp3_.parent(null);
+            this._valor_.parent(null);
         }
 
         if(node != null)
@@ -57,23 +57,23 @@ public final class AExp2Exp2 extends PExp2
             node.parent(this);
         }
 
-        this._exp3_ = node;
+        this._valor_ = node;
     }
 
     @Override
     public String toString()
     {
         return ""
-            + toString(this._exp3_);
+            + toString(this._valor_);
     }
 
     @Override
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._exp3_ == child)
+        if(this._valor_ == child)
         {
-            this._exp3_ = null;
+            this._valor_ = null;
             return;
         }
 
@@ -84,9 +84,9 @@ public final class AExp2Exp2 extends PExp2
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._exp3_ == oldChild)
+        if(this._valor_ == oldChild)
         {
-            setExp3((PExp3) newChild);
+            setValor((PValor) newChild);
             return;
         }
 

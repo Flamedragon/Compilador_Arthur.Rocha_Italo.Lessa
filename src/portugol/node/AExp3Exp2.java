@@ -5,46 +5,46 @@ package portugol.node;
 import portugol.analysis.*;
 
 @SuppressWarnings("nls")
-public final class AExp3Exp3 extends PExp3
+public final class AExp3Exp2 extends PExp2
 {
-    private PExp4 _exp4_;
+    private PExp3 _exp3_;
 
-    public AExp3Exp3()
+    public AExp3Exp2()
     {
         // Constructor
     }
 
-    public AExp3Exp3(
-        @SuppressWarnings("hiding") PExp4 _exp4_)
+    public AExp3Exp2(
+        @SuppressWarnings("hiding") PExp3 _exp3_)
     {
         // Constructor
-        setExp4(_exp4_);
+        setExp3(_exp3_);
 
     }
 
     @Override
     public Object clone()
     {
-        return new AExp3Exp3(
-            cloneNode(this._exp4_));
+        return new AExp3Exp2(
+            cloneNode(this._exp3_));
     }
 
     @Override
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseAExp3Exp3(this);
+        ((Analysis) sw).caseAExp3Exp2(this);
     }
 
-    public PExp4 getExp4()
+    public PExp3 getExp3()
     {
-        return this._exp4_;
+        return this._exp3_;
     }
 
-    public void setExp4(PExp4 node)
+    public void setExp3(PExp3 node)
     {
-        if(this._exp4_ != null)
+        if(this._exp3_ != null)
         {
-            this._exp4_.parent(null);
+            this._exp3_.parent(null);
         }
 
         if(node != null)
@@ -57,23 +57,23 @@ public final class AExp3Exp3 extends PExp3
             node.parent(this);
         }
 
-        this._exp4_ = node;
+        this._exp3_ = node;
     }
 
     @Override
     public String toString()
     {
         return ""
-            + toString(this._exp4_);
+            + toString(this._exp3_);
     }
 
     @Override
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._exp4_ == child)
+        if(this._exp3_ == child)
         {
-            this._exp4_ = null;
+            this._exp3_ = null;
             return;
         }
 
@@ -84,9 +84,9 @@ public final class AExp3Exp3 extends PExp3
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._exp4_ == oldChild)
+        if(this._exp3_ == oldChild)
         {
-            setExp4((PExp4) newChild);
+            setExp3((PExp3) newChild);
             return;
         }
 

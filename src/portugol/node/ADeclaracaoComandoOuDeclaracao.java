@@ -5,46 +5,46 @@ package portugol.node;
 import portugol.analysis.*;
 
 @SuppressWarnings("nls")
-public final class AExpLogica1ExpLogica3 extends PExpLogica3
+public final class ADeclaracaoComandoOuDeclaracao extends PComandoOuDeclaracao
 {
-    private PExpLogica1 _expLogica1_;
+    private PDeclaracao _declaracao_;
 
-    public AExpLogica1ExpLogica3()
+    public ADeclaracaoComandoOuDeclaracao()
     {
         // Constructor
     }
 
-    public AExpLogica1ExpLogica3(
-        @SuppressWarnings("hiding") PExpLogica1 _expLogica1_)
+    public ADeclaracaoComandoOuDeclaracao(
+        @SuppressWarnings("hiding") PDeclaracao _declaracao_)
     {
         // Constructor
-        setExpLogica1(_expLogica1_);
+        setDeclaracao(_declaracao_);
 
     }
 
     @Override
     public Object clone()
     {
-        return new AExpLogica1ExpLogica3(
-            cloneNode(this._expLogica1_));
+        return new ADeclaracaoComandoOuDeclaracao(
+            cloneNode(this._declaracao_));
     }
 
     @Override
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseAExpLogica1ExpLogica3(this);
+        ((Analysis) sw).caseADeclaracaoComandoOuDeclaracao(this);
     }
 
-    public PExpLogica1 getExpLogica1()
+    public PDeclaracao getDeclaracao()
     {
-        return this._expLogica1_;
+        return this._declaracao_;
     }
 
-    public void setExpLogica1(PExpLogica1 node)
+    public void setDeclaracao(PDeclaracao node)
     {
-        if(this._expLogica1_ != null)
+        if(this._declaracao_ != null)
         {
-            this._expLogica1_.parent(null);
+            this._declaracao_.parent(null);
         }
 
         if(node != null)
@@ -57,23 +57,23 @@ public final class AExpLogica1ExpLogica3 extends PExpLogica3
             node.parent(this);
         }
 
-        this._expLogica1_ = node;
+        this._declaracao_ = node;
     }
 
     @Override
     public String toString()
     {
         return ""
-            + toString(this._expLogica1_);
+            + toString(this._declaracao_);
     }
 
     @Override
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._expLogica1_ == child)
+        if(this._declaracao_ == child)
         {
-            this._expLogica1_ = null;
+            this._declaracao_ = null;
             return;
         }
 
@@ -84,9 +84,9 @@ public final class AExpLogica1ExpLogica3 extends PExpLogica3
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._expLogica1_ == oldChild)
+        if(this._declaracao_ == oldChild)
         {
-            setExpLogica1((PExpLogica1) newChild);
+            setDeclaracao((PDeclaracao) newChild);
             return;
         }
 

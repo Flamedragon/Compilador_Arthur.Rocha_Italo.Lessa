@@ -2,7 +2,7 @@
 
 package portugol.node;
 
-public abstract class PExpLogica2 extends Node
+public abstract class PSemicolonVar extends Node
 {
     // Empty body
 }

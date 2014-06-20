@@ -5,46 +5,46 @@ package portugol.node;
 import portugol.analysis.*;
 
 @SuppressWarnings("nls")
-public final class AValorExp5 extends PExp5
+public final class AComandoComandoOuDeclaracao extends PComandoOuDeclaracao
 {
-    private PValor _valor_;
+    private PComando _comando_;
 
-    public AValorExp5()
+    public AComandoComandoOuDeclaracao()
     {
         // Constructor
     }
 
-    public AValorExp5(
-        @SuppressWarnings("hiding") PValor _valor_)
+    public AComandoComandoOuDeclaracao(
+        @SuppressWarnings("hiding") PComando _comando_)
     {
         // Constructor
-        setValor(_valor_);
+        setComando(_comando_);
 
     }
 
     @Override
     public Object clone()
     {
-        return new AValorExp5(
-            cloneNode(this._valor_));
+        return new AComandoComandoOuDeclaracao(
+            cloneNode(this._comando_));
     }
 
     @Override
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseAValorExp5(this);
+        ((Analysis) sw).caseAComandoComandoOuDeclaracao(this);
     }
 
-    public PValor getValor()
+    public PComando getComando()
     {
-        return this._valor_;
+        return this._comando_;
     }
 
-    public void setValor(PValor node)
+    public void setComando(PComando node)
     {
-        if(this._valor_ != null)
+        if(this._comando_ != null)
         {
-            this._valor_.parent(null);
+            this._comando_.parent(null);
         }
 
         if(node != null)
@@ -57,23 +57,23 @@ public final class AValorExp5 extends PExp5
             node.parent(this);
         }
 
-        this._valor_ = node;
+        this._comando_ = node;
     }
 
     @Override
     public String toString()
     {
         return ""
-            + toString(this._valor_);
+            + toString(this._comando_);
     }
 
     @Override
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._valor_ == child)
+        if(this._comando_ == child)
         {
-            this._valor_ = null;
+            this._comando_ = null;
             return;
         }
 
@@ -84,9 +84,9 @@ public final class AValorExp5 extends PExp5
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._valor_ == oldChild)
+        if(this._comando_ == oldChild)
         {
-            setValor((PValor) newChild);
+            setComando((PComando) newChild);
             return;
         }
 

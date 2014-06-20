@@ -2,6 +2,7 @@
 
 package portugol.node;
 
+import java.util.*;
 import portugol.analysis.*;
 
 @SuppressWarnings("nls")
@@ -10,7 +11,7 @@ public final class APrograma extends PPrograma
     private TProgram _program_;
     private TId _id_;
     private TBegin _begin_;
-    private PExp1 _exp1_;
+    private final LinkedList<PComandoOuDeclaracao> _comandoOuDeclaracao_ = new LinkedList<PComandoOuDeclaracao>();
     private TEnd _end_;
     private TDot _dot_;
 
@@ -23,7 +24,7 @@ public final class APrograma extends PPrograma
         @SuppressWarnings("hiding") TProgram _program_,
         @SuppressWarnings("hiding") TId _id_,
         @SuppressWarnings("hiding") TBegin _begin_,
-        @SuppressWarnings("hiding") PExp1 _exp1_,
+        @SuppressWarnings("hiding") List<?> _comandoOuDeclaracao_,
         @SuppressWarnings("hiding") TEnd _end_,
         @SuppressWarnings("hiding") TDot _dot_)
     {
@@ -34,7 +35,7 @@ public final class APrograma extends PPrograma
 
         setBegin(_begin_);
 
-        setExp1(_exp1_);
+        setComandoOuDeclaracao(_comandoOuDeclaracao_);
 
         setEnd(_end_);
 
@@ -49,7 +50,7 @@ public final class APrograma extends PPrograma
             cloneNode(this._program_),
             cloneNode(this._id_),
             cloneNode(this._begin_),
-            cloneNode(this._exp1_),
+            cloneList(this._comandoOuDeclaracao_),
             cloneNode(this._end_),
             cloneNode(this._dot_));
     }
@@ -135,29 +136,30 @@ public final class APrograma extends PPrograma
         this._begin_ = node;
     }
 
-    public PExp1 getExp1()
+    public LinkedList<PComandoOuDeclaracao> getComandoOuDeclaracao()
     {
-        return this._exp1_;
+        return this._comandoOuDeclaracao_;
     }
 
-    public void setExp1(PExp1 node)
+    public void setComandoOuDeclaracao(List<?> list)
     {
-        if(this._exp1_ != null)
+        for(PComandoOuDeclaracao e : this._comandoOuDeclaracao_)
         {
-            this._exp1_.parent(null);
+            e.parent(null);
         }
+        this._comandoOuDeclaracao_.clear();
 
-        if(node != null)
+        for(Object obj_e : list)
         {
-            if(node.parent() != null)
+            PComandoOuDeclaracao e = (PComandoOuDeclaracao) obj_e;
+            if(e.parent() != null)
             {
-                node.parent().removeChild(node);
+                e.parent().removeChild(e);
             }
 
-            node.parent(this);
+            e.parent(this);
+            this._comandoOuDeclaracao_.add(e);
         }
-
-        this._exp1_ = node;
     }
 
     public TEnd getEnd()
@@ -217,7 +219,7 @@ public final class APrograma extends PPrograma
             + toString(this._program_)
             + toString(this._id_)
             + toString(this._begin_)
-            + toString(this._exp1_)
+            + toString(this._comandoOuDeclaracao_)
             + toString(this._end_)
             + toString(this._dot_);
     }
@@ -244,9 +246,8 @@ public final class APrograma extends PPrograma
             return;
         }
 
-        if(this._exp1_ == child)
+        if(this._comandoOuDeclaracao_.remove(child))
         {
-            this._exp1_ = null;
             return;
         }
 
@@ -287,10 +288,22 @@ public final class APrograma extends PPrograma
             return;
         }
 
-        if(this._exp1_ == oldChild)
+        for(ListIterator<PComandoOuDeclaracao> i = this._comandoOuDeclaracao_.listIterator(); i.hasNext();)
         {
-            setExp1((PExp1) newChild);
-            return;
+            if(i.next() == oldChild)
+            {
+                if(newChild != null)
+                {
+                    i.set((PComandoOuDeclaracao) newChild);
+                    newChild.parent(this);
+                    oldChild.parent(null);
+                    return;
+                }
+
+                i.remove();
+                oldChild.parent(null);
+                return;
+            }
         }
 
         if(this._end_ == oldChild)

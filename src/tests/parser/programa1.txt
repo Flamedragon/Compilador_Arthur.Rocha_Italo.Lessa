@@ -1,0 +1,6 @@
+programa p1 
+inicio
+	x <- 2;
+	y <- 10;
+	z <- 'hue';
+fim.

@@ -5,46 +5,46 @@ package portugol.node;
 import portugol.analysis.*;
 
 @SuppressWarnings("nls")
-public final class AExpLogica1Exp1 extends PExp1
+public final class AExp4Exp3 extends PExp3
 {
-    private PExpLogica1 _expLogica1_;
+    private PExp4 _exp4_;
 
-    public AExpLogica1Exp1()
+    public AExp4Exp3()
     {
         // Constructor
     }
 
-    public AExpLogica1Exp1(
-        @SuppressWarnings("hiding") PExpLogica1 _expLogica1_)
+    public AExp4Exp3(
+        @SuppressWarnings("hiding") PExp4 _exp4_)
     {
         // Constructor
-        setExpLogica1(_expLogica1_);
+        setExp4(_exp4_);
 
     }
 
     @Override
     public Object clone()
     {
-        return new AExpLogica1Exp1(
-            cloneNode(this._expLogica1_));
+        return new AExp4Exp3(
+            cloneNode(this._exp4_));
     }
 
     @Override
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseAExpLogica1Exp1(this);
+        ((Analysis) sw).caseAExp4Exp3(this);
     }
 
-    public PExpLogica1 getExpLogica1()
+    public PExp4 getExp4()
     {
-        return this._expLogica1_;
+        return this._exp4_;
     }
 
-    public void setExpLogica1(PExpLogica1 node)
+    public void setExp4(PExp4 node)
     {
-        if(this._expLogica1_ != null)
+        if(this._exp4_ != null)
         {
-            this._expLogica1_.parent(null);
+            this._exp4_.parent(null);
         }
 
         if(node != null)
@@ -57,23 +57,23 @@ public final class AExpLogica1Exp1 extends PExp1
             node.parent(this);
         }
 
-        this._expLogica1_ = node;
+        this._exp4_ = node;
     }
 
     @Override
     public String toString()
     {
         return ""
-            + toString(this._expLogica1_);
+            + toString(this._exp4_);
     }
 
     @Override
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._expLogica1_ == child)
+        if(this._exp4_ == child)
         {
-            this._expLogica1_ = null;
+            this._exp4_ = null;
             return;
         }
 
@@ -84,9 +84,9 @@ public final class AExpLogica1Exp1 extends PExp1
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._expLogica1_ == oldChild)
+        if(this._exp4_ == oldChild)
         {
-            setExpLogica1((PExpLogica1) newChild);
+            setExp4((PExp4) newChild);
             return;
         }
 

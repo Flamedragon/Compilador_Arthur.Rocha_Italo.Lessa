@@ -2,7 +2,7 @@
 
 package portugol.node;
 
-public abstract class PExpLogica3 extends Node
+public abstract class PComandoOuDeclaracao extends Node
 {
     // Empty body
 }

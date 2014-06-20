@@ -83,11 +83,15 @@ Ignored Tokens
 
 
 Productions
-programa = program id begin declaracao* comando* end dot;
+programa = program id begin comando_ou_declaracao* end dot;
+
+comando_ou_declaracao = 
+					{declaracao} declaracao |
+					{comando} comando ;
 
 var = 
 	{id} id |
-	{id_array} id l_bkt n_int r_bkt;
+	{id_array} id l_bkt n_int r_bkt; 
 
 valor = 
 	{string} string |
@@ -100,10 +104,11 @@ tipo =
 	{char} char;
 	
 declaracao = 
-	{variable} tipo colon var_semicolon+|
+	{variable} tipo colon var var_semicolon* semicolon|
 	{const} const id valor;
 	
 var_semicolon = var semicolon;
+semicolon_var = semicolon var;
 
 comando = 
 	{assignment} var l_arrow exp1 semicolon |
@@ -124,6 +129,48 @@ comma_var = comma var;
 comma_exp = comma exp1;
 comando_semicolon = comando semicolon;
 
+exp1 = 
+	{minus} minus exp1 |
+	{exp2} exp2 ;
+
+exp2 =
+	{soma} exp3 soma exp2 |
+	{comparacao} exp3 comparacao exp2 |
+	{exp3} exp3;
+
+soma = 
+	{mais} plus |
+	{menos} minus;
+	
+comparacao = 
+			{igual} equal |
+			{diferente} not_equal |
+			{menor_igual} l_equal |
+			{maior_igual} g_equal |
+			{menor} less |
+			{maior} greater;
+
+exp3 = 
+	{mult_div} exp4 mult_div exp3 |
+	{exp4} exp4 ;
+
+mult_div = 
+		{mult} star |
+		{div} bar;
+
+exp4 =
+	{parenteses_exp} l_par exp1 r_par |
+	{var} var |
+	{valor} valor;
+
+exp_logica1 = n_int;
+
+
+
+
+
+
+/*
 exp1 = 
 	{minus} minus exp1 |
 	{exp2} exp2 |
@@ -177,4 +224,4 @@ exp_logica2 =
 exp_logica3 = 
 			{not} not exp_logica1 |
 			{exp_logica1} exp_logica1;
-
+*/

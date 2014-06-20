@@ -5,18 +5,18 @@ package portugol.node;
 import portugol.analysis.*;
 
 @SuppressWarnings("nls")
-public final class AExp2Exp3 extends PExp3
+public final class AMultDivExp3 extends PExp3
 {
     private PExp4 _exp4_;
     private PMultDiv _multDiv_;
     private PExp3 _exp3_;
 
-    public AExp2Exp3()
+    public AMultDivExp3()
     {
         // Constructor
     }
 
-    public AExp2Exp3(
+    public AMultDivExp3(
         @SuppressWarnings("hiding") PExp4 _exp4_,
         @SuppressWarnings("hiding") PMultDiv _multDiv_,
         @SuppressWarnings("hiding") PExp3 _exp3_)
@@ -33,7 +33,7 @@ public final class AExp2Exp3 extends PExp3
     @Override
     public Object clone()
     {
-        return new AExp2Exp3(
+        return new AMultDivExp3(
             cloneNode(this._exp4_),
             cloneNode(this._multDiv_),
             cloneNode(this._exp3_));
@@ -42,7 +42,7 @@ public final class AExp2Exp3 extends PExp3
     @Override
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseAExp2Exp3(this);
+        ((Analysis) sw).caseAMultDivExp3(this);
     }
 
     public PExp4 getExp4()

@@ -5,46 +5,46 @@ package portugol.node;
 import portugol.analysis.*;
 
 @SuppressWarnings("nls")
-public final class AExpLogica2ExpLogica1 extends PExpLogica1
+public final class AVarExp4 extends PExp4
 {
-    private PExpLogica2 _expLogica2_;
+    private PVar _var_;
 
-    public AExpLogica2ExpLogica1()
+    public AVarExp4()
     {
         // Constructor
     }
 
-    public AExpLogica2ExpLogica1(
-        @SuppressWarnings("hiding") PExpLogica2 _expLogica2_)
+    public AVarExp4(
+        @SuppressWarnings("hiding") PVar _var_)
     {
         // Constructor
-        setExpLogica2(_expLogica2_);
+        setVar(_var_);
 
     }
 
     @Override
     public Object clone()
     {
-        return new AExpLogica2ExpLogica1(
-            cloneNode(this._expLogica2_));
+        return new AVarExp4(
+            cloneNode(this._var_));
     }
 
     @Override
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseAExpLogica2ExpLogica1(this);
+        ((Analysis) sw).caseAVarExp4(this);
     }
 
-    public PExpLogica2 getExpLogica2()
+    public PVar getVar()
     {
-        return this._expLogica2_;
+        return this._var_;
     }
 
-    public void setExpLogica2(PExpLogica2 node)
+    public void setVar(PVar node)
     {
-        if(this._expLogica2_ != null)
+        if(this._var_ != null)
         {
-            this._expLogica2_.parent(null);
+            this._var_.parent(null);
         }
 
         if(node != null)
@@ -57,23 +57,23 @@ public final class AExpLogica2ExpLogica1 extends PExpLogica1
             node.parent(this);
         }
 
-        this._expLogica2_ = node;
+        this._var_ = node;
     }
 
     @Override
     public String toString()
     {
         return ""
-            + toString(this._expLogica2_);
+            + toString(this._var_);
     }
 
     @Override
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._expLogica2_ == child)
+        if(this._var_ == child)
         {
-            this._expLogica2_ = null;
+            this._var_ = null;
             return;
         }
 
@@ -84,9 +84,9 @@ public final class AExpLogica2ExpLogica1 extends PExpLogica1
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._expLogica2_ == oldChild)
+        if(this._var_ == oldChild)
         {
-            setExpLogica2((PExpLogica2) newChild);
+            setVar((PVar) newChild);
             return;
         }
 

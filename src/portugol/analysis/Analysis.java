@@ -13,6 +13,8 @@ public interface Analysis extends Switch
 
     void caseStart(Start node);
     void caseAPrograma(APrograma node);
+    void caseADeclaracaoComandoOuDeclaracao(ADeclaracaoComandoOuDeclaracao node);
+    void caseAComandoComandoOuDeclaracao(AComandoComandoOuDeclaracao node);
     void caseAIdVar(AIdVar node);
     void caseAIdArrayVar(AIdArrayVar node);
     void caseAStringValor(AStringValor node);
@@ -24,6 +26,7 @@ public interface Analysis extends Switch
     void caseAVariableDeclaracao(AVariableDeclaracao node);
     void caseAConstDeclaracao(AConstDeclaracao node);
     void caseAVarSemicolon(AVarSemicolon node);
+    void caseASemicolonVar(ASemicolonVar node);
     void caseAAssignmentComando(AAssignmentComando node);
     void caseAReadComando(AReadComando node);
     void caseAWriteComando(AWriteComando node);
@@ -41,10 +44,9 @@ public interface Analysis extends Switch
     void caseAComandoSemicolon(AComandoSemicolon node);
     void caseAMinusExp1(AMinusExp1 node);
     void caseAExp2Exp1(AExp2Exp1 node);
-    void caseAExpLogica1Exp1(AExpLogica1Exp1 node);
-    void caseAExpComparacao(AExpComparacao node);
     void caseASomaExp2(ASomaExp2 node);
-    void caseAExp2Exp2(AExp2Exp2 node);
+    void caseAComparacaoExp2(AComparacaoExp2 node);
+    void caseAExp3Exp2(AExp3Exp2 node);
     void caseAMaisSoma(AMaisSoma node);
     void caseAMenosSoma(AMenosSoma node);
     void caseAIgualComparacao(AIgualComparacao node);
@@ -53,22 +55,14 @@ public interface Analysis extends Switch
     void caseAMaiorIgualComparacao(AMaiorIgualComparacao node);
     void caseAMenorComparacao(AMenorComparacao node);
     void caseAMaiorComparacao(AMaiorComparacao node);
-    void caseAExp2Exp3(AExp2Exp3 node);
-    void caseAExp3Exp3(AExp3Exp3 node);
+    void caseAMultDivExp3(AMultDivExp3 node);
+    void caseAExp4Exp3(AExp4Exp3 node);
     void caseAMultMultDiv(AMultMultDiv node);
     void caseADivMultDiv(ADivMultDiv node);
     void caseAParentesesExpExp4(AParentesesExpExp4 node);
-    void caseAExp5Exp4(AExp5Exp4 node);
-    void caseAValorExp5(AValorExp5 node);
-    void caseAVarExp5(AVarExp5 node);
-    void caseAExpComparacaoExpLogica1(AExpComparacaoExpLogica1 node);
-    void caseAOuExpLogica1(AOuExpLogica1 node);
-    void caseAXorExpLogica1(AXorExpLogica1 node);
-    void caseAExpLogica2ExpLogica1(AExpLogica2ExpLogica1 node);
-    void caseAEExpLogica2(AEExpLogica2 node);
-    void caseAExpLogica3ExpLogica2(AExpLogica3ExpLogica2 node);
-    void caseANotExpLogica3(ANotExpLogica3 node);
-    void caseAExpLogica1ExpLogica3(AExpLogica1ExpLogica3 node);
+    void caseAVarExp4(AVarExp4 node);
+    void caseAValorExp4(AValorExp4 node);
+    void caseAExpLogica1(AExpLogica1 node);
 
     void caseTProgram(TProgram node);
     void caseTBegin(TBegin node);

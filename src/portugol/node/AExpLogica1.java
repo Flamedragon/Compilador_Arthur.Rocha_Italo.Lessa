@@ -5,46 +5,46 @@ package portugol.node;
 import portugol.analysis.*;
 
 @SuppressWarnings("nls")
-public final class AExpComparacaoExpLogica1 extends PExpLogica1
+public final class AExpLogica1 extends PExpLogica1
 {
-    private PExpComparacao _expComparacao_;
+    private TNInt _nInt_;
 
-    public AExpComparacaoExpLogica1()
+    public AExpLogica1()
     {
         // Constructor
     }
 
-    public AExpComparacaoExpLogica1(
-        @SuppressWarnings("hiding") PExpComparacao _expComparacao_)
+    public AExpLogica1(
+        @SuppressWarnings("hiding") TNInt _nInt_)
     {
         // Constructor
-        setExpComparacao(_expComparacao_);
+        setNInt(_nInt_);
 
     }
 
     @Override
     public Object clone()
     {
-        return new AExpComparacaoExpLogica1(
-            cloneNode(this._expComparacao_));
+        return new AExpLogica1(
+            cloneNode(this._nInt_));
     }
 
     @Override
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseAExpComparacaoExpLogica1(this);
+        ((Analysis) sw).caseAExpLogica1(this);
     }
 
-    public PExpComparacao getExpComparacao()
+    public TNInt getNInt()
     {
-        return this._expComparacao_;
+        return this._nInt_;
     }
 
-    public void setExpComparacao(PExpComparacao node)
+    public void setNInt(TNInt node)
     {
-        if(this._expComparacao_ != null)
+        if(this._nInt_ != null)
         {
-            this._expComparacao_.parent(null);
+            this._nInt_.parent(null);
         }
 
         if(node != null)
@@ -57,23 +57,23 @@ public final class AExpComparacaoExpLogica1 extends PExpLogica1
             node.parent(this);
         }
 
-        this._expComparacao_ = node;
+        this._nInt_ = node;
     }
 
     @Override
     public String toString()
     {
         return ""
-            + toString(this._expComparacao_);
+            + toString(this._nInt_);
     }
 
     @Override
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._expComparacao_ == child)
+        if(this._nInt_ == child)
         {
-            this._expComparacao_ = null;
+            this._nInt_ = null;
             return;
         }
 
@@ -84,9 +84,9 @@ public final class AExpComparacaoExpLogica1 extends PExpLogica1
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._expComparacao_ == oldChild)
+        if(this._nInt_ == oldChild)
         {
-            setExpComparacao((PExpComparacao) newChild);
+            setNInt((TNInt) newChild);
             return;
         }
 
