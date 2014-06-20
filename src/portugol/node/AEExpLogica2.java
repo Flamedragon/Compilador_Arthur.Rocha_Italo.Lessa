@@ -7,9 +7,9 @@ import portugol.analysis.*;
 @SuppressWarnings("nls")
 public final class AEExpLogica2 extends PExpLogica2
 {
-    private PExpLogica2 _expLogica2_;
-    private TAnd _and_;
     private PExpLogica3 _expLogica3_;
+    private TAnd _and_;
+    private PExpLogica2 _expLogica2_;
 
     public AEExpLogica2()
     {
@@ -17,16 +17,16 @@ public final class AEExpLogica2 extends PExpLogica2
     }
 
     public AEExpLogica2(
-        @SuppressWarnings("hiding") PExpLogica2 _expLogica2_,
+        @SuppressWarnings("hiding") PExpLogica3 _expLogica3_,
         @SuppressWarnings("hiding") TAnd _and_,
-        @SuppressWarnings("hiding") PExpLogica3 _expLogica3_)
+        @SuppressWarnings("hiding") PExpLogica2 _expLogica2_)
     {
         // Constructor
-        setExpLogica2(_expLogica2_);
+        setExpLogica3(_expLogica3_);
 
         setAnd(_and_);
 
-        setExpLogica3(_expLogica3_);
+        setExpLogica2(_expLogica2_);
 
     }
 
@@ -34,65 +34,15 @@ public final class AEExpLogica2 extends PExpLogica2
     public Object clone()
     {
         return new AEExpLogica2(
-            cloneNode(this._expLogica2_),
+            cloneNode(this._expLogica3_),
             cloneNode(this._and_),
-            cloneNode(this._expLogica3_));
+            cloneNode(this._expLogica2_));
     }
 
     @Override
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseAEExpLogica2(this);
-    }
-
-    public PExpLogica2 getExpLogica2()
-    {
-        return this._expLogica2_;
-    }
-
-    public void setExpLogica2(PExpLogica2 node)
-    {
-        if(this._expLogica2_ != null)
-        {
-            this._expLogica2_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._expLogica2_ = node;
-    }
-
-    public TAnd getAnd()
-    {
-        return this._and_;
-    }
-
-    public void setAnd(TAnd node)
-    {
-        if(this._and_ != null)
-        {
-            this._and_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._and_ = node;
     }
 
     public PExpLogica3 getExpLogica3()
@@ -120,22 +70,72 @@ public final class AEExpLogica2 extends PExpLogica2
         this._expLogica3_ = node;
     }
 
+    public TAnd getAnd()
+    {
+        return this._and_;
+    }
+
+    public void setAnd(TAnd node)
+    {
+        if(this._and_ != null)
+        {
+            this._and_.parent(null);
+        }
+
+        if(node != null)
+        {
+            if(node.parent() != null)
+            {
+                node.parent().removeChild(node);
+            }
+
+            node.parent(this);
+        }
+
+        this._and_ = node;
+    }
+
+    public PExpLogica2 getExpLogica2()
+    {
+        return this._expLogica2_;
+    }
+
+    public void setExpLogica2(PExpLogica2 node)
+    {
+        if(this._expLogica2_ != null)
+        {
+            this._expLogica2_.parent(null);
+        }
+
+        if(node != null)
+        {
+            if(node.parent() != null)
+            {
+                node.parent().removeChild(node);
+            }
+
+            node.parent(this);
+        }
+
+        this._expLogica2_ = node;
+    }
+
     @Override
     public String toString()
     {
         return ""
-            + toString(this._expLogica2_)
+            + toString(this._expLogica3_)
             + toString(this._and_)
-            + toString(this._expLogica3_);
+            + toString(this._expLogica2_);
     }
 
     @Override
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._expLogica2_ == child)
+        if(this._expLogica3_ == child)
         {
-            this._expLogica2_ = null;
+            this._expLogica3_ = null;
             return;
         }
 
@@ -145,9 +145,9 @@ public final class AEExpLogica2 extends PExpLogica2
             return;
         }
 
-        if(this._expLogica3_ == child)
+        if(this._expLogica2_ == child)
         {
-            this._expLogica3_ = null;
+            this._expLogica2_ = null;
             return;
         }
 
@@ -158,9 +158,9 @@ public final class AEExpLogica2 extends PExpLogica2
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._expLogica2_ == oldChild)
+        if(this._expLogica3_ == oldChild)
         {
-            setExpLogica2((PExpLogica2) newChild);
+            setExpLogica3((PExpLogica3) newChild);
             return;
         }
 
@@ -170,9 +170,9 @@ public final class AEExpLogica2 extends PExpLogica2
             return;
         }
 
-        if(this._expLogica3_ == oldChild)
+        if(this._expLogica2_ == oldChild)
         {
-            setExpLogica3((PExpLogica3) newChild);
+            setExpLogica2((PExpLogica2) newChild);
             return;
         }
 

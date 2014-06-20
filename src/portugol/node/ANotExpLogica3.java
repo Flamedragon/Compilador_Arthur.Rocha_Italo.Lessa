@@ -8,7 +8,7 @@ import portugol.analysis.*;
 public final class ANotExpLogica3 extends PExpLogica3
 {
     private TNot _not_;
-    private PExp4 _exp4_;
+    private PExpLogica3 _expLogica3_;
 
     public ANotExpLogica3()
     {
@@ -17,12 +17,12 @@ public final class ANotExpLogica3 extends PExpLogica3
 
     public ANotExpLogica3(
         @SuppressWarnings("hiding") TNot _not_,
-        @SuppressWarnings("hiding") PExp4 _exp4_)
+        @SuppressWarnings("hiding") PExpLogica3 _expLogica3_)
     {
         // Constructor
         setNot(_not_);
 
-        setExp4(_exp4_);
+        setExpLogica3(_expLogica3_);
 
     }
 
@@ -31,7 +31,7 @@ public final class ANotExpLogica3 extends PExpLogica3
     {
         return new ANotExpLogica3(
             cloneNode(this._not_),
-            cloneNode(this._exp4_));
+            cloneNode(this._expLogica3_));
     }
 
     @Override
@@ -65,16 +65,16 @@ public final class ANotExpLogica3 extends PExpLogica3
         this._not_ = node;
     }
 
-    public PExp4 getExp4()
+    public PExpLogica3 getExpLogica3()
     {
-        return this._exp4_;
+        return this._expLogica3_;
     }
 
-    public void setExp4(PExp4 node)
+    public void setExpLogica3(PExpLogica3 node)
     {
-        if(this._exp4_ != null)
+        if(this._expLogica3_ != null)
         {
-            this._exp4_.parent(null);
+            this._expLogica3_.parent(null);
         }
 
         if(node != null)
@@ -87,7 +87,7 @@ public final class ANotExpLogica3 extends PExpLogica3
             node.parent(this);
         }
 
-        this._exp4_ = node;
+        this._expLogica3_ = node;
     }
 
     @Override
@@ -95,7 +95,7 @@ public final class ANotExpLogica3 extends PExpLogica3
     {
         return ""
             + toString(this._not_)
-            + toString(this._exp4_);
+            + toString(this._expLogica3_);
     }
 
     @Override
@@ -108,9 +108,9 @@ public final class ANotExpLogica3 extends PExpLogica3
             return;
         }
 
-        if(this._exp4_ == child)
+        if(this._expLogica3_ == child)
         {
-            this._exp4_ = null;
+            this._expLogica3_ = null;
             return;
         }
 
@@ -127,9 +127,9 @@ public final class ANotExpLogica3 extends PExpLogica3
             return;
         }
 
-        if(this._exp4_ == oldChild)
+        if(this._expLogica3_ == oldChild)
         {
-            setExp4((PExp4) newChild);
+            setExpLogica3((PExpLogica3) newChild);
             return;
         }
 

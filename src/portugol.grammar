@@ -114,19 +114,15 @@ comando =
 comma_var = comma var;
 
 exp1 =
-	{comparacao} exp1 comparacao exp2 |
+	{comparacao} exp2 comparacao exp1 |
 	{exp1} exp2;
 
 exp2 = 
-	{soma} exp2 soma exp3 |
-	{exp_comparacao} exp_comparacao |
-	{exp2} exp3 ;
+	{soma} exp3 soma exp2 |
+	{exp2} exp3 |
+	{exp_logica} exp_logica1;
 
-exp_comparacao = 
-	{comparacao} exp2 comparacao exp3 |
-	{exp_logica1} exp_logica1;
-			
-	
+
 soma = 
 	{mais} plus |
 	{menos} minus;
@@ -140,7 +136,7 @@ comparacao =
 			{maior} greater;
 	
 exp3 = 
-	{exp2} exp3 mult_div exp4 |
+	{exp2} exp4 mult_div exp3 |
 	{exp3} exp4;
 	
 mult_div = 
@@ -149,19 +145,21 @@ mult_div =
 
 exp4 = 
 	{parenteses_exp} l_par exp1 r_par |
+	{exp5} exp5;
+	
+exp5 =
 	{valor} valor |
 	{var} var ;
 			
 exp_logica1 = 
-			{ou} exp_logica1 or exp_logica2 |
-			{xor} exp_logica1 xor exp_logica2 |
+			{ou} exp_logica2 or exp_logica3 |
+			{xor} exp_logica2 xor exp_logica3 |
 			{exp_logica2} exp_logica2;
 
 exp_logica2 = 
-			{e} exp_logica2 and exp_logica3 |
+			{e} exp_logica3 and exp_logica2 |
 			{exp_logica3} exp_logica3;
 
 exp_logica3 = 
-			{not} not exp4 |
-			{exp4} exp4;
+			{not} not exp_logica3 ;
 

@@ -5,16 +5,16 @@ package portugol.node;
 import portugol.analysis.*;
 
 @SuppressWarnings("nls")
-public final class AExp4ExpLogica3 extends PExpLogica3
+public final class AExp5Exp4 extends PExp4
 {
     private PExp5 _exp5_;
 
-    public AExp4ExpLogica3()
+    public AExp5Exp4()
     {
         // Constructor
     }
 
-    public AExp4ExpLogica3(
+    public AExp5Exp4(
         @SuppressWarnings("hiding") PExp5 _exp5_)
     {
         // Constructor
@@ -25,14 +25,14 @@ public final class AExp4ExpLogica3 extends PExpLogica3
     @Override
     public Object clone()
     {
-        return new AExp4ExpLogica3(
+        return new AExp5Exp4(
             cloneNode(this._exp5_));
     }
 
     @Override
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseAExp4ExpLogica3(this);
+        ((Analysis) sw).caseAExp5Exp4(this);
     }
 
     public PExp5 getExp5()

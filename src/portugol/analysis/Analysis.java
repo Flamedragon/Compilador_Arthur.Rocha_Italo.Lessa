@@ -30,10 +30,8 @@ public interface Analysis extends Switch
     void caseAComparacaoExp1(AComparacaoExp1 node);
     void caseAExp1Exp1(AExp1Exp1 node);
     void caseASomaExp2(ASomaExp2 node);
-    void caseAExpComparacaoExp2(AExpComparacaoExp2 node);
     void caseAExp2Exp2(AExp2Exp2 node);
-    void caseAComparacaoExpComparacao(AComparacaoExpComparacao node);
-    void caseAExpLogica1ExpComparacao(AExpLogica1ExpComparacao node);
+    void caseAExpLogicaExp2(AExpLogicaExp2 node);
     void caseAMaisSoma(AMaisSoma node);
     void caseAMenosSoma(AMenosSoma node);
     void caseAIgualComparacao(AIgualComparacao node);
@@ -47,15 +45,15 @@ public interface Analysis extends Switch
     void caseAMultMultDiv(AMultMultDiv node);
     void caseADivMultDiv(ADivMultDiv node);
     void caseAParentesesExpExp4(AParentesesExpExp4 node);
-    void caseAValorExp4(AValorExp4 node);
-    void caseAVarExp4(AVarExp4 node);
+    void caseAExp5Exp4(AExp5Exp4 node);
+    void caseAValorExp5(AValorExp5 node);
+    void caseAVarExp5(AVarExp5 node);
     void caseAOuExpLogica1(AOuExpLogica1 node);
     void caseAXorExpLogica1(AXorExpLogica1 node);
     void caseAExpLogica2ExpLogica1(AExpLogica2ExpLogica1 node);
     void caseAEExpLogica2(AEExpLogica2 node);
     void caseAExpLogica3ExpLogica2(AExpLogica3ExpLogica2 node);
     void caseANotExpLogica3(ANotExpLogica3 node);
-    void caseAExp4ExpLogica3(AExp4ExpLogica3 node);
 
     void caseTProgram(TProgram node);
     void caseTBegin(TBegin node);

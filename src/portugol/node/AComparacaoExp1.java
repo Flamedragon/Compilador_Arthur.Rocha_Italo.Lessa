@@ -7,9 +7,9 @@ import portugol.analysis.*;
 @SuppressWarnings("nls")
 public final class AComparacaoExp1 extends PExp1
 {
-    private PExp1 _exp1_;
-    private PComparacao _comparacao_;
     private PExp2 _exp2_;
+    private PComparacao _comparacao_;
+    private PExp1 _exp1_;
 
     public AComparacaoExp1()
     {
@@ -17,16 +17,16 @@ public final class AComparacaoExp1 extends PExp1
     }
 
     public AComparacaoExp1(
-        @SuppressWarnings("hiding") PExp1 _exp1_,
+        @SuppressWarnings("hiding") PExp2 _exp2_,
         @SuppressWarnings("hiding") PComparacao _comparacao_,
-        @SuppressWarnings("hiding") PExp2 _exp2_)
+        @SuppressWarnings("hiding") PExp1 _exp1_)
     {
         // Constructor
-        setExp1(_exp1_);
+        setExp2(_exp2_);
 
         setComparacao(_comparacao_);
 
-        setExp2(_exp2_);
+        setExp1(_exp1_);
 
     }
 
@@ -34,65 +34,15 @@ public final class AComparacaoExp1 extends PExp1
     public Object clone()
     {
         return new AComparacaoExp1(
-            cloneNode(this._exp1_),
+            cloneNode(this._exp2_),
             cloneNode(this._comparacao_),
-            cloneNode(this._exp2_));
+            cloneNode(this._exp1_));
     }
 
     @Override
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseAComparacaoExp1(this);
-    }
-
-    public PExp1 getExp1()
-    {
-        return this._exp1_;
-    }
-
-    public void setExp1(PExp1 node)
-    {
-        if(this._exp1_ != null)
-        {
-            this._exp1_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._exp1_ = node;
-    }
-
-    public PComparacao getComparacao()
-    {
-        return this._comparacao_;
-    }
-
-    public void setComparacao(PComparacao node)
-    {
-        if(this._comparacao_ != null)
-        {
-            this._comparacao_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._comparacao_ = node;
     }
 
     public PExp2 getExp2()
@@ -120,22 +70,72 @@ public final class AComparacaoExp1 extends PExp1
         this._exp2_ = node;
     }
 
+    public PComparacao getComparacao()
+    {
+        return this._comparacao_;
+    }
+
+    public void setComparacao(PComparacao node)
+    {
+        if(this._comparacao_ != null)
+        {
+            this._comparacao_.parent(null);
+        }
+
+        if(node != null)
+        {
+            if(node.parent() != null)
+            {
+                node.parent().removeChild(node);
+            }
+
+            node.parent(this);
+        }
+
+        this._comparacao_ = node;
+    }
+
+    public PExp1 getExp1()
+    {
+        return this._exp1_;
+    }
+
+    public void setExp1(PExp1 node)
+    {
+        if(this._exp1_ != null)
+        {
+            this._exp1_.parent(null);
+        }
+
+        if(node != null)
+        {
+            if(node.parent() != null)
+            {
+                node.parent().removeChild(node);
+            }
+
+            node.parent(this);
+        }
+
+        this._exp1_ = node;
+    }
+
     @Override
     public String toString()
     {
         return ""
-            + toString(this._exp1_)
+            + toString(this._exp2_)
             + toString(this._comparacao_)
-            + toString(this._exp2_);
+            + toString(this._exp1_);
     }
 
     @Override
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._exp1_ == child)
+        if(this._exp2_ == child)
         {
-            this._exp1_ = null;
+            this._exp2_ = null;
             return;
         }
 
@@ -145,9 +145,9 @@ public final class AComparacaoExp1 extends PExp1
             return;
         }
 
-        if(this._exp2_ == child)
+        if(this._exp1_ == child)
         {
-            this._exp2_ = null;
+            this._exp1_ = null;
             return;
         }
 
@@ -158,9 +158,9 @@ public final class AComparacaoExp1 extends PExp1
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._exp1_ == oldChild)
+        if(this._exp2_ == oldChild)
         {
-            setExp1((PExp1) newChild);
+            setExp2((PExp2) newChild);
             return;
         }
 
@@ -170,9 +170,9 @@ public final class AComparacaoExp1 extends PExp1
             return;
         }
 
-        if(this._exp2_ == oldChild)
+        if(this._exp1_ == oldChild)
         {
-            setExp2((PExp2) newChild);
+            setExp1((PExp1) newChild);
             return;
         }
 

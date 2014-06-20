@@ -5,46 +5,46 @@ package portugol.node;
 import portugol.analysis.*;
 
 @SuppressWarnings("nls")
-public final class AExp4ExpLogica3 extends PExpLogica3
+public final class AValorExp5 extends PExp5
 {
-    private PExp5 _exp5_;
+    private PValor _valor_;
 
-    public AExp4ExpLogica3()
+    public AValorExp5()
     {
         // Constructor
     }
 
-    public AExp4ExpLogica3(
-        @SuppressWarnings("hiding") PExp5 _exp5_)
+    public AValorExp5(
+        @SuppressWarnings("hiding") PValor _valor_)
     {
         // Constructor
-        setExp5(_exp5_);
+        setValor(_valor_);
 
     }
 
     @Override
     public Object clone()
     {
-        return new AExp4ExpLogica3(
-            cloneNode(this._exp5_));
+        return new AValorExp5(
+            cloneNode(this._valor_));
     }
 
     @Override
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseAExp4ExpLogica3(this);
+        ((Analysis) sw).caseAValorExp5(this);
     }
 
-    public PExp5 getExp5()
+    public PValor getValor()
     {
-        return this._exp5_;
+        return this._valor_;
     }
 
-    public void setExp5(PExp5 node)
+    public void setValor(PValor node)
     {
-        if(this._exp5_ != null)
+        if(this._valor_ != null)
         {
-            this._exp5_.parent(null);
+            this._valor_.parent(null);
         }
 
         if(node != null)
@@ -57,23 +57,23 @@ public final class AExp4ExpLogica3 extends PExpLogica3
             node.parent(this);
         }
 
-        this._exp5_ = node;
+        this._valor_ = node;
     }
 
     @Override
     public String toString()
     {
         return ""
-            + toString(this._exp5_);
+            + toString(this._valor_);
     }
 
     @Override
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._exp5_ == child)
+        if(this._valor_ == child)
         {
-            this._exp5_ = null;
+            this._valor_ = null;
             return;
         }
 
@@ -84,9 +84,9 @@ public final class AExp4ExpLogica3 extends PExpLogica3
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._exp5_ == oldChild)
+        if(this._valor_ == oldChild)
         {
-            setExp5((PExp5) newChild);
+            setValor((PValor) newChild);
             return;
         }
 
