@@ -420,6 +420,488 @@ public class DepthFirstAdapter extends AnalysisAdapter
         outAReadComando(node);
     }
 
+    public void inAWriteComando(AWriteComando node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAWriteComando(AWriteComando node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAWriteComando(AWriteComando node)
+    {
+        inAWriteComando(node);
+        if(node.getWrite() != null)
+        {
+            node.getWrite().apply(this);
+        }
+        if(node.getLPar() != null)
+        {
+            node.getLPar().apply(this);
+        }
+        if(node.getExp1() != null)
+        {
+            node.getExp1().apply(this);
+        }
+        {
+            List<PCommaExp> copy = new ArrayList<PCommaExp>(node.getCommaExp());
+            for(PCommaExp e : copy)
+            {
+                e.apply(this);
+            }
+        }
+        if(node.getRPar() != null)
+        {
+            node.getRPar().apply(this);
+        }
+        if(node.getSemicolon() != null)
+        {
+            node.getSemicolon().apply(this);
+        }
+        outAWriteComando(node);
+    }
+
+    public void inAIfComando(AIfComando node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAIfComando(AIfComando node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAIfComando(AIfComando node)
+    {
+        inAIfComando(node);
+        if(node.getIf() != null)
+        {
+            node.getIf().apply(this);
+        }
+        if(node.getLPar() != null)
+        {
+            node.getLPar().apply(this);
+        }
+        if(node.getExpLogica1() != null)
+        {
+            node.getExpLogica1().apply(this);
+        }
+        if(node.getRPar() != null)
+        {
+            node.getRPar().apply(this);
+        }
+        if(node.getThen() != null)
+        {
+            node.getThen().apply(this);
+        }
+        {
+            List<PComandoSemicolon> copy = new ArrayList<PComandoSemicolon>(node.getComandoSemicolon());
+            for(PComandoSemicolon e : copy)
+            {
+                e.apply(this);
+            }
+        }
+        {
+            List<PElseStatement> copy = new ArrayList<PElseStatement>(node.getElseStatement());
+            for(PElseStatement e : copy)
+            {
+                e.apply(this);
+            }
+        }
+        if(node.getEndIf() != null)
+        {
+            node.getEndIf().apply(this);
+        }
+        if(node.getSemicolon() != null)
+        {
+            node.getSemicolon().apply(this);
+        }
+        outAIfComando(node);
+    }
+
+    public void inAEvaluateComando(AEvaluateComando node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAEvaluateComando(AEvaluateComando node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAEvaluateComando(AEvaluateComando node)
+    {
+        inAEvaluateComando(node);
+        if(node.getEvaluate() != null)
+        {
+            node.getEvaluate().apply(this);
+        }
+        if(node.getLPar() != null)
+        {
+            node.getLPar().apply(this);
+        }
+        if(node.getExp1() != null)
+        {
+            node.getExp1().apply(this);
+        }
+        if(node.getRPar() != null)
+        {
+            node.getRPar().apply(this);
+        }
+        {
+            List<PEvaluateBody> copy = new ArrayList<PEvaluateBody>(node.getEvaluateBody());
+            for(PEvaluateBody e : copy)
+            {
+                e.apply(this);
+            }
+        }
+        {
+            List<PElseEvaluate> copy = new ArrayList<PElseEvaluate>(node.getElseEvaluate());
+            for(PElseEvaluate e : copy)
+            {
+                e.apply(this);
+            }
+        }
+        if(node.getEndEvaluate() != null)
+        {
+            node.getEndEvaluate().apply(this);
+        }
+        if(node.getSemicolon() != null)
+        {
+            node.getSemicolon().apply(this);
+        }
+        outAEvaluateComando(node);
+    }
+
+    public void inAWhileComando(AWhileComando node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAWhileComando(AWhileComando node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAWhileComando(AWhileComando node)
+    {
+        inAWhileComando(node);
+        if(node.getWhile() != null)
+        {
+            node.getWhile().apply(this);
+        }
+        if(node.getLPar() != null)
+        {
+            node.getLPar().apply(this);
+        }
+        if(node.getExpLogica1() != null)
+        {
+            node.getExpLogica1().apply(this);
+        }
+        if(node.getRPar() != null)
+        {
+            node.getRPar().apply(this);
+        }
+        if(node.getDo() != null)
+        {
+            node.getDo().apply(this);
+        }
+        {
+            List<PComandoSemicolon> copy = new ArrayList<PComandoSemicolon>(node.getComandoSemicolon());
+            for(PComandoSemicolon e : copy)
+            {
+                e.apply(this);
+            }
+        }
+        if(node.getEndWhile() != null)
+        {
+            node.getEndWhile().apply(this);
+        }
+        if(node.getSemicolon() != null)
+        {
+            node.getSemicolon().apply(this);
+        }
+        outAWhileComando(node);
+    }
+
+    public void inARepeatComando(ARepeatComando node)
+    {
+        defaultIn(node);
+    }
+
+    public void outARepeatComando(ARepeatComando node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseARepeatComando(ARepeatComando node)
+    {
+        inARepeatComando(node);
+        if(node.getRepeat() != null)
+        {
+            node.getRepeat().apply(this);
+        }
+        {
+            List<PComandoSemicolon> copy = new ArrayList<PComandoSemicolon>(node.getComandoSemicolon());
+            for(PComandoSemicolon e : copy)
+            {
+                e.apply(this);
+            }
+        }
+        if(node.getUntil() != null)
+        {
+            node.getUntil().apply(this);
+        }
+        if(node.getLPar() != null)
+        {
+            node.getLPar().apply(this);
+        }
+        if(node.getExpLogica1() != null)
+        {
+            node.getExpLogica1().apply(this);
+        }
+        if(node.getRPar() != null)
+        {
+            node.getRPar().apply(this);
+        }
+        if(node.getSemicolon() != null)
+        {
+            node.getSemicolon().apply(this);
+        }
+        outARepeatComando(node);
+    }
+
+    public void inAForComando(AForComando node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAForComando(AForComando node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAForComando(AForComando node)
+    {
+        inAForComando(node);
+        if(node.getFor() != null)
+        {
+            node.getFor().apply(this);
+        }
+        if(node.getVar() != null)
+        {
+            node.getVar().apply(this);
+        }
+        if(node.getOf() != null)
+        {
+            node.getOf().apply(this);
+        }
+        if(node.getBegin() != null)
+        {
+            node.getBegin().apply(this);
+        }
+        if(node.getUntil() != null)
+        {
+            node.getUntil().apply(this);
+        }
+        if(node.getEnd() != null)
+        {
+            node.getEnd().apply(this);
+        }
+        if(node.getDo() != null)
+        {
+            node.getDo().apply(this);
+        }
+        {
+            List<PComandoSemicolon> copy = new ArrayList<PComandoSemicolon>(node.getComandoSemicolon());
+            for(PComandoSemicolon e : copy)
+            {
+                e.apply(this);
+            }
+        }
+        if(node.getEndFor() != null)
+        {
+            node.getEndFor().apply(this);
+        }
+        if(node.getSemicolon() != null)
+        {
+            node.getSemicolon().apply(this);
+        }
+        outAForComando(node);
+    }
+
+    public void inAForStepComando(AForStepComando node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAForStepComando(AForStepComando node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAForStepComando(AForStepComando node)
+    {
+        inAForStepComando(node);
+        if(node.getFor() != null)
+        {
+            node.getFor().apply(this);
+        }
+        if(node.getVar() != null)
+        {
+            node.getVar().apply(this);
+        }
+        if(node.getOf() != null)
+        {
+            node.getOf().apply(this);
+        }
+        if(node.getBegin() != null)
+        {
+            node.getBegin().apply(this);
+        }
+        if(node.getStep() != null)
+        {
+            node.getStep().apply(this);
+        }
+        if(node.getNSteps() != null)
+        {
+            node.getNSteps().apply(this);
+        }
+        if(node.getUntil() != null)
+        {
+            node.getUntil().apply(this);
+        }
+        if(node.getEnd() != null)
+        {
+            node.getEnd().apply(this);
+        }
+        if(node.getDo() != null)
+        {
+            node.getDo().apply(this);
+        }
+        {
+            List<PComandoSemicolon> copy = new ArrayList<PComandoSemicolon>(node.getComandoSemicolon());
+            for(PComandoSemicolon e : copy)
+            {
+                e.apply(this);
+            }
+        }
+        if(node.getEndFor() != null)
+        {
+            node.getEndFor().apply(this);
+        }
+        if(node.getSemicolon() != null)
+        {
+            node.getSemicolon().apply(this);
+        }
+        outAForStepComando(node);
+    }
+
+    public void inAElseStatement(AElseStatement node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAElseStatement(AElseStatement node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAElseStatement(AElseStatement node)
+    {
+        inAElseStatement(node);
+        if(node.getElse() != null)
+        {
+            node.getElse().apply(this);
+        }
+        {
+            List<PComandoSemicolon> copy = new ArrayList<PComandoSemicolon>(node.getComandoSemicolon());
+            for(PComandoSemicolon e : copy)
+            {
+                e.apply(this);
+            }
+        }
+        outAElseStatement(node);
+    }
+
+    public void inAEvaluateBody(AEvaluateBody node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAEvaluateBody(AEvaluateBody node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAEvaluateBody(AEvaluateBody node)
+    {
+        inAEvaluateBody(node);
+        if(node.getCase() != null)
+        {
+            node.getCase().apply(this);
+        }
+        if(node.getValor() != null)
+        {
+            node.getValor().apply(this);
+        }
+        if(node.getColon() != null)
+        {
+            node.getColon().apply(this);
+        }
+        {
+            List<PComandoSemicolon> copy = new ArrayList<PComandoSemicolon>(node.getComandoSemicolon());
+            for(PComandoSemicolon e : copy)
+            {
+                e.apply(this);
+            }
+        }
+        outAEvaluateBody(node);
+    }
+
+    public void inAElseEvaluate(AElseEvaluate node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAElseEvaluate(AElseEvaluate node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAElseEvaluate(AElseEvaluate node)
+    {
+        inAElseEvaluate(node);
+        if(node.getElse() != null)
+        {
+            node.getElse().apply(this);
+        }
+        if(node.getColon() != null)
+        {
+            node.getColon().apply(this);
+        }
+        {
+            List<PComandoSemicolon> copy = new ArrayList<PComandoSemicolon>(node.getComandoSemicolon());
+            for(PComandoSemicolon e : copy)
+            {
+                e.apply(this);
+            }
+        }
+        outAElseEvaluate(node);
+    }
+
     public void inACommaVar(ACommaVar node)
     {
         defaultIn(node);
@@ -443,6 +925,56 @@ public class DepthFirstAdapter extends AnalysisAdapter
             node.getVar().apply(this);
         }
         outACommaVar(node);
+    }
+
+    public void inACommaExp(ACommaExp node)
+    {
+        defaultIn(node);
+    }
+
+    public void outACommaExp(ACommaExp node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseACommaExp(ACommaExp node)
+    {
+        inACommaExp(node);
+        if(node.getComma() != null)
+        {
+            node.getComma().apply(this);
+        }
+        if(node.getExp1() != null)
+        {
+            node.getExp1().apply(this);
+        }
+        outACommaExp(node);
+    }
+
+    public void inAComandoSemicolon(AComandoSemicolon node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAComandoSemicolon(AComandoSemicolon node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAComandoSemicolon(AComandoSemicolon node)
+    {
+        inAComandoSemicolon(node);
+        if(node.getComando() != null)
+        {
+            node.getComando().apply(this);
+        }
+        if(node.getSemicolon() != null)
+        {
+            node.getSemicolon().apply(this);
+        }
+        outAComandoSemicolon(node);
     }
 
     public void inAMinusExp1(AMinusExp1 node)
@@ -491,20 +1023,41 @@ public class DepthFirstAdapter extends AnalysisAdapter
         outAExp2Exp1(node);
     }
 
-    public void inAComparacaoExp1(AComparacaoExp1 node)
+    public void inAExpLogica1Exp1(AExpLogica1Exp1 node)
     {
         defaultIn(node);
     }
 
-    public void outAComparacaoExp1(AComparacaoExp1 node)
+    public void outAExpLogica1Exp1(AExpLogica1Exp1 node)
     {
         defaultOut(node);
     }
 
     @Override
-    public void caseAComparacaoExp1(AComparacaoExp1 node)
+    public void caseAExpLogica1Exp1(AExpLogica1Exp1 node)
     {
-        inAComparacaoExp1(node);
+        inAExpLogica1Exp1(node);
+        if(node.getExpLogica1() != null)
+        {
+            node.getExpLogica1().apply(this);
+        }
+        outAExpLogica1Exp1(node);
+    }
+
+    public void inAExpComparacao(AExpComparacao node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAExpComparacao(AExpComparacao node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAExpComparacao(AExpComparacao node)
+    {
+        inAExpComparacao(node);
         if(node.getExp2() != null)
         {
             node.getExp2().apply(this);
@@ -517,7 +1070,7 @@ public class DepthFirstAdapter extends AnalysisAdapter
         {
             node.getExp1().apply(this);
         }
-        outAComparacaoExp1(node);
+        outAExpComparacao(node);
     }
 
     public void inASomaExp2(ASomaExp2 node)
@@ -922,6 +1475,27 @@ public class DepthFirstAdapter extends AnalysisAdapter
         outAVarExp5(node);
     }
 
+    public void inAExpComparacaoExpLogica1(AExpComparacaoExpLogica1 node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAExpComparacaoExpLogica1(AExpComparacaoExpLogica1 node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAExpComparacaoExpLogica1(AExpComparacaoExpLogica1 node)
+    {
+        inAExpComparacaoExpLogica1(node);
+        if(node.getExpComparacao() != null)
+        {
+            node.getExpComparacao().apply(this);
+        }
+        outAExpComparacaoExpLogica1(node);
+    }
+
     public void inAOuExpLogica1(AOuExpLogica1 node)
     {
         defaultIn(node);
@@ -944,9 +1518,9 @@ public class DepthFirstAdapter extends AnalysisAdapter
         {
             node.getOr().apply(this);
         }
-        if(node.getExpLogica3() != null)
+        if(node.getExpLogica1() != null)
         {
-            node.getExpLogica3().apply(this);
+            node.getExpLogica1().apply(this);
         }
         outAOuExpLogica1(node);
     }
@@ -973,9 +1547,9 @@ public class DepthFirstAdapter extends AnalysisAdapter
         {
             node.getXor().apply(this);
         }
-        if(node.getExpLogica3() != null)
+        if(node.getExpLogica1() != null)
         {
-            node.getExpLogica3().apply(this);
+            node.getExpLogica1().apply(this);
         }
         outAXorExpLogica1(node);
     }
@@ -1069,10 +1643,31 @@ public class DepthFirstAdapter extends AnalysisAdapter
         {
             node.getNot().apply(this);
         }
-        if(node.getExpLogica3() != null)
+        if(node.getExpLogica1() != null)
         {
-            node.getExpLogica3().apply(this);
+            node.getExpLogica1().apply(this);
         }
         outANotExpLogica3(node);
+    }
+
+    public void inAExpLogica1ExpLogica3(AExpLogica1ExpLogica3 node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAExpLogica1ExpLogica3(AExpLogica1ExpLogica3 node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAExpLogica1ExpLogica3(AExpLogica1ExpLogica3 node)
+    {
+        inAExpLogica1ExpLogica3(node);
+        if(node.getExpLogica1() != null)
+        {
+            node.getExpLogica1().apply(this);
+        }
+        outAExpLogica1ExpLogica3(node);
     }
 }

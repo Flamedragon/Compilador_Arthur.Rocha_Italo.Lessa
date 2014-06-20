@@ -5,23 +5,19 @@ package portugol.node;
 import portugol.analysis.*;
 
 @SuppressWarnings("nls")
-public final class ANotExpLogica3 extends PExpLogica3
+public final class AExpLogica1Exp1 extends PExp1
 {
-    private TNot _not_;
     private PExpLogica1 _expLogica1_;
 
-    public ANotExpLogica3()
+    public AExpLogica1Exp1()
     {
         // Constructor
     }
 
-    public ANotExpLogica3(
-        @SuppressWarnings("hiding") TNot _not_,
+    public AExpLogica1Exp1(
         @SuppressWarnings("hiding") PExpLogica1 _expLogica1_)
     {
         // Constructor
-        setNot(_not_);
-
         setExpLogica1(_expLogica1_);
 
     }
@@ -29,40 +25,14 @@ public final class ANotExpLogica3 extends PExpLogica3
     @Override
     public Object clone()
     {
-        return new ANotExpLogica3(
-            cloneNode(this._not_),
+        return new AExpLogica1Exp1(
             cloneNode(this._expLogica1_));
     }
 
     @Override
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseANotExpLogica3(this);
-    }
-
-    public TNot getNot()
-    {
-        return this._not_;
-    }
-
-    public void setNot(TNot node)
-    {
-        if(this._not_ != null)
-        {
-            this._not_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._not_ = node;
+        ((Analysis) sw).caseAExpLogica1Exp1(this);
     }
 
     public PExpLogica1 getExpLogica1()
@@ -94,7 +64,6 @@ public final class ANotExpLogica3 extends PExpLogica3
     public String toString()
     {
         return ""
-            + toString(this._not_)
             + toString(this._expLogica1_);
     }
 
@@ -102,12 +71,6 @@ public final class ANotExpLogica3 extends PExpLogica3
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._not_ == child)
-        {
-            this._not_ = null;
-            return;
-        }
-
         if(this._expLogica1_ == child)
         {
             this._expLogica1_ = null;
@@ -121,12 +84,6 @@ public final class ANotExpLogica3 extends PExpLogica3
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._not_ == oldChild)
-        {
-            setNot((TNot) newChild);
-            return;
-        }
-
         if(this._expLogica1_ == oldChild)
         {
             setExpLogica1((PExpLogica1) newChild);

@@ -9,7 +9,7 @@ public final class AXorExpLogica1 extends PExpLogica1
 {
     private PExpLogica2 _expLogica2_;
     private TXor _xor_;
-    private PExpLogica3 _expLogica3_;
+    private PExpLogica1 _expLogica1_;
 
     public AXorExpLogica1()
     {
@@ -19,14 +19,14 @@ public final class AXorExpLogica1 extends PExpLogica1
     public AXorExpLogica1(
         @SuppressWarnings("hiding") PExpLogica2 _expLogica2_,
         @SuppressWarnings("hiding") TXor _xor_,
-        @SuppressWarnings("hiding") PExpLogica3 _expLogica3_)
+        @SuppressWarnings("hiding") PExpLogica1 _expLogica1_)
     {
         // Constructor
         setExpLogica2(_expLogica2_);
 
         setXor(_xor_);
 
-        setExpLogica3(_expLogica3_);
+        setExpLogica1(_expLogica1_);
 
     }
 
@@ -36,7 +36,7 @@ public final class AXorExpLogica1 extends PExpLogica1
         return new AXorExpLogica1(
             cloneNode(this._expLogica2_),
             cloneNode(this._xor_),
-            cloneNode(this._expLogica3_));
+            cloneNode(this._expLogica1_));
     }
 
     @Override
@@ -95,16 +95,16 @@ public final class AXorExpLogica1 extends PExpLogica1
         this._xor_ = node;
     }
 
-    public PExpLogica3 getExpLogica3()
+    public PExpLogica1 getExpLogica1()
     {
-        return this._expLogica3_;
+        return this._expLogica1_;
     }
 
-    public void setExpLogica3(PExpLogica3 node)
+    public void setExpLogica1(PExpLogica1 node)
     {
-        if(this._expLogica3_ != null)
+        if(this._expLogica1_ != null)
         {
-            this._expLogica3_.parent(null);
+            this._expLogica1_.parent(null);
         }
 
         if(node != null)
@@ -117,7 +117,7 @@ public final class AXorExpLogica1 extends PExpLogica1
             node.parent(this);
         }
 
-        this._expLogica3_ = node;
+        this._expLogica1_ = node;
     }
 
     @Override
@@ -126,7 +126,7 @@ public final class AXorExpLogica1 extends PExpLogica1
         return ""
             + toString(this._expLogica2_)
             + toString(this._xor_)
-            + toString(this._expLogica3_);
+            + toString(this._expLogica1_);
     }
 
     @Override
@@ -145,9 +145,9 @@ public final class AXorExpLogica1 extends PExpLogica1
             return;
         }
 
-        if(this._expLogica3_ == child)
+        if(this._expLogica1_ == child)
         {
-            this._expLogica3_ = null;
+            this._expLogica1_ = null;
             return;
         }
 
@@ -170,9 +170,9 @@ public final class AXorExpLogica1 extends PExpLogica1
             return;
         }
 
-        if(this._expLogica3_ == oldChild)
+        if(this._expLogica1_ == oldChild)
         {
-            setExpLogica3((PExpLogica3) newChild);
+            setExpLogica1((PExpLogica1) newChild);
             return;
         }
 

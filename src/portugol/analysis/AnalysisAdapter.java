@@ -159,7 +159,79 @@ public class AnalysisAdapter implements Analysis
     }
 
     @Override
+    public void caseAWriteComando(AWriteComando node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAIfComando(AIfComando node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAEvaluateComando(AEvaluateComando node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAWhileComando(AWhileComando node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseARepeatComando(ARepeatComando node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAForComando(AForComando node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAForStepComando(AForStepComando node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAElseStatement(AElseStatement node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAEvaluateBody(AEvaluateBody node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAElseEvaluate(AElseEvaluate node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
     public void caseACommaVar(ACommaVar node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseACommaExp(ACommaExp node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAComandoSemicolon(AComandoSemicolon node)
     {
         defaultCase(node);
     }
@@ -177,7 +249,13 @@ public class AnalysisAdapter implements Analysis
     }
 
     @Override
-    public void caseAComparacaoExp1(AComparacaoExp1 node)
+    public void caseAExpLogica1Exp1(AExpLogica1Exp1 node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAExpComparacao(AExpComparacao node)
     {
         defaultCase(node);
     }
@@ -291,6 +369,12 @@ public class AnalysisAdapter implements Analysis
     }
 
     @Override
+    public void caseAExpComparacaoExpLogica1(AExpComparacaoExpLogica1 node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
     public void caseAOuExpLogica1(AOuExpLogica1 node)
     {
         defaultCase(node);
@@ -322,6 +406,12 @@ public class AnalysisAdapter implements Analysis
 
     @Override
     public void caseANotExpLogica3(ANotExpLogica3 node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAExpLogica1ExpLogica3(AExpLogica1ExpLogica3 node)
     {
         defaultCase(node);
     }

@@ -5,26 +5,22 @@ package portugol.node;
 import portugol.analysis.*;
 
 @SuppressWarnings("nls")
-public final class AComparacaoExp1 extends PExp1
+public final class ACommaExp extends PCommaExp
 {
-    private PExp2 _exp2_;
-    private PComparacao _comparacao_;
+    private TComma _comma_;
     private PExp1 _exp1_;
 
-    public AComparacaoExp1()
+    public ACommaExp()
     {
         // Constructor
     }
 
-    public AComparacaoExp1(
-        @SuppressWarnings("hiding") PExp2 _exp2_,
-        @SuppressWarnings("hiding") PComparacao _comparacao_,
+    public ACommaExp(
+        @SuppressWarnings("hiding") TComma _comma_,
         @SuppressWarnings("hiding") PExp1 _exp1_)
     {
         // Constructor
-        setExp2(_exp2_);
-
-        setComparacao(_comparacao_);
+        setComma(_comma_);
 
         setExp1(_exp1_);
 
@@ -33,28 +29,27 @@ public final class AComparacaoExp1 extends PExp1
     @Override
     public Object clone()
     {
-        return new AComparacaoExp1(
-            cloneNode(this._exp2_),
-            cloneNode(this._comparacao_),
+        return new ACommaExp(
+            cloneNode(this._comma_),
             cloneNode(this._exp1_));
     }
 
     @Override
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseAComparacaoExp1(this);
+        ((Analysis) sw).caseACommaExp(this);
     }
 
-    public PExp2 getExp2()
+    public TComma getComma()
     {
-        return this._exp2_;
+        return this._comma_;
     }
 
-    public void setExp2(PExp2 node)
+    public void setComma(TComma node)
     {
-        if(this._exp2_ != null)
+        if(this._comma_ != null)
         {
-            this._exp2_.parent(null);
+            this._comma_.parent(null);
         }
 
         if(node != null)
@@ -67,32 +62,7 @@ public final class AComparacaoExp1 extends PExp1
             node.parent(this);
         }
 
-        this._exp2_ = node;
-    }
-
-    public PComparacao getComparacao()
-    {
-        return this._comparacao_;
-    }
-
-    public void setComparacao(PComparacao node)
-    {
-        if(this._comparacao_ != null)
-        {
-            this._comparacao_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._comparacao_ = node;
+        this._comma_ = node;
     }
 
     public PExp1 getExp1()
@@ -124,8 +94,7 @@ public final class AComparacaoExp1 extends PExp1
     public String toString()
     {
         return ""
-            + toString(this._exp2_)
-            + toString(this._comparacao_)
+            + toString(this._comma_)
             + toString(this._exp1_);
     }
 
@@ -133,15 +102,9 @@ public final class AComparacaoExp1 extends PExp1
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._exp2_ == child)
+        if(this._comma_ == child)
         {
-            this._exp2_ = null;
-            return;
-        }
-
-        if(this._comparacao_ == child)
-        {
-            this._comparacao_ = null;
+            this._comma_ = null;
             return;
         }
 
@@ -158,15 +121,9 @@ public final class AComparacaoExp1 extends PExp1
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._exp2_ == oldChild)
+        if(this._comma_ == oldChild)
         {
-            setExp2((PExp2) newChild);
-            return;
-        }
-
-        if(this._comparacao_ == oldChild)
-        {
-            setComparacao((PComparacao) newChild);
+            setComma((TComma) newChild);
             return;
         }
 
