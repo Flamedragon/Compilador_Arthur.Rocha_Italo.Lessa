@@ -187,6 +187,10 @@ soma =
 	{mais} plus |
 	{menos} minus;
 	
+logica = {ou} or |
+	    {xor} xor;
+
+	
 comparacao = 
 			{igual} equal |
 			{diferente} not_equal |
@@ -212,16 +216,95 @@ exp5 =
 	{var} var ;
 			
 exp_logica1 = 
-			{exp_comparacao} exp_comparacao |
-			{ou} exp_logica2 or exp_logica1 |
-			{xor} exp_logica2 xor exp_logica1 |
+			{or} exp_logica2 or exp_logica1 |
 			{exp_logica2} exp_logica2;
 
 exp_logica2 = 
-			{e} exp_logica3 and exp_logica2 |
+			{xor} exp_logica3 xor exp_logica2 |
 			{exp_logica3} exp_logica3;
 
 exp_logica3 = 
+<<<<<<< HEAD
 			{not} not exp_logica1 |
 			{exp_logica1} exp_logica1;
 */
+=======
+			{or} exp_logica4 or exp_logica3 |
+			{exp_logica3} exp_logica4;
+
+exp_logica4 = 
+			{not} not exp_logica4 |
+			{exp4} exp_comparacao;
+			
+
+			
+/* Gramatica Java Adaptada			
+			
+			
+unary_expression =
+//    {plus} plus unary_expression |
+    {minus} minus unary_expression |
+    {unary_expression_not_plus_minus} unary_expression_not_plus_minus;			
+			
+unary_expression_not_plus_minus =
+    {postfix_expression} postfix_expression |
+    {complement} not unary_expression |
+	{cast_expression} l_par expression r_par unary_expression_not_plus_minus;
+			
+postfix_expression =
+	{valor} valor |
+	{var} var ;	
+			
+	expression = assignment_expression;
+
+	constant_expression = expression;		
+
+	multiplicative_expression =
+    {unary_expression} unary_expression |
+    {star} multiplicative_expression star unary_expression |
+    {div} multiplicative_expression bar unary_expression ;
+	
+	additive_expression =
+    {multiplicative_expression} multiplicative_expression |
+    {plus} additive_expression plus multiplicative_expression |
+    {minus} additive_expression minus multiplicative_expression;
+	
+	relational_expression =
+    {sadditive_expression} additive_expression |
+    {lt} relational_expression less additive_expression |
+    {gt} relational_expression greater additive_expression |
+    {lteq} relational_expression l_equal additive_expression |
+    {gteq} relational_expression g_equal additive_expression ;
+	
+equality_expression =
+    {relational_expression} relational_expression |
+    {eq} equality_expression equal relational_expression |
+    {neq} equality_expression not_equal relational_expression;
+	
+and_expression =
+    {equality_expression} equality_expression |
+	{and_expression} and_expression and equality_expression;
+
+xor_expression =
+    {and_expression} and_expression |
+    {exclusive_or_expression} xor_expression xor and_expression;
+
+or_expression =
+    {exclusive_or_expression} xor_expression |
+    {inclusive_or_expression} or_expression or xor_expression;
+
+assignment_expression =
+    {or_expression} conditional_expression |
+    {assignment} assignment;
+
+assignment =
+    id l_arrow assignment_expression;
+			
+			
+*/			
+			
+			
+			
+			
+			
+>>>>>>> 25528dbb2271da42fabe12864a4f66f36ea0ce3e
