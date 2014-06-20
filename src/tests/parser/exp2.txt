@@ -1,0 +1,4 @@
+programa hue 
+inicio 
+2 + 2 = 0
+fim.

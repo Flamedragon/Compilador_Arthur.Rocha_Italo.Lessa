@@ -10,7 +10,7 @@ public final class APrograma extends PPrograma
     private TProgram _program_;
     private TId _id_;
     private TBegin _begin_;
-    private PExp _exp_;
+    private PExp1 _exp1_;
     private TEnd _end_;
     private TDot _dot_;
 
@@ -23,7 +23,7 @@ public final class APrograma extends PPrograma
         @SuppressWarnings("hiding") TProgram _program_,
         @SuppressWarnings("hiding") TId _id_,
         @SuppressWarnings("hiding") TBegin _begin_,
-        @SuppressWarnings("hiding") PExp _exp_,
+        @SuppressWarnings("hiding") PExp1 _exp1_,
         @SuppressWarnings("hiding") TEnd _end_,
         @SuppressWarnings("hiding") TDot _dot_)
     {
@@ -34,7 +34,7 @@ public final class APrograma extends PPrograma
 
         setBegin(_begin_);
 
-        setExp(_exp_);
+        setExp1(_exp1_);
 
         setEnd(_end_);
 
@@ -49,7 +49,7 @@ public final class APrograma extends PPrograma
             cloneNode(this._program_),
             cloneNode(this._id_),
             cloneNode(this._begin_),
-            cloneNode(this._exp_),
+            cloneNode(this._exp1_),
             cloneNode(this._end_),
             cloneNode(this._dot_));
     }
@@ -135,16 +135,16 @@ public final class APrograma extends PPrograma
         this._begin_ = node;
     }
 
-    public PExp getExp()
+    public PExp1 getExp1()
     {
-        return this._exp_;
+        return this._exp1_;
     }
 
-    public void setExp(PExp node)
+    public void setExp1(PExp1 node)
     {
-        if(this._exp_ != null)
+        if(this._exp1_ != null)
         {
-            this._exp_.parent(null);
+            this._exp1_.parent(null);
         }
 
         if(node != null)
@@ -157,7 +157,7 @@ public final class APrograma extends PPrograma
             node.parent(this);
         }
 
-        this._exp_ = node;
+        this._exp1_ = node;
     }
 
     public TEnd getEnd()
@@ -217,7 +217,7 @@ public final class APrograma extends PPrograma
             + toString(this._program_)
             + toString(this._id_)
             + toString(this._begin_)
-            + toString(this._exp_)
+            + toString(this._exp1_)
             + toString(this._end_)
             + toString(this._dot_);
     }
@@ -244,9 +244,9 @@ public final class APrograma extends PPrograma
             return;
         }
 
-        if(this._exp_ == child)
+        if(this._exp1_ == child)
         {
-            this._exp_ = null;
+            this._exp1_ = null;
             return;
         }
 
@@ -287,9 +287,9 @@ public final class APrograma extends PPrograma
             return;
         }
 
-        if(this._exp_ == oldChild)
+        if(this._exp1_ == oldChild)
         {
-            setExp((PExp) newChild);
+            setExp1((PExp1) newChild);
             return;
         }
 

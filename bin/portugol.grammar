@@ -84,7 +84,7 @@ Ignored Tokens
 
 Productions
 
-programa = program id begin end dot;
+programa = program id begin exp1 end dot;
 
 var = 
 	{id} id |
@@ -107,37 +107,61 @@ declaracao =
 var_semicolon = var semicolon;
 
 comando = 
-	{x} var l_arrow exp semicolon |
+	{assignment} var l_arrow exp1 semicolon |
 	{read} read l_par var comma_var* r_par semicolon ;
 	 
 
 comma_var = comma var;
 
-exp = 
-	{soma} exp soma termo |
-	{termo} termo;
+exp1 =
+	{negativo} minus exp2 |
+	{exp1} exp2;
+
+exp2 = 
+	{soma} exp2 soma exp3 |
+	{exp_comparacao} exp_comparacao |
+	{exp2} exp3 ;
+
+exp_comparacao = 
+	{comparacao} exp2 comparacao exp3 |
+	{exp_logica1} exp_logica1;
+			
+	
 soma = 
 	{mais} plus |
 	{menos} minus;
 	
-termo = 
-	{termo} termo div fator |
-	{fator} fator;
+comparacao = 
+			{igual} equal |
+			{diferente} not_equal |
+			{menor_igual} l_equal |
+			{maior_igual} g_equal |
+			{menor} less |
+			{maior} greater;
+	
+exp3 = 
+	{exp2} exp3 mult_div exp4 |
+	{exp3} exp4;
+	
+mult_div = 
+		{mult} star |
+		{div} bar;
 
-div = bar;
-
-fator = 
-	{fator} fator mult elem |
-	{elem} elem;
-
-mult = star;
-
-elem = 
-	{parenteses_exp} l_par exp r_par |
+exp4 = 
+	{parenteses_exp} l_par exp1 r_par |
 	{valor} valor |
-	{var} var |
-	{exp_logica} exp_logica;
-	
-exp_logica = bar;
-	
-	
+	{var} var ;
+			
+exp_logica1 = 
+			{ou} exp_logica1 or exp_logica2 |
+			{xor} exp_logica1 xor exp_logica2 |
+			{exp_logica2} exp_logica2;
+
+exp_logica2 = 
+			{e} exp_logica2 and exp_logica3 |
+			{exp_logica3} exp_logica3;
+
+exp_logica3 = 
+			{not} not exp_comparacao |
+			{exp4} exp_comparacao;
+

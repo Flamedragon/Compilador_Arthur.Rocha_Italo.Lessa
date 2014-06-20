@@ -147,7 +147,7 @@ public class AnalysisAdapter implements Analysis
     }
 
     @Override
-    public void caseAXComando(AXComando node)
+    public void caseAAssignmentComando(AAssignmentComando node)
     {
         defaultCase(node);
     }
@@ -165,13 +165,43 @@ public class AnalysisAdapter implements Analysis
     }
 
     @Override
-    public void caseASomaExp(ASomaExp node)
+    public void caseANegativoExp1(ANegativoExp1 node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseATermoExp(ATermoExp node)
+    public void caseAExp1Exp1(AExp1Exp1 node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseASomaExp2(ASomaExp2 node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAExpComparacaoExp2(AExpComparacaoExp2 node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAExp2Exp2(AExp2Exp2 node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAComparacaoExpComparacao(AComparacaoExpComparacao node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAExpLogica1ExpComparacao(AExpLogica1ExpComparacao node)
     {
         defaultCase(node);
     }
@@ -189,67 +219,121 @@ public class AnalysisAdapter implements Analysis
     }
 
     @Override
-    public void caseATermoTermo(ATermoTermo node)
+    public void caseAIgualComparacao(AIgualComparacao node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseAFatorTermo(AFatorTermo node)
+    public void caseADiferenteComparacao(ADiferenteComparacao node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseADiv(ADiv node)
+    public void caseAMenorIgualComparacao(AMenorIgualComparacao node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseAFatorFator(AFatorFator node)
+    public void caseAMaiorIgualComparacao(AMaiorIgualComparacao node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseAElemFator(AElemFator node)
+    public void caseAMenorComparacao(AMenorComparacao node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseAMult(AMult node)
+    public void caseAMaiorComparacao(AMaiorComparacao node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseAParentesesExpElem(AParentesesExpElem node)
+    public void caseAExp2Exp3(AExp2Exp3 node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseAValorElem(AValorElem node)
+    public void caseAExp3Exp3(AExp3Exp3 node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseAVarElem(AVarElem node)
+    public void caseAMultMultDiv(AMultMultDiv node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseAExpLogicaElem(AExpLogicaElem node)
+    public void caseADivMultDiv(ADivMultDiv node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseAExpLogica(AExpLogica node)
+    public void caseAParentesesExpExp4(AParentesesExpExp4 node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAValorExp4(AValorExp4 node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAVarExp4(AVarExp4 node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAOuExpLogica1(AOuExpLogica1 node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAXorExpLogica1(AXorExpLogica1 node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAExpLogica2ExpLogica1(AExpLogica2ExpLogica1 node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAEExpLogica2(AEExpLogica2 node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAExpLogica3ExpLogica2(AExpLogica3ExpLogica2 node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseANotExpLogica3(ANotExpLogica3 node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAExp4ExpLogica3(AExp4ExpLogica3 node)
     {
         defaultCase(node);
     }
