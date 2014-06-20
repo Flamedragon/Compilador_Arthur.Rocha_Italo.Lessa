@@ -8,7 +8,7 @@ import portugol.analysis.*;
 public final class ANotExpLogica3 extends PExpLogica3
 {
     private TNot _not_;
-    private PExpComparacao _expComparacao_;
+    private PExp4 _exp4_;
 
     public ANotExpLogica3()
     {
@@ -17,12 +17,12 @@ public final class ANotExpLogica3 extends PExpLogica3
 
     public ANotExpLogica3(
         @SuppressWarnings("hiding") TNot _not_,
-        @SuppressWarnings("hiding") PExpComparacao _expComparacao_)
+        @SuppressWarnings("hiding") PExp4 _exp4_)
     {
         // Constructor
         setNot(_not_);
 
-        setExpComparacao(_expComparacao_);
+        setExp4(_exp4_);
 
     }
 
@@ -31,7 +31,7 @@ public final class ANotExpLogica3 extends PExpLogica3
     {
         return new ANotExpLogica3(
             cloneNode(this._not_),
-            cloneNode(this._expComparacao_));
+            cloneNode(this._exp4_));
     }
 
     @Override
@@ -65,16 +65,16 @@ public final class ANotExpLogica3 extends PExpLogica3
         this._not_ = node;
     }
 
-    public PExpComparacao getExpComparacao()
+    public PExp4 getExp4()
     {
-        return this._expComparacao_;
+        return this._exp4_;
     }
 
-    public void setExpComparacao(PExpComparacao node)
+    public void setExp4(PExp4 node)
     {
-        if(this._expComparacao_ != null)
+        if(this._exp4_ != null)
         {
-            this._expComparacao_.parent(null);
+            this._exp4_.parent(null);
         }
 
         if(node != null)
@@ -87,7 +87,7 @@ public final class ANotExpLogica3 extends PExpLogica3
             node.parent(this);
         }
 
-        this._expComparacao_ = node;
+        this._exp4_ = node;
     }
 
     @Override
@@ -95,7 +95,7 @@ public final class ANotExpLogica3 extends PExpLogica3
     {
         return ""
             + toString(this._not_)
-            + toString(this._expComparacao_);
+            + toString(this._exp4_);
     }
 
     @Override
@@ -108,9 +108,9 @@ public final class ANotExpLogica3 extends PExpLogica3
             return;
         }
 
-        if(this._expComparacao_ == child)
+        if(this._exp4_ == child)
         {
-            this._expComparacao_ = null;
+            this._exp4_ = null;
             return;
         }
 
@@ -127,9 +127,9 @@ public final class ANotExpLogica3 extends PExpLogica3
             return;
         }
 
-        if(this._expComparacao_ == oldChild)
+        if(this._exp4_ == oldChild)
         {
-            setExpComparacao((PExpComparacao) newChild);
+            setExp4((PExp4) newChild);
             return;
         }
 

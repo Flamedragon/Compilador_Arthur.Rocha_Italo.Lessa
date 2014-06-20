@@ -445,29 +445,33 @@ public class DepthFirstAdapter extends AnalysisAdapter
         outACommaVar(node);
     }
 
-    public void inANegativoExp1(ANegativoExp1 node)
+    public void inAComparacaoExp1(AComparacaoExp1 node)
     {
         defaultIn(node);
     }
 
-    public void outANegativoExp1(ANegativoExp1 node)
+    public void outAComparacaoExp1(AComparacaoExp1 node)
     {
         defaultOut(node);
     }
 
     @Override
-    public void caseANegativoExp1(ANegativoExp1 node)
+    public void caseAComparacaoExp1(AComparacaoExp1 node)
     {
-        inANegativoExp1(node);
-        if(node.getMinus() != null)
+        inAComparacaoExp1(node);
+        if(node.getExp1() != null)
         {
-            node.getMinus().apply(this);
+            node.getExp1().apply(this);
+        }
+        if(node.getComparacao() != null)
+        {
+            node.getComparacao().apply(this);
         }
         if(node.getExp2() != null)
         {
             node.getExp2().apply(this);
         }
-        outANegativoExp1(node);
+        outAComparacaoExp1(node);
     }
 
     public void inAExp1Exp1(AExp1Exp1 node)
@@ -1090,9 +1094,9 @@ public class DepthFirstAdapter extends AnalysisAdapter
         {
             node.getNot().apply(this);
         }
-        if(node.getExpComparacao() != null)
+        if(node.getExp4() != null)
         {
-            node.getExpComparacao().apply(this);
+            node.getExp4().apply(this);
         }
         outANotExpLogica3(node);
     }
@@ -1111,9 +1115,9 @@ public class DepthFirstAdapter extends AnalysisAdapter
     public void caseAExp4ExpLogica3(AExp4ExpLogica3 node)
     {
         inAExp4ExpLogica3(node);
-        if(node.getExpComparacao() != null)
+        if(node.getExp4() != null)
         {
-            node.getExpComparacao().apply(this);
+            node.getExp4().apply(this);
         }
         outAExp4ExpLogica3(node);
     }

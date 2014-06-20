@@ -165,7 +165,7 @@ public class AnalysisAdapter implements Analysis
     }
 
     @Override
-    public void caseANegativoExp1(ANegativoExp1 node)
+    public void caseAComparacaoExp1(AComparacaoExp1 node)
     {
         defaultCase(node);
     }

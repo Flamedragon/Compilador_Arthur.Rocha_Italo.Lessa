@@ -27,7 +27,7 @@ public interface Analysis extends Switch
     void caseAAssignmentComando(AAssignmentComando node);
     void caseAReadComando(AReadComando node);
     void caseACommaVar(ACommaVar node);
-    void caseANegativoExp1(ANegativoExp1 node);
+    void caseAComparacaoExp1(AComparacaoExp1 node);
     void caseAExp1Exp1(AExp1Exp1 node);
     void caseASomaExp2(ASomaExp2 node);
     void caseAExpComparacaoExp2(AExpComparacaoExp2 node);

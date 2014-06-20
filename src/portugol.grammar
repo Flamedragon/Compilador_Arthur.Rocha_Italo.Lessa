@@ -114,7 +114,7 @@ comando =
 comma_var = comma var;
 
 exp1 =
-	{negativo} minus exp2 |
+	{comparacao} exp1 comparacao exp2 |
 	{exp1} exp2;
 
 exp2 = 
@@ -160,8 +160,8 @@ exp_logica1 =
 exp_logica2 = 
 			{e} exp_logica2 and exp_logica3 |
 			{exp_logica3} exp_logica3;
- 
+
 exp_logica3 = 
-			{not} not exp_comparacao |
-			{exp4} exp_comparacao;
+			{not} not exp4 |
+			{exp4} exp4;
 
