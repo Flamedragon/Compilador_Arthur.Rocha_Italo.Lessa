@@ -5,46 +5,46 @@ package portugol.node;
 import portugol.analysis.*;
 
 @SuppressWarnings("nls")
-public final class AValorExp4 extends PExp4
+public final class AExpLogica3ExpLogica3 extends PExpLogica3
 {
-    private PValor _valor_;
+    private PExpLogica4 _expLogica4_;
 
-    public AValorExp4()
+    public AExpLogica3ExpLogica3()
     {
         // Constructor
     }
 
-    public AValorExp4(
-        @SuppressWarnings("hiding") PValor _valor_)
+    public AExpLogica3ExpLogica3(
+        @SuppressWarnings("hiding") PExpLogica4 _expLogica4_)
     {
         // Constructor
-        setValor(_valor_);
+        setExpLogica4(_expLogica4_);
 
     }
 
     @Override
     public Object clone()
     {
-        return new AValorExp4(
-            cloneNode(this._valor_));
+        return new AExpLogica3ExpLogica3(
+            cloneNode(this._expLogica4_));
     }
 
     @Override
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseAValorExp4(this);
+        ((Analysis) sw).caseAExpLogica3ExpLogica3(this);
     }
 
-    public PValor getValor()
+    public PExpLogica4 getExpLogica4()
     {
-        return this._valor_;
+        return this._expLogica4_;
     }
 
-    public void setValor(PValor node)
+    public void setExpLogica4(PExpLogica4 node)
     {
-        if(this._valor_ != null)
+        if(this._expLogica4_ != null)
         {
-            this._valor_.parent(null);
+            this._expLogica4_.parent(null);
         }
 
         if(node != null)
@@ -57,23 +57,23 @@ public final class AValorExp4 extends PExp4
             node.parent(this);
         }
 
-        this._valor_ = node;
+        this._expLogica4_ = node;
     }
 
     @Override
     public String toString()
     {
         return ""
-            + toString(this._valor_);
+            + toString(this._expLogica4_);
     }
 
     @Override
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._valor_ == child)
+        if(this._expLogica4_ == child)
         {
-            this._valor_ = null;
+            this._expLogica4_ = null;
             return;
         }
 
@@ -84,9 +84,9 @@ public final class AValorExp4 extends PExp4
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._valor_ == oldChild)
+        if(this._expLogica4_ == oldChild)
         {
-            setValor((PValor) newChild);
+            setExpLogica4((PExpLogica4) newChild);
             return;
         }
 

@@ -5,56 +5,56 @@ package portugol.node;
 import portugol.analysis.*;
 
 @SuppressWarnings("nls")
-public final class AXorExpLogica1 extends PExpLogica1
+public final class AXorExpLogica2 extends PExpLogica2
 {
-    private PExpLogica2 _expLogica2_;
+    private PExpLogica3 _expLogica3_;
     private TXor _xor_;
-    private PExpLogica1 _expLogica1_;
+    private PExpLogica2 _expLogica2_;
 
-    public AXorExpLogica1()
+    public AXorExpLogica2()
     {
         // Constructor
     }
 
-    public AXorExpLogica1(
-        @SuppressWarnings("hiding") PExpLogica2 _expLogica2_,
+    public AXorExpLogica2(
+        @SuppressWarnings("hiding") PExpLogica3 _expLogica3_,
         @SuppressWarnings("hiding") TXor _xor_,
-        @SuppressWarnings("hiding") PExpLogica1 _expLogica1_)
+        @SuppressWarnings("hiding") PExpLogica2 _expLogica2_)
     {
         // Constructor
-        setExpLogica2(_expLogica2_);
+        setExpLogica3(_expLogica3_);
 
         setXor(_xor_);
 
-        setExpLogica1(_expLogica1_);
+        setExpLogica2(_expLogica2_);
 
     }
 
     @Override
     public Object clone()
     {
-        return new AXorExpLogica1(
-            cloneNode(this._expLogica2_),
+        return new AXorExpLogica2(
+            cloneNode(this._expLogica3_),
             cloneNode(this._xor_),
-            cloneNode(this._expLogica1_));
+            cloneNode(this._expLogica2_));
     }
 
     @Override
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseAXorExpLogica1(this);
+        ((Analysis) sw).caseAXorExpLogica2(this);
     }
 
-    public PExpLogica2 getExpLogica2()
+    public PExpLogica3 getExpLogica3()
     {
-        return this._expLogica2_;
+        return this._expLogica3_;
     }
 
-    public void setExpLogica2(PExpLogica2 node)
+    public void setExpLogica3(PExpLogica3 node)
     {
-        if(this._expLogica2_ != null)
+        if(this._expLogica3_ != null)
         {
-            this._expLogica2_.parent(null);
+            this._expLogica3_.parent(null);
         }
 
         if(node != null)
@@ -67,7 +67,7 @@ public final class AXorExpLogica1 extends PExpLogica1
             node.parent(this);
         }
 
-        this._expLogica2_ = node;
+        this._expLogica3_ = node;
     }
 
     public TXor getXor()
@@ -95,16 +95,16 @@ public final class AXorExpLogica1 extends PExpLogica1
         this._xor_ = node;
     }
 
-    public PExpLogica1 getExpLogica1()
+    public PExpLogica2 getExpLogica2()
     {
-        return this._expLogica1_;
+        return this._expLogica2_;
     }
 
-    public void setExpLogica1(PExpLogica1 node)
+    public void setExpLogica2(PExpLogica2 node)
     {
-        if(this._expLogica1_ != null)
+        if(this._expLogica2_ != null)
         {
-            this._expLogica1_.parent(null);
+            this._expLogica2_.parent(null);
         }
 
         if(node != null)
@@ -117,25 +117,25 @@ public final class AXorExpLogica1 extends PExpLogica1
             node.parent(this);
         }
 
-        this._expLogica1_ = node;
+        this._expLogica2_ = node;
     }
 
     @Override
     public String toString()
     {
         return ""
-            + toString(this._expLogica2_)
+            + toString(this._expLogica3_)
             + toString(this._xor_)
-            + toString(this._expLogica1_);
+            + toString(this._expLogica2_);
     }
 
     @Override
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._expLogica2_ == child)
+        if(this._expLogica3_ == child)
         {
-            this._expLogica2_ = null;
+            this._expLogica3_ = null;
             return;
         }
 
@@ -145,9 +145,9 @@ public final class AXorExpLogica1 extends PExpLogica1
             return;
         }
 
-        if(this._expLogica1_ == child)
+        if(this._expLogica2_ == child)
         {
-            this._expLogica1_ = null;
+            this._expLogica2_ = null;
             return;
         }
 
@@ -158,9 +158,9 @@ public final class AXorExpLogica1 extends PExpLogica1
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._expLogica2_ == oldChild)
+        if(this._expLogica3_ == oldChild)
         {
-            setExpLogica2((PExpLogica2) newChild);
+            setExpLogica3((PExpLogica3) newChild);
             return;
         }
 
@@ -170,9 +170,9 @@ public final class AXorExpLogica1 extends PExpLogica1
             return;
         }
 
-        if(this._expLogica1_ == oldChild)
+        if(this._expLogica2_ == oldChild)
         {
-            setExpLogica1((PExpLogica1) newChild);
+            setExpLogica2((PExpLogica2) newChild);
             return;
         }
 

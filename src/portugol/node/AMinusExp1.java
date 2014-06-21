@@ -5,51 +5,51 @@ package portugol.node;
 import portugol.analysis.*;
 
 @SuppressWarnings("nls")
-public final class ANotExpLogica3 extends PExpLogica3
+public final class AMinusExp1 extends PExp1
 {
-    private TNot _not_;
-    private PExpLogica3 _expLogica3_;
+    private TMinus _minus_;
+    private PExp1 _exp1_;
 
-    public ANotExpLogica3()
+    public AMinusExp1()
     {
         // Constructor
     }
 
-    public ANotExpLogica3(
-        @SuppressWarnings("hiding") TNot _not_,
-        @SuppressWarnings("hiding") PExpLogica3 _expLogica3_)
+    public AMinusExp1(
+        @SuppressWarnings("hiding") TMinus _minus_,
+        @SuppressWarnings("hiding") PExp1 _exp1_)
     {
         // Constructor
-        setNot(_not_);
+        setMinus(_minus_);
 
-        setExpLogica3(_expLogica3_);
+        setExp1(_exp1_);
 
     }
 
     @Override
     public Object clone()
     {
-        return new ANotExpLogica3(
-            cloneNode(this._not_),
-            cloneNode(this._expLogica3_));
+        return new AMinusExp1(
+            cloneNode(this._minus_),
+            cloneNode(this._exp1_));
     }
 
     @Override
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseANotExpLogica3(this);
+        ((Analysis) sw).caseAMinusExp1(this);
     }
 
-    public TNot getNot()
+    public TMinus getMinus()
     {
-        return this._not_;
+        return this._minus_;
     }
 
-    public void setNot(TNot node)
+    public void setMinus(TMinus node)
     {
-        if(this._not_ != null)
+        if(this._minus_ != null)
         {
-            this._not_.parent(null);
+            this._minus_.parent(null);
         }
 
         if(node != null)
@@ -62,19 +62,19 @@ public final class ANotExpLogica3 extends PExpLogica3
             node.parent(this);
         }
 
-        this._not_ = node;
+        this._minus_ = node;
     }
 
-    public PExpLogica3 getExpLogica3()
+    public PExp1 getExp1()
     {
-        return this._expLogica3_;
+        return this._exp1_;
     }
 
-    public void setExpLogica3(PExpLogica3 node)
+    public void setExp1(PExp1 node)
     {
-        if(this._expLogica3_ != null)
+        if(this._exp1_ != null)
         {
-            this._expLogica3_.parent(null);
+            this._exp1_.parent(null);
         }
 
         if(node != null)
@@ -87,30 +87,30 @@ public final class ANotExpLogica3 extends PExpLogica3
             node.parent(this);
         }
 
-        this._expLogica3_ = node;
+        this._exp1_ = node;
     }
 
     @Override
     public String toString()
     {
         return ""
-            + toString(this._not_)
-            + toString(this._expLogica3_);
+            + toString(this._minus_)
+            + toString(this._exp1_);
     }
 
     @Override
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._not_ == child)
+        if(this._minus_ == child)
         {
-            this._not_ = null;
+            this._minus_ = null;
             return;
         }
 
-        if(this._expLogica3_ == child)
+        if(this._exp1_ == child)
         {
-            this._expLogica3_ = null;
+            this._exp1_ = null;
             return;
         }
 
@@ -121,15 +121,15 @@ public final class ANotExpLogica3 extends PExpLogica3
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._not_ == oldChild)
+        if(this._minus_ == oldChild)
         {
-            setNot((TNot) newChild);
+            setMinus((TMinus) newChild);
             return;
         }
 
-        if(this._expLogica3_ == oldChild)
+        if(this._exp1_ == oldChild)
         {
-            setExpLogica3((PExpLogica3) newChild);
+            setExp1((PExp1) newChild);
             return;
         }
 

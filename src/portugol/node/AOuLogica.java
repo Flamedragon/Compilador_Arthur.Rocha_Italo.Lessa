@@ -5,46 +5,46 @@ package portugol.node;
 import portugol.analysis.*;
 
 @SuppressWarnings("nls")
-public final class AExpComparacaoExp2 extends PExp2
+public final class AOuLogica extends PLogica
 {
-    private PExpComparacao _expComparacao_;
+    private TOr _or_;
 
-    public AExpComparacaoExp2()
+    public AOuLogica()
     {
         // Constructor
     }
 
-    public AExpComparacaoExp2(
-        @SuppressWarnings("hiding") PExpComparacao _expComparacao_)
+    public AOuLogica(
+        @SuppressWarnings("hiding") TOr _or_)
     {
         // Constructor
-        setExpComparacao(_expComparacao_);
+        setOr(_or_);
 
     }
 
     @Override
     public Object clone()
     {
-        return new AExpComparacaoExp2(
-            cloneNode(this._expComparacao_));
+        return new AOuLogica(
+            cloneNode(this._or_));
     }
 
     @Override
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseAExpComparacaoExp2(this);
+        ((Analysis) sw).caseAOuLogica(this);
     }
 
-    public PExpComparacao getExpComparacao()
+    public TOr getOr()
     {
-        return this._expComparacao_;
+        return this._or_;
     }
 
-    public void setExpComparacao(PExpComparacao node)
+    public void setOr(TOr node)
     {
-        if(this._expComparacao_ != null)
+        if(this._or_ != null)
         {
-            this._expComparacao_.parent(null);
+            this._or_.parent(null);
         }
 
         if(node != null)
@@ -57,23 +57,23 @@ public final class AExpComparacaoExp2 extends PExp2
             node.parent(this);
         }
 
-        this._expComparacao_ = node;
+        this._or_ = node;
     }
 
     @Override
     public String toString()
     {
         return ""
-            + toString(this._expComparacao_);
+            + toString(this._or_);
     }
 
     @Override
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._expComparacao_ == child)
+        if(this._or_ == child)
         {
-            this._expComparacao_ = null;
+            this._or_ = null;
             return;
         }
 
@@ -84,9 +84,9 @@ public final class AExpComparacaoExp2 extends PExp2
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._expComparacao_ == oldChild)
+        if(this._or_ == oldChild)
         {
-            setExpComparacao((PExpComparacao) newChild);
+            setOr((TOr) newChild);
             return;
         }
 

@@ -5,46 +5,46 @@ package portugol.node;
 import portugol.analysis.*;
 
 @SuppressWarnings("nls")
-public final class AExpLogica1ExpComparacao extends PExpComparacao
+public final class AXorLogica extends PLogica
 {
-    private PExpLogica1 _expLogica1_;
+    private TXor _xor_;
 
-    public AExpLogica1ExpComparacao()
+    public AXorLogica()
     {
         // Constructor
     }
 
-    public AExpLogica1ExpComparacao(
-        @SuppressWarnings("hiding") PExpLogica1 _expLogica1_)
+    public AXorLogica(
+        @SuppressWarnings("hiding") TXor _xor_)
     {
         // Constructor
-        setExpLogica1(_expLogica1_);
+        setXor(_xor_);
 
     }
 
     @Override
     public Object clone()
     {
-        return new AExpLogica1ExpComparacao(
-            cloneNode(this._expLogica1_));
+        return new AXorLogica(
+            cloneNode(this._xor_));
     }
 
     @Override
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseAExpLogica1ExpComparacao(this);
+        ((Analysis) sw).caseAXorLogica(this);
     }
 
-    public PExpLogica1 getExpLogica1()
+    public TXor getXor()
     {
-        return this._expLogica1_;
+        return this._xor_;
     }
 
-    public void setExpLogica1(PExpLogica1 node)
+    public void setXor(TXor node)
     {
-        if(this._expLogica1_ != null)
+        if(this._xor_ != null)
         {
-            this._expLogica1_.parent(null);
+            this._xor_.parent(null);
         }
 
         if(node != null)
@@ -57,23 +57,23 @@ public final class AExpLogica1ExpComparacao extends PExpComparacao
             node.parent(this);
         }
 
-        this._expLogica1_ = node;
+        this._xor_ = node;
     }
 
     @Override
     public String toString()
     {
         return ""
-            + toString(this._expLogica1_);
+            + toString(this._xor_);
     }
 
     @Override
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._expLogica1_ == child)
+        if(this._xor_ == child)
         {
-            this._expLogica1_ = null;
+            this._xor_ = null;
             return;
         }
 
@@ -84,9 +84,9 @@ public final class AExpLogica1ExpComparacao extends PExpComparacao
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._expLogica1_ == oldChild)
+        if(this._xor_ == oldChild)
         {
-            setExpLogica1((PExpLogica1) newChild);
+            setXor((TXor) newChild);
             return;
         }
 

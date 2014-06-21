@@ -108,25 +108,35 @@ var_semicolon = var semicolon;
 
 comando = 
 	{assignment} var l_arrow exp1 semicolon |
-	{read} read l_par var comma_var* r_par semicolon ;
-	 
+	{read} read l_par var comma_var* r_par semicolon |
+ 	{write} write l_par exp1 comma_exp* r_par semicolon |
+ 	{if} if l_par exp_logica1 r_par then comando_semicolon+ else_statement* end_if semicolon |
+ 	{evaluate} evaluate l_par exp1 r_par evaluate_body* else_evaluate+ end_evaluate semicolon |
+ 	{while} while l_par exp_logica1 r_par do comando_semicolon+ end_while semicolon |
+ 	{repeat} repeat comando_semicolon+ until l_par exp_logica1 r_par semicolon |
+ 	{for} for var of [begin]:n_int until [end]:n_int do comando_semicolon+ end_for semicolon |
+ 	{for_step} for var of [begin]:n_int step [n_steps]:n_int until [end]:n_int do comando_semicolon+ end_for semicolon;
+ 	 
+else_statement = else comando_semicolon+ ;
+evaluate_body = case valor colon comando_semicolon+ ;
+else_evaluate = else colon comando_semicolon+ ; 
 
 comma_var = comma var;
+comma_exp = comma exp1;
+comando_semicolon = comando semicolon;
 
-exp1 =
-	{negativo} minus exp2 |
-	{exp1} exp2;
+exp1 = 
+	{minus} minus exp1 |
+	{exp2} exp2 |
+	{exp_logica1} exp_logica1 ;
+	
+exp_comparacao = exp2 comparacao exp1;
 
 exp2 = 
-	{soma} exp2 soma exp3 |
-	{exp_comparacao} exp_comparacao |
+	{soma} exp3 soma exp2 |
 	{exp2} exp3 ;
 
-exp_comparacao = 
-	{comparacao} exp2 comparacao exp3 |
-	{exp_logica1} exp_logica1;
-			
-	
+
 soma = 
 	{mais} plus |
 	{menos} minus;
@@ -140,7 +150,7 @@ comparacao =
 			{maior} greater;
 	
 exp3 = 
-	{exp2} exp3 mult_div exp4 |
+	{exp2} exp4 mult_div exp3 |
 	{exp3} exp4;
 	
 mult_div = 
@@ -149,19 +159,23 @@ mult_div =
 
 exp4 = 
 	{parenteses_exp} l_par exp1 r_par |
+	{exp5} exp5;
+	
+exp5 =
 	{valor} valor |
 	{var} var ;
 			
 exp_logica1 = 
-			{ou} exp_logica1 or exp_logica2 |
-			{xor} exp_logica1 xor exp_logica2 |
+			{exp_comparacao} exp_comparacao |
+			{ou} exp_logica2 or exp_logica1 |
+			{xor} exp_logica2 xor exp_logica1 |
 			{exp_logica2} exp_logica2;
 
 exp_logica2 = 
-			{e} exp_logica2 and exp_logica3 |
+			{e} exp_logica3 and exp_logica2 |
 			{exp_logica3} exp_logica3;
 
 exp_logica3 = 
-			{not} not exp_comparacao |
-			{exp4} exp_comparacao;
+			{not} not exp_logica1 |
+			{exp_logica1} exp_logica1;
 

@@ -5,44 +5,44 @@ package portugol.node;
 import portugol.analysis.*;
 
 @SuppressWarnings("nls")
-public final class AComparacaoExpComparacao extends PExpComparacao
+public final class AExpComparacao extends PExpComparacao
 {
     private PExp2 _exp2_;
     private PComparacao _comparacao_;
-    private PExp3 _exp3_;
+    private PExp1 _exp1_;
 
-    public AComparacaoExpComparacao()
+    public AExpComparacao()
     {
         // Constructor
     }
 
-    public AComparacaoExpComparacao(
+    public AExpComparacao(
         @SuppressWarnings("hiding") PExp2 _exp2_,
         @SuppressWarnings("hiding") PComparacao _comparacao_,
-        @SuppressWarnings("hiding") PExp3 _exp3_)
+        @SuppressWarnings("hiding") PExp1 _exp1_)
     {
         // Constructor
         setExp2(_exp2_);
 
         setComparacao(_comparacao_);
 
-        setExp3(_exp3_);
+        setExp1(_exp1_);
 
     }
 
     @Override
     public Object clone()
     {
-        return new AComparacaoExpComparacao(
+        return new AExpComparacao(
             cloneNode(this._exp2_),
             cloneNode(this._comparacao_),
-            cloneNode(this._exp3_));
+            cloneNode(this._exp1_));
     }
 
     @Override
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseAComparacaoExpComparacao(this);
+        ((Analysis) sw).caseAExpComparacao(this);
     }
 
     public PExp2 getExp2()
@@ -95,16 +95,16 @@ public final class AComparacaoExpComparacao extends PExpComparacao
         this._comparacao_ = node;
     }
 
-    public PExp3 getExp3()
+    public PExp1 getExp1()
     {
-        return this._exp3_;
+        return this._exp1_;
     }
 
-    public void setExp3(PExp3 node)
+    public void setExp1(PExp1 node)
     {
-        if(this._exp3_ != null)
+        if(this._exp1_ != null)
         {
-            this._exp3_.parent(null);
+            this._exp1_.parent(null);
         }
 
         if(node != null)
@@ -117,7 +117,7 @@ public final class AComparacaoExpComparacao extends PExpComparacao
             node.parent(this);
         }
 
-        this._exp3_ = node;
+        this._exp1_ = node;
     }
 
     @Override
@@ -126,7 +126,7 @@ public final class AComparacaoExpComparacao extends PExpComparacao
         return ""
             + toString(this._exp2_)
             + toString(this._comparacao_)
-            + toString(this._exp3_);
+            + toString(this._exp1_);
     }
 
     @Override
@@ -145,9 +145,9 @@ public final class AComparacaoExpComparacao extends PExpComparacao
             return;
         }
 
-        if(this._exp3_ == child)
+        if(this._exp1_ == child)
         {
-            this._exp3_ = null;
+            this._exp1_ = null;
             return;
         }
 
@@ -170,9 +170,9 @@ public final class AComparacaoExpComparacao extends PExpComparacao
             return;
         }
 
-        if(this._exp3_ == oldChild)
+        if(this._exp1_ == oldChild)
         {
-            setExp3((PExp3) newChild);
+            setExp1((PExp1) newChild);
             return;
         }
 

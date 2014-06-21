@@ -5,46 +5,46 @@ package portugol.node;
 import portugol.analysis.*;
 
 @SuppressWarnings("nls")
-public final class AVarExp4 extends PExp4
+public final class AValorExp5 extends PExp5
 {
-    private PVar _var_;
+    private PValor _valor_;
 
-    public AVarExp4()
+    public AValorExp5()
     {
         // Constructor
     }
 
-    public AVarExp4(
-        @SuppressWarnings("hiding") PVar _var_)
+    public AValorExp5(
+        @SuppressWarnings("hiding") PValor _valor_)
     {
         // Constructor
-        setVar(_var_);
+        setValor(_valor_);
 
     }
 
     @Override
     public Object clone()
     {
-        return new AVarExp4(
-            cloneNode(this._var_));
+        return new AValorExp5(
+            cloneNode(this._valor_));
     }
 
     @Override
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseAVarExp4(this);
+        ((Analysis) sw).caseAValorExp5(this);
     }
 
-    public PVar getVar()
+    public PValor getValor()
     {
-        return this._var_;
+        return this._valor_;
     }
 
-    public void setVar(PVar node)
+    public void setValor(PValor node)
     {
-        if(this._var_ != null)
+        if(this._valor_ != null)
         {
-            this._var_.parent(null);
+            this._valor_.parent(null);
         }
 
         if(node != null)
@@ -57,23 +57,23 @@ public final class AVarExp4 extends PExp4
             node.parent(this);
         }
 
-        this._var_ = node;
+        this._valor_ = node;
     }
 
     @Override
     public String toString()
     {
         return ""
-            + toString(this._var_);
+            + toString(this._valor_);
     }
 
     @Override
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._var_ == child)
+        if(this._valor_ == child)
         {
-            this._var_ = null;
+            this._valor_ = null;
             return;
         }
 
@@ -84,9 +84,9 @@ public final class AVarExp4 extends PExp4
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._var_ == oldChild)
+        if(this._valor_ == oldChild)
         {
-            setVar((PVar) newChild);
+            setValor((PValor) newChild);
             return;
         }
 

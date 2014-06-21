@@ -5,26 +5,26 @@ package portugol.node;
 import portugol.analysis.*;
 
 @SuppressWarnings("nls")
-public final class AXorExpLogica1 extends PExpLogica1
+public final class AOrExpLogica1 extends PExpLogica1
 {
     private PExpLogica2 _expLogica2_;
-    private TXor _xor_;
+    private TOr _or_;
     private PExpLogica1 _expLogica1_;
 
-    public AXorExpLogica1()
+    public AOrExpLogica1()
     {
         // Constructor
     }
 
-    public AXorExpLogica1(
+    public AOrExpLogica1(
         @SuppressWarnings("hiding") PExpLogica2 _expLogica2_,
-        @SuppressWarnings("hiding") TXor _xor_,
+        @SuppressWarnings("hiding") TOr _or_,
         @SuppressWarnings("hiding") PExpLogica1 _expLogica1_)
     {
         // Constructor
         setExpLogica2(_expLogica2_);
 
-        setXor(_xor_);
+        setOr(_or_);
 
         setExpLogica1(_expLogica1_);
 
@@ -33,16 +33,16 @@ public final class AXorExpLogica1 extends PExpLogica1
     @Override
     public Object clone()
     {
-        return new AXorExpLogica1(
+        return new AOrExpLogica1(
             cloneNode(this._expLogica2_),
-            cloneNode(this._xor_),
+            cloneNode(this._or_),
             cloneNode(this._expLogica1_));
     }
 
     @Override
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseAXorExpLogica1(this);
+        ((Analysis) sw).caseAOrExpLogica1(this);
     }
 
     public PExpLogica2 getExpLogica2()
@@ -70,16 +70,16 @@ public final class AXorExpLogica1 extends PExpLogica1
         this._expLogica2_ = node;
     }
 
-    public TXor getXor()
+    public TOr getOr()
     {
-        return this._xor_;
+        return this._or_;
     }
 
-    public void setXor(TXor node)
+    public void setOr(TOr node)
     {
-        if(this._xor_ != null)
+        if(this._or_ != null)
         {
-            this._xor_.parent(null);
+            this._or_.parent(null);
         }
 
         if(node != null)
@@ -92,7 +92,7 @@ public final class AXorExpLogica1 extends PExpLogica1
             node.parent(this);
         }
 
-        this._xor_ = node;
+        this._or_ = node;
     }
 
     public PExpLogica1 getExpLogica1()
@@ -125,7 +125,7 @@ public final class AXorExpLogica1 extends PExpLogica1
     {
         return ""
             + toString(this._expLogica2_)
-            + toString(this._xor_)
+            + toString(this._or_)
             + toString(this._expLogica1_);
     }
 
@@ -139,9 +139,9 @@ public final class AXorExpLogica1 extends PExpLogica1
             return;
         }
 
-        if(this._xor_ == child)
+        if(this._or_ == child)
         {
-            this._xor_ = null;
+            this._or_ = null;
             return;
         }
 
@@ -164,9 +164,9 @@ public final class AXorExpLogica1 extends PExpLogica1
             return;
         }
 
-        if(this._xor_ == oldChild)
+        if(this._or_ == oldChild)
         {
-            setXor((TXor) newChild);
+            setOr((TOr) newChild);
             return;
         }
 

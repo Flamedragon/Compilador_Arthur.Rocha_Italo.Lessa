@@ -7,9 +7,9 @@ import portugol.analysis.*;
 @SuppressWarnings("nls")
 public final class AExp2Exp3 extends PExp3
 {
-    private PExp3 _exp3_;
-    private PMultDiv _multDiv_;
     private PExp4 _exp4_;
+    private PMultDiv _multDiv_;
+    private PExp3 _exp3_;
 
     public AExp2Exp3()
     {
@@ -17,16 +17,16 @@ public final class AExp2Exp3 extends PExp3
     }
 
     public AExp2Exp3(
-        @SuppressWarnings("hiding") PExp3 _exp3_,
+        @SuppressWarnings("hiding") PExp4 _exp4_,
         @SuppressWarnings("hiding") PMultDiv _multDiv_,
-        @SuppressWarnings("hiding") PExp4 _exp4_)
+        @SuppressWarnings("hiding") PExp3 _exp3_)
     {
         // Constructor
-        setExp3(_exp3_);
+        setExp4(_exp4_);
 
         setMultDiv(_multDiv_);
 
-        setExp4(_exp4_);
+        setExp3(_exp3_);
 
     }
 
@@ -34,65 +34,15 @@ public final class AExp2Exp3 extends PExp3
     public Object clone()
     {
         return new AExp2Exp3(
-            cloneNode(this._exp3_),
+            cloneNode(this._exp4_),
             cloneNode(this._multDiv_),
-            cloneNode(this._exp4_));
+            cloneNode(this._exp3_));
     }
 
     @Override
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseAExp2Exp3(this);
-    }
-
-    public PExp3 getExp3()
-    {
-        return this._exp3_;
-    }
-
-    public void setExp3(PExp3 node)
-    {
-        if(this._exp3_ != null)
-        {
-            this._exp3_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._exp3_ = node;
-    }
-
-    public PMultDiv getMultDiv()
-    {
-        return this._multDiv_;
-    }
-
-    public void setMultDiv(PMultDiv node)
-    {
-        if(this._multDiv_ != null)
-        {
-            this._multDiv_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._multDiv_ = node;
     }
 
     public PExp4 getExp4()
@@ -120,22 +70,72 @@ public final class AExp2Exp3 extends PExp3
         this._exp4_ = node;
     }
 
+    public PMultDiv getMultDiv()
+    {
+        return this._multDiv_;
+    }
+
+    public void setMultDiv(PMultDiv node)
+    {
+        if(this._multDiv_ != null)
+        {
+            this._multDiv_.parent(null);
+        }
+
+        if(node != null)
+        {
+            if(node.parent() != null)
+            {
+                node.parent().removeChild(node);
+            }
+
+            node.parent(this);
+        }
+
+        this._multDiv_ = node;
+    }
+
+    public PExp3 getExp3()
+    {
+        return this._exp3_;
+    }
+
+    public void setExp3(PExp3 node)
+    {
+        if(this._exp3_ != null)
+        {
+            this._exp3_.parent(null);
+        }
+
+        if(node != null)
+        {
+            if(node.parent() != null)
+            {
+                node.parent().removeChild(node);
+            }
+
+            node.parent(this);
+        }
+
+        this._exp3_ = node;
+    }
+
     @Override
     public String toString()
     {
         return ""
-            + toString(this._exp3_)
+            + toString(this._exp4_)
             + toString(this._multDiv_)
-            + toString(this._exp4_);
+            + toString(this._exp3_);
     }
 
     @Override
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._exp3_ == child)
+        if(this._exp4_ == child)
         {
-            this._exp3_ = null;
+            this._exp4_ = null;
             return;
         }
 
@@ -145,9 +145,9 @@ public final class AExp2Exp3 extends PExp3
             return;
         }
 
-        if(this._exp4_ == child)
+        if(this._exp3_ == child)
         {
-            this._exp4_ = null;
+            this._exp3_ = null;
             return;
         }
 
@@ -158,9 +158,9 @@ public final class AExp2Exp3 extends PExp3
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._exp3_ == oldChild)
+        if(this._exp4_ == oldChild)
         {
-            setExp3((PExp3) newChild);
+            setExp4((PExp4) newChild);
             return;
         }
 
@@ -170,9 +170,9 @@ public final class AExp2Exp3 extends PExp3
             return;
         }
 
-        if(this._exp4_ == oldChild)
+        if(this._exp3_ == oldChild)
         {
-            setExp4((PExp4) newChild);
+            setExp3((PExp3) newChild);
             return;
         }
 

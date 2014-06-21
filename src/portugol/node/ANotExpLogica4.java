@@ -5,51 +5,51 @@ package portugol.node;
 import portugol.analysis.*;
 
 @SuppressWarnings("nls")
-public final class ANegativoExp1 extends PExp1
+public final class ANotExpLogica4 extends PExpLogica4
 {
-    private TMinus _minus_;
-    private PExp2 _exp2_;
+    private TNot _not_;
+    private PExpLogica4 _expLogica4_;
 
-    public ANegativoExp1()
+    public ANotExpLogica4()
     {
         // Constructor
     }
 
-    public ANegativoExp1(
-        @SuppressWarnings("hiding") TMinus _minus_,
-        @SuppressWarnings("hiding") PExp2 _exp2_)
+    public ANotExpLogica4(
+        @SuppressWarnings("hiding") TNot _not_,
+        @SuppressWarnings("hiding") PExpLogica4 _expLogica4_)
     {
         // Constructor
-        setMinus(_minus_);
+        setNot(_not_);
 
-        setExp2(_exp2_);
+        setExpLogica4(_expLogica4_);
 
     }
 
     @Override
     public Object clone()
     {
-        return new ANegativoExp1(
-            cloneNode(this._minus_),
-            cloneNode(this._exp2_));
+        return new ANotExpLogica4(
+            cloneNode(this._not_),
+            cloneNode(this._expLogica4_));
     }
 
     @Override
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseANegativoExp1(this);
+        ((Analysis) sw).caseANotExpLogica4(this);
     }
 
-    public TMinus getMinus()
+    public TNot getNot()
     {
-        return this._minus_;
+        return this._not_;
     }
 
-    public void setMinus(TMinus node)
+    public void setNot(TNot node)
     {
-        if(this._minus_ != null)
+        if(this._not_ != null)
         {
-            this._minus_.parent(null);
+            this._not_.parent(null);
         }
 
         if(node != null)
@@ -62,19 +62,19 @@ public final class ANegativoExp1 extends PExp1
             node.parent(this);
         }
 
-        this._minus_ = node;
+        this._not_ = node;
     }
 
-    public PExp2 getExp2()
+    public PExpLogica4 getExpLogica4()
     {
-        return this._exp2_;
+        return this._expLogica4_;
     }
 
-    public void setExp2(PExp2 node)
+    public void setExpLogica4(PExpLogica4 node)
     {
-        if(this._exp2_ != null)
+        if(this._expLogica4_ != null)
         {
-            this._exp2_.parent(null);
+            this._expLogica4_.parent(null);
         }
 
         if(node != null)
@@ -87,30 +87,30 @@ public final class ANegativoExp1 extends PExp1
             node.parent(this);
         }
 
-        this._exp2_ = node;
+        this._expLogica4_ = node;
     }
 
     @Override
     public String toString()
     {
         return ""
-            + toString(this._minus_)
-            + toString(this._exp2_);
+            + toString(this._not_)
+            + toString(this._expLogica4_);
     }
 
     @Override
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._minus_ == child)
+        if(this._not_ == child)
         {
-            this._minus_ = null;
+            this._not_ = null;
             return;
         }
 
-        if(this._exp2_ == child)
+        if(this._expLogica4_ == child)
         {
-            this._exp2_ = null;
+            this._expLogica4_ = null;
             return;
         }
 
@@ -121,15 +121,15 @@ public final class ANegativoExp1 extends PExp1
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._minus_ == oldChild)
+        if(this._not_ == oldChild)
         {
-            setMinus((TMinus) newChild);
+            setNot((TNot) newChild);
             return;
         }
 
-        if(this._exp2_ == oldChild)
+        if(this._expLogica4_ == oldChild)
         {
-            setExp2((PExp2) newChild);
+            setExpLogica4((PExpLogica4) newChild);
             return;
         }
 

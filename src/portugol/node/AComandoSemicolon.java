@@ -5,51 +5,51 @@ package portugol.node;
 import portugol.analysis.*;
 
 @SuppressWarnings("nls")
-public final class ANotExpLogica3 extends PExpLogica3
+public final class AComandoSemicolon extends PComandoSemicolon
 {
-    private TNot _not_;
-    private PExpLogica3 _expLogica3_;
+    private PComando _comando_;
+    private TSemicolon _semicolon_;
 
-    public ANotExpLogica3()
+    public AComandoSemicolon()
     {
         // Constructor
     }
 
-    public ANotExpLogica3(
-        @SuppressWarnings("hiding") TNot _not_,
-        @SuppressWarnings("hiding") PExpLogica3 _expLogica3_)
+    public AComandoSemicolon(
+        @SuppressWarnings("hiding") PComando _comando_,
+        @SuppressWarnings("hiding") TSemicolon _semicolon_)
     {
         // Constructor
-        setNot(_not_);
+        setComando(_comando_);
 
-        setExpLogica3(_expLogica3_);
+        setSemicolon(_semicolon_);
 
     }
 
     @Override
     public Object clone()
     {
-        return new ANotExpLogica3(
-            cloneNode(this._not_),
-            cloneNode(this._expLogica3_));
+        return new AComandoSemicolon(
+            cloneNode(this._comando_),
+            cloneNode(this._semicolon_));
     }
 
     @Override
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseANotExpLogica3(this);
+        ((Analysis) sw).caseAComandoSemicolon(this);
     }
 
-    public TNot getNot()
+    public PComando getComando()
     {
-        return this._not_;
+        return this._comando_;
     }
 
-    public void setNot(TNot node)
+    public void setComando(PComando node)
     {
-        if(this._not_ != null)
+        if(this._comando_ != null)
         {
-            this._not_.parent(null);
+            this._comando_.parent(null);
         }
 
         if(node != null)
@@ -62,19 +62,19 @@ public final class ANotExpLogica3 extends PExpLogica3
             node.parent(this);
         }
 
-        this._not_ = node;
+        this._comando_ = node;
     }
 
-    public PExpLogica3 getExpLogica3()
+    public TSemicolon getSemicolon()
     {
-        return this._expLogica3_;
+        return this._semicolon_;
     }
 
-    public void setExpLogica3(PExpLogica3 node)
+    public void setSemicolon(TSemicolon node)
     {
-        if(this._expLogica3_ != null)
+        if(this._semicolon_ != null)
         {
-            this._expLogica3_.parent(null);
+            this._semicolon_.parent(null);
         }
 
         if(node != null)
@@ -87,30 +87,30 @@ public final class ANotExpLogica3 extends PExpLogica3
             node.parent(this);
         }
 
-        this._expLogica3_ = node;
+        this._semicolon_ = node;
     }
 
     @Override
     public String toString()
     {
         return ""
-            + toString(this._not_)
-            + toString(this._expLogica3_);
+            + toString(this._comando_)
+            + toString(this._semicolon_);
     }
 
     @Override
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._not_ == child)
+        if(this._comando_ == child)
         {
-            this._not_ = null;
+            this._comando_ = null;
             return;
         }
 
-        if(this._expLogica3_ == child)
+        if(this._semicolon_ == child)
         {
-            this._expLogica3_ = null;
+            this._semicolon_ = null;
             return;
         }
 
@@ -121,15 +121,15 @@ public final class ANotExpLogica3 extends PExpLogica3
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._not_ == oldChild)
+        if(this._comando_ == oldChild)
         {
-            setNot((TNot) newChild);
+            setComando((PComando) newChild);
             return;
         }
 
-        if(this._expLogica3_ == oldChild)
+        if(this._semicolon_ == oldChild)
         {
-            setExpLogica3((PExpLogica3) newChild);
+            setSemicolon((TSemicolon) newChild);
             return;
         }
 
