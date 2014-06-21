@@ -1,0 +1,5 @@
+programa p1 
+inicio
+	x <- 10 * 2 = 10 + 5;
+	y <- 20 <= 300 * 10;
+fim.
