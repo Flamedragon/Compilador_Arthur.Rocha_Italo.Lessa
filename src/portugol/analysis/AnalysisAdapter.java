@@ -177,6 +177,48 @@ public class AnalysisAdapter implements Analysis
     }
 
     @Override
+    public void caseAWriteComando(AWriteComando node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAIfComando(AIfComando node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAEvaluateComando(AEvaluateComando node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAWhileComando(AWhileComando node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseARepeatComando(ARepeatComando node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAForComando(AForComando node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAForStepComando(AForStepComando node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
     public void caseAElseStatement(AElseStatement node)
     {
         defaultCase(node);
@@ -207,7 +249,37 @@ public class AnalysisAdapter implements Analysis
     }
 
     @Override
-    public void caseAComandoSemicolon(AComandoSemicolon node)
+    public void caseAExclusiveOrExpressionOrExpression(AExclusiveOrExpressionOrExpression node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAInclusiveOrExpressionOrExpression(AInclusiveOrExpressionOrExpression node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAAndExpressionXorExpression(AAndExpressionXorExpression node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAExclusiveOrExpressionXorExpression(AExclusiveOrExpressionXorExpression node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAEqualityExpressionAndExpression(AEqualityExpressionAndExpression node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAAndExpressionAndExpression(AAndExpressionAndExpression node)
     {
         defaultCase(node);
     }
@@ -334,72 +406,6 @@ public class AnalysisAdapter implements Analysis
 
     @Override
     public void caseAVarPostfixExpression(AVarPostfixExpression node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseAExpression(AExpression node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseAConstantExpression(AConstantExpression node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseAEqualityExpressionAndExpression(AEqualityExpressionAndExpression node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseAAndExpressionAndExpression(AAndExpressionAndExpression node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseAAndExpressionXorExpression(AAndExpressionXorExpression node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseAExclusiveOrExpressionXorExpression(AExclusiveOrExpressionXorExpression node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseAExclusiveOrExpressionOrExpression(AExclusiveOrExpressionOrExpression node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseAInclusiveOrExpressionOrExpression(AInclusiveOrExpressionOrExpression node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseAOrExpressionAssignmentExpression(AOrExpressionAssignmentExpression node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseAAssignmentAssignmentExpression(AAssignmentAssignmentExpression node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseAAssignment(AAssignment node)
     {
         defaultCase(node);
     }

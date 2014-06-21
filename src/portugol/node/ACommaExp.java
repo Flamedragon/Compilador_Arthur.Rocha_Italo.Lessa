@@ -8,7 +8,7 @@ import portugol.analysis.*;
 public final class ACommaExp extends PCommaExp
 {
     private TComma _comma_;
-    private PEqualityExpression _equalityExpression_;
+    private POrExpression _orExpression_;
 
     public ACommaExp()
     {
@@ -17,12 +17,12 @@ public final class ACommaExp extends PCommaExp
 
     public ACommaExp(
         @SuppressWarnings("hiding") TComma _comma_,
-        @SuppressWarnings("hiding") PEqualityExpression _equalityExpression_)
+        @SuppressWarnings("hiding") POrExpression _orExpression_)
     {
         // Constructor
         setComma(_comma_);
 
-        setEqualityExpression(_equalityExpression_);
+        setOrExpression(_orExpression_);
 
     }
 
@@ -31,7 +31,7 @@ public final class ACommaExp extends PCommaExp
     {
         return new ACommaExp(
             cloneNode(this._comma_),
-            cloneNode(this._equalityExpression_));
+            cloneNode(this._orExpression_));
     }
 
     @Override
@@ -65,16 +65,16 @@ public final class ACommaExp extends PCommaExp
         this._comma_ = node;
     }
 
-    public PEqualityExpression getEqualityExpression()
+    public POrExpression getOrExpression()
     {
-        return this._equalityExpression_;
+        return this._orExpression_;
     }
 
-    public void setEqualityExpression(PEqualityExpression node)
+    public void setOrExpression(POrExpression node)
     {
-        if(this._equalityExpression_ != null)
+        if(this._orExpression_ != null)
         {
-            this._equalityExpression_.parent(null);
+            this._orExpression_.parent(null);
         }
 
         if(node != null)
@@ -87,7 +87,7 @@ public final class ACommaExp extends PCommaExp
             node.parent(this);
         }
 
-        this._equalityExpression_ = node;
+        this._orExpression_ = node;
     }
 
     @Override
@@ -95,7 +95,7 @@ public final class ACommaExp extends PCommaExp
     {
         return ""
             + toString(this._comma_)
-            + toString(this._equalityExpression_);
+            + toString(this._orExpression_);
     }
 
     @Override
@@ -108,9 +108,9 @@ public final class ACommaExp extends PCommaExp
             return;
         }
 
-        if(this._equalityExpression_ == child)
+        if(this._orExpression_ == child)
         {
-            this._equalityExpression_ = null;
+            this._orExpression_ = null;
             return;
         }
 
@@ -127,9 +127,9 @@ public final class ACommaExp extends PCommaExp
             return;
         }
 
-        if(this._equalityExpression_ == oldChild)
+        if(this._orExpression_ == oldChild)
         {
-            setEqualityExpression((PEqualityExpression) newChild);
+            setOrExpression((POrExpression) newChild);
             return;
         }
 

@@ -9,7 +9,7 @@ public final class AAssignmentComando extends PComando
 {
     private PVar _var_;
     private TLArrow _lArrow_;
-    private PEqualityExpression _equalityExpression_;
+    private POrExpression _orExpression_;
     private TSemicolon _semicolon_;
 
     public AAssignmentComando()
@@ -20,7 +20,7 @@ public final class AAssignmentComando extends PComando
     public AAssignmentComando(
         @SuppressWarnings("hiding") PVar _var_,
         @SuppressWarnings("hiding") TLArrow _lArrow_,
-        @SuppressWarnings("hiding") PEqualityExpression _equalityExpression_,
+        @SuppressWarnings("hiding") POrExpression _orExpression_,
         @SuppressWarnings("hiding") TSemicolon _semicolon_)
     {
         // Constructor
@@ -28,7 +28,7 @@ public final class AAssignmentComando extends PComando
 
         setLArrow(_lArrow_);
 
-        setEqualityExpression(_equalityExpression_);
+        setOrExpression(_orExpression_);
 
         setSemicolon(_semicolon_);
 
@@ -40,7 +40,7 @@ public final class AAssignmentComando extends PComando
         return new AAssignmentComando(
             cloneNode(this._var_),
             cloneNode(this._lArrow_),
-            cloneNode(this._equalityExpression_),
+            cloneNode(this._orExpression_),
             cloneNode(this._semicolon_));
     }
 
@@ -100,16 +100,16 @@ public final class AAssignmentComando extends PComando
         this._lArrow_ = node;
     }
 
-    public PEqualityExpression getEqualityExpression()
+    public POrExpression getOrExpression()
     {
-        return this._equalityExpression_;
+        return this._orExpression_;
     }
 
-    public void setEqualityExpression(PEqualityExpression node)
+    public void setOrExpression(POrExpression node)
     {
-        if(this._equalityExpression_ != null)
+        if(this._orExpression_ != null)
         {
-            this._equalityExpression_.parent(null);
+            this._orExpression_.parent(null);
         }
 
         if(node != null)
@@ -122,7 +122,7 @@ public final class AAssignmentComando extends PComando
             node.parent(this);
         }
 
-        this._equalityExpression_ = node;
+        this._orExpression_ = node;
     }
 
     public TSemicolon getSemicolon()
@@ -156,7 +156,7 @@ public final class AAssignmentComando extends PComando
         return ""
             + toString(this._var_)
             + toString(this._lArrow_)
-            + toString(this._equalityExpression_)
+            + toString(this._orExpression_)
             + toString(this._semicolon_);
     }
 
@@ -176,9 +176,9 @@ public final class AAssignmentComando extends PComando
             return;
         }
 
-        if(this._equalityExpression_ == child)
+        if(this._orExpression_ == child)
         {
-            this._equalityExpression_ = null;
+            this._orExpression_ = null;
             return;
         }
 
@@ -207,9 +207,9 @@ public final class AAssignmentComando extends PComando
             return;
         }
 
-        if(this._equalityExpression_ == oldChild)
+        if(this._orExpression_ == oldChild)
         {
-            setEqualityExpression((PEqualityExpression) newChild);
+            setOrExpression((POrExpression) newChild);
             return;
         }
 

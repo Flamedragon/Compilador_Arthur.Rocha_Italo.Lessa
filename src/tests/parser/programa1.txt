@@ -1,6 +1,11 @@
 programa p1 
 inicio
-	x <- 1 + 2 * 10;
-	y <- 10;
-	z <- 'hue';
+
+	real : x;
+	inteiro : y;
+	caractere : z;
+
+	x <- 10.0;
+	leia (y , z);
+
 fim.

@@ -8,7 +8,7 @@ import portugol.analysis.*;
 public final class ACastExpressionUnaryExpressionNotPlusMinus extends PUnaryExpressionNotPlusMinus
 {
     private TLPar _lPar_;
-    private PEqualityExpression _equalityExpression_;
+    private POrExpression _orExpression_;
     private TRPar _rPar_;
 
     public ACastExpressionUnaryExpressionNotPlusMinus()
@@ -18,13 +18,13 @@ public final class ACastExpressionUnaryExpressionNotPlusMinus extends PUnaryExpr
 
     public ACastExpressionUnaryExpressionNotPlusMinus(
         @SuppressWarnings("hiding") TLPar _lPar_,
-        @SuppressWarnings("hiding") PEqualityExpression _equalityExpression_,
+        @SuppressWarnings("hiding") POrExpression _orExpression_,
         @SuppressWarnings("hiding") TRPar _rPar_)
     {
         // Constructor
         setLPar(_lPar_);
 
-        setEqualityExpression(_equalityExpression_);
+        setOrExpression(_orExpression_);
 
         setRPar(_rPar_);
 
@@ -35,7 +35,7 @@ public final class ACastExpressionUnaryExpressionNotPlusMinus extends PUnaryExpr
     {
         return new ACastExpressionUnaryExpressionNotPlusMinus(
             cloneNode(this._lPar_),
-            cloneNode(this._equalityExpression_),
+            cloneNode(this._orExpression_),
             cloneNode(this._rPar_));
     }
 
@@ -70,16 +70,16 @@ public final class ACastExpressionUnaryExpressionNotPlusMinus extends PUnaryExpr
         this._lPar_ = node;
     }
 
-    public PEqualityExpression getEqualityExpression()
+    public POrExpression getOrExpression()
     {
-        return this._equalityExpression_;
+        return this._orExpression_;
     }
 
-    public void setEqualityExpression(PEqualityExpression node)
+    public void setOrExpression(POrExpression node)
     {
-        if(this._equalityExpression_ != null)
+        if(this._orExpression_ != null)
         {
-            this._equalityExpression_.parent(null);
+            this._orExpression_.parent(null);
         }
 
         if(node != null)
@@ -92,7 +92,7 @@ public final class ACastExpressionUnaryExpressionNotPlusMinus extends PUnaryExpr
             node.parent(this);
         }
 
-        this._equalityExpression_ = node;
+        this._orExpression_ = node;
     }
 
     public TRPar getRPar()
@@ -125,7 +125,7 @@ public final class ACastExpressionUnaryExpressionNotPlusMinus extends PUnaryExpr
     {
         return ""
             + toString(this._lPar_)
-            + toString(this._equalityExpression_)
+            + toString(this._orExpression_)
             + toString(this._rPar_);
     }
 
@@ -139,9 +139,9 @@ public final class ACastExpressionUnaryExpressionNotPlusMinus extends PUnaryExpr
             return;
         }
 
-        if(this._equalityExpression_ == child)
+        if(this._orExpression_ == child)
         {
-            this._equalityExpression_ = null;
+            this._orExpression_ = null;
             return;
         }
 
@@ -164,9 +164,9 @@ public final class ACastExpressionUnaryExpressionNotPlusMinus extends PUnaryExpr
             return;
         }
 
-        if(this._equalityExpression_ == oldChild)
+        if(this._orExpression_ == oldChild)
         {
-            setEqualityExpression((PEqualityExpression) newChild);
+            setOrExpression((POrExpression) newChild);
             return;
         }
 

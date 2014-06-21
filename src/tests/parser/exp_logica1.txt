@@ -1,5 +1,7 @@
 programa p1 
 inicio
-	x <- 10 * 2 = 10 + 5;
-	y <- 20 <= 300 * 10;
+	true <- 1 e 1;
+	false <- 0 ou 0;
+	true_math <- 1 e 10 = 10;
+	aaaeeee <- 10 < 20 xor 30 > 10;
 fim.

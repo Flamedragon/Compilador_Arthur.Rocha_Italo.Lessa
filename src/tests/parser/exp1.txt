@@ -1,4 +1,4 @@
 programa exp1
 inicio
-	x <- 2 + 5 * 3
+	x <- 2 + 5 * 3;
 fim.

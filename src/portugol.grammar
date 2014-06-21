@@ -83,7 +83,7 @@ Ignored Tokens
 
 
 Productions
-programa = program id begin comando_ou_declaracao* end dot;
+programa = program id begin declaracao* comando* end dot;
 
 comando_ou_declaracao = 
 					{declaracao} declaracao |
@@ -111,25 +111,36 @@ var_semicolon = var semicolon;
 semicolon_var = semicolon var;
 
 comando = 
-	{assignment} var l_arrow equality_expression semicolon |
-	{read} read l_par var comma_var* r_par semicolon ;
-/*
- 	{write} write l_par equality_expression comma_exp* r_par semicolon |
- 	{if} if l_par or_expression r_par then comando_semicolon+ else_statement* end_if semicolon |
- 	{evaluate} evaluate l_par unary_expression r_par evaluate_body* else_evaluate+ end_evaluate semicolon |
- 	{while} while l_par or_expression r_par do comando_semicolon+ end_while semicolon |
- 	{repeat} repeat comando_semicolon+ until l_par or_expression r_par semicolon |
- 	{for} for var of [begin]:n_int until [end]:n_int do comando_semicolon+ end_for semicolon |
- 	{for_step} for var of [begin]:n_int step [n_steps]:n_int until [end]:n_int do comando_semicolon+ end_for semicolon;
- */
+	{assignment} var l_arrow or_expression semicolon |
+	{read} read l_par var comma_var* r_par semicolon |
+ 	{write} write l_par or_expression comma_exp* r_par semicolon |
+ 	{if} if l_par or_expression r_par then comando* else_statement? end_if semicolon |
+ 	{evaluate} evaluate l_par or_expression r_par evaluate_body* else_evaluate+ end_evaluate semicolon |
+ 	{while} while l_par or_expression r_par do comando* end_while semicolon |
+ 	{repeat} repeat comando* until l_par or_expression r_par semicolon |
+ 	{for} for var of [begin]:n_int until [end]:n_int do comando* end_for semicolon |
+ 	{for_step} for var of [begin]:n_int step [n_steps]:n_int until [end]:n_int do comando* end_for semicolon;
+ 
  	 
-else_statement = else comando_semicolon+ ;
-evaluate_body = case valor colon comando_semicolon+ ;
-else_evaluate = else colon comando_semicolon+ ; 
+else_statement = else comando* ;
+evaluate_body = case valor colon comando* ;
+else_evaluate = else colon comando* ; 
 
 comma_var = comma var;
-comma_exp = comma equality_expression;
-comando_semicolon = comando semicolon;
+comma_exp = comma or_expression;
+//semicolon_comando = semicolon comando;
+
+or_expression =
+    {exclusive_or_expression} xor_expression |
+    {inclusive_or_expression} or_expression or xor_expression;
+
+xor_expression =
+    {and_expression} and_expression |
+    {exclusive_or_expression} xor_expression xor and_expression;
+
+and_expression =
+    {equality_expression} equality_expression |
+	{and_expression} and_expression and equality_expression;
 
 equality_expression =
     {relational_expression} relational_expression |
@@ -155,39 +166,14 @@ multiplicative_expression =
 			
 			
 unary_expression =
-//    {plus} plus unary_expression |
     {minus} minus unary_expression |
     {unary_expression_not_plus_minus} unary_expression_not_plus_minus;			
 			
 unary_expression_not_plus_minus =
     {postfix_expression} postfix_expression |
     {complement} not unary_expression |
-	{cast_expression} l_par equality_expression r_par ;
+	{cast_expression} l_par or_expression r_par ;
 			
 postfix_expression =
 	{valor} valor |
-	{var} var ;	
-			
-expression = assignment_expression;
-
-constant_expression = expression;		
-	
-and_expression =
-    {equality_expression} equality_expression |
-	{and_expression} and_expression and equality_expression;
-
-xor_expression =
-    {and_expression} and_expression |
-    {exclusive_or_expression} xor_expression xor and_expression;
-
-or_expression =
-    {exclusive_or_expression} xor_expression |
-    {inclusive_or_expression} or_expression or xor_expression;
-
-assignment_expression =
-    {or_expression} or_expression |
-    {assignment} assignment;
-
-assignment =
-    id l_arrow assignment_expression;
-			
+	{var} var ;			

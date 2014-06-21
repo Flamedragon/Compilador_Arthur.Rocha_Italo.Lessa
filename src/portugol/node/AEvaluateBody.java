@@ -11,7 +11,7 @@ public final class AEvaluateBody extends PEvaluateBody
     private TCase _case_;
     private PValor _valor_;
     private TColon _colon_;
-    private final LinkedList<PComandoSemicolon> _comandoSemicolon_ = new LinkedList<PComandoSemicolon>();
+    private final LinkedList<PComando> _comando_ = new LinkedList<PComando>();
 
     public AEvaluateBody()
     {
@@ -22,7 +22,7 @@ public final class AEvaluateBody extends PEvaluateBody
         @SuppressWarnings("hiding") TCase _case_,
         @SuppressWarnings("hiding") PValor _valor_,
         @SuppressWarnings("hiding") TColon _colon_,
-        @SuppressWarnings("hiding") List<?> _comandoSemicolon_)
+        @SuppressWarnings("hiding") List<?> _comando_)
     {
         // Constructor
         setCase(_case_);
@@ -31,7 +31,7 @@ public final class AEvaluateBody extends PEvaluateBody
 
         setColon(_colon_);
 
-        setComandoSemicolon(_comandoSemicolon_);
+        setComando(_comando_);
 
     }
 
@@ -42,7 +42,7 @@ public final class AEvaluateBody extends PEvaluateBody
             cloneNode(this._case_),
             cloneNode(this._valor_),
             cloneNode(this._colon_),
-            cloneList(this._comandoSemicolon_));
+            cloneList(this._comando_));
     }
 
     @Override
@@ -126,29 +126,29 @@ public final class AEvaluateBody extends PEvaluateBody
         this._colon_ = node;
     }
 
-    public LinkedList<PComandoSemicolon> getComandoSemicolon()
+    public LinkedList<PComando> getComando()
     {
-        return this._comandoSemicolon_;
+        return this._comando_;
     }
 
-    public void setComandoSemicolon(List<?> list)
+    public void setComando(List<?> list)
     {
-        for(PComandoSemicolon e : this._comandoSemicolon_)
+        for(PComando e : this._comando_)
         {
             e.parent(null);
         }
-        this._comandoSemicolon_.clear();
+        this._comando_.clear();
 
         for(Object obj_e : list)
         {
-            PComandoSemicolon e = (PComandoSemicolon) obj_e;
+            PComando e = (PComando) obj_e;
             if(e.parent() != null)
             {
                 e.parent().removeChild(e);
             }
 
             e.parent(this);
-            this._comandoSemicolon_.add(e);
+            this._comando_.add(e);
         }
     }
 
@@ -159,7 +159,7 @@ public final class AEvaluateBody extends PEvaluateBody
             + toString(this._case_)
             + toString(this._valor_)
             + toString(this._colon_)
-            + toString(this._comandoSemicolon_);
+            + toString(this._comando_);
     }
 
     @Override
@@ -184,7 +184,7 @@ public final class AEvaluateBody extends PEvaluateBody
             return;
         }
 
-        if(this._comandoSemicolon_.remove(child))
+        if(this._comando_.remove(child))
         {
             return;
         }
@@ -214,13 +214,13 @@ public final class AEvaluateBody extends PEvaluateBody
             return;
         }
 
-        for(ListIterator<PComandoSemicolon> i = this._comandoSemicolon_.listIterator(); i.hasNext();)
+        for(ListIterator<PComando> i = this._comando_.listIterator(); i.hasNext();)
         {
             if(i.next() == oldChild)
             {
                 if(newChild != null)
                 {
-                    i.set((PComandoSemicolon) newChild);
+                    i.set((PComando) newChild);
                     newChild.parent(this);
                     oldChild.parent(null);
                     return;
