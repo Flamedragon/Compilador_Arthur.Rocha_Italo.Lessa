@@ -111,13 +111,13 @@ var_semicolon = var semicolon;
 semicolon_var = semicolon var;
 
 comando = 
-	{assignment} var l_arrow exp1 semicolon |
+	{assignment} var l_arrow unary_expression semicolon |
 	{read} read l_par var comma_var* r_par semicolon |
- 	{write} write l_par exp1 comma_exp* r_par semicolon |
- 	{if} if l_par exp_logica1 r_par then comando_semicolon+ else_statement* end_if semicolon |
- 	{evaluate} evaluate l_par exp1 r_par evaluate_body* else_evaluate+ end_evaluate semicolon |
- 	{while} while l_par exp_logica1 r_par do comando_semicolon+ end_while semicolon |
- 	{repeat} repeat comando_semicolon+ until l_par exp_logica1 r_par semicolon |
+ 	{write} write l_par unary_expression comma_exp* r_par semicolon |
+ 	{if} if l_par or_expression r_par then comando_semicolon+ else_statement* end_if semicolon |
+ 	{evaluate} evaluate l_par unary_expression r_par evaluate_body* else_evaluate+ end_evaluate semicolon |
+ 	{while} while l_par or_expression r_par do comando_semicolon+ end_while semicolon |
+ 	{repeat} repeat comando_semicolon+ until l_par or_expression r_par semicolon |
  	{for} for var of [begin]:n_int until [end]:n_int do comando_semicolon+ end_for semicolon |
  	{for_step} for var of [begin]:n_int step [n_steps]:n_int until [end]:n_int do comando_semicolon+ end_for semicolon;
  	 
@@ -126,8 +126,11 @@ evaluate_body = case valor colon comando_semicolon+ ;
 else_evaluate = else colon comando_semicolon+ ; 
 
 comma_var = comma var;
-comma_exp = comma exp1;
+comma_exp = comma unary_expression;
 comando_semicolon = comando semicolon;
+
+
+/*
 
 exp1 = 
 	{minus} minus exp1 |
@@ -164,81 +167,10 @@ exp4 =
 	{valor} valor;
 
 exp_logica1 = n_int;
+ 	
+*/		
 
-
-
-
-
-
-/*
-exp1 = 
-	{minus} minus exp1 |
-	{exp2} exp2 |
-	{exp_logica1} exp_logica1 ;
-	
-exp_comparacao = exp2 comparacao exp1;
-
-exp2 = 
-	{soma} exp3 soma exp2 |
-	{exp2} exp3 ;
-
-
-soma = 
-	{mais} plus |
-	{menos} minus;
-	
-logica = {ou} or |
-	    {xor} xor;
-
-	
-comparacao = 
-			{igual} equal |
-			{diferente} not_equal |
-			{menor_igual} l_equal |
-			{maior_igual} g_equal |
-			{menor} less |
-			{maior} greater;
-	
-exp3 = 
-	{exp2} exp4 mult_div exp3 |
-	{exp3} exp4;
-	
-mult_div = 
-		{mult} star |
-		{div} bar;
-
-exp4 = 
-	{parenteses_exp} l_par exp1 r_par |
-	{exp5} exp5;
-	
-exp5 =
-	{valor} valor |
-	{var} var ;
-			
-exp_logica1 = 
-			{or} exp_logica2 or exp_logica1 |
-			{exp_logica2} exp_logica2;
-
-exp_logica2 = 
-			{xor} exp_logica3 xor exp_logica2 |
-			{exp_logica3} exp_logica3;
-
-exp_logica3 = 
-<<<<<<< HEAD
-			{not} not exp_logica1 |
-			{exp_logica1} exp_logica1;
-*/
-=======
-			{or} exp_logica4 or exp_logica3 |
-			{exp_logica3} exp_logica4;
-
-exp_logica4 = 
-			{not} not exp_logica4 |
-			{exp4} exp_comparacao;
-			
-
-			
-/* Gramatica Java Adaptada			
+		
 			
 			
 unary_expression =
@@ -254,22 +186,23 @@ unary_expression_not_plus_minus =
 postfix_expression =
 	{valor} valor |
 	{var} var ;	
-			
-	expression = assignment_expression;
+		
+/*	
+expression = assignment_expression;
 
-	constant_expression = expression;		
-
-	multiplicative_expression =
-    {unary_expression} unary_expression |
+constant_expression = expression;		
+*/
+multiplicative_expression =
+	{unary_expression} unary_expression |
     {star} multiplicative_expression star unary_expression |
     {div} multiplicative_expression bar unary_expression ;
 	
-	additive_expression =
+additive_expression =
     {multiplicative_expression} multiplicative_expression |
     {plus} additive_expression plus multiplicative_expression |
     {minus} additive_expression minus multiplicative_expression;
 	
-	relational_expression =
+relational_expression =
     {sadditive_expression} additive_expression |
     {lt} relational_expression less additive_expression |
     {gt} relational_expression greater additive_expression |
@@ -293,18 +226,11 @@ or_expression =
     {exclusive_or_expression} xor_expression |
     {inclusive_or_expression} or_expression or xor_expression;
 
+/*
 assignment_expression =
-    {or_expression} conditional_expression |
+    {or_expression} or_expression |
     {assignment} assignment;
 
 assignment =
     id l_arrow assignment_expression;
-			
-			
 */			
-			
-			
-			
-			
-			
->>>>>>> 25528dbb2271da42fabe12864a4f66f36ea0ce3e
