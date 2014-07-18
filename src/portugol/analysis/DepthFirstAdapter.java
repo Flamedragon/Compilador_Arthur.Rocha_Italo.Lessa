@@ -80,10 +80,6 @@ public class DepthFirstAdapter extends AnalysisAdapter
         {
             node.getEnd().apply(this);
         }
-        if(node.getDot() != null)
-        {
-            node.getDot().apply(this);
-        }
         outAPrograma(node);
     }
 

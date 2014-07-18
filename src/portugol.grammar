@@ -18,7 +18,7 @@ States
 Tokens
 	{normal}program = 'programa';
 	{normal}begin = 'inicio';
-	{normal}end = 'fim';
+	{normal}end = 'fim.';
 	{normal}dot = '.';
 	{normal}colon = ':';
 	{normal}semicolon = ';';
@@ -83,7 +83,7 @@ Ignored Tokens
 
 
 Productions
-programa = program id begin declaracao* comando* end dot;
+programa = program id begin declaracao* comando* end;
 
 comando_ou_declaracao = 
 					{declaracao} declaracao |

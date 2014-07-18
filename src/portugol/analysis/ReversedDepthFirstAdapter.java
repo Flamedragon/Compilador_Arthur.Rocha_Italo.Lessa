@@ -50,10 +50,6 @@ public class ReversedDepthFirstAdapter extends AnalysisAdapter
     public void caseAPrograma(APrograma node)
     {
         inAPrograma(node);
-        if(node.getDot() != null)
-        {
-            node.getDot().apply(this);
-        }
         if(node.getEnd() != null)
         {
             node.getEnd().apply(this);

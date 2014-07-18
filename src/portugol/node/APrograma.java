@@ -14,7 +14,6 @@ public final class APrograma extends PPrograma
     private final LinkedList<PDeclaracao> _declaracao_ = new LinkedList<PDeclaracao>();
     private final LinkedList<PComando> _comando_ = new LinkedList<PComando>();
     private TEnd _end_;
-    private TDot _dot_;
 
     public APrograma()
     {
@@ -27,8 +26,7 @@ public final class APrograma extends PPrograma
         @SuppressWarnings("hiding") TBegin _begin_,
         @SuppressWarnings("hiding") List<?> _declaracao_,
         @SuppressWarnings("hiding") List<?> _comando_,
-        @SuppressWarnings("hiding") TEnd _end_,
-        @SuppressWarnings("hiding") TDot _dot_)
+        @SuppressWarnings("hiding") TEnd _end_)
     {
         // Constructor
         setProgram(_program_);
@@ -43,8 +41,6 @@ public final class APrograma extends PPrograma
 
         setEnd(_end_);
 
-        setDot(_dot_);
-
     }
 
     @Override
@@ -56,8 +52,7 @@ public final class APrograma extends PPrograma
             cloneNode(this._begin_),
             cloneList(this._declaracao_),
             cloneList(this._comando_),
-            cloneNode(this._end_),
-            cloneNode(this._dot_));
+            cloneNode(this._end_));
     }
 
     @Override
@@ -218,31 +213,6 @@ public final class APrograma extends PPrograma
         this._end_ = node;
     }
 
-    public TDot getDot()
-    {
-        return this._dot_;
-    }
-
-    public void setDot(TDot node)
-    {
-        if(this._dot_ != null)
-        {
-            this._dot_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._dot_ = node;
-    }
-
     @Override
     public String toString()
     {
@@ -252,8 +222,7 @@ public final class APrograma extends PPrograma
             + toString(this._begin_)
             + toString(this._declaracao_)
             + toString(this._comando_)
-            + toString(this._end_)
-            + toString(this._dot_);
+            + toString(this._end_);
     }
 
     @Override
@@ -291,12 +260,6 @@ public final class APrograma extends PPrograma
         if(this._end_ == child)
         {
             this._end_ = null;
-            return;
-        }
-
-        if(this._dot_ == child)
-        {
-            this._dot_ = null;
             return;
         }
 
@@ -364,12 +327,6 @@ public final class APrograma extends PPrograma
         if(this._end_ == oldChild)
         {
             setEnd((TEnd) newChild);
-            return;
-        }
-
-        if(this._dot_ == oldChild)
-        {
-            setDot((TDot) newChild);
             return;
         }
 

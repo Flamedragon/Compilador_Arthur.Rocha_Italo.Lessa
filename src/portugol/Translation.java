@@ -21,7 +21,6 @@ public class Translation extends DepthFirstAdapter
 	@Override
 	public void defaultIn(Node node) {
 		// TODO Auto-generated method stub
-		System.out.println(node);
 		super.defaultIn(node);
 	}
 
@@ -53,6 +52,45 @@ public class Translation extends DepthFirstAdapter
 	public void caseAPrograma(APrograma node) {
 		// TODO Auto-generated method stub
 		super.caseAPrograma(node);
+	}
+
+	@Override
+	public void inADeclaracaoComandoOuDeclaracao(
+			ADeclaracaoComandoOuDeclaracao node) {
+		// TODO Auto-generated method stub
+		super.inADeclaracaoComandoOuDeclaracao(node);
+	}
+
+	@Override
+	public void outADeclaracaoComandoOuDeclaracao(
+			ADeclaracaoComandoOuDeclaracao node) {
+		// TODO Auto-generated method stub
+		super.outADeclaracaoComandoOuDeclaracao(node);
+	}
+
+	@Override
+	public void caseADeclaracaoComandoOuDeclaracao(
+			ADeclaracaoComandoOuDeclaracao node) {
+		// TODO Auto-generated method stub
+		super.caseADeclaracaoComandoOuDeclaracao(node);
+	}
+
+	@Override
+	public void inAComandoComandoOuDeclaracao(AComandoComandoOuDeclaracao node) {
+		// TODO Auto-generated method stub
+		super.inAComandoComandoOuDeclaracao(node);
+	}
+
+	@Override
+	public void outAComandoComandoOuDeclaracao(AComandoComandoOuDeclaracao node) {
+		// TODO Auto-generated method stub
+		super.outAComandoComandoOuDeclaracao(node);
+	}
+
+	@Override
+	public void caseAComandoComandoOuDeclaracao(AComandoComandoOuDeclaracao node) {
+		// TODO Auto-generated method stub
+		super.caseAComandoComandoOuDeclaracao(node);
 	}
 
 	@Override
@@ -524,401 +562,951 @@ public class Translation extends DepthFirstAdapter
 	}
 
 	@Override
-	public void inAComandoSemicolon(AComandoSemicolon node) {
+	public void inAExclusiveOrExpressionOrExpression(
+			AExclusiveOrExpressionOrExpression node) {
 		// TODO Auto-generated method stub
-		super.inAComandoSemicolon(node);
+		super.inAExclusiveOrExpressionOrExpression(node);
 	}
 
 	@Override
-	public void outAComandoSemicolon(AComandoSemicolon node) {
+	public void outAExclusiveOrExpressionOrExpression(
+			AExclusiveOrExpressionOrExpression node) {
 		// TODO Auto-generated method stub
-		super.outAComandoSemicolon(node);
+		super.outAExclusiveOrExpressionOrExpression(node);
 	}
 
 	@Override
-	public void caseAComandoSemicolon(AComandoSemicolon node) {
+	public void caseAExclusiveOrExpressionOrExpression(
+			AExclusiveOrExpressionOrExpression node) {
 		// TODO Auto-generated method stub
-		super.caseAComandoSemicolon(node);
+		super.caseAExclusiveOrExpressionOrExpression(node);
 	}
 
 	@Override
-	public void inAMinusExp1(AMinusExp1 node) {
+	public void inAInclusiveOrExpressionOrExpression(
+			AInclusiveOrExpressionOrExpression node) {
 		// TODO Auto-generated method stub
-		super.inAMinusExp1(node);
+		super.inAInclusiveOrExpressionOrExpression(node);
 	}
 
 	@Override
-	public void outAMinusExp1(AMinusExp1 node) {
+	public void outAInclusiveOrExpressionOrExpression(
+			AInclusiveOrExpressionOrExpression node) {
 		// TODO Auto-generated method stub
-		super.outAMinusExp1(node);
+		super.outAInclusiveOrExpressionOrExpression(node);
 	}
 
 	@Override
-	public void caseAMinusExp1(AMinusExp1 node) {
+	public void caseAInclusiveOrExpressionOrExpression(
+			AInclusiveOrExpressionOrExpression node) {
 		// TODO Auto-generated method stub
-		super.caseAMinusExp1(node);
+		super.caseAInclusiveOrExpressionOrExpression(node);
 	}
 
 	@Override
-	public void inAExp2Exp1(AExp2Exp1 node) {
+	public void inAAndExpressionXorExpression(AAndExpressionXorExpression node) {
 		// TODO Auto-generated method stub
-		super.inAExp2Exp1(node);
+		super.inAAndExpressionXorExpression(node);
 	}
 
 	@Override
-	public void outAExp2Exp1(AExp2Exp1 node) {
+	public void outAAndExpressionXorExpression(AAndExpressionXorExpression node) {
 		// TODO Auto-generated method stub
-		super.outAExp2Exp1(node);
+		super.outAAndExpressionXorExpression(node);
 	}
 
 	@Override
-	public void caseAExp2Exp1(AExp2Exp1 node) {
+	public void caseAAndExpressionXorExpression(AAndExpressionXorExpression node) {
 		// TODO Auto-generated method stub
-		super.caseAExp2Exp1(node);
+		super.caseAAndExpressionXorExpression(node);
 	}
 
 	@Override
-	public void inASomaExp2(ASomaExp2 node) {
+	public void inAExclusiveOrExpressionXorExpression(
+			AExclusiveOrExpressionXorExpression node) {
 		// TODO Auto-generated method stub
-		super.inASomaExp2(node);
+		super.inAExclusiveOrExpressionXorExpression(node);
 	}
 
 	@Override
-	public void outASomaExp2(ASomaExp2 node) {
+	public void outAExclusiveOrExpressionXorExpression(
+			AExclusiveOrExpressionXorExpression node) {
 		// TODO Auto-generated method stub
-		super.outASomaExp2(node);
+		super.outAExclusiveOrExpressionXorExpression(node);
 	}
 
 	@Override
-	public void caseASomaExp2(ASomaExp2 node) {
+	public void caseAExclusiveOrExpressionXorExpression(
+			AExclusiveOrExpressionXorExpression node) {
 		// TODO Auto-generated method stub
-		super.caseASomaExp2(node);
+		super.caseAExclusiveOrExpressionXorExpression(node);
 	}
 
 	@Override
-	public void inAComparacaoExp2(AComparacaoExp2 node) {
+	public void inAEqualityExpressionAndExpression(
+			AEqualityExpressionAndExpression node) {
 		// TODO Auto-generated method stub
-		super.inAComparacaoExp2(node);
+		super.inAEqualityExpressionAndExpression(node);
 	}
 
 	@Override
-	public void outAComparacaoExp2(AComparacaoExp2 node) {
+	public void outAEqualityExpressionAndExpression(
+			AEqualityExpressionAndExpression node) {
 		// TODO Auto-generated method stub
-		super.outAComparacaoExp2(node);
+		super.outAEqualityExpressionAndExpression(node);
 	}
 
 	@Override
-	public void caseAComparacaoExp2(AComparacaoExp2 node) {
+	public void caseAEqualityExpressionAndExpression(
+			AEqualityExpressionAndExpression node) {
 		// TODO Auto-generated method stub
-		super.caseAComparacaoExp2(node);
+		super.caseAEqualityExpressionAndExpression(node);
 	}
 
 	@Override
-	public void inAExp3Exp2(AExp3Exp2 node) {
+	public void inAAndExpressionAndExpression(AAndExpressionAndExpression node) {
 		// TODO Auto-generated method stub
-		super.inAExp3Exp2(node);
+		super.inAAndExpressionAndExpression(node);
 	}
 
 	@Override
-	public void outAExp3Exp2(AExp3Exp2 node) {
+	public void outAAndExpressionAndExpression(AAndExpressionAndExpression node) {
 		// TODO Auto-generated method stub
-		super.outAExp3Exp2(node);
+		super.outAAndExpressionAndExpression(node);
 	}
 
 	@Override
-	public void caseAExp3Exp2(AExp3Exp2 node) {
+	public void caseAAndExpressionAndExpression(AAndExpressionAndExpression node) {
 		// TODO Auto-generated method stub
-		super.caseAExp3Exp2(node);
+		super.caseAAndExpressionAndExpression(node);
 	}
 
 	@Override
-	public void inAMaisSoma(AMaisSoma node) {
+	public void inARelationalExpressionEqualityExpression(
+			ARelationalExpressionEqualityExpression node) {
 		// TODO Auto-generated method stub
-		super.inAMaisSoma(node);
+		super.inARelationalExpressionEqualityExpression(node);
 	}
 
 	@Override
-	public void outAMaisSoma(AMaisSoma node) {
+	public void outARelationalExpressionEqualityExpression(
+			ARelationalExpressionEqualityExpression node) {
 		// TODO Auto-generated method stub
-		super.outAMaisSoma(node);
+		super.outARelationalExpressionEqualityExpression(node);
 	}
 
 	@Override
-	public void caseAMaisSoma(AMaisSoma node) {
+	public void caseARelationalExpressionEqualityExpression(
+			ARelationalExpressionEqualityExpression node) {
 		// TODO Auto-generated method stub
-		super.caseAMaisSoma(node);
+		super.caseARelationalExpressionEqualityExpression(node);
 	}
 
 	@Override
-	public void inAMenosSoma(AMenosSoma node) {
+	public void inAEqEqualityExpression(AEqEqualityExpression node) {
 		// TODO Auto-generated method stub
-		super.inAMenosSoma(node);
+		super.inAEqEqualityExpression(node);
 	}
 
 	@Override
-	public void outAMenosSoma(AMenosSoma node) {
+	public void outAEqEqualityExpression(AEqEqualityExpression node) {
 		// TODO Auto-generated method stub
-		super.outAMenosSoma(node);
+		super.outAEqEqualityExpression(node);
 	}
 
 	@Override
-	public void caseAMenosSoma(AMenosSoma node) {
+	public void caseAEqEqualityExpression(AEqEqualityExpression node) {
 		// TODO Auto-generated method stub
-		super.caseAMenosSoma(node);
+		super.caseAEqEqualityExpression(node);
 	}
 
 	@Override
-	public void inAIgualComparacao(AIgualComparacao node) {
+	public void inANeqEqualityExpression(ANeqEqualityExpression node) {
 		// TODO Auto-generated method stub
-		super.inAIgualComparacao(node);
+		super.inANeqEqualityExpression(node);
 	}
 
 	@Override
-	public void outAIgualComparacao(AIgualComparacao node) {
+	public void outANeqEqualityExpression(ANeqEqualityExpression node) {
 		// TODO Auto-generated method stub
-		super.outAIgualComparacao(node);
+		super.outANeqEqualityExpression(node);
 	}
 
 	@Override
-	public void caseAIgualComparacao(AIgualComparacao node) {
+	public void caseANeqEqualityExpression(ANeqEqualityExpression node) {
 		// TODO Auto-generated method stub
-		super.caseAIgualComparacao(node);
+		super.caseANeqEqualityExpression(node);
 	}
 
 	@Override
-	public void inADiferenteComparacao(ADiferenteComparacao node) {
+	public void inASadditiveExpressionRelationalExpression(
+			ASadditiveExpressionRelationalExpression node) {
 		// TODO Auto-generated method stub
-		super.inADiferenteComparacao(node);
+		super.inASadditiveExpressionRelationalExpression(node);
 	}
 
 	@Override
-	public void outADiferenteComparacao(ADiferenteComparacao node) {
+	public void outASadditiveExpressionRelationalExpression(
+			ASadditiveExpressionRelationalExpression node) {
 		// TODO Auto-generated method stub
-		super.outADiferenteComparacao(node);
+		super.outASadditiveExpressionRelationalExpression(node);
 	}
 
 	@Override
-	public void caseADiferenteComparacao(ADiferenteComparacao node) {
+	public void caseASadditiveExpressionRelationalExpression(
+			ASadditiveExpressionRelationalExpression node) {
 		// TODO Auto-generated method stub
-		super.caseADiferenteComparacao(node);
+		super.caseASadditiveExpressionRelationalExpression(node);
 	}
 
 	@Override
-	public void inAMenorIgualComparacao(AMenorIgualComparacao node) {
+	public void inALtRelationalExpression(ALtRelationalExpression node) {
 		// TODO Auto-generated method stub
-		super.inAMenorIgualComparacao(node);
+		super.inALtRelationalExpression(node);
 	}
 
 	@Override
-	public void outAMenorIgualComparacao(AMenorIgualComparacao node) {
+	public void outALtRelationalExpression(ALtRelationalExpression node) {
 		// TODO Auto-generated method stub
-		super.outAMenorIgualComparacao(node);
+		super.outALtRelationalExpression(node);
 	}
 
 	@Override
-	public void caseAMenorIgualComparacao(AMenorIgualComparacao node) {
+	public void caseALtRelationalExpression(ALtRelationalExpression node) {
 		// TODO Auto-generated method stub
-		super.caseAMenorIgualComparacao(node);
+		super.caseALtRelationalExpression(node);
 	}
 
 	@Override
-	public void inAMaiorIgualComparacao(AMaiorIgualComparacao node) {
+	public void inAGtRelationalExpression(AGtRelationalExpression node) {
 		// TODO Auto-generated method stub
-		super.inAMaiorIgualComparacao(node);
+		super.inAGtRelationalExpression(node);
 	}
 
 	@Override
-	public void outAMaiorIgualComparacao(AMaiorIgualComparacao node) {
+	public void outAGtRelationalExpression(AGtRelationalExpression node) {
 		// TODO Auto-generated method stub
-		super.outAMaiorIgualComparacao(node);
+		super.outAGtRelationalExpression(node);
 	}
 
 	@Override
-	public void caseAMaiorIgualComparacao(AMaiorIgualComparacao node) {
+	public void caseAGtRelationalExpression(AGtRelationalExpression node) {
 		// TODO Auto-generated method stub
-		super.caseAMaiorIgualComparacao(node);
+		super.caseAGtRelationalExpression(node);
 	}
 
 	@Override
-	public void inAMenorComparacao(AMenorComparacao node) {
+	public void inALteqRelationalExpression(ALteqRelationalExpression node) {
 		// TODO Auto-generated method stub
-		super.inAMenorComparacao(node);
+		super.inALteqRelationalExpression(node);
 	}
 
 	@Override
-	public void outAMenorComparacao(AMenorComparacao node) {
+	public void outALteqRelationalExpression(ALteqRelationalExpression node) {
 		// TODO Auto-generated method stub
-		super.outAMenorComparacao(node);
+		super.outALteqRelationalExpression(node);
 	}
 
 	@Override
-	public void caseAMenorComparacao(AMenorComparacao node) {
+	public void caseALteqRelationalExpression(ALteqRelationalExpression node) {
 		// TODO Auto-generated method stub
-		super.caseAMenorComparacao(node);
+		super.caseALteqRelationalExpression(node);
 	}
 
 	@Override
-	public void inAMaiorComparacao(AMaiorComparacao node) {
+	public void inAGteqRelationalExpression(AGteqRelationalExpression node) {
 		// TODO Auto-generated method stub
-		super.inAMaiorComparacao(node);
+		super.inAGteqRelationalExpression(node);
 	}
 
 	@Override
-	public void outAMaiorComparacao(AMaiorComparacao node) {
+	public void outAGteqRelationalExpression(AGteqRelationalExpression node) {
 		// TODO Auto-generated method stub
-		super.outAMaiorComparacao(node);
+		super.outAGteqRelationalExpression(node);
 	}
 
 	@Override
-	public void caseAMaiorComparacao(AMaiorComparacao node) {
+	public void caseAGteqRelationalExpression(AGteqRelationalExpression node) {
 		// TODO Auto-generated method stub
-		super.caseAMaiorComparacao(node);
+		super.caseAGteqRelationalExpression(node);
 	}
 
 	@Override
-	public void inAMultDivExp3(AMultDivExp3 node) {
+	public void inAMultiplicativeExpressionAdditiveExpression(
+			AMultiplicativeExpressionAdditiveExpression node) {
 		// TODO Auto-generated method stub
-		super.inAMultDivExp3(node);
+		super.inAMultiplicativeExpressionAdditiveExpression(node);
 	}
 
 	@Override
-	public void outAMultDivExp3(AMultDivExp3 node) {
+	public void outAMultiplicativeExpressionAdditiveExpression(
+			AMultiplicativeExpressionAdditiveExpression node) {
 		// TODO Auto-generated method stub
-		super.outAMultDivExp3(node);
+		super.outAMultiplicativeExpressionAdditiveExpression(node);
 	}
 
 	@Override
-	public void caseAMultDivExp3(AMultDivExp3 node) {
+	public void caseAMultiplicativeExpressionAdditiveExpression(
+			AMultiplicativeExpressionAdditiveExpression node) {
 		// TODO Auto-generated method stub
-		super.caseAMultDivExp3(node);
+		super.caseAMultiplicativeExpressionAdditiveExpression(node);
 	}
 
 	@Override
-	public void inAExp4Exp3(AExp4Exp3 node) {
+	public void inAPlusAdditiveExpression(APlusAdditiveExpression node) {
 		// TODO Auto-generated method stub
-		super.inAExp4Exp3(node);
+		super.inAPlusAdditiveExpression(node);
 	}
 
 	@Override
-	public void outAExp4Exp3(AExp4Exp3 node) {
+	public void outAPlusAdditiveExpression(APlusAdditiveExpression node) {
 		// TODO Auto-generated method stub
-		super.outAExp4Exp3(node);
+		super.outAPlusAdditiveExpression(node);
 	}
 
 	@Override
-	public void caseAExp4Exp3(AExp4Exp3 node) {
+	public void caseAPlusAdditiveExpression(APlusAdditiveExpression node) {
 		// TODO Auto-generated method stub
-		super.caseAExp4Exp3(node);
+		super.caseAPlusAdditiveExpression(node);
 	}
 
 	@Override
-	public void inAMultMultDiv(AMultMultDiv node) {
+	public void inAMinusAdditiveExpression(AMinusAdditiveExpression node) {
 		// TODO Auto-generated method stub
-		super.inAMultMultDiv(node);
+		super.inAMinusAdditiveExpression(node);
 	}
 
 	@Override
-	public void outAMultMultDiv(AMultMultDiv node) {
+	public void outAMinusAdditiveExpression(AMinusAdditiveExpression node) {
 		// TODO Auto-generated method stub
-		super.outAMultMultDiv(node);
+		super.outAMinusAdditiveExpression(node);
 	}
 
 	@Override
-	public void caseAMultMultDiv(AMultMultDiv node) {
+	public void caseAMinusAdditiveExpression(AMinusAdditiveExpression node) {
 		// TODO Auto-generated method stub
-		super.caseAMultMultDiv(node);
+		super.caseAMinusAdditiveExpression(node);
 	}
 
 	@Override
-	public void inADivMultDiv(ADivMultDiv node) {
+	public void inAUnaryExpressionMultiplicativeExpression(
+			AUnaryExpressionMultiplicativeExpression node) {
 		// TODO Auto-generated method stub
-		super.inADivMultDiv(node);
+		super.inAUnaryExpressionMultiplicativeExpression(node);
 	}
 
 	@Override
-	public void outADivMultDiv(ADivMultDiv node) {
+	public void outAUnaryExpressionMultiplicativeExpression(
+			AUnaryExpressionMultiplicativeExpression node) {
 		// TODO Auto-generated method stub
-		super.outADivMultDiv(node);
+		super.outAUnaryExpressionMultiplicativeExpression(node);
 	}
 
 	@Override
-	public void caseADivMultDiv(ADivMultDiv node) {
+	public void caseAUnaryExpressionMultiplicativeExpression(
+			AUnaryExpressionMultiplicativeExpression node) {
 		// TODO Auto-generated method stub
-		super.caseADivMultDiv(node);
+		super.caseAUnaryExpressionMultiplicativeExpression(node);
 	}
 
 	@Override
-	public void inAParentesesExpExp4(AParentesesExpExp4 node) {
+	public void inAStarMultiplicativeExpression(
+			AStarMultiplicativeExpression node) {
 		// TODO Auto-generated method stub
-		super.inAParentesesExpExp4(node);
+		super.inAStarMultiplicativeExpression(node);
 	}
 
 	@Override
-	public void outAParentesesExpExp4(AParentesesExpExp4 node) {
+	public void outAStarMultiplicativeExpression(
+			AStarMultiplicativeExpression node) {
 		// TODO Auto-generated method stub
-		super.outAParentesesExpExp4(node);
+		super.outAStarMultiplicativeExpression(node);
 	}
 
 	@Override
-	public void caseAParentesesExpExp4(AParentesesExpExp4 node) {
+	public void caseAStarMultiplicativeExpression(
+			AStarMultiplicativeExpression node) {
 		// TODO Auto-generated method stub
-		super.caseAParentesesExpExp4(node);
+		super.caseAStarMultiplicativeExpression(node);
 	}
 
 	@Override
-	public void inAVarExp4(AVarExp4 node) {
+	public void inADivMultiplicativeExpression(ADivMultiplicativeExpression node) {
 		// TODO Auto-generated method stub
-		super.inAVarExp4(node);
+		super.inADivMultiplicativeExpression(node);
 	}
 
 	@Override
-	public void outAVarExp4(AVarExp4 node) {
+	public void outADivMultiplicativeExpression(
+			ADivMultiplicativeExpression node) {
 		// TODO Auto-generated method stub
-		super.outAVarExp4(node);
+		super.outADivMultiplicativeExpression(node);
 	}
 
 	@Override
-	public void caseAVarExp4(AVarExp4 node) {
+	public void caseADivMultiplicativeExpression(
+			ADivMultiplicativeExpression node) {
 		// TODO Auto-generated method stub
-		super.caseAVarExp4(node);
+		super.caseADivMultiplicativeExpression(node);
 	}
 
 	@Override
-	public void inAValorExp4(AValorExp4 node) {
+	public void inAMinusUnaryExpression(AMinusUnaryExpression node) {
 		// TODO Auto-generated method stub
-		super.inAValorExp4(node);
+		super.inAMinusUnaryExpression(node);
 	}
 
 	@Override
-	public void outAValorExp4(AValorExp4 node) {
+	public void outAMinusUnaryExpression(AMinusUnaryExpression node) {
 		// TODO Auto-generated method stub
-		super.outAValorExp4(node);
+		super.outAMinusUnaryExpression(node);
 	}
 
 	@Override
-	public void caseAValorExp4(AValorExp4 node) {
+	public void caseAMinusUnaryExpression(AMinusUnaryExpression node) {
 		// TODO Auto-generated method stub
-		super.caseAValorExp4(node);
+		super.caseAMinusUnaryExpression(node);
 	}
 
 	@Override
-	public void inAExpLogica1(AExpLogica1 node) {
+	public void inAUnaryExpressionNotPlusMinusUnaryExpression(
+			AUnaryExpressionNotPlusMinusUnaryExpression node) {
 		// TODO Auto-generated method stub
-		super.inAExpLogica1(node);
+		super.inAUnaryExpressionNotPlusMinusUnaryExpression(node);
 	}
 
 	@Override
-	public void outAExpLogica1(AExpLogica1 node) {
+	public void outAUnaryExpressionNotPlusMinusUnaryExpression(
+			AUnaryExpressionNotPlusMinusUnaryExpression node) {
 		// TODO Auto-generated method stub
-		super.outAExpLogica1(node);
+		super.outAUnaryExpressionNotPlusMinusUnaryExpression(node);
 	}
 
 	@Override
-	public void caseAExpLogica1(AExpLogica1 node) {
+	public void caseAUnaryExpressionNotPlusMinusUnaryExpression(
+			AUnaryExpressionNotPlusMinusUnaryExpression node) {
 		// TODO Auto-generated method stub
-		super.caseAExpLogica1(node);
+		super.caseAUnaryExpressionNotPlusMinusUnaryExpression(node);
 	}
-	
+
+	@Override
+	public void inAPostfixExpressionUnaryExpressionNotPlusMinus(
+			APostfixExpressionUnaryExpressionNotPlusMinus node) {
+		// TODO Auto-generated method stub
+		super.inAPostfixExpressionUnaryExpressionNotPlusMinus(node);
+	}
+
+	@Override
+	public void outAPostfixExpressionUnaryExpressionNotPlusMinus(
+			APostfixExpressionUnaryExpressionNotPlusMinus node) {
+		// TODO Auto-generated method stub
+		super.outAPostfixExpressionUnaryExpressionNotPlusMinus(node);
+	}
+
+	@Override
+	public void caseAPostfixExpressionUnaryExpressionNotPlusMinus(
+			APostfixExpressionUnaryExpressionNotPlusMinus node) {
+		// TODO Auto-generated method stub
+		super.caseAPostfixExpressionUnaryExpressionNotPlusMinus(node);
+	}
+
+	@Override
+	public void inAComplementUnaryExpressionNotPlusMinus(
+			AComplementUnaryExpressionNotPlusMinus node) {
+		// TODO Auto-generated method stub
+		super.inAComplementUnaryExpressionNotPlusMinus(node);
+	}
+
+	@Override
+	public void outAComplementUnaryExpressionNotPlusMinus(
+			AComplementUnaryExpressionNotPlusMinus node) {
+		// TODO Auto-generated method stub
+		super.outAComplementUnaryExpressionNotPlusMinus(node);
+	}
+
+	@Override
+	public void caseAComplementUnaryExpressionNotPlusMinus(
+			AComplementUnaryExpressionNotPlusMinus node) {
+		// TODO Auto-generated method stub
+		super.caseAComplementUnaryExpressionNotPlusMinus(node);
+	}
+
+	@Override
+	public void inACastExpressionUnaryExpressionNotPlusMinus(
+			ACastExpressionUnaryExpressionNotPlusMinus node) {
+		// TODO Auto-generated method stub
+		super.inACastExpressionUnaryExpressionNotPlusMinus(node);
+	}
+
+	@Override
+	public void outACastExpressionUnaryExpressionNotPlusMinus(
+			ACastExpressionUnaryExpressionNotPlusMinus node) {
+		// TODO Auto-generated method stub
+		super.outACastExpressionUnaryExpressionNotPlusMinus(node);
+	}
+
+	@Override
+	public void caseACastExpressionUnaryExpressionNotPlusMinus(
+			ACastExpressionUnaryExpressionNotPlusMinus node) {
+		// TODO Auto-generated method stub
+		super.caseACastExpressionUnaryExpressionNotPlusMinus(node);
+	}
+
+	@Override
+	public void inAValorPostfixExpression(AValorPostfixExpression node) {
+		// TODO Auto-generated method stub
+		super.inAValorPostfixExpression(node);
+	}
+
+	@Override
+	public void outAValorPostfixExpression(AValorPostfixExpression node) {
+		// TODO Auto-generated method stub
+		super.outAValorPostfixExpression(node);
+	}
+
+	@Override
+	public void caseAValorPostfixExpression(AValorPostfixExpression node) {
+		// TODO Auto-generated method stub
+		super.caseAValorPostfixExpression(node);
+	}
+
+	@Override
+	public void inAVarPostfixExpression(AVarPostfixExpression node) {
+		// TODO Auto-generated method stub
+		super.inAVarPostfixExpression(node);
+	}
+
+	@Override
+	public void outAVarPostfixExpression(AVarPostfixExpression node) {
+		// TODO Auto-generated method stub
+		super.outAVarPostfixExpression(node);
+	}
+
+	@Override
+	public void caseAVarPostfixExpression(AVarPostfixExpression node) {
+		// TODO Auto-generated method stub
+		super.caseAVarPostfixExpression(node);
+	}
+
+	@Override
+	public Object getIn(Node node) {
+		// TODO Auto-generated method stub
+		return super.getIn(node);
+	}
+
+	@Override
+	public void setIn(Node node, Object o) {
+		// TODO Auto-generated method stub
+		super.setIn(node, o);
+	}
+
+	@Override
+	public Object getOut(Node node) {
+		// TODO Auto-generated method stub
+		return super.getOut(node);
+	}
+
+	@Override
+	public void setOut(Node node, Object o) {
+		// TODO Auto-generated method stub
+		super.setOut(node, o);
+	}
+
+	@Override
+	public void caseTProgram(TProgram node) {
+		// TODO Auto-generated method stub
+		super.caseTProgram(node);
+	}
+
+	@Override
+	public void caseTBegin(TBegin node) {
+		// TODO Auto-generated method stub
+		super.caseTBegin(node);
+	}
+
+	@Override
+	public void caseTEnd(TEnd node) {
+		// TODO Auto-generated method stub
+		super.caseTEnd(node);
+	}
+
+	@Override
+	public void caseTDot(TDot node) {
+		// TODO Auto-generated method stub
+		super.caseTDot(node);
+	}
+
+	@Override
+	public void caseTColon(TColon node) {
+		// TODO Auto-generated method stub
+		super.caseTColon(node);
+	}
+
+	@Override
+	public void caseTSemicolon(TSemicolon node) {
+		// TODO Auto-generated method stub
+		super.caseTSemicolon(node);
+	}
+
+	@Override
+	public void caseTConst(TConst node) {
+		// TODO Auto-generated method stub
+		super.caseTConst(node);
+	}
+
+	@Override
+	public void caseTComma(TComma node) {
+		// TODO Auto-generated method stub
+		super.caseTComma(node);
+	}
+
+	@Override
+	public void caseTReal(TReal node) {
+		// TODO Auto-generated method stub
+		super.caseTReal(node);
+	}
+
+	@Override
+	public void caseTInteger(TInteger node) {
+		// TODO Auto-generated method stub
+		super.caseTInteger(node);
+	}
+
+	@Override
+	public void caseTChar(TChar node) {
+		// TODO Auto-generated method stub
+		super.caseTChar(node);
+	}
+
+	@Override
+	public void caseTLBkt(TLBkt node) {
+		// TODO Auto-generated method stub
+		super.caseTLBkt(node);
+	}
+
+	@Override
+	public void caseTRBkt(TRBkt node) {
+		// TODO Auto-generated method stub
+		super.caseTRBkt(node);
+	}
+
+	@Override
+	public void caseTLArrow(TLArrow node) {
+		// TODO Auto-generated method stub
+		super.caseTLArrow(node);
+	}
+
+	@Override
+	public void caseTRead(TRead node) {
+		// TODO Auto-generated method stub
+		super.caseTRead(node);
+	}
+
+	@Override
+	public void caseTLPar(TLPar node) {
+		// TODO Auto-generated method stub
+		super.caseTLPar(node);
+	}
+
+	@Override
+	public void caseTRPar(TRPar node) {
+		// TODO Auto-generated method stub
+		super.caseTRPar(node);
+	}
+
+	@Override
+	public void caseTWrite(TWrite node) {
+		// TODO Auto-generated method stub
+		super.caseTWrite(node);
+	}
+
+	@Override
+	public void caseTIf(TIf node) {
+		// TODO Auto-generated method stub
+		super.caseTIf(node);
+	}
+
+	@Override
+	public void caseTThen(TThen node) {
+		// TODO Auto-generated method stub
+		super.caseTThen(node);
+	}
+
+	@Override
+	public void caseTElse(TElse node) {
+		// TODO Auto-generated method stub
+		super.caseTElse(node);
+	}
+
+	@Override
+	public void caseTEndIf(TEndIf node) {
+		// TODO Auto-generated method stub
+		super.caseTEndIf(node);
+	}
+
+	@Override
+	public void caseTEvaluate(TEvaluate node) {
+		// TODO Auto-generated method stub
+		super.caseTEvaluate(node);
+	}
+
+	@Override
+	public void caseTCase(TCase node) {
+		// TODO Auto-generated method stub
+		super.caseTCase(node);
+	}
+
+	@Override
+	public void caseTEndEvaluate(TEndEvaluate node) {
+		// TODO Auto-generated method stub
+		super.caseTEndEvaluate(node);
+	}
+
+	@Override
+	public void caseTWhile(TWhile node) {
+		// TODO Auto-generated method stub
+		super.caseTWhile(node);
+	}
+
+	@Override
+	public void caseTDo(TDo node) {
+		// TODO Auto-generated method stub
+		super.caseTDo(node);
+	}
+
+	@Override
+	public void caseTEndWhile(TEndWhile node) {
+		// TODO Auto-generated method stub
+		super.caseTEndWhile(node);
+	}
+
+	@Override
+	public void caseTRepeat(TRepeat node) {
+		// TODO Auto-generated method stub
+		super.caseTRepeat(node);
+	}
+
+	@Override
+	public void caseTUntil(TUntil node) {
+		// TODO Auto-generated method stub
+		super.caseTUntil(node);
+	}
+
+	@Override
+	public void caseTFor(TFor node) {
+		// TODO Auto-generated method stub
+		super.caseTFor(node);
+	}
+
+	@Override
+	public void caseTOf(TOf node) {
+		// TODO Auto-generated method stub
+		super.caseTOf(node);
+	}
+
+	@Override
+	public void caseTStep(TStep node) {
+		// TODO Auto-generated method stub
+		super.caseTStep(node);
+	}
+
+	@Override
+	public void caseTEndFor(TEndFor node) {
+		// TODO Auto-generated method stub
+		super.caseTEndFor(node);
+	}
+
+	@Override
+	public void caseTMinus(TMinus node) {
+		// TODO Auto-generated method stub
+		super.caseTMinus(node);
+	}
+
+	@Override
+	public void caseTPlus(TPlus node) {
+		// TODO Auto-generated method stub
+		super.caseTPlus(node);
+	}
+
+	@Override
+	public void caseTStar(TStar node) {
+		// TODO Auto-generated method stub
+		super.caseTStar(node);
+	}
+
+	@Override
+	public void caseTBar(TBar node) {
+		// TODO Auto-generated method stub
+		super.caseTBar(node);
+	}
+
+	@Override
+	public void caseTEqual(TEqual node) {
+		// TODO Auto-generated method stub
+		super.caseTEqual(node);
+	}
+
+	@Override
+	public void caseTNotEqual(TNotEqual node) {
+		// TODO Auto-generated method stub
+		super.caseTNotEqual(node);
+	}
+
+	@Override
+	public void caseTLEqual(TLEqual node) {
+		// TODO Auto-generated method stub
+		super.caseTLEqual(node);
+	}
+
+	@Override
+	public void caseTGEqual(TGEqual node) {
+		// TODO Auto-generated method stub
+		super.caseTGEqual(node);
+	}
+
+	@Override
+	public void caseTLess(TLess node) {
+		// TODO Auto-generated method stub
+		super.caseTLess(node);
+	}
+
+	@Override
+	public void caseTGreater(TGreater node) {
+		// TODO Auto-generated method stub
+		super.caseTGreater(node);
+	}
+
+	@Override
+	public void caseTNot(TNot node) {
+		// TODO Auto-generated method stub
+		super.caseTNot(node);
+	}
+
+	@Override
+	public void caseTAnd(TAnd node) {
+		// TODO Auto-generated method stub
+		super.caseTAnd(node);
+	}
+
+	@Override
+	public void caseTOr(TOr node) {
+		// TODO Auto-generated method stub
+		super.caseTOr(node);
+	}
+
+	@Override
+	public void caseTXor(TXor node) {
+		// TODO Auto-generated method stub
+		super.caseTXor(node);
+	}
+
+	@Override
+	public void caseTId(TId node) {
+		// TODO Auto-generated method stub
+		super.caseTId(node);
+	}
+
+	@Override
+	public void caseTLineComment(TLineComment node) {
+		// TODO Auto-generated method stub
+		super.caseTLineComment(node);
+	}
+
+	@Override
+	public void caseTBlockCommnetStart(TBlockCommnetStart node) {
+		// TODO Auto-generated method stub
+		super.caseTBlockCommnetStart(node);
+	}
+
+	@Override
+	public void caseTBlockCommentEnd(TBlockCommentEnd node) {
+		// TODO Auto-generated method stub
+		super.caseTBlockCommentEnd(node);
+	}
+
+	@Override
+	public void caseTBlockCommentBody(TBlockCommentBody node) {
+		// TODO Auto-generated method stub
+		super.caseTBlockCommentBody(node);
+	}
+
+	@Override
+	public void caseTString(TString node) {
+		// TODO Auto-generated method stub
+		super.caseTString(node);
+	}
+
+	@Override
+	public void caseTVector(TVector node) {
+		// TODO Auto-generated method stub
+		super.caseTVector(node);
+	}
+
+	@Override
+	public void caseTNInt(TNInt node) {
+		// TODO Auto-generated method stub
+		super.caseTNInt(node);
+	}
+
+	@Override
+	public void caseTNReal(TNReal node) {
+		// TODO Auto-generated method stub
+		super.caseTNReal(node);
+	}
+
+	@Override
+	public void caseTBlank(TBlank node) {
+		// TODO Auto-generated method stub
+		super.caseTBlank(node);
+	}
+
+	@Override
+	public void caseEOF(EOF node) {
+		// TODO Auto-generated method stub
+		super.caseEOF(node);
+	}
+
+	@Override
+	public void caseInvalidToken(InvalidToken node) {
+		// TODO Auto-generated method stub
+		super.caseInvalidToken(node);
+	}
+
+	@Override
+	public void defaultCase(Node node) {
+		// TODO Auto-generated method stub
+		super.defaultCase(node);
+	}
+
+	@Override
+	public int hashCode() {
+		// TODO Auto-generated method stub
+		return super.hashCode();
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		// TODO Auto-generated method stub
+		return super.equals(obj);
+	}
+
+	@Override
+	protected Object clone() throws CloneNotSupportedException {
+		// TODO Auto-generated method stub
+		return super.clone();
+	}
+
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return super.toString();
+	}
+
+	@Override
+	protected void finalize() throws Throwable {
+		// TODO Auto-generated method stub
+		super.finalize();
+	}
 
 
 }
