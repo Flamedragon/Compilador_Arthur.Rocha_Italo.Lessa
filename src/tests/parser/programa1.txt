@@ -1,0 +1,11 @@
+programa p1 
+inicio
+
+	real : x;
+	inteiro : y;
+	caractere : z;
+
+	x <- 10.0;
+	leia (y , z);
+
+fim.

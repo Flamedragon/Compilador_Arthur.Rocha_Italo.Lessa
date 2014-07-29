@@ -10,7 +10,7 @@ public final class AEvaluateComando extends PComando
 {
     private TEvaluate _evaluate_;
     private TLPar _lPar_;
-    private PExp1 _exp1_;
+    private POrExpression _orExpression_;
     private TRPar _rPar_;
     private final LinkedList<PEvaluateBody> _evaluateBody_ = new LinkedList<PEvaluateBody>();
     private final LinkedList<PElseEvaluate> _elseEvaluate_ = new LinkedList<PElseEvaluate>();
@@ -25,7 +25,7 @@ public final class AEvaluateComando extends PComando
     public AEvaluateComando(
         @SuppressWarnings("hiding") TEvaluate _evaluate_,
         @SuppressWarnings("hiding") TLPar _lPar_,
-        @SuppressWarnings("hiding") PExp1 _exp1_,
+        @SuppressWarnings("hiding") POrExpression _orExpression_,
         @SuppressWarnings("hiding") TRPar _rPar_,
         @SuppressWarnings("hiding") List<?> _evaluateBody_,
         @SuppressWarnings("hiding") List<?> _elseEvaluate_,
@@ -37,7 +37,7 @@ public final class AEvaluateComando extends PComando
 
         setLPar(_lPar_);
 
-        setExp1(_exp1_);
+        setOrExpression(_orExpression_);
 
         setRPar(_rPar_);
 
@@ -57,7 +57,7 @@ public final class AEvaluateComando extends PComando
         return new AEvaluateComando(
             cloneNode(this._evaluate_),
             cloneNode(this._lPar_),
-            cloneNode(this._exp1_),
+            cloneNode(this._orExpression_),
             cloneNode(this._rPar_),
             cloneList(this._evaluateBody_),
             cloneList(this._elseEvaluate_),
@@ -121,16 +121,16 @@ public final class AEvaluateComando extends PComando
         this._lPar_ = node;
     }
 
-    public PExp1 getExp1()
+    public POrExpression getOrExpression()
     {
-        return this._exp1_;
+        return this._orExpression_;
     }
 
-    public void setExp1(PExp1 node)
+    public void setOrExpression(POrExpression node)
     {
-        if(this._exp1_ != null)
+        if(this._orExpression_ != null)
         {
-            this._exp1_.parent(null);
+            this._orExpression_.parent(null);
         }
 
         if(node != null)
@@ -143,7 +143,7 @@ public final class AEvaluateComando extends PComando
             node.parent(this);
         }
 
-        this._exp1_ = node;
+        this._orExpression_ = node;
     }
 
     public TRPar getRPar()
@@ -279,7 +279,7 @@ public final class AEvaluateComando extends PComando
         return ""
             + toString(this._evaluate_)
             + toString(this._lPar_)
-            + toString(this._exp1_)
+            + toString(this._orExpression_)
             + toString(this._rPar_)
             + toString(this._evaluateBody_)
             + toString(this._elseEvaluate_)
@@ -303,9 +303,9 @@ public final class AEvaluateComando extends PComando
             return;
         }
 
-        if(this._exp1_ == child)
+        if(this._orExpression_ == child)
         {
-            this._exp1_ = null;
+            this._orExpression_ = null;
             return;
         }
 
@@ -356,9 +356,9 @@ public final class AEvaluateComando extends PComando
             return;
         }
 
-        if(this._exp1_ == oldChild)
+        if(this._orExpression_ == oldChild)
         {
-            setExp1((PExp1) newChild);
+            setOrExpression((POrExpression) newChild);
             return;
         }
 

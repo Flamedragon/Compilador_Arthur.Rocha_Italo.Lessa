@@ -1,0 +1,5 @@
+programa exp_parenteses1
+inicio
+	x <- (2 + 5) * 3;
+	y <- (2 + 5) * 3 = 21;
+fim.

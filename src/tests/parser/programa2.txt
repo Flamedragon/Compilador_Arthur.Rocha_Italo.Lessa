@@ -1,0 +1,17 @@
+programa p2 
+inicio
+	real : x;
+	inteiro : y;
+	caractere : z;
+	se ( 1 = 1 ) entao
+		leia ( y );
+		z <- 'hue';
+		escreva ( z );
+	fim se;
+
+	se (2 <> 1) entao
+		leia(y);
+		senao 
+			z <- 'brbr';
+	fim se;
+fim.

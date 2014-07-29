@@ -10,7 +10,7 @@ public final class AElseEvaluate extends PElseEvaluate
 {
     private TElse _else_;
     private TColon _colon_;
-    private final LinkedList<PComandoSemicolon> _comandoSemicolon_ = new LinkedList<PComandoSemicolon>();
+    private final LinkedList<PComando> _comando_ = new LinkedList<PComando>();
 
     public AElseEvaluate()
     {
@@ -20,14 +20,14 @@ public final class AElseEvaluate extends PElseEvaluate
     public AElseEvaluate(
         @SuppressWarnings("hiding") TElse _else_,
         @SuppressWarnings("hiding") TColon _colon_,
-        @SuppressWarnings("hiding") List<?> _comandoSemicolon_)
+        @SuppressWarnings("hiding") List<?> _comando_)
     {
         // Constructor
         setElse(_else_);
 
         setColon(_colon_);
 
-        setComandoSemicolon(_comandoSemicolon_);
+        setComando(_comando_);
 
     }
 
@@ -37,7 +37,7 @@ public final class AElseEvaluate extends PElseEvaluate
         return new AElseEvaluate(
             cloneNode(this._else_),
             cloneNode(this._colon_),
-            cloneList(this._comandoSemicolon_));
+            cloneList(this._comando_));
     }
 
     @Override
@@ -96,29 +96,29 @@ public final class AElseEvaluate extends PElseEvaluate
         this._colon_ = node;
     }
 
-    public LinkedList<PComandoSemicolon> getComandoSemicolon()
+    public LinkedList<PComando> getComando()
     {
-        return this._comandoSemicolon_;
+        return this._comando_;
     }
 
-    public void setComandoSemicolon(List<?> list)
+    public void setComando(List<?> list)
     {
-        for(PComandoSemicolon e : this._comandoSemicolon_)
+        for(PComando e : this._comando_)
         {
             e.parent(null);
         }
-        this._comandoSemicolon_.clear();
+        this._comando_.clear();
 
         for(Object obj_e : list)
         {
-            PComandoSemicolon e = (PComandoSemicolon) obj_e;
+            PComando e = (PComando) obj_e;
             if(e.parent() != null)
             {
                 e.parent().removeChild(e);
             }
 
             e.parent(this);
-            this._comandoSemicolon_.add(e);
+            this._comando_.add(e);
         }
     }
 
@@ -128,7 +128,7 @@ public final class AElseEvaluate extends PElseEvaluate
         return ""
             + toString(this._else_)
             + toString(this._colon_)
-            + toString(this._comandoSemicolon_);
+            + toString(this._comando_);
     }
 
     @Override
@@ -147,7 +147,7 @@ public final class AElseEvaluate extends PElseEvaluate
             return;
         }
 
-        if(this._comandoSemicolon_.remove(child))
+        if(this._comando_.remove(child))
         {
             return;
         }
@@ -171,13 +171,13 @@ public final class AElseEvaluate extends PElseEvaluate
             return;
         }
 
-        for(ListIterator<PComandoSemicolon> i = this._comandoSemicolon_.listIterator(); i.hasNext();)
+        for(ListIterator<PComando> i = this._comando_.listIterator(); i.hasNext();)
         {
             if(i.next() == oldChild)
             {
                 if(newChild != null)
                 {
-                    i.set((PComandoSemicolon) newChild);
+                    i.set((PComando) newChild);
                     newChild.parent(this);
                     oldChild.parent(null);
                     return;

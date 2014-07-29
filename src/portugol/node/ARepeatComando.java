@@ -9,10 +9,10 @@ import portugol.analysis.*;
 public final class ARepeatComando extends PComando
 {
     private TRepeat _repeat_;
-    private final LinkedList<PComandoSemicolon> _comandoSemicolon_ = new LinkedList<PComandoSemicolon>();
+    private final LinkedList<PComando> _comando_ = new LinkedList<PComando>();
     private TUntil _until_;
     private TLPar _lPar_;
-    private PExpLogica1 _expLogica1_;
+    private POrExpression _orExpression_;
     private TRPar _rPar_;
     private TSemicolon _semicolon_;
 
@@ -23,23 +23,23 @@ public final class ARepeatComando extends PComando
 
     public ARepeatComando(
         @SuppressWarnings("hiding") TRepeat _repeat_,
-        @SuppressWarnings("hiding") List<?> _comandoSemicolon_,
+        @SuppressWarnings("hiding") List<?> _comando_,
         @SuppressWarnings("hiding") TUntil _until_,
         @SuppressWarnings("hiding") TLPar _lPar_,
-        @SuppressWarnings("hiding") PExpLogica1 _expLogica1_,
+        @SuppressWarnings("hiding") POrExpression _orExpression_,
         @SuppressWarnings("hiding") TRPar _rPar_,
         @SuppressWarnings("hiding") TSemicolon _semicolon_)
     {
         // Constructor
         setRepeat(_repeat_);
 
-        setComandoSemicolon(_comandoSemicolon_);
+        setComando(_comando_);
 
         setUntil(_until_);
 
         setLPar(_lPar_);
 
-        setExpLogica1(_expLogica1_);
+        setOrExpression(_orExpression_);
 
         setRPar(_rPar_);
 
@@ -52,10 +52,10 @@ public final class ARepeatComando extends PComando
     {
         return new ARepeatComando(
             cloneNode(this._repeat_),
-            cloneList(this._comandoSemicolon_),
+            cloneList(this._comando_),
             cloneNode(this._until_),
             cloneNode(this._lPar_),
-            cloneNode(this._expLogica1_),
+            cloneNode(this._orExpression_),
             cloneNode(this._rPar_),
             cloneNode(this._semicolon_));
     }
@@ -91,29 +91,29 @@ public final class ARepeatComando extends PComando
         this._repeat_ = node;
     }
 
-    public LinkedList<PComandoSemicolon> getComandoSemicolon()
+    public LinkedList<PComando> getComando()
     {
-        return this._comandoSemicolon_;
+        return this._comando_;
     }
 
-    public void setComandoSemicolon(List<?> list)
+    public void setComando(List<?> list)
     {
-        for(PComandoSemicolon e : this._comandoSemicolon_)
+        for(PComando e : this._comando_)
         {
             e.parent(null);
         }
-        this._comandoSemicolon_.clear();
+        this._comando_.clear();
 
         for(Object obj_e : list)
         {
-            PComandoSemicolon e = (PComandoSemicolon) obj_e;
+            PComando e = (PComando) obj_e;
             if(e.parent() != null)
             {
                 e.parent().removeChild(e);
             }
 
             e.parent(this);
-            this._comandoSemicolon_.add(e);
+            this._comando_.add(e);
         }
     }
 
@@ -167,16 +167,16 @@ public final class ARepeatComando extends PComando
         this._lPar_ = node;
     }
 
-    public PExpLogica1 getExpLogica1()
+    public POrExpression getOrExpression()
     {
-        return this._expLogica1_;
+        return this._orExpression_;
     }
 
-    public void setExpLogica1(PExpLogica1 node)
+    public void setOrExpression(POrExpression node)
     {
-        if(this._expLogica1_ != null)
+        if(this._orExpression_ != null)
         {
-            this._expLogica1_.parent(null);
+            this._orExpression_.parent(null);
         }
 
         if(node != null)
@@ -189,7 +189,7 @@ public final class ARepeatComando extends PComando
             node.parent(this);
         }
 
-        this._expLogica1_ = node;
+        this._orExpression_ = node;
     }
 
     public TRPar getRPar()
@@ -247,10 +247,10 @@ public final class ARepeatComando extends PComando
     {
         return ""
             + toString(this._repeat_)
-            + toString(this._comandoSemicolon_)
+            + toString(this._comando_)
             + toString(this._until_)
             + toString(this._lPar_)
-            + toString(this._expLogica1_)
+            + toString(this._orExpression_)
             + toString(this._rPar_)
             + toString(this._semicolon_);
     }
@@ -265,7 +265,7 @@ public final class ARepeatComando extends PComando
             return;
         }
 
-        if(this._comandoSemicolon_.remove(child))
+        if(this._comando_.remove(child))
         {
             return;
         }
@@ -282,9 +282,9 @@ public final class ARepeatComando extends PComando
             return;
         }
 
-        if(this._expLogica1_ == child)
+        if(this._orExpression_ == child)
         {
-            this._expLogica1_ = null;
+            this._orExpression_ = null;
             return;
         }
 
@@ -313,13 +313,13 @@ public final class ARepeatComando extends PComando
             return;
         }
 
-        for(ListIterator<PComandoSemicolon> i = this._comandoSemicolon_.listIterator(); i.hasNext();)
+        for(ListIterator<PComando> i = this._comando_.listIterator(); i.hasNext();)
         {
             if(i.next() == oldChild)
             {
                 if(newChild != null)
                 {
-                    i.set((PComandoSemicolon) newChild);
+                    i.set((PComando) newChild);
                     newChild.parent(this);
                     oldChild.parent(null);
                     return;
@@ -343,9 +343,9 @@ public final class ARepeatComando extends PComando
             return;
         }
 
-        if(this._expLogica1_ == oldChild)
+        if(this._orExpression_ == oldChild)
         {
-            setExpLogica1((PExpLogica1) newChild);
+            setOrExpression((POrExpression) newChild);
             return;
         }
 

@@ -17,7 +17,7 @@ public final class AForStepComando extends PComando
     private TUntil _until_;
     private TNInt _end_;
     private TDo _do_;
-    private final LinkedList<PComandoSemicolon> _comandoSemicolon_ = new LinkedList<PComandoSemicolon>();
+    private final LinkedList<PComando> _comando_ = new LinkedList<PComando>();
     private TEndFor _endFor_;
     private TSemicolon _semicolon_;
 
@@ -36,7 +36,7 @@ public final class AForStepComando extends PComando
         @SuppressWarnings("hiding") TUntil _until_,
         @SuppressWarnings("hiding") TNInt _end_,
         @SuppressWarnings("hiding") TDo _do_,
-        @SuppressWarnings("hiding") List<?> _comandoSemicolon_,
+        @SuppressWarnings("hiding") List<?> _comando_,
         @SuppressWarnings("hiding") TEndFor _endFor_,
         @SuppressWarnings("hiding") TSemicolon _semicolon_)
     {
@@ -59,7 +59,7 @@ public final class AForStepComando extends PComando
 
         setDo(_do_);
 
-        setComandoSemicolon(_comandoSemicolon_);
+        setComando(_comando_);
 
         setEndFor(_endFor_);
 
@@ -80,7 +80,7 @@ public final class AForStepComando extends PComando
             cloneNode(this._until_),
             cloneNode(this._end_),
             cloneNode(this._do_),
-            cloneList(this._comandoSemicolon_),
+            cloneList(this._comando_),
             cloneNode(this._endFor_),
             cloneNode(this._semicolon_));
     }
@@ -316,29 +316,29 @@ public final class AForStepComando extends PComando
         this._do_ = node;
     }
 
-    public LinkedList<PComandoSemicolon> getComandoSemicolon()
+    public LinkedList<PComando> getComando()
     {
-        return this._comandoSemicolon_;
+        return this._comando_;
     }
 
-    public void setComandoSemicolon(List<?> list)
+    public void setComando(List<?> list)
     {
-        for(PComandoSemicolon e : this._comandoSemicolon_)
+        for(PComando e : this._comando_)
         {
             e.parent(null);
         }
-        this._comandoSemicolon_.clear();
+        this._comando_.clear();
 
         for(Object obj_e : list)
         {
-            PComandoSemicolon e = (PComandoSemicolon) obj_e;
+            PComando e = (PComando) obj_e;
             if(e.parent() != null)
             {
                 e.parent().removeChild(e);
             }
 
             e.parent(this);
-            this._comandoSemicolon_.add(e);
+            this._comando_.add(e);
         }
     }
 
@@ -405,7 +405,7 @@ public final class AForStepComando extends PComando
             + toString(this._until_)
             + toString(this._end_)
             + toString(this._do_)
-            + toString(this._comandoSemicolon_)
+            + toString(this._comando_)
             + toString(this._endFor_)
             + toString(this._semicolon_);
     }
@@ -468,7 +468,7 @@ public final class AForStepComando extends PComando
             return;
         }
 
-        if(this._comandoSemicolon_.remove(child))
+        if(this._comando_.remove(child))
         {
             return;
         }
@@ -546,13 +546,13 @@ public final class AForStepComando extends PComando
             return;
         }
 
-        for(ListIterator<PComandoSemicolon> i = this._comandoSemicolon_.listIterator(); i.hasNext();)
+        for(ListIterator<PComando> i = this._comando_.listIterator(); i.hasNext();)
         {
             if(i.next() == oldChild)
             {
                 if(newChild != null)
                 {
-                    i.set((PComandoSemicolon) newChild);
+                    i.set((PComando) newChild);
                     newChild.parent(this);
                     oldChild.parent(null);
                     return;

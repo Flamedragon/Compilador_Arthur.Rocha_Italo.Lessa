@@ -10,7 +10,7 @@ public final class AWriteComando extends PComando
 {
     private TWrite _write_;
     private TLPar _lPar_;
-    private PExp1 _exp1_;
+    private POrExpression _orExpression_;
     private final LinkedList<PCommaExp> _commaExp_ = new LinkedList<PCommaExp>();
     private TRPar _rPar_;
     private TSemicolon _semicolon_;
@@ -23,7 +23,7 @@ public final class AWriteComando extends PComando
     public AWriteComando(
         @SuppressWarnings("hiding") TWrite _write_,
         @SuppressWarnings("hiding") TLPar _lPar_,
-        @SuppressWarnings("hiding") PExp1 _exp1_,
+        @SuppressWarnings("hiding") POrExpression _orExpression_,
         @SuppressWarnings("hiding") List<?> _commaExp_,
         @SuppressWarnings("hiding") TRPar _rPar_,
         @SuppressWarnings("hiding") TSemicolon _semicolon_)
@@ -33,7 +33,7 @@ public final class AWriteComando extends PComando
 
         setLPar(_lPar_);
 
-        setExp1(_exp1_);
+        setOrExpression(_orExpression_);
 
         setCommaExp(_commaExp_);
 
@@ -49,7 +49,7 @@ public final class AWriteComando extends PComando
         return new AWriteComando(
             cloneNode(this._write_),
             cloneNode(this._lPar_),
-            cloneNode(this._exp1_),
+            cloneNode(this._orExpression_),
             cloneList(this._commaExp_),
             cloneNode(this._rPar_),
             cloneNode(this._semicolon_));
@@ -111,16 +111,16 @@ public final class AWriteComando extends PComando
         this._lPar_ = node;
     }
 
-    public PExp1 getExp1()
+    public POrExpression getOrExpression()
     {
-        return this._exp1_;
+        return this._orExpression_;
     }
 
-    public void setExp1(PExp1 node)
+    public void setOrExpression(POrExpression node)
     {
-        if(this._exp1_ != null)
+        if(this._orExpression_ != null)
         {
-            this._exp1_.parent(null);
+            this._orExpression_.parent(null);
         }
 
         if(node != null)
@@ -133,7 +133,7 @@ public final class AWriteComando extends PComando
             node.parent(this);
         }
 
-        this._exp1_ = node;
+        this._orExpression_ = node;
     }
 
     public LinkedList<PCommaExp> getCommaExp()
@@ -218,7 +218,7 @@ public final class AWriteComando extends PComando
         return ""
             + toString(this._write_)
             + toString(this._lPar_)
-            + toString(this._exp1_)
+            + toString(this._orExpression_)
             + toString(this._commaExp_)
             + toString(this._rPar_)
             + toString(this._semicolon_);
@@ -240,9 +240,9 @@ public final class AWriteComando extends PComando
             return;
         }
 
-        if(this._exp1_ == child)
+        if(this._orExpression_ == child)
         {
-            this._exp1_ = null;
+            this._orExpression_ = null;
             return;
         }
 
@@ -282,9 +282,9 @@ public final class AWriteComando extends PComando
             return;
         }
 
-        if(this._exp1_ == oldChild)
+        if(this._orExpression_ == oldChild)
         {
-            setExp1((PExp1) newChild);
+            setOrExpression((POrExpression) newChild);
             return;
         }
 
