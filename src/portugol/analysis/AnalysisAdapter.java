@@ -75,31 +75,103 @@ public class AnalysisAdapter implements Analysis
     }
 
     @Override
-    public void caseAPrograma(APrograma node)
+    public void caseAOrExpressionExpression(AOrExpressionExpression node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseADeclaracaoComandoOuDeclaracao(ADeclaracaoComandoOuDeclaracao node)
+    public void caseAXorExpressionExpression(AXorExpressionExpression node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseAComandoComandoOuDeclaracao(AComandoComandoOuDeclaracao node)
+    public void caseAAndExpressionExpression(AAndExpressionExpression node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseAIdVar(AIdVar node)
+    public void caseAEqExpression(AEqExpression node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseAIdArrayVar(AIdArrayVar node)
+    public void caseANeqExpression(ANeqExpression node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseALtExpression(ALtExpression node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAGtExpression(AGtExpression node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseALteqExpression(ALteqExpression node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAGteqExpression(AGteqExpression node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAPlusExpression(APlusExpression node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAMinusExpression(AMinusExpression node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAStarExpression(AStarExpression node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseADivExpression(ADivExpression node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseANegativeExpression(ANegativeExpression node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAComplementExpression(AComplementExpression node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAVarExpression(AVarExpression node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAValorExpression(AValorExpression node)
     {
         defaultCase(node);
     }
@@ -123,289 +195,13 @@ public class AnalysisAdapter implements Analysis
     }
 
     @Override
-    public void caseARealTipo(ARealTipo node)
+    public void caseAIdVar(AIdVar node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseAIntegerTipo(AIntegerTipo node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseACharTipo(ACharTipo node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseAVariableDeclaracao(AVariableDeclaracao node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseAConstDeclaracao(AConstDeclaracao node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseAVarSemicolon(AVarSemicolon node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseASemicolonVar(ASemicolonVar node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseAAssignmentComando(AAssignmentComando node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseAReadComando(AReadComando node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseAWriteComando(AWriteComando node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseAIfComando(AIfComando node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseAEvaluateComando(AEvaluateComando node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseAWhileComando(AWhileComando node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseARepeatComando(ARepeatComando node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseAForComando(AForComando node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseAForStepComando(AForStepComando node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseAElseStatement(AElseStatement node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseAEvaluateBody(AEvaluateBody node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseAElseEvaluate(AElseEvaluate node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseACommaVar(ACommaVar node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseACommaExp(ACommaExp node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseAExclusiveOrExpressionOrExpression(AExclusiveOrExpressionOrExpression node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseAInclusiveOrExpressionOrExpression(AInclusiveOrExpressionOrExpression node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseAAndExpressionXorExpression(AAndExpressionXorExpression node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseAExclusiveOrExpressionXorExpression(AExclusiveOrExpressionXorExpression node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseAEqualityExpressionAndExpression(AEqualityExpressionAndExpression node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseAAndExpressionAndExpression(AAndExpressionAndExpression node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseARelationalExpressionEqualityExpression(ARelationalExpressionEqualityExpression node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseAEqEqualityExpression(AEqEqualityExpression node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseANeqEqualityExpression(ANeqEqualityExpression node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseASadditiveExpressionRelationalExpression(ASadditiveExpressionRelationalExpression node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseALtRelationalExpression(ALtRelationalExpression node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseAGtRelationalExpression(AGtRelationalExpression node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseALteqRelationalExpression(ALteqRelationalExpression node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseAGteqRelationalExpression(AGteqRelationalExpression node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseAMultiplicativeExpressionAdditiveExpression(AMultiplicativeExpressionAdditiveExpression node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseAPlusAdditiveExpression(APlusAdditiveExpression node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseAMinusAdditiveExpression(AMinusAdditiveExpression node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseAUnaryExpressionMultiplicativeExpression(AUnaryExpressionMultiplicativeExpression node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseAStarMultiplicativeExpression(AStarMultiplicativeExpression node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseADivMultiplicativeExpression(ADivMultiplicativeExpression node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseAMinusUnaryExpression(AMinusUnaryExpression node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseAUnaryExpressionNotPlusMinusUnaryExpression(AUnaryExpressionNotPlusMinusUnaryExpression node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseAPostfixExpressionUnaryExpressionNotPlusMinus(APostfixExpressionUnaryExpressionNotPlusMinus node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseAComplementUnaryExpressionNotPlusMinus(AComplementUnaryExpressionNotPlusMinus node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseACastExpressionUnaryExpressionNotPlusMinus(ACastExpressionUnaryExpressionNotPlusMinus node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseAValorPostfixExpression(AValorPostfixExpression node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseAVarPostfixExpression(AVarPostfixExpression node)
+    public void caseAIdArrayVar(AIdArrayVar node)
     {
         defaultCase(node);
     }

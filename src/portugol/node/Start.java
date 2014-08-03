@@ -7,7 +7,7 @@ import portugol.analysis.*;
 @SuppressWarnings("nls")
 public final class Start extends Node
 {
-    private PPrograma _pPrograma_;
+    private PExpression _pExpression_;
     private EOF _eof_;
 
     public Start()
@@ -16,10 +16,10 @@ public final class Start extends Node
     }
 
     public Start(
-        @SuppressWarnings("hiding") PPrograma _pPrograma_,
+        @SuppressWarnings("hiding") PExpression _pExpression_,
         @SuppressWarnings("hiding") EOF _eof_)
     {
-        setPPrograma(_pPrograma_);
+        setPExpression(_pExpression_);
         setEOF(_eof_);
     }
 
@@ -27,7 +27,7 @@ public final class Start extends Node
     public Object clone()
     {
         return new Start(
-            cloneNode(this._pPrograma_),
+            cloneNode(this._pExpression_),
             cloneNode(this._eof_));
     }
 
@@ -37,16 +37,16 @@ public final class Start extends Node
         ((Analysis) sw).caseStart(this);
     }
 
-    public PPrograma getPPrograma()
+    public PExpression getPExpression()
     {
-        return this._pPrograma_;
+        return this._pExpression_;
     }
 
-    public void setPPrograma(PPrograma node)
+    public void setPExpression(PExpression node)
     {
-        if(this._pPrograma_ != null)
+        if(this._pExpression_ != null)
         {
-            this._pPrograma_.parent(null);
+            this._pExpression_.parent(null);
         }
 
         if(node != null)
@@ -59,7 +59,7 @@ public final class Start extends Node
             node.parent(this);
         }
 
-        this._pPrograma_ = node;
+        this._pExpression_ = node;
     }
 
     public EOF getEOF()
@@ -90,9 +90,9 @@ public final class Start extends Node
     @Override
     void removeChild(Node child)
     {
-        if(this._pPrograma_ == child)
+        if(this._pExpression_ == child)
         {
-            this._pPrograma_ = null;
+            this._pExpression_ = null;
             return;
         }
 
@@ -108,9 +108,9 @@ public final class Start extends Node
     @Override
     void replaceChild(Node oldChild, Node newChild)
     {
-        if(this._pPrograma_ == oldChild)
+        if(this._pExpression_ == oldChild)
         {
-            setPPrograma((PPrograma) newChild);
+            setPExpression((PExpression) newChild);
             return;
         }
 
@@ -127,7 +127,7 @@ public final class Start extends Node
     public String toString()
     {
         return "" +
-            toString(this._pPrograma_) +
+            toString(this._pExpression_) +
             toString(this._eof_);
     }
 }

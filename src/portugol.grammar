@@ -83,6 +83,58 @@ Ignored Tokens
 
 
 Productions
+
+
+
+
+expression =
+    {xor_expression} xor_expression {-> xor_expression.expression} |
+    {or_expression} expression or xor_expression {-> New expression.or_expression(expression.expression, xor_expression.expression)} ;
+	
+xor_expression {-> expression} =
+    {and_expression} and_expression {-> and_expression.expression}|
+    {xor_expression} xor_expression xor and_expression {-> New expression.xor_expression(xor_expression.expression, and_expression.expression)};
+
+and_expression {-> expression} =
+    {equality_expression} equality_expression {-> equality_expression.expression}|
+	{and_expression} and_expression and equality_expression {-> New expression.and_expression(and_expression.expression, equality_expression.expression)};
+
+equality_expression {-> expression} =
+    {relational_expression} relational_expression  {-> relational_expression.expression}|
+    {eq} equality_expression equal relational_expression {-> New expression.eq(equality_expression.expression,relational_expression.expression)}|
+    {neq} equality_expression not_equal relational_expression {-> New expression.neq(equality_expression.expression,relational_expression.expression)};
+
+relational_expression {-> expression} =
+    {additive_expression} additive_expression {-> additive_expression.expression}|
+    {lt} relational_expression less additive_expression {-> New expression.lt(relational_expression.expression,additive_expression.expression)}|
+    {gt} relational_expression greater additive_expression {-> New expression.gt(relational_expression.expression,additive_expression.expression)} |
+    {lteq} relational_expression l_equal additive_expression {-> New expression.lteq(relational_expression.expression,additive_expression.expression)} |
+    {gteq} relational_expression g_equal additive_expression {-> New expression.gteq(relational_expression.expression,additive_expression.expression)} ;	
+		
+additive_expression {-> expression} =
+    {multiplicative_expression} multiplicative_expression {-> multiplicative_expression.expression}|
+    {plus} additive_expression plus multiplicative_expression {-> New expression.plus(additive_expression.expression,multiplicative_expression.expression)}|
+    {minus} additive_expression minus multiplicative_expression {-> New expression.minus(additive_expression.expression,multiplicative_expression.expression)};
+	
+multiplicative_expression {-> expression} =
+	{unary_expression} unary_expression {-> unary_expression.expression}|
+    {star} multiplicative_expression star unary_expression {-> New expression.star(multiplicative_expression.expression,unary_expression.expression)}|
+    {div} multiplicative_expression bar unary_expression {-> New expression.div(multiplicative_expression.expression,unary_expression.expression)} ;	
+			
+			
+unary_expression {-> expression} =
+    {minus} minus unary_expression {-> unary_expression.expression}|
+    {unary_expression_not_plus_minus} unary_expression_not_plus_minus {-> unary_expression_not_plus_minus.expression} ;			
+			
+unary_expression_not_plus_minus {-> expression} =
+    {postfix_expression} postfix_expression {-> postfix_expression.expression}|
+    {complement} not unary_expression {-> unary_expression.expression}|
+	{cast_expression} l_par expression r_par {-> expression};
+			
+postfix_expression {-> expression} =
+	{valor} valor {-> New expression.valor(valor)}|
+	{var} var {-> New expression.var(var)} ;	
+
 programa = program id begin declaracao* comando* end;
 
 comando_ou_declaracao = 
@@ -111,13 +163,13 @@ var_semicolon = var semicolon;
 semicolon_var = semicolon var;
 
 comando = 
-	{assignment} var l_arrow or_expression semicolon |
+	{assignment} var l_arrow expression semicolon |
 	{read} read l_par var comma_var* r_par semicolon |
- 	{write} write l_par or_expression comma_exp* r_par semicolon |
- 	{if} if l_par or_expression r_par then comando* else_statement? end_if semicolon |
- 	{evaluate} evaluate l_par or_expression r_par evaluate_body* else_evaluate+ end_evaluate semicolon |
- 	{while} while l_par or_expression r_par do comando* end_while semicolon |
- 	{repeat} repeat comando* until l_par or_expression r_par semicolon |
+ 	{write} write l_par expression comma_exp* r_par semicolon |
+ 	{if} if l_par expression r_par then comando* else_statement? end_if semicolon |
+ 	{evaluate} evaluate l_par expression r_par evaluate_body* else_evaluate+ end_evaluate semicolon |
+ 	{while} while l_par expression r_par do comando* end_while semicolon |
+ 	{repeat} repeat comando* until l_par expression r_par semicolon |
  	{for} for var of [begin]:n_int until [end]:n_int do comando* end_for semicolon |
  	{for_step} for var of [begin]:n_int step [n_steps]:n_int until [end]:n_int do comando* end_for semicolon;
  
@@ -127,53 +179,35 @@ evaluate_body = case valor colon comando* ;
 else_evaluate = else colon comando* ; 
 
 comma_var = comma var;
-comma_exp = comma or_expression;
+comma_exp = comma expression;
 //semicolon_comando = semicolon comando;
-
-or_expression =
-    {exclusive_or_expression} xor_expression |
-    {inclusive_or_expression} or_expression or xor_expression;
-
-xor_expression =
-    {and_expression} and_expression |
-    {exclusive_or_expression} xor_expression xor and_expression;
-
-and_expression =
-    {equality_expression} equality_expression |
-	{and_expression} and_expression and equality_expression;
-
-equality_expression =
-    {relational_expression} relational_expression |
-    {eq} equality_expression equal relational_expression |
-    {neq} equality_expression not_equal relational_expression;
-
-relational_expression =
-    {sadditive_expression} additive_expression |
-    {lt} relational_expression less additive_expression |
-    {gt} relational_expression greater additive_expression |
-    {lteq} relational_expression l_equal additive_expression |
-    {gteq} relational_expression g_equal additive_expression ;	
-		
-additive_expression =
-    {multiplicative_expression} multiplicative_expression |
-    {plus} additive_expression plus multiplicative_expression |
-    {minus} additive_expression minus multiplicative_expression;
 	
-multiplicative_expression =
-	{unary_expression} unary_expression |
-    {star} multiplicative_expression star unary_expression |
-    {div} multiplicative_expression bar unary_expression ;	
-			
-			
-unary_expression =
-    {minus} minus unary_expression |
-    {unary_expression_not_plus_minus} unary_expression_not_plus_minus;			
-			
-unary_expression_not_plus_minus =
-    {postfix_expression} postfix_expression |
-    {complement} not unary_expression |
-	{cast_expression} l_par or_expression r_par ;
-			
-postfix_expression =
-	{valor} valor |
-	{var} var ;			
+
+Abstract Syntax Tree
+
+expression = {or_expression} [l]:expression [r]:expression |
+			 {xor_expression} [l]:expression [r]:expression |
+			 {and_expression} [l]:expression [r]:expression |
+			 {eq} [l]:expression [r]:expression |
+		     {neq} [l]:expression [r]:expression |
+			 {lt} [l]:expression [r]:expression |
+			 {gt} [l]:expression [r]:expression |
+			 {lteq} [l]:expression [r]:expression |
+			 {gteq} [l]:expression [r]:expression |		
+			 {plus} [l]:expression [r]:expression |
+			 {minus} [l]:expression [r]:expression |
+			 {star} [l]:expression [r]:expression |
+			 {div} [l]:expression [r]:expression |
+			 {negative} minus expression | 			
+			 {complement} not expression |			
+			 {var} var|
+			 {valor} valor;
+			 
+valor = 
+	{string} string |
+	{n_int} n_int |
+	{n_real} n_real;
+
+var = 
+	{id} id |
+	{id_array} id l_bkt n_int r_bkt; 
