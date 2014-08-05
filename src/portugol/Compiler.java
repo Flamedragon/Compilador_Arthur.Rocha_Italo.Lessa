@@ -1,7 +1,11 @@
 package portugol;
-import portugol.lexer.*;
-import portugol.node.*;
-import portugol.parser.Parser;
+//import portugol.lexer.*;
+//import portugol.node.*;
+//import portugol.parser.Parser;
+
+import expression.lexer.*;
+import expression.node.*;
+import expression.parser.*;
 
 import java.io.*;
 

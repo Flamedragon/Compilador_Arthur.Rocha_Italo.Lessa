@@ -189,7 +189,7 @@ expression = {or_expression} [l]:expression [r]:expression |
 			 {xor_expression} [l]:expression [r]:expression |
 			 {and_expression} [l]:expression [r]:expression |
 			 {eq} [l]:expression [r]:expression |
-		     {neq} [l]:expression [r]:expression |
+		   {neq} [l]:expression [r]:expression |
 			 {lt} [l]:expression [r]:expression |
 			 {gt} [l]:expression [r]:expression |
 			 {lteq} [l]:expression [r]:expression |

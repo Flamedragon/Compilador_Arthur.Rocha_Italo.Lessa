@@ -3,9 +3,10 @@ package portugol;
 import java.io.IOException;
 import java.io.PushbackReader;
 
-import portugol.lexer.IPushbackReader;
-import portugol.lexer.Lexer;
-import portugol.lexer.LexerException;
+import expression.lexer.*;
+//import portugol.lexer.IPushbackReader;
+//import portugol.lexer.Lexer;
+//import portugol.lexer.LexerException;
 
 public class AuxLexer extends Lexer {
 	
