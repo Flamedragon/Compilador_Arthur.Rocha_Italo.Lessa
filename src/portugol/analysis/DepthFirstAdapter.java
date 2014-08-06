@@ -50,6 +50,10 @@ public class DepthFirstAdapter extends AnalysisAdapter
     public void caseAPrograma(APrograma node)
     {
         inAPrograma(node);
+        if(node.getId() != null)
+        {
+            node.getId().apply(this);
+        }
         {
             List<PDeclaracao> copy = new ArrayList<PDeclaracao>(node.getDeclaracao());
             for(PDeclaracao e : copy)

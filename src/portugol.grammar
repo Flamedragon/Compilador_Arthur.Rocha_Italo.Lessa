@@ -85,7 +85,7 @@ Ignored Tokens
 Productions
 
 
-programa {-> programa} = program id begin declaracao* comando* end{ -> New programa([declaracao],[comando])};
+programa {-> programa} = program id begin declaracao* comando* end{ -> New programa(id,[declaracao],[comando])};
 
 
 
@@ -198,7 +198,7 @@ comma_exp = comma expression;
 
 Abstract Syntax Tree
 
-programa =  declaracao* comando*;
+programa =  id declaracao* comando*;
 
 declaracao = {variable} tipo var*|
 			 {const} id valor;

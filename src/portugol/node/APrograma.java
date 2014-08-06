@@ -8,6 +8,7 @@ import portugol.analysis.*;
 @SuppressWarnings("nls")
 public final class APrograma extends PPrograma
 {
+    private TId _id_;
     private final LinkedList<PDeclaracao> _declaracao_ = new LinkedList<PDeclaracao>();
     private final LinkedList<PComando> _comando_ = new LinkedList<PComando>();
 
@@ -17,10 +18,13 @@ public final class APrograma extends PPrograma
     }
 
     public APrograma(
+        @SuppressWarnings("hiding") TId _id_,
         @SuppressWarnings("hiding") List<?> _declaracao_,
         @SuppressWarnings("hiding") List<?> _comando_)
     {
         // Constructor
+        setId(_id_);
+
         setDeclaracao(_declaracao_);
 
         setComando(_comando_);
@@ -31,6 +35,7 @@ public final class APrograma extends PPrograma
     public Object clone()
     {
         return new APrograma(
+            cloneNode(this._id_),
             cloneList(this._declaracao_),
             cloneList(this._comando_));
     }
@@ -39,6 +44,31 @@ public final class APrograma extends PPrograma
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseAPrograma(this);
+    }
+
+    public TId getId()
+    {
+        return this._id_;
+    }
+
+    public void setId(TId node)
+    {
+        if(this._id_ != null)
+        {
+            this._id_.parent(null);
+        }
+
+        if(node != null)
+        {
+            if(node.parent() != null)
+            {
+                node.parent().removeChild(node);
+            }
+
+            node.parent(this);
+        }
+
+        this._id_ = node;
     }
 
     public LinkedList<PDeclaracao> getDeclaracao()
@@ -97,6 +127,7 @@ public final class APrograma extends PPrograma
     public String toString()
     {
         return ""
+            + toString(this._id_)
             + toString(this._declaracao_)
             + toString(this._comando_);
     }
@@ -105,6 +136,12 @@ public final class APrograma extends PPrograma
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
+        if(this._id_ == child)
+        {
+            this._id_ = null;
+            return;
+        }
+
         if(this._declaracao_.remove(child))
         {
             return;
@@ -122,6 +159,12 @@ public final class APrograma extends PPrograma
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
+        if(this._id_ == oldChild)
+        {
+            setId((TId) newChild);
+            return;
+        }
+
         for(ListIterator<PDeclaracao> i = this._declaracao_.listIterator(); i.hasNext();)
         {
             if(i.next() == oldChild)

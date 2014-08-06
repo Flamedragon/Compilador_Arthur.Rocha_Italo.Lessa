@@ -704,8 +704,10 @@ public class Parser
         PPrograma pprogramaNode1;
         {
             // Block
-        LinkedList<Object> listNode2 = new LinkedList<Object>();
+        TId tidNode2;
         LinkedList<Object> listNode3 = new LinkedList<Object>();
+        LinkedList<Object> listNode4 = new LinkedList<Object>();
+        tidNode2 = (TId)nodeArrayList2.get(0);
         {
             // Block
         }
@@ -713,7 +715,7 @@ public class Parser
             // Block
         }
 
-        pprogramaNode1 = new APrograma(listNode2, listNode3);
+        pprogramaNode1 = new APrograma(tidNode2, listNode3, listNode4);
         }
 	nodeList.add(pprogramaNode1);
         return nodeList;
@@ -734,22 +736,24 @@ public class Parser
         PPrograma pprogramaNode1;
         {
             // Block
-        LinkedList<Object> listNode3 = new LinkedList<Object>();
+        TId tidNode2;
         LinkedList<Object> listNode4 = new LinkedList<Object>();
+        LinkedList<Object> listNode5 = new LinkedList<Object>();
+        tidNode2 = (TId)nodeArrayList2.get(0);
         {
             // Block
-        LinkedList<Object> listNode2 = new LinkedList<Object>();
-        listNode2 = (LinkedList)nodeArrayList4.get(0);
-	if(listNode2 != null)
+        LinkedList<Object> listNode3 = new LinkedList<Object>();
+        listNode3 = (LinkedList)nodeArrayList4.get(0);
+	if(listNode3 != null)
 	{
-	  listNode3.addAll(listNode2);
+	  listNode4.addAll(listNode3);
 	}
         }
         {
             // Block
         }
 
-        pprogramaNode1 = new APrograma(listNode3, listNode4);
+        pprogramaNode1 = new APrograma(tidNode2, listNode4, listNode5);
         }
 	nodeList.add(pprogramaNode1);
         return nodeList;
@@ -770,22 +774,24 @@ public class Parser
         PPrograma pprogramaNode1;
         {
             // Block
-        LinkedList<Object> listNode2 = new LinkedList<Object>();
-        LinkedList<Object> listNode4 = new LinkedList<Object>();
+        TId tidNode2;
+        LinkedList<Object> listNode3 = new LinkedList<Object>();
+        LinkedList<Object> listNode5 = new LinkedList<Object>();
+        tidNode2 = (TId)nodeArrayList2.get(0);
         {
             // Block
         }
         {
             // Block
-        LinkedList<Object> listNode3 = new LinkedList<Object>();
-        listNode3 = (LinkedList)nodeArrayList4.get(0);
-	if(listNode3 != null)
+        LinkedList<Object> listNode4 = new LinkedList<Object>();
+        listNode4 = (LinkedList)nodeArrayList4.get(0);
+	if(listNode4 != null)
 	{
-	  listNode4.addAll(listNode3);
+	  listNode5.addAll(listNode4);
 	}
         }
 
-        pprogramaNode1 = new APrograma(listNode2, listNode4);
+        pprogramaNode1 = new APrograma(tidNode2, listNode3, listNode5);
         }
 	nodeList.add(pprogramaNode1);
         return nodeList;
@@ -807,28 +813,30 @@ public class Parser
         PPrograma pprogramaNode1;
         {
             // Block
-        LinkedList<Object> listNode3 = new LinkedList<Object>();
-        LinkedList<Object> listNode5 = new LinkedList<Object>();
+        TId tidNode2;
+        LinkedList<Object> listNode4 = new LinkedList<Object>();
+        LinkedList<Object> listNode6 = new LinkedList<Object>();
+        tidNode2 = (TId)nodeArrayList2.get(0);
         {
             // Block
-        LinkedList<Object> listNode2 = new LinkedList<Object>();
-        listNode2 = (LinkedList)nodeArrayList4.get(0);
-	if(listNode2 != null)
+        LinkedList<Object> listNode3 = new LinkedList<Object>();
+        listNode3 = (LinkedList)nodeArrayList4.get(0);
+	if(listNode3 != null)
 	{
-	  listNode3.addAll(listNode2);
+	  listNode4.addAll(listNode3);
 	}
         }
         {
             // Block
-        LinkedList<Object> listNode4 = new LinkedList<Object>();
-        listNode4 = (LinkedList)nodeArrayList5.get(0);
-	if(listNode4 != null)
+        LinkedList<Object> listNode5 = new LinkedList<Object>();
+        listNode5 = (LinkedList)nodeArrayList5.get(0);
+	if(listNode5 != null)
 	{
-	  listNode5.addAll(listNode4);
+	  listNode6.addAll(listNode5);
 	}
         }
 
-        pprogramaNode1 = new APrograma(listNode3, listNode5);
+        pprogramaNode1 = new APrograma(tidNode2, listNode4, listNode6);
         }
 	nodeList.add(pprogramaNode1);
         return nodeList;
