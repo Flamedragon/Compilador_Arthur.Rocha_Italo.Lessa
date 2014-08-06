@@ -84,9 +84,6 @@ Ignored Tokens
 
 Productions
 
-
-
-
 expression =
     {xor_expression} xor_expression {-> xor_expression.expression} |
     {or_expression} expression or xor_expression {-> New expression.or_expression(expression.expression, xor_expression.expression)} ;
@@ -135,11 +132,8 @@ postfix_expression {-> expression} =
 	{valor} valor {-> New expression.valor(valor)}|
 	{var} var {-> New expression.var(var)} ;	
 
-programa = program id begin declaracao* comando* end;
-
-comando_ou_declaracao = 
-					{declaracao} declaracao |
-					{comando} comando ;
+programa {-> programa} = program id begin declaracao* comando* end
+													{-> New programa(id,[declaracao],[comando])};
 
 var = 
 	{id} id |
@@ -155,23 +149,23 @@ tipo =
 	{integer} integer |
 	{char} char;
 	
-declaracao = 
-	{variable} tipo colon var var_semicolon* semicolon|
-	{const} const id valor;
-	
-var_semicolon = var semicolon;
-semicolon_var = semicolon var;
+declaracao {-> declaracao} = 
+	{variable} tipo colon var var_semicolon* semicolon { -> New declaracao.variable(tipo,[var])}|
+	{const} const id valor {-> New declaracao.const(id,valor)};
 
-comando = 
-	{assignment} var l_arrow expression semicolon |
-	{read} read l_par var comma_var* r_par semicolon |
- 	{write} write l_par expression comma_exp* r_par semicolon |
- 	{if} if l_par expression r_par then comando* else_statement? end_if semicolon |
- 	{evaluate} evaluate l_par expression r_par evaluate_body* else_evaluate+ end_evaluate semicolon |
- 	{while} while l_par expression r_par do comando* end_while semicolon |
- 	{repeat} repeat comando* until l_par expression r_par semicolon |
- 	{for} for var of [begin]:n_int until [end]:n_int do comando* end_for semicolon |
- 	{for_step} for var of [begin]:n_int step [n_steps]:n_int until [end]:n_int do comando* end_for semicolon;
+var_list {-> var*} = var var_list_tail
+var_semicolon{ -> var }  = var semicolon {-> var};
+
+comando {-> comando}= 
+	{assignment} var l_arrow expression semicolon {-> New comando.assignment(var,expression)}|
+	{read} read l_par var comma_var* r_par semicolon {-> New comando.read([var])}|
+ 	{write} write l_par expression comma_exp* r_par semicolon {-> New comando.write([expression])} |
+ 	{if} if l_par expression r_par then comando* else_statement? end_if semicolon {-> New comando.if(expression,[comando],else_statement)} |
+ 	{evaluate} evaluate l_par expression r_par evaluate_body* else_evaluate+ end_evaluate semicolon {-> New comando.evaluate(expression,[evaluate_body],else_evaluate)}|
+ 	{while} while l_par expression r_par do comando* end_while semicolon {-> New comando.while(expression,[comando])}|
+ 	{repeat} repeat comando* until l_par expression r_par semicolon {-> New comando.repeat([comando],expression)}|
+ 	{for} for var of [begin]:n_int until [end]:n_int do comando* end_for semicolon {-> New comando.for(var,begin,end,[comando])}|
+ 	{for_step} for var of [begin]:n_int step [n_steps]:n_int until [end]:n_int do comando* end_for semicolon {-> New comando.for_step(var,begin,n_steps,end,[comando])};
  
  	 
 else_statement = else comando* ;
@@ -180,12 +174,39 @@ else_evaluate = else colon comando* ;
 
 comma_var = comma var;
 comma_exp = comma expression;
-//semicolon_comando = semicolon comando;
 	
 
 Abstract Syntax Tree
 
-expression = {or_expression} [l]:expression [r]:expression |
+programa = id declaracao* comando*;
+
+declaracao =
+			 {variable} tipo var*|
+			 {const} id valor;
+
+tipo = 
+	{real} real |
+	{integer} integer |
+	{char} char;
+
+else_statement = comando*;
+evaluate_body = valor comando*;
+else_evaluate = comando*;
+
+comando = 
+			 {assignment} var expression |
+			 {read} var* |
+			 {write} expression* |
+			 {if} expression [if_part]:comando* else_statement|
+			 {evaluate} expression evaluate_body* else_evaluate |
+			 {while} expression comando* |
+			 {repeat} var [begin]:n_int [end]:n_int comando* |
+			 {for} var [begin]:n_int [end]:n_int comando* |
+			 {for_step} var [begin]:n_int [n_steps]:n_int [end]:n_int comando* ;
+
+
+expression = 
+			 {or_expression} [l]:expression [r]:expression |
 			 {xor_expression} [l]:expression [r]:expression |
 			 {and_expression} [l]:expression [r]:expression |
 			 {eq} [l]:expression [r]:expression |
@@ -210,4 +231,4 @@ valor =
 
 var = 
 	{id} id |
-	{id_array} id l_bkt n_int r_bkt; 
+	{id_array} id n_int; 
