@@ -1,10 +1,10 @@
-package portugol;
 
-//import portugol.analysis.*;
-//import portugol.node.*;
 
-import expression.analysis.*;
-import expression.node.*;
+import portugol.analysis.*;
+import portugol.node.*;
+
+//import expression.analysis.*;
+//import expression.node.*;
 
 public class Translation extends DepthFirstAdapter
 {
@@ -15,6 +15,8 @@ public class Translation extends DepthFirstAdapter
 		System.out.println(node.toString());
 		super.defaultIn(node);
 	}
+	
+	
 
 
 }

@@ -115,7 +115,7 @@ declaracao =
 {variable} tipo colon var_list semicolon {-> New declaracao.variable(tipo,[var_list.var])}| 
 {const} const id valor {-> New declaracao.const(id,valor)};
 
-var_list {-> var*} = var var_list_tail {-> [var_list_tail.var]};
+var_list {-> var*} = var var_list_tail* {-> [var_list_tail.var]};
 var_list_tail {-> var} = comma var {-> var};	
 
 

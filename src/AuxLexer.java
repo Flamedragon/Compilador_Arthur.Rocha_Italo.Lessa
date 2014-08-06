@@ -1,9 +1,9 @@
-package portugol;
+
 
 import java.io.IOException;
 import java.io.PushbackReader;
 
-import expression.lexer.*;
+import portugol.lexer.*;
 //import portugol.lexer.IPushbackReader;
 //import portugol.lexer.Lexer;
 //import portugol.lexer.LexerException;
