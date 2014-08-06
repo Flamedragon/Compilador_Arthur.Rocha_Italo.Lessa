@@ -304,56 +304,44 @@ class TokenIndex extends AnalysisAdapter
     }
 
     @Override
-    public void caseTLineComment(@SuppressWarnings("unused") TLineComment node)
+    public void caseTBlockCommentStart(@SuppressWarnings("unused") TBlockCommentStart node)
     {
         this.index = 49;
     }
 
     @Override
-    public void caseTBlockCommnetStart(@SuppressWarnings("unused") TBlockCommnetStart node)
+    public void caseTBlockCommentEnd(@SuppressWarnings("unused") TBlockCommentEnd node)
     {
         this.index = 50;
     }
 
     @Override
-    public void caseTBlockCommentEnd(@SuppressWarnings("unused") TBlockCommentEnd node)
+    public void caseTString(@SuppressWarnings("unused") TString node)
     {
         this.index = 51;
     }
 
     @Override
-    public void caseTBlockCommentBody(@SuppressWarnings("unused") TBlockCommentBody node)
+    public void caseTVector(@SuppressWarnings("unused") TVector node)
     {
         this.index = 52;
     }
 
     @Override
-    public void caseTString(@SuppressWarnings("unused") TString node)
+    public void caseTNInt(@SuppressWarnings("unused") TNInt node)
     {
         this.index = 53;
     }
 
     @Override
-    public void caseTVector(@SuppressWarnings("unused") TVector node)
+    public void caseTNReal(@SuppressWarnings("unused") TNReal node)
     {
         this.index = 54;
     }
 
     @Override
-    public void caseTNInt(@SuppressWarnings("unused") TNInt node)
-    {
-        this.index = 55;
-    }
-
-    @Override
-    public void caseTNReal(@SuppressWarnings("unused") TNReal node)
-    {
-        this.index = 56;
-    }
-
-    @Override
     public void caseEOF(@SuppressWarnings("unused") EOF node)
     {
-        this.index = 57;
+        this.index = 55;
     }
 }

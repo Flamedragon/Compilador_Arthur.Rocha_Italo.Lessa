@@ -894,20 +894,6 @@ public class Lexer
                     case 51:
                         {
                             @SuppressWarnings("hiding") Token token = new51(
-                                start_line + 1,
-                                start_pos + 1);
-                            pushBack(accept_length);
-                            this.pos = accept_pos;
-                            this.line = accept_line;
-                            switch(state.id())
-                            {
-                                case 1: state = State.NORMAL; break;
-                            }
-                            return token;
-                        }
-                    case 52:
-                        {
-                            @SuppressWarnings("hiding") Token token = new52(
                                 getText(accept_length),
                                 start_line + 1,
                                 start_pos + 1);
@@ -917,6 +903,20 @@ public class Lexer
                             switch(state.id())
                             {
                                 case 1: state = State.COMMENT; break;
+                            }
+                            return token;
+                        }
+                    case 52:
+                        {
+                            @SuppressWarnings("hiding") Token token = new52(
+                                start_line + 1,
+                                start_pos + 1);
+                            pushBack(accept_length);
+                            this.pos = accept_pos;
+                            this.line = accept_line;
+                            switch(state.id())
+                            {
+                                case 1: state = State.NORMAL; break;
                             }
                             return token;
                         }
@@ -1066,9 +1066,9 @@ public class Lexer
     Token new47(@SuppressWarnings("hiding") int line, @SuppressWarnings("hiding") int pos) { return new TXor(line, pos); }
     Token new48(@SuppressWarnings("hiding") String text, @SuppressWarnings("hiding") int line, @SuppressWarnings("hiding") int pos) { return new TId(text, line, pos); }
     Token new49(@SuppressWarnings("hiding") String text, @SuppressWarnings("hiding") int line, @SuppressWarnings("hiding") int pos) { return new TLineComment(text, line, pos); }
-    Token new50(@SuppressWarnings("hiding") int line, @SuppressWarnings("hiding") int pos) { return new TBlockCommnetStart(line, pos); }
-    Token new51(@SuppressWarnings("hiding") int line, @SuppressWarnings("hiding") int pos) { return new TBlockCommentEnd(line, pos); }
-    Token new52(@SuppressWarnings("hiding") String text, @SuppressWarnings("hiding") int line, @SuppressWarnings("hiding") int pos) { return new TBlockCommentBody(text, line, pos); }
+    Token new50(@SuppressWarnings("hiding") int line, @SuppressWarnings("hiding") int pos) { return new TBlockCommentStart(line, pos); }
+    Token new51(@SuppressWarnings("hiding") String text, @SuppressWarnings("hiding") int line, @SuppressWarnings("hiding") int pos) { return new TBlockCommentBody(text, line, pos); }
+    Token new52(@SuppressWarnings("hiding") int line, @SuppressWarnings("hiding") int pos) { return new TBlockCommentEnd(line, pos); }
     Token new53(@SuppressWarnings("hiding") String text, @SuppressWarnings("hiding") int line, @SuppressWarnings("hiding") int pos) { return new TString(text, line, pos); }
     Token new54(@SuppressWarnings("hiding") String text, @SuppressWarnings("hiding") int line, @SuppressWarnings("hiding") int pos) { return new TVector(text, line, pos); }
     Token new55(@SuppressWarnings("hiding") String text, @SuppressWarnings("hiding") int line, @SuppressWarnings("hiding") int pos) { return new TNInt(text, line, pos); }
@@ -1321,7 +1321,7 @@ public class Lexer
         // NORMAL
         {-1, 57, 57, 57, 57, -1, 15, 16, 36, 35, 7, 34, 3, 37, 55, 4, 5, 42, 38, 43, 48, 11, 12, 48, 48, 48, 48, 48, 45, 48, 48, 48, 48, 48, 48, 48, 48, 48, 53, -1, -1, -1, 55, 50, -1, -1, 55, 13, 40, 39, 41, 48, 48, -1, 48, 48, 48, 48, 48, 48, 31, 48, 48, 48, 48, 48, 48, 48, 46, 48, 48, 48, 18, 48, 55, -1, 49, 49, 56, -1, 54, 29, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 44, 48, 48, 48, 48, 48, 48, 47, 49, 56, 48, 48, 23, 48, 48, 48, 48, 26, -1, 2, 48, 48, 14, 30, 48, 48, 8, 48, 48, 48, 48, 6, 48, 19, 48, -1, -1, -1, -1, 48, 48, 32, 48, 48, 20, 22, 48, 48, 48, -1, -1, -1, 21, 1, 48, 48, 28, 48, 48, 17, -1, -1, -1, 9, 48, 48, 25, -1, -1, 33, 0, 10, -1, -1, 24, -1, -1, 27, },
         // COMMENT
-        {52, 52, 52, 52, 51, 50, },
+        {51, 51, 51, 51, 52, 50, },
 
     };*/
 

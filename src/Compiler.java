@@ -30,7 +30,7 @@ public class Compiler
    // Create a Parser instance.
    Parser p =
     new Parser(
-    new Lexer(
+    new MyLexer(
     new PushbackReader(
     new InputStreamReader(System.in), 1024)));
 

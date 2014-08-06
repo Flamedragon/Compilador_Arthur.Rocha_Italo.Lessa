@@ -1,10 +1,6 @@
 programa p1 
 inicio
+	inteiro : p1;
+	real : a 
 
-	real : x , y;
-
-	x <- 10.0;
-	y <- 2.0;
-	x <- x + y;
-	leia(x);
 fim.
