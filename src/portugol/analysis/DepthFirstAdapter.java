@@ -459,15 +459,32 @@ public class DepthFirstAdapter extends AnalysisAdapter
     public void caseANegativeExpression(ANegativeExpression node)
     {
         inANegativeExpression(node);
-        if(node.getMinus() != null)
-        {
-            node.getMinus().apply(this);
-        }
         if(node.getExpression() != null)
         {
             node.getExpression().apply(this);
         }
         outANegativeExpression(node);
+    }
+
+    public void inACastExpressionExpression(ACastExpressionExpression node)
+    {
+        defaultIn(node);
+    }
+
+    public void outACastExpressionExpression(ACastExpressionExpression node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseACastExpressionExpression(ACastExpressionExpression node)
+    {
+        inACastExpressionExpression(node);
+        if(node.getExpression() != null)
+        {
+            node.getExpression().apply(this);
+        }
+        outACastExpressionExpression(node);
     }
 
     public void inAComplementExpression(AComplementExpression node)
@@ -484,10 +501,6 @@ public class DepthFirstAdapter extends AnalysisAdapter
     public void caseAComplementExpression(AComplementExpression node)
     {
         inAComplementExpression(node);
-        if(node.getNot() != null)
-        {
-            node.getNot().apply(this);
-        }
         if(node.getExpression() != null)
         {
             node.getExpression().apply(this);
@@ -696,12 +709,9 @@ public class DepthFirstAdapter extends AnalysisAdapter
     public void caseAWriteComando(AWriteComando node)
     {
         inAWriteComando(node);
+        if(node.getExpression() != null)
         {
-            List<PExpression> copy = new ArrayList<PExpression>(node.getExpression());
-            for(PExpression e : copy)
-            {
-                e.apply(this);
-            }
+            node.getExpression().apply(this);
         }
         outAWriteComando(node);
     }

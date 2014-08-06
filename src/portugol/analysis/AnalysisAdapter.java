@@ -177,6 +177,12 @@ public class AnalysisAdapter implements Analysis
     }
 
     @Override
+    public void caseACastExpressionExpression(ACastExpressionExpression node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
     public void caseAComplementExpression(AComplementExpression node)
     {
         defaultCase(node);

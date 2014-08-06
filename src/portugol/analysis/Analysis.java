@@ -29,6 +29,7 @@ public interface Analysis extends Switch
     void caseAStarExpression(AStarExpression node);
     void caseADivExpression(ADivExpression node);
     void caseANegativeExpression(ANegativeExpression node);
+    void caseACastExpressionExpression(ACastExpressionExpression node);
     void caseAComplementExpression(AComplementExpression node);
     void caseAVarExpression(AVarExpression node);
     void caseAValorExpression(AValorExpression node);
