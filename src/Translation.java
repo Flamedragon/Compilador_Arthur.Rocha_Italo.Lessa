@@ -10,9 +10,8 @@ import portugol.node.*;
 
 public class Translation extends DepthFirstAdapter
 {
-	Hashtable symbol_table = new Hashtable(); 
-
-	
+	HashMap<String,String> symbol_table = new HashMap<String,String>(); 
+	Hashtable<String,String> type_check_table = new Hashtable<String,String>();
 	
 	
 	public void printmap(){
@@ -22,7 +21,7 @@ public class Translation extends DepthFirstAdapter
 	@Override	
 	public void outAConstDeclaracao  (AConstDeclaracao node) {
     TId ident = node.getId();
-    String key = ident.getText().toUpperCase();
+    String key = ident.getText().replace(" ", "").toUpperCase();
 
    
     
@@ -40,7 +39,7 @@ public class Translation extends DepthFirstAdapter
 
 	public void outAPrograma  (APrograma node) {
     TId ident = node.getId();
-    String key = ident.getText().toUpperCase();
+    String key = ident.getText().replace(" ", "").toUpperCase();
 
    
     if (symbol_table.containsKey(key)) {
@@ -55,21 +54,24 @@ public class Translation extends DepthFirstAdapter
 	
 public void outAVariableDeclaracao(AVariableDeclaracao node) {
 	    LinkedList<PVar> ident = node.getVar();
+	    PTipo tipo = node.getTipo();
 	    
 	    
 	    while (!ident.isEmpty()) {
-	    	String key = ident.getFirst().toString().toUpperCase();
-	    	ident.removeFirst();
+	    	String key = ident.getFirst().toString().replace(" ", "").toUpperCase();
 	    	if (!symbol_table.containsKey(key)) {
-	            System.out.println("Error: Identifier already defined.");
+	            System.out.println("Error:Identifier already defined.");
 	            System.exit(0);
-	       }	
+	    	}else{
+	    		type_check_table.put(key, tipo.toString());
+	    	}
+	    	ident.removeFirst();
 		}
 	}
 	
 public void outAIdVar  (AIdVar node) {
     TId ident = node.getId();
-    String key = ident.getText().toUpperCase();
+    String key = ident.getText().replace(" ", "").toUpperCase();
 
    
     if (symbol_table.containsKey(key)) {
@@ -77,14 +79,14 @@ public void outAIdVar  (AIdVar node) {
          System.exit(0);
     }
     else {
-         symbol_table.put(key, key);
+    	symbol_table.put(key, key);
     }
 
 }
 
 public void outAIdArrayVar  (AIdArrayVar node) {
     TId ident = node.getId();
-    String key = ident.getText().toUpperCase();
+    String key = ident.getText().replace(" ", "").toUpperCase();
 
    
     if (symbol_table.containsKey(key)) {
@@ -98,13 +100,18 @@ public void outAIdArrayVar  (AIdArrayVar node) {
 
 public void outAAssignmentComando(AAssignmentComando node) {
     PVar ident = node.getVar();
-    String key = ident.toString().toUpperCase();
+    String key = ident.toString().replace(" ", "").toUpperCase();
+    
+    PExpression expression = node.getExpression();
+    String exp = expression.toString();
 
 
     if (!symbol_table.containsKey(key)) {
-         System.out.println("Error:  Unknown identifier.");
-         System.exit(0);
+    	System.out.println("Assignment Comando Error:  Unknown identifier.");
+    	System.exit(0);
     }
+    
+    
 }
 
 public void outAReadComando(AReadComando node) {
@@ -123,7 +130,7 @@ public void outAReadComando(AReadComando node) {
 
     public void outAForComando(AForComando node) {
         PVar ident = node.getVar();
-        String key = ident.toString().toUpperCase();
+        String key = ident.toString().replace(" ", "").toUpperCase();
 
 
         if (!symbol_table.containsKey(key)) {
@@ -134,7 +141,7 @@ public void outAReadComando(AReadComando node) {
     
     public void outAForStepComando(AForStepComando node) {
         PVar ident = node.getVar();
-        String key = ident.toString().toUpperCase();
+        String key = ident.toString().replace(" ", "").toUpperCase();
 
 
         if (!symbol_table.containsKey(key)) {

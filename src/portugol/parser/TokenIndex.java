@@ -304,7 +304,7 @@ class TokenIndex extends AnalysisAdapter
     }
 
     @Override
-    public void caseTBlockCommnetStart(@SuppressWarnings("unused") TBlockCommnetStart node)
+    public void caseTBlockCommentStart(@SuppressWarnings("unused") TBlockCommentStart node)
     {
         this.index = 49;
     }

@@ -1,6 +1,6 @@
 programa p1 
 inicio
-	real: a,a;
-	
+	real: a;
+	a <- 2.0;	
 	
 fim.

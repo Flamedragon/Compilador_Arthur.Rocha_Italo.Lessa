@@ -68,7 +68,7 @@ Tokens
 {normal}id = (letter | '_') (letter | digit | '_')*;
 {normal}line_comment = '//' [anything - [cr + lf ]]*  (lf cr | lf | cr );
 
-{normal->comment,comment}block_commnet_start = '/*';
+{normal->comment,comment}block_comment_start = '/*';
 {comment}block_comment_body = ([anything - ['*'+'/']]*) | ('*' | '/');
 {comment->normal}block_comment_end = '*/';
 
