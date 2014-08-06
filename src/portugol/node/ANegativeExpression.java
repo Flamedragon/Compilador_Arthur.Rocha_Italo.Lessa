@@ -7,7 +7,6 @@ import portugol.analysis.*;
 @SuppressWarnings("nls")
 public final class ANegativeExpression extends PExpression
 {
-    private TMinus _minus_;
     private PExpression _expression_;
 
     public ANegativeExpression()
@@ -16,12 +15,9 @@ public final class ANegativeExpression extends PExpression
     }
 
     public ANegativeExpression(
-        @SuppressWarnings("hiding") TMinus _minus_,
         @SuppressWarnings("hiding") PExpression _expression_)
     {
         // Constructor
-        setMinus(_minus_);
-
         setExpression(_expression_);
 
     }
@@ -30,7 +26,6 @@ public final class ANegativeExpression extends PExpression
     public Object clone()
     {
         return new ANegativeExpression(
-            cloneNode(this._minus_),
             cloneNode(this._expression_));
     }
 
@@ -38,31 +33,6 @@ public final class ANegativeExpression extends PExpression
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseANegativeExpression(this);
-    }
-
-    public TMinus getMinus()
-    {
-        return this._minus_;
-    }
-
-    public void setMinus(TMinus node)
-    {
-        if(this._minus_ != null)
-        {
-            this._minus_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._minus_ = node;
     }
 
     public PExpression getExpression()
@@ -94,7 +64,6 @@ public final class ANegativeExpression extends PExpression
     public String toString()
     {
         return ""
-            + toString(this._minus_)
             + toString(this._expression_);
     }
 
@@ -102,12 +71,6 @@ public final class ANegativeExpression extends PExpression
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._minus_ == child)
-        {
-            this._minus_ = null;
-            return;
-        }
-
         if(this._expression_ == child)
         {
             this._expression_ = null;
@@ -121,12 +84,6 @@ public final class ANegativeExpression extends PExpression
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._minus_ == oldChild)
-        {
-            setMinus((TMinus) newChild);
-            return;
-        }
-
         if(this._expression_ == oldChild)
         {
             setExpression((PExpression) newChild);

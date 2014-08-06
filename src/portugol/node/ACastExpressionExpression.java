@@ -5,16 +5,16 @@ package portugol.node;
 import portugol.analysis.*;
 
 @SuppressWarnings("nls")
-public final class AComplementExpression extends PExpression
+public final class ACastExpressionExpression extends PExpression
 {
     private PExpression _expression_;
 
-    public AComplementExpression()
+    public ACastExpressionExpression()
     {
         // Constructor
     }
 
-    public AComplementExpression(
+    public ACastExpressionExpression(
         @SuppressWarnings("hiding") PExpression _expression_)
     {
         // Constructor
@@ -25,14 +25,14 @@ public final class AComplementExpression extends PExpression
     @Override
     public Object clone()
     {
-        return new AComplementExpression(
+        return new ACastExpressionExpression(
             cloneNode(this._expression_));
     }
 
     @Override
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseAComplementExpression(this);
+        ((Analysis) sw).caseACastExpressionExpression(this);
     }
 
     public PExpression getExpression()

@@ -12,6 +12,9 @@ public interface Analysis extends Switch
     void setOut(Node node, Object o);
 
     void caseStart(Start node);
+    void caseAPrograma(APrograma node);
+    void caseAVariableDeclaracao(AVariableDeclaracao node);
+    void caseAConstDeclaracao(AConstDeclaracao node);
     void caseAOrExpressionExpression(AOrExpressionExpression node);
     void caseAXorExpressionExpression(AXorExpressionExpression node);
     void caseAAndExpressionExpression(AAndExpressionExpression node);
@@ -26,9 +29,25 @@ public interface Analysis extends Switch
     void caseAStarExpression(AStarExpression node);
     void caseADivExpression(ADivExpression node);
     void caseANegativeExpression(ANegativeExpression node);
+    void caseACastExpressionExpression(ACastExpressionExpression node);
     void caseAComplementExpression(AComplementExpression node);
     void caseAVarExpression(AVarExpression node);
     void caseAValorExpression(AValorExpression node);
+    void caseAElseStatement(AElseStatement node);
+    void caseAEvaluateBody(AEvaluateBody node);
+    void caseAElseEvaluate(AElseEvaluate node);
+    void caseAAssignmentComando(AAssignmentComando node);
+    void caseAReadComando(AReadComando node);
+    void caseAWriteComando(AWriteComando node);
+    void caseAIfComando(AIfComando node);
+    void caseAEvaluateComando(AEvaluateComando node);
+    void caseAWhileComando(AWhileComando node);
+    void caseARepeatComando(ARepeatComando node);
+    void caseAForComando(AForComando node);
+    void caseAForStepComando(AForStepComando node);
+    void caseARealTipo(ARealTipo node);
+    void caseAIntegerTipo(AIntegerTipo node);
+    void caseACharTipo(ACharTipo node);
     void caseAStringValor(AStringValor node);
     void caseANIntValor(ANIntValor node);
     void caseANRealValor(ANRealValor node);

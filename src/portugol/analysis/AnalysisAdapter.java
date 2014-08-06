@@ -75,6 +75,24 @@ public class AnalysisAdapter implements Analysis
     }
 
     @Override
+    public void caseAPrograma(APrograma node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAVariableDeclaracao(AVariableDeclaracao node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAConstDeclaracao(AConstDeclaracao node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
     public void caseAOrExpressionExpression(AOrExpressionExpression node)
     {
         defaultCase(node);
@@ -159,6 +177,12 @@ public class AnalysisAdapter implements Analysis
     }
 
     @Override
+    public void caseACastExpressionExpression(ACastExpressionExpression node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
     public void caseAComplementExpression(AComplementExpression node)
     {
         defaultCase(node);
@@ -172,6 +196,96 @@ public class AnalysisAdapter implements Analysis
 
     @Override
     public void caseAValorExpression(AValorExpression node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAElseStatement(AElseStatement node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAEvaluateBody(AEvaluateBody node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAElseEvaluate(AElseEvaluate node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAAssignmentComando(AAssignmentComando node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAReadComando(AReadComando node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAWriteComando(AWriteComando node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAIfComando(AIfComando node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAEvaluateComando(AEvaluateComando node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAWhileComando(AWhileComando node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseARepeatComando(ARepeatComando node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAForComando(AForComando node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAForStepComando(AForStepComando node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseARealTipo(ARealTipo node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAIntegerTipo(AIntegerTipo node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseACharTipo(ACharTipo node)
     {
         defaultCase(node);
     }
