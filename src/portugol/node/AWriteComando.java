@@ -8,12 +8,7 @@ import portugol.analysis.*;
 @SuppressWarnings("nls")
 public final class AWriteComando extends PComando
 {
-    private TWrite _write_;
-    private TLPar _lPar_;
-    private POrExpression _orExpression_;
-    private final LinkedList<PCommaExp> _commaExp_ = new LinkedList<PCommaExp>();
-    private TRPar _rPar_;
-    private TSemicolon _semicolon_;
+    private final LinkedList<PExpression> _expression_ = new LinkedList<PExpression>();
 
     public AWriteComando()
     {
@@ -21,25 +16,10 @@ public final class AWriteComando extends PComando
     }
 
     public AWriteComando(
-        @SuppressWarnings("hiding") TWrite _write_,
-        @SuppressWarnings("hiding") TLPar _lPar_,
-        @SuppressWarnings("hiding") POrExpression _orExpression_,
-        @SuppressWarnings("hiding") List<?> _commaExp_,
-        @SuppressWarnings("hiding") TRPar _rPar_,
-        @SuppressWarnings("hiding") TSemicolon _semicolon_)
+        @SuppressWarnings("hiding") List<?> _expression_)
     {
         // Constructor
-        setWrite(_write_);
-
-        setLPar(_lPar_);
-
-        setOrExpression(_orExpression_);
-
-        setCommaExp(_commaExp_);
-
-        setRPar(_rPar_);
-
-        setSemicolon(_semicolon_);
+        setExpression(_expression_);
 
     }
 
@@ -47,12 +27,7 @@ public final class AWriteComando extends PComando
     public Object clone()
     {
         return new AWriteComando(
-            cloneNode(this._write_),
-            cloneNode(this._lPar_),
-            cloneNode(this._orExpression_),
-            cloneList(this._commaExp_),
-            cloneNode(this._rPar_),
-            cloneNode(this._semicolon_));
+            cloneList(this._expression_));
     }
 
     @Override
@@ -61,205 +36,45 @@ public final class AWriteComando extends PComando
         ((Analysis) sw).caseAWriteComando(this);
     }
 
-    public TWrite getWrite()
+    public LinkedList<PExpression> getExpression()
     {
-        return this._write_;
+        return this._expression_;
     }
 
-    public void setWrite(TWrite node)
+    public void setExpression(List<?> list)
     {
-        if(this._write_ != null)
-        {
-            this._write_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._write_ = node;
-    }
-
-    public TLPar getLPar()
-    {
-        return this._lPar_;
-    }
-
-    public void setLPar(TLPar node)
-    {
-        if(this._lPar_ != null)
-        {
-            this._lPar_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._lPar_ = node;
-    }
-
-    public POrExpression getOrExpression()
-    {
-        return this._orExpression_;
-    }
-
-    public void setOrExpression(POrExpression node)
-    {
-        if(this._orExpression_ != null)
-        {
-            this._orExpression_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._orExpression_ = node;
-    }
-
-    public LinkedList<PCommaExp> getCommaExp()
-    {
-        return this._commaExp_;
-    }
-
-    public void setCommaExp(List<?> list)
-    {
-        for(PCommaExp e : this._commaExp_)
+        for(PExpression e : this._expression_)
         {
             e.parent(null);
         }
-        this._commaExp_.clear();
+        this._expression_.clear();
 
         for(Object obj_e : list)
         {
-            PCommaExp e = (PCommaExp) obj_e;
+            PExpression e = (PExpression) obj_e;
             if(e.parent() != null)
             {
                 e.parent().removeChild(e);
             }
 
             e.parent(this);
-            this._commaExp_.add(e);
+            this._expression_.add(e);
         }
-    }
-
-    public TRPar getRPar()
-    {
-        return this._rPar_;
-    }
-
-    public void setRPar(TRPar node)
-    {
-        if(this._rPar_ != null)
-        {
-            this._rPar_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._rPar_ = node;
-    }
-
-    public TSemicolon getSemicolon()
-    {
-        return this._semicolon_;
-    }
-
-    public void setSemicolon(TSemicolon node)
-    {
-        if(this._semicolon_ != null)
-        {
-            this._semicolon_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._semicolon_ = node;
     }
 
     @Override
     public String toString()
     {
         return ""
-            + toString(this._write_)
-            + toString(this._lPar_)
-            + toString(this._orExpression_)
-            + toString(this._commaExp_)
-            + toString(this._rPar_)
-            + toString(this._semicolon_);
+            + toString(this._expression_);
     }
 
     @Override
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._write_ == child)
+        if(this._expression_.remove(child))
         {
-            this._write_ = null;
-            return;
-        }
-
-        if(this._lPar_ == child)
-        {
-            this._lPar_ = null;
-            return;
-        }
-
-        if(this._orExpression_ == child)
-        {
-            this._orExpression_ = null;
-            return;
-        }
-
-        if(this._commaExp_.remove(child))
-        {
-            return;
-        }
-
-        if(this._rPar_ == child)
-        {
-            this._rPar_ = null;
-            return;
-        }
-
-        if(this._semicolon_ == child)
-        {
-            this._semicolon_ = null;
             return;
         }
 
@@ -270,31 +85,13 @@ public final class AWriteComando extends PComando
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._write_ == oldChild)
-        {
-            setWrite((TWrite) newChild);
-            return;
-        }
-
-        if(this._lPar_ == oldChild)
-        {
-            setLPar((TLPar) newChild);
-            return;
-        }
-
-        if(this._orExpression_ == oldChild)
-        {
-            setOrExpression((POrExpression) newChild);
-            return;
-        }
-
-        for(ListIterator<PCommaExp> i = this._commaExp_.listIterator(); i.hasNext();)
+        for(ListIterator<PExpression> i = this._expression_.listIterator(); i.hasNext();)
         {
             if(i.next() == oldChild)
             {
                 if(newChild != null)
                 {
-                    i.set((PCommaExp) newChild);
+                    i.set((PExpression) newChild);
                     newChild.parent(this);
                     oldChild.parent(null);
                     return;
@@ -304,18 +101,6 @@ public final class AWriteComando extends PComando
                 oldChild.parent(null);
                 return;
             }
-        }
-
-        if(this._rPar_ == oldChild)
-        {
-            setRPar((TRPar) newChild);
-            return;
-        }
-
-        if(this._semicolon_ == oldChild)
-        {
-            setSemicolon((TSemicolon) newChild);
-            return;
         }
 
         throw new RuntimeException("Not a child.");

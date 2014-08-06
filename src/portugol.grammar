@@ -87,11 +87,11 @@ Productions
 
 programa {-> programa} = program id begin declaracao_list comando_list end{ -> New programa([declaracao_list.declaracao],[comando_list.comando])};
 
-declaracao_list {-> declaracao*} = declaracao declaracao_list_tail {-> [declaracao_list_tail.declaracao declaracao]}
-declaracao_list_tail {-> declaracao} = comma declaracao {-> declaracao}
+declaracao_list {-> declaracao*} = declaracao declaracao_list_tail {-> [declaracao_list_tail.declaracao]};
+declaracao_list_tail {-> declaracao} = comma declaracao {-> declaracao};
 
-comando_list {-> comando*} = comando comando_list_tail {-> [comando_list_tail.comando comando]}
-declaracao_list_tail {-> comando} = comma comando {-> comando}
+comando_list {-> comando*} = comando comando_list_tail {-> [comando_list_tail.comando]};
+comando_list_tail {-> comando} = comma comando {-> comando};
 
 
 comando_ou_declaracao = 
@@ -113,25 +113,25 @@ tipo =
 	{char} char;
 	
 declaracao = 
-	{variable} tipo colon var_list semicolon {-> New variable.tipo([var_list.var.tipo])}| //Verificar se está faltando tipo
-	{const} const id valor {-> New declaracao.const()};
+	{variable} tipo colon var_list semicolon {-> New declaracao.variable(tipo,[var_list.var])}| 
+	{const} const id valor {-> New declaracao.const(id,valor)};
 
-var_list {-> var*} = var var_list_tail {-> [var_list_tail.var var]};
+var_list {-> var*} = var var_list_tail {-> [var_list_tail.var]};
 var_list_tail {-> var} = comma var {-> var};	
 
 
 semicolon_var = semicolon var;
 
 comando = 
-	{assignment} var l_arrow expression semicolon {-> New comando.assignment(var.id,expression.expression)}|
+	{assignment} var l_arrow expression semicolon {-> New comando.assignment(var,expression)}|
 	{read} read l_par var_list r_par semicolon {-> New comando.read([var_list.var])} |
  	{write} write l_par expression_list r_par semicolon {-> New comando.write([expression_list.expression])} |
- 	{if} if l_par expression r_par then comando* else_statement? end_if semicolon |
- 	{evaluate} evaluate l_par expression r_par evaluate_body* else_evaluate+ end_evaluate semicolon |
- 	{while} while l_par expression r_par do comando* end_while semicolon |
- 	{repeat} repeat comando* until l_par expression r_par semicolon |
- 	{for} for var of [begin]:n_int until [end]:n_int do comando* end_for semicolon {-> New comando.for()}| //?
- 	{for_step} for var of [begin]:n_int step [n_steps]:n_int until [end]:n_int do comando* end_for semicolon;
+ 	{if} if l_par expression r_par then comando_list else_statement? end_if semicolon {-> New comando.if(expression, [comando_list.comando],else_statement)}|
+ 	{evaluate} evaluate l_par expression r_par evaluate_body* else_evaluate+ end_evaluate semicolon {-> New comando.evaluate(expression,[evaluate_body], [else_evaluate])} | // FALTANDO
+ 	{while} while l_par expression r_par do comando_list end_while semicolon {-> New comando.while(expression,[comando_list.comando])} |
+ 	{repeat} repeat comando_list until l_par expression r_par semicolon {-> New comando.repeat([comando_list.comando],expression)}|
+ 	{for} for var of [begin]:n_int until [end]:n_int do comando_list end_for semicolon {-> New comando.for(var,begin,end,[comando_list.comando])} | 
+ 	{for_step} for var of [begin]:n_int step [n_steps]:n_int until [end]:n_int do comando_list end_for semicolon {-> New comando.for_step(var,begin,n_steps,end,[comando_list.comando])};
 
 
 expression =
@@ -182,8 +182,8 @@ postfix_expression {-> expression} =
 	{valor} valor {-> New expression.valor(valor)}|
 	{var} var {-> New expression.var(var)} ;	
 
-expression_list {-> expression*} = expression expression_list_tail {-> [expression_list_tail.expression]}
-expression_list_tail {-> expression} = comma expression {-> expression} 
+expression_list {-> expression*} = expression expression_list_tail {-> [expression_list_tail.expression]};
+expression_list_tail {-> expression} = comma expression {-> expression} ;
 
 
  
@@ -199,9 +199,10 @@ comma_exp = comma expression;
 
 Abstract Syntax Tree
 
-programa =  declaracao* comando*
+programa =  declaracao* comando*;
 
-declaracao = {variable} 
+declaracao = {variable} tipo var*|
+			 {const} id valor;
 
 expression = {or_expression} [l]:expression [r]:expression |
 			 {xor_expression} [l]:expression [r]:expression |
@@ -221,6 +222,27 @@ expression = {or_expression} [l]:expression [r]:expression |
 			 {var} var|
 			 {valor} valor;
 			 
+else_statement = else comando* ;
+evaluate_body = case valor colon comando* ;
+else_evaluate = else colon comando* ; 
+
+comando = 
+	{assignment} var expression |
+	{read} var*|
+ 	{write} expression*|
+ 	{if} expression comando* else_statement? |
+ 	{evaluate} expression evaluate_body* else_evaluate+ |
+ 	{while} expression comando* |
+ 	{repeat} comando* expression |
+ 	{for} var [begin]:n_int [end]:n_int comando* | 
+ 	{for_step} var [begin]:n_int [n_steps]:n_int [end]:n_int comando* ;
+	
+tipo = 
+	{real} real |
+	{integer} integer |
+	{char} char;
+	
+	
 valor = 
 	{string} string |
 	{n_int} n_int |

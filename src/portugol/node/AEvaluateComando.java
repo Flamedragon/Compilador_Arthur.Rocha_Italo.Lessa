@@ -8,14 +8,9 @@ import portugol.analysis.*;
 @SuppressWarnings("nls")
 public final class AEvaluateComando extends PComando
 {
-    private TEvaluate _evaluate_;
-    private TLPar _lPar_;
-    private POrExpression _orExpression_;
-    private TRPar _rPar_;
+    private PExpression _expression_;
     private final LinkedList<PEvaluateBody> _evaluateBody_ = new LinkedList<PEvaluateBody>();
     private final LinkedList<PElseEvaluate> _elseEvaluate_ = new LinkedList<PElseEvaluate>();
-    private TEndEvaluate _endEvaluate_;
-    private TSemicolon _semicolon_;
 
     public AEvaluateComando()
     {
@@ -23,31 +18,16 @@ public final class AEvaluateComando extends PComando
     }
 
     public AEvaluateComando(
-        @SuppressWarnings("hiding") TEvaluate _evaluate_,
-        @SuppressWarnings("hiding") TLPar _lPar_,
-        @SuppressWarnings("hiding") POrExpression _orExpression_,
-        @SuppressWarnings("hiding") TRPar _rPar_,
+        @SuppressWarnings("hiding") PExpression _expression_,
         @SuppressWarnings("hiding") List<?> _evaluateBody_,
-        @SuppressWarnings("hiding") List<?> _elseEvaluate_,
-        @SuppressWarnings("hiding") TEndEvaluate _endEvaluate_,
-        @SuppressWarnings("hiding") TSemicolon _semicolon_)
+        @SuppressWarnings("hiding") List<?> _elseEvaluate_)
     {
         // Constructor
-        setEvaluate(_evaluate_);
-
-        setLPar(_lPar_);
-
-        setOrExpression(_orExpression_);
-
-        setRPar(_rPar_);
+        setExpression(_expression_);
 
         setEvaluateBody(_evaluateBody_);
 
         setElseEvaluate(_elseEvaluate_);
-
-        setEndEvaluate(_endEvaluate_);
-
-        setSemicolon(_semicolon_);
 
     }
 
@@ -55,14 +35,9 @@ public final class AEvaluateComando extends PComando
     public Object clone()
     {
         return new AEvaluateComando(
-            cloneNode(this._evaluate_),
-            cloneNode(this._lPar_),
-            cloneNode(this._orExpression_),
-            cloneNode(this._rPar_),
+            cloneNode(this._expression_),
             cloneList(this._evaluateBody_),
-            cloneList(this._elseEvaluate_),
-            cloneNode(this._endEvaluate_),
-            cloneNode(this._semicolon_));
+            cloneList(this._elseEvaluate_));
     }
 
     @Override
@@ -71,16 +46,16 @@ public final class AEvaluateComando extends PComando
         ((Analysis) sw).caseAEvaluateComando(this);
     }
 
-    public TEvaluate getEvaluate()
+    public PExpression getExpression()
     {
-        return this._evaluate_;
+        return this._expression_;
     }
 
-    public void setEvaluate(TEvaluate node)
+    public void setExpression(PExpression node)
     {
-        if(this._evaluate_ != null)
+        if(this._expression_ != null)
         {
-            this._evaluate_.parent(null);
+            this._expression_.parent(null);
         }
 
         if(node != null)
@@ -93,82 +68,7 @@ public final class AEvaluateComando extends PComando
             node.parent(this);
         }
 
-        this._evaluate_ = node;
-    }
-
-    public TLPar getLPar()
-    {
-        return this._lPar_;
-    }
-
-    public void setLPar(TLPar node)
-    {
-        if(this._lPar_ != null)
-        {
-            this._lPar_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._lPar_ = node;
-    }
-
-    public POrExpression getOrExpression()
-    {
-        return this._orExpression_;
-    }
-
-    public void setOrExpression(POrExpression node)
-    {
-        if(this._orExpression_ != null)
-        {
-            this._orExpression_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._orExpression_ = node;
-    }
-
-    public TRPar getRPar()
-    {
-        return this._rPar_;
-    }
-
-    public void setRPar(TRPar node)
-    {
-        if(this._rPar_ != null)
-        {
-            this._rPar_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._rPar_ = node;
+        this._expression_ = node;
     }
 
     public LinkedList<PEvaluateBody> getEvaluateBody()
@@ -223,95 +123,22 @@ public final class AEvaluateComando extends PComando
         }
     }
 
-    public TEndEvaluate getEndEvaluate()
-    {
-        return this._endEvaluate_;
-    }
-
-    public void setEndEvaluate(TEndEvaluate node)
-    {
-        if(this._endEvaluate_ != null)
-        {
-            this._endEvaluate_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._endEvaluate_ = node;
-    }
-
-    public TSemicolon getSemicolon()
-    {
-        return this._semicolon_;
-    }
-
-    public void setSemicolon(TSemicolon node)
-    {
-        if(this._semicolon_ != null)
-        {
-            this._semicolon_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._semicolon_ = node;
-    }
-
     @Override
     public String toString()
     {
         return ""
-            + toString(this._evaluate_)
-            + toString(this._lPar_)
-            + toString(this._orExpression_)
-            + toString(this._rPar_)
+            + toString(this._expression_)
             + toString(this._evaluateBody_)
-            + toString(this._elseEvaluate_)
-            + toString(this._endEvaluate_)
-            + toString(this._semicolon_);
+            + toString(this._elseEvaluate_);
     }
 
     @Override
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._evaluate_ == child)
+        if(this._expression_ == child)
         {
-            this._evaluate_ = null;
-            return;
-        }
-
-        if(this._lPar_ == child)
-        {
-            this._lPar_ = null;
-            return;
-        }
-
-        if(this._orExpression_ == child)
-        {
-            this._orExpression_ = null;
-            return;
-        }
-
-        if(this._rPar_ == child)
-        {
-            this._rPar_ = null;
+            this._expression_ = null;
             return;
         }
 
@@ -325,18 +152,6 @@ public final class AEvaluateComando extends PComando
             return;
         }
 
-        if(this._endEvaluate_ == child)
-        {
-            this._endEvaluate_ = null;
-            return;
-        }
-
-        if(this._semicolon_ == child)
-        {
-            this._semicolon_ = null;
-            return;
-        }
-
         throw new RuntimeException("Not a child.");
     }
 
@@ -344,27 +159,9 @@ public final class AEvaluateComando extends PComando
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._evaluate_ == oldChild)
+        if(this._expression_ == oldChild)
         {
-            setEvaluate((TEvaluate) newChild);
-            return;
-        }
-
-        if(this._lPar_ == oldChild)
-        {
-            setLPar((TLPar) newChild);
-            return;
-        }
-
-        if(this._orExpression_ == oldChild)
-        {
-            setOrExpression((POrExpression) newChild);
-            return;
-        }
-
-        if(this._rPar_ == oldChild)
-        {
-            setRPar((TRPar) newChild);
+            setExpression((PExpression) newChild);
             return;
         }
 
@@ -402,18 +199,6 @@ public final class AEvaluateComando extends PComando
                 oldChild.parent(null);
                 return;
             }
-        }
-
-        if(this._endEvaluate_ == oldChild)
-        {
-            setEndEvaluate((TEndEvaluate) newChild);
-            return;
-        }
-
-        if(this._semicolon_ == oldChild)
-        {
-            setSemicolon((TSemicolon) newChild);
-            return;
         }
 
         throw new RuntimeException("Not a child.");

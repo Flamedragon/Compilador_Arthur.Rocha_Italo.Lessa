@@ -8,12 +8,7 @@ import portugol.analysis.*;
 @SuppressWarnings("nls")
 public final class AReadComando extends PComando
 {
-    private TRead _read_;
-    private TLPar _lPar_;
-    private PVar _var_;
-    private final LinkedList<PCommaVar> _commaVar_ = new LinkedList<PCommaVar>();
-    private TRPar _rPar_;
-    private TSemicolon _semicolon_;
+    private final LinkedList<PVar> _var_ = new LinkedList<PVar>();
 
     public AReadComando()
     {
@@ -21,25 +16,10 @@ public final class AReadComando extends PComando
     }
 
     public AReadComando(
-        @SuppressWarnings("hiding") TRead _read_,
-        @SuppressWarnings("hiding") TLPar _lPar_,
-        @SuppressWarnings("hiding") PVar _var_,
-        @SuppressWarnings("hiding") List<?> _commaVar_,
-        @SuppressWarnings("hiding") TRPar _rPar_,
-        @SuppressWarnings("hiding") TSemicolon _semicolon_)
+        @SuppressWarnings("hiding") List<?> _var_)
     {
         // Constructor
-        setRead(_read_);
-
-        setLPar(_lPar_);
-
         setVar(_var_);
-
-        setCommaVar(_commaVar_);
-
-        setRPar(_rPar_);
-
-        setSemicolon(_semicolon_);
 
     }
 
@@ -47,12 +27,7 @@ public final class AReadComando extends PComando
     public Object clone()
     {
         return new AReadComando(
-            cloneNode(this._read_),
-            cloneNode(this._lPar_),
-            cloneNode(this._var_),
-            cloneList(this._commaVar_),
-            cloneNode(this._rPar_),
-            cloneNode(this._semicolon_));
+            cloneList(this._var_));
     }
 
     @Override
@@ -61,205 +36,45 @@ public final class AReadComando extends PComando
         ((Analysis) sw).caseAReadComando(this);
     }
 
-    public TRead getRead()
-    {
-        return this._read_;
-    }
-
-    public void setRead(TRead node)
-    {
-        if(this._read_ != null)
-        {
-            this._read_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._read_ = node;
-    }
-
-    public TLPar getLPar()
-    {
-        return this._lPar_;
-    }
-
-    public void setLPar(TLPar node)
-    {
-        if(this._lPar_ != null)
-        {
-            this._lPar_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._lPar_ = node;
-    }
-
-    public PVar getVar()
+    public LinkedList<PVar> getVar()
     {
         return this._var_;
     }
 
-    public void setVar(PVar node)
+    public void setVar(List<?> list)
     {
-        if(this._var_ != null)
-        {
-            this._var_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._var_ = node;
-    }
-
-    public LinkedList<PCommaVar> getCommaVar()
-    {
-        return this._commaVar_;
-    }
-
-    public void setCommaVar(List<?> list)
-    {
-        for(PCommaVar e : this._commaVar_)
+        for(PVar e : this._var_)
         {
             e.parent(null);
         }
-        this._commaVar_.clear();
+        this._var_.clear();
 
         for(Object obj_e : list)
         {
-            PCommaVar e = (PCommaVar) obj_e;
+            PVar e = (PVar) obj_e;
             if(e.parent() != null)
             {
                 e.parent().removeChild(e);
             }
 
             e.parent(this);
-            this._commaVar_.add(e);
+            this._var_.add(e);
         }
-    }
-
-    public TRPar getRPar()
-    {
-        return this._rPar_;
-    }
-
-    public void setRPar(TRPar node)
-    {
-        if(this._rPar_ != null)
-        {
-            this._rPar_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._rPar_ = node;
-    }
-
-    public TSemicolon getSemicolon()
-    {
-        return this._semicolon_;
-    }
-
-    public void setSemicolon(TSemicolon node)
-    {
-        if(this._semicolon_ != null)
-        {
-            this._semicolon_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._semicolon_ = node;
     }
 
     @Override
     public String toString()
     {
         return ""
-            + toString(this._read_)
-            + toString(this._lPar_)
-            + toString(this._var_)
-            + toString(this._commaVar_)
-            + toString(this._rPar_)
-            + toString(this._semicolon_);
+            + toString(this._var_);
     }
 
     @Override
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._read_ == child)
+        if(this._var_.remove(child))
         {
-            this._read_ = null;
-            return;
-        }
-
-        if(this._lPar_ == child)
-        {
-            this._lPar_ = null;
-            return;
-        }
-
-        if(this._var_ == child)
-        {
-            this._var_ = null;
-            return;
-        }
-
-        if(this._commaVar_.remove(child))
-        {
-            return;
-        }
-
-        if(this._rPar_ == child)
-        {
-            this._rPar_ = null;
-            return;
-        }
-
-        if(this._semicolon_ == child)
-        {
-            this._semicolon_ = null;
             return;
         }
 
@@ -270,31 +85,13 @@ public final class AReadComando extends PComando
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._read_ == oldChild)
-        {
-            setRead((TRead) newChild);
-            return;
-        }
-
-        if(this._lPar_ == oldChild)
-        {
-            setLPar((TLPar) newChild);
-            return;
-        }
-
-        if(this._var_ == oldChild)
-        {
-            setVar((PVar) newChild);
-            return;
-        }
-
-        for(ListIterator<PCommaVar> i = this._commaVar_.listIterator(); i.hasNext();)
+        for(ListIterator<PVar> i = this._var_.listIterator(); i.hasNext();)
         {
             if(i.next() == oldChild)
             {
                 if(newChild != null)
                 {
-                    i.set((PCommaVar) newChild);
+                    i.set((PVar) newChild);
                     newChild.parent(this);
                     oldChild.parent(null);
                     return;
@@ -304,18 +101,6 @@ public final class AReadComando extends PComando
                 oldChild.parent(null);
                 return;
             }
-        }
-
-        if(this._rPar_ == oldChild)
-        {
-            setRPar((TRPar) newChild);
-            return;
-        }
-
-        if(this._semicolon_ == oldChild)
-        {
-            setSemicolon((TSemicolon) newChild);
-            return;
         }
 
         throw new RuntimeException("Not a child.");

@@ -8,9 +8,7 @@ import portugol.analysis.*;
 public final class AAssignmentComando extends PComando
 {
     private PVar _var_;
-    private TLArrow _lArrow_;
-    private POrExpression _orExpression_;
-    private TSemicolon _semicolon_;
+    private PExpression _expression_;
 
     public AAssignmentComando()
     {
@@ -19,18 +17,12 @@ public final class AAssignmentComando extends PComando
 
     public AAssignmentComando(
         @SuppressWarnings("hiding") PVar _var_,
-        @SuppressWarnings("hiding") TLArrow _lArrow_,
-        @SuppressWarnings("hiding") POrExpression _orExpression_,
-        @SuppressWarnings("hiding") TSemicolon _semicolon_)
+        @SuppressWarnings("hiding") PExpression _expression_)
     {
         // Constructor
         setVar(_var_);
 
-        setLArrow(_lArrow_);
-
-        setOrExpression(_orExpression_);
-
-        setSemicolon(_semicolon_);
+        setExpression(_expression_);
 
     }
 
@@ -39,9 +31,7 @@ public final class AAssignmentComando extends PComando
     {
         return new AAssignmentComando(
             cloneNode(this._var_),
-            cloneNode(this._lArrow_),
-            cloneNode(this._orExpression_),
-            cloneNode(this._semicolon_));
+            cloneNode(this._expression_));
     }
 
     @Override
@@ -75,16 +65,16 @@ public final class AAssignmentComando extends PComando
         this._var_ = node;
     }
 
-    public TLArrow getLArrow()
+    public PExpression getExpression()
     {
-        return this._lArrow_;
+        return this._expression_;
     }
 
-    public void setLArrow(TLArrow node)
+    public void setExpression(PExpression node)
     {
-        if(this._lArrow_ != null)
+        if(this._expression_ != null)
         {
-            this._lArrow_.parent(null);
+            this._expression_.parent(null);
         }
 
         if(node != null)
@@ -97,57 +87,7 @@ public final class AAssignmentComando extends PComando
             node.parent(this);
         }
 
-        this._lArrow_ = node;
-    }
-
-    public POrExpression getOrExpression()
-    {
-        return this._orExpression_;
-    }
-
-    public void setOrExpression(POrExpression node)
-    {
-        if(this._orExpression_ != null)
-        {
-            this._orExpression_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._orExpression_ = node;
-    }
-
-    public TSemicolon getSemicolon()
-    {
-        return this._semicolon_;
-    }
-
-    public void setSemicolon(TSemicolon node)
-    {
-        if(this._semicolon_ != null)
-        {
-            this._semicolon_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._semicolon_ = node;
+        this._expression_ = node;
     }
 
     @Override
@@ -155,9 +95,7 @@ public final class AAssignmentComando extends PComando
     {
         return ""
             + toString(this._var_)
-            + toString(this._lArrow_)
-            + toString(this._orExpression_)
-            + toString(this._semicolon_);
+            + toString(this._expression_);
     }
 
     @Override
@@ -170,21 +108,9 @@ public final class AAssignmentComando extends PComando
             return;
         }
 
-        if(this._lArrow_ == child)
+        if(this._expression_ == child)
         {
-            this._lArrow_ = null;
-            return;
-        }
-
-        if(this._orExpression_ == child)
-        {
-            this._orExpression_ = null;
-            return;
-        }
-
-        if(this._semicolon_ == child)
-        {
-            this._semicolon_ = null;
+            this._expression_ = null;
             return;
         }
 
@@ -201,21 +127,9 @@ public final class AAssignmentComando extends PComando
             return;
         }
 
-        if(this._lArrow_ == oldChild)
+        if(this._expression_ == oldChild)
         {
-            setLArrow((TLArrow) newChild);
-            return;
-        }
-
-        if(this._orExpression_ == oldChild)
-        {
-            setOrExpression((POrExpression) newChild);
-            return;
-        }
-
-        if(this._semicolon_ == oldChild)
-        {
-            setSemicolon((TSemicolon) newChild);
+            setExpression((PExpression) newChild);
             return;
         }
 

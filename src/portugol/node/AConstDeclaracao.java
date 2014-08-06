@@ -7,7 +7,6 @@ import portugol.analysis.*;
 @SuppressWarnings("nls")
 public final class AConstDeclaracao extends PDeclaracao
 {
-    private TConst _const_;
     private TId _id_;
     private PValor _valor_;
 
@@ -17,13 +16,10 @@ public final class AConstDeclaracao extends PDeclaracao
     }
 
     public AConstDeclaracao(
-        @SuppressWarnings("hiding") TConst _const_,
         @SuppressWarnings("hiding") TId _id_,
         @SuppressWarnings("hiding") PValor _valor_)
     {
         // Constructor
-        setConst(_const_);
-
         setId(_id_);
 
         setValor(_valor_);
@@ -34,7 +30,6 @@ public final class AConstDeclaracao extends PDeclaracao
     public Object clone()
     {
         return new AConstDeclaracao(
-            cloneNode(this._const_),
             cloneNode(this._id_),
             cloneNode(this._valor_));
     }
@@ -43,31 +38,6 @@ public final class AConstDeclaracao extends PDeclaracao
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseAConstDeclaracao(this);
-    }
-
-    public TConst getConst()
-    {
-        return this._const_;
-    }
-
-    public void setConst(TConst node)
-    {
-        if(this._const_ != null)
-        {
-            this._const_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._const_ = node;
     }
 
     public TId getId()
@@ -124,7 +94,6 @@ public final class AConstDeclaracao extends PDeclaracao
     public String toString()
     {
         return ""
-            + toString(this._const_)
             + toString(this._id_)
             + toString(this._valor_);
     }
@@ -133,12 +102,6 @@ public final class AConstDeclaracao extends PDeclaracao
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._const_ == child)
-        {
-            this._const_ = null;
-            return;
-        }
-
         if(this._id_ == child)
         {
             this._id_ = null;
@@ -158,12 +121,6 @@ public final class AConstDeclaracao extends PDeclaracao
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._const_ == oldChild)
-        {
-            setConst((TConst) newChild);
-            return;
-        }
-
         if(this._id_ == oldChild)
         {
             setId((TId) newChild);

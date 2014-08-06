@@ -8,14 +8,8 @@ import portugol.analysis.*;
 @SuppressWarnings("nls")
 public final class AWhileComando extends PComando
 {
-    private TWhile _while_;
-    private TLPar _lPar_;
-    private POrExpression _orExpression_;
-    private TRPar _rPar_;
-    private TDo _do_;
+    private PExpression _expression_;
     private final LinkedList<PComando> _comando_ = new LinkedList<PComando>();
-    private TEndWhile _endWhile_;
-    private TSemicolon _semicolon_;
 
     public AWhileComando()
     {
@@ -23,31 +17,13 @@ public final class AWhileComando extends PComando
     }
 
     public AWhileComando(
-        @SuppressWarnings("hiding") TWhile _while_,
-        @SuppressWarnings("hiding") TLPar _lPar_,
-        @SuppressWarnings("hiding") POrExpression _orExpression_,
-        @SuppressWarnings("hiding") TRPar _rPar_,
-        @SuppressWarnings("hiding") TDo _do_,
-        @SuppressWarnings("hiding") List<?> _comando_,
-        @SuppressWarnings("hiding") TEndWhile _endWhile_,
-        @SuppressWarnings("hiding") TSemicolon _semicolon_)
+        @SuppressWarnings("hiding") PExpression _expression_,
+        @SuppressWarnings("hiding") List<?> _comando_)
     {
         // Constructor
-        setWhile(_while_);
-
-        setLPar(_lPar_);
-
-        setOrExpression(_orExpression_);
-
-        setRPar(_rPar_);
-
-        setDo(_do_);
+        setExpression(_expression_);
 
         setComando(_comando_);
-
-        setEndWhile(_endWhile_);
-
-        setSemicolon(_semicolon_);
 
     }
 
@@ -55,14 +31,8 @@ public final class AWhileComando extends PComando
     public Object clone()
     {
         return new AWhileComando(
-            cloneNode(this._while_),
-            cloneNode(this._lPar_),
-            cloneNode(this._orExpression_),
-            cloneNode(this._rPar_),
-            cloneNode(this._do_),
-            cloneList(this._comando_),
-            cloneNode(this._endWhile_),
-            cloneNode(this._semicolon_));
+            cloneNode(this._expression_),
+            cloneList(this._comando_));
     }
 
     @Override
@@ -71,16 +41,16 @@ public final class AWhileComando extends PComando
         ((Analysis) sw).caseAWhileComando(this);
     }
 
-    public TWhile getWhile()
+    public PExpression getExpression()
     {
-        return this._while_;
+        return this._expression_;
     }
 
-    public void setWhile(TWhile node)
+    public void setExpression(PExpression node)
     {
-        if(this._while_ != null)
+        if(this._expression_ != null)
         {
-            this._while_.parent(null);
+            this._expression_.parent(null);
         }
 
         if(node != null)
@@ -93,107 +63,7 @@ public final class AWhileComando extends PComando
             node.parent(this);
         }
 
-        this._while_ = node;
-    }
-
-    public TLPar getLPar()
-    {
-        return this._lPar_;
-    }
-
-    public void setLPar(TLPar node)
-    {
-        if(this._lPar_ != null)
-        {
-            this._lPar_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._lPar_ = node;
-    }
-
-    public POrExpression getOrExpression()
-    {
-        return this._orExpression_;
-    }
-
-    public void setOrExpression(POrExpression node)
-    {
-        if(this._orExpression_ != null)
-        {
-            this._orExpression_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._orExpression_ = node;
-    }
-
-    public TRPar getRPar()
-    {
-        return this._rPar_;
-    }
-
-    public void setRPar(TRPar node)
-    {
-        if(this._rPar_ != null)
-        {
-            this._rPar_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._rPar_ = node;
-    }
-
-    public TDo getDo()
-    {
-        return this._do_;
-    }
-
-    public void setDo(TDo node)
-    {
-        if(this._do_ != null)
-        {
-            this._do_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._do_ = node;
+        this._expression_ = node;
     }
 
     public LinkedList<PComando> getComando()
@@ -222,118 +92,26 @@ public final class AWhileComando extends PComando
         }
     }
 
-    public TEndWhile getEndWhile()
-    {
-        return this._endWhile_;
-    }
-
-    public void setEndWhile(TEndWhile node)
-    {
-        if(this._endWhile_ != null)
-        {
-            this._endWhile_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._endWhile_ = node;
-    }
-
-    public TSemicolon getSemicolon()
-    {
-        return this._semicolon_;
-    }
-
-    public void setSemicolon(TSemicolon node)
-    {
-        if(this._semicolon_ != null)
-        {
-            this._semicolon_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._semicolon_ = node;
-    }
-
     @Override
     public String toString()
     {
         return ""
-            + toString(this._while_)
-            + toString(this._lPar_)
-            + toString(this._orExpression_)
-            + toString(this._rPar_)
-            + toString(this._do_)
-            + toString(this._comando_)
-            + toString(this._endWhile_)
-            + toString(this._semicolon_);
+            + toString(this._expression_)
+            + toString(this._comando_);
     }
 
     @Override
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._while_ == child)
+        if(this._expression_ == child)
         {
-            this._while_ = null;
-            return;
-        }
-
-        if(this._lPar_ == child)
-        {
-            this._lPar_ = null;
-            return;
-        }
-
-        if(this._orExpression_ == child)
-        {
-            this._orExpression_ = null;
-            return;
-        }
-
-        if(this._rPar_ == child)
-        {
-            this._rPar_ = null;
-            return;
-        }
-
-        if(this._do_ == child)
-        {
-            this._do_ = null;
+            this._expression_ = null;
             return;
         }
 
         if(this._comando_.remove(child))
         {
-            return;
-        }
-
-        if(this._endWhile_ == child)
-        {
-            this._endWhile_ = null;
-            return;
-        }
-
-        if(this._semicolon_ == child)
-        {
-            this._semicolon_ = null;
             return;
         }
 
@@ -344,33 +122,9 @@ public final class AWhileComando extends PComando
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._while_ == oldChild)
+        if(this._expression_ == oldChild)
         {
-            setWhile((TWhile) newChild);
-            return;
-        }
-
-        if(this._lPar_ == oldChild)
-        {
-            setLPar((TLPar) newChild);
-            return;
-        }
-
-        if(this._orExpression_ == oldChild)
-        {
-            setOrExpression((POrExpression) newChild);
-            return;
-        }
-
-        if(this._rPar_ == oldChild)
-        {
-            setRPar((TRPar) newChild);
-            return;
-        }
-
-        if(this._do_ == oldChild)
-        {
-            setDo((TDo) newChild);
+            setExpression((PExpression) newChild);
             return;
         }
 
@@ -390,18 +144,6 @@ public final class AWhileComando extends PComando
                 oldChild.parent(null);
                 return;
             }
-        }
-
-        if(this._endWhile_ == oldChild)
-        {
-            setEndWhile((TEndWhile) newChild);
-            return;
-        }
-
-        if(this._semicolon_ == oldChild)
-        {
-            setSemicolon((TSemicolon) newChild);
-            return;
         }
 
         throw new RuntimeException("Not a child.");

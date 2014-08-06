@@ -8,15 +8,9 @@ import portugol.analysis.*;
 @SuppressWarnings("nls")
 public final class AIfComando extends PComando
 {
-    private TIf _if_;
-    private TLPar _lPar_;
-    private POrExpression _orExpression_;
-    private TRPar _rPar_;
-    private TThen _then_;
+    private PExpression _expression_;
     private final LinkedList<PComando> _comando_ = new LinkedList<PComando>();
     private PElseStatement _elseStatement_;
-    private TEndIf _endIf_;
-    private TSemicolon _semicolon_;
 
     public AIfComando()
     {
@@ -24,34 +18,16 @@ public final class AIfComando extends PComando
     }
 
     public AIfComando(
-        @SuppressWarnings("hiding") TIf _if_,
-        @SuppressWarnings("hiding") TLPar _lPar_,
-        @SuppressWarnings("hiding") POrExpression _orExpression_,
-        @SuppressWarnings("hiding") TRPar _rPar_,
-        @SuppressWarnings("hiding") TThen _then_,
+        @SuppressWarnings("hiding") PExpression _expression_,
         @SuppressWarnings("hiding") List<?> _comando_,
-        @SuppressWarnings("hiding") PElseStatement _elseStatement_,
-        @SuppressWarnings("hiding") TEndIf _endIf_,
-        @SuppressWarnings("hiding") TSemicolon _semicolon_)
+        @SuppressWarnings("hiding") PElseStatement _elseStatement_)
     {
         // Constructor
-        setIf(_if_);
-
-        setLPar(_lPar_);
-
-        setOrExpression(_orExpression_);
-
-        setRPar(_rPar_);
-
-        setThen(_then_);
+        setExpression(_expression_);
 
         setComando(_comando_);
 
         setElseStatement(_elseStatement_);
-
-        setEndIf(_endIf_);
-
-        setSemicolon(_semicolon_);
 
     }
 
@@ -59,15 +35,9 @@ public final class AIfComando extends PComando
     public Object clone()
     {
         return new AIfComando(
-            cloneNode(this._if_),
-            cloneNode(this._lPar_),
-            cloneNode(this._orExpression_),
-            cloneNode(this._rPar_),
-            cloneNode(this._then_),
+            cloneNode(this._expression_),
             cloneList(this._comando_),
-            cloneNode(this._elseStatement_),
-            cloneNode(this._endIf_),
-            cloneNode(this._semicolon_));
+            cloneNode(this._elseStatement_));
     }
 
     @Override
@@ -76,16 +46,16 @@ public final class AIfComando extends PComando
         ((Analysis) sw).caseAIfComando(this);
     }
 
-    public TIf getIf()
+    public PExpression getExpression()
     {
-        return this._if_;
+        return this._expression_;
     }
 
-    public void setIf(TIf node)
+    public void setExpression(PExpression node)
     {
-        if(this._if_ != null)
+        if(this._expression_ != null)
         {
-            this._if_.parent(null);
+            this._expression_.parent(null);
         }
 
         if(node != null)
@@ -98,107 +68,7 @@ public final class AIfComando extends PComando
             node.parent(this);
         }
 
-        this._if_ = node;
-    }
-
-    public TLPar getLPar()
-    {
-        return this._lPar_;
-    }
-
-    public void setLPar(TLPar node)
-    {
-        if(this._lPar_ != null)
-        {
-            this._lPar_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._lPar_ = node;
-    }
-
-    public POrExpression getOrExpression()
-    {
-        return this._orExpression_;
-    }
-
-    public void setOrExpression(POrExpression node)
-    {
-        if(this._orExpression_ != null)
-        {
-            this._orExpression_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._orExpression_ = node;
-    }
-
-    public TRPar getRPar()
-    {
-        return this._rPar_;
-    }
-
-    public void setRPar(TRPar node)
-    {
-        if(this._rPar_ != null)
-        {
-            this._rPar_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._rPar_ = node;
-    }
-
-    public TThen getThen()
-    {
-        return this._then_;
-    }
-
-    public void setThen(TThen node)
-    {
-        if(this._then_ != null)
-        {
-            this._then_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._then_ = node;
+        this._expression_ = node;
     }
 
     public LinkedList<PComando> getComando()
@@ -252,102 +122,22 @@ public final class AIfComando extends PComando
         this._elseStatement_ = node;
     }
 
-    public TEndIf getEndIf()
-    {
-        return this._endIf_;
-    }
-
-    public void setEndIf(TEndIf node)
-    {
-        if(this._endIf_ != null)
-        {
-            this._endIf_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._endIf_ = node;
-    }
-
-    public TSemicolon getSemicolon()
-    {
-        return this._semicolon_;
-    }
-
-    public void setSemicolon(TSemicolon node)
-    {
-        if(this._semicolon_ != null)
-        {
-            this._semicolon_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._semicolon_ = node;
-    }
-
     @Override
     public String toString()
     {
         return ""
-            + toString(this._if_)
-            + toString(this._lPar_)
-            + toString(this._orExpression_)
-            + toString(this._rPar_)
-            + toString(this._then_)
+            + toString(this._expression_)
             + toString(this._comando_)
-            + toString(this._elseStatement_)
-            + toString(this._endIf_)
-            + toString(this._semicolon_);
+            + toString(this._elseStatement_);
     }
 
     @Override
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._if_ == child)
+        if(this._expression_ == child)
         {
-            this._if_ = null;
-            return;
-        }
-
-        if(this._lPar_ == child)
-        {
-            this._lPar_ = null;
-            return;
-        }
-
-        if(this._orExpression_ == child)
-        {
-            this._orExpression_ = null;
-            return;
-        }
-
-        if(this._rPar_ == child)
-        {
-            this._rPar_ = null;
-            return;
-        }
-
-        if(this._then_ == child)
-        {
-            this._then_ = null;
+            this._expression_ = null;
             return;
         }
 
@@ -362,18 +152,6 @@ public final class AIfComando extends PComando
             return;
         }
 
-        if(this._endIf_ == child)
-        {
-            this._endIf_ = null;
-            return;
-        }
-
-        if(this._semicolon_ == child)
-        {
-            this._semicolon_ = null;
-            return;
-        }
-
         throw new RuntimeException("Not a child.");
     }
 
@@ -381,33 +159,9 @@ public final class AIfComando extends PComando
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._if_ == oldChild)
+        if(this._expression_ == oldChild)
         {
-            setIf((TIf) newChild);
-            return;
-        }
-
-        if(this._lPar_ == oldChild)
-        {
-            setLPar((TLPar) newChild);
-            return;
-        }
-
-        if(this._orExpression_ == oldChild)
-        {
-            setOrExpression((POrExpression) newChild);
-            return;
-        }
-
-        if(this._rPar_ == oldChild)
-        {
-            setRPar((TRPar) newChild);
-            return;
-        }
-
-        if(this._then_ == oldChild)
-        {
-            setThen((TThen) newChild);
+            setExpression((PExpression) newChild);
             return;
         }
 
@@ -432,18 +186,6 @@ public final class AIfComando extends PComando
         if(this._elseStatement_ == oldChild)
         {
             setElseStatement((PElseStatement) newChild);
-            return;
-        }
-
-        if(this._endIf_ == oldChild)
-        {
-            setEndIf((TEndIf) newChild);
-            return;
-        }
-
-        if(this._semicolon_ == oldChild)
-        {
-            setSemicolon((TSemicolon) newChild);
             return;
         }
 
