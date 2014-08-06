@@ -11,104 +11,109 @@ Helpers
 	tab = 9;
 	anything = [0..0xffff];
 
-States
+	States
 	normal,
 	comment;
 
 Tokens
-	{normal}program = 'programa';
-	{normal}begin = 'inicio';
-	{normal}end = 'fim.';
-	{normal}dot = '.';
-	{normal}colon = ':';
-	{normal}semicolon = ';';
-	{normal}const = 'const';
-	{normal}comma = ',';
-	{normal}real = 'real';
-	{normal}integer = 'inteiro';
-	{normal}char = 'caractere';
-	{normal}l_bkt = '[';
-	{normal}r_bkt = ']';
-	{normal}l_arrow = '<-';
-	{normal}read = 'leia';
-	{normal}l_par = '(';
-	{normal}r_par = ')';
-	{normal}write = 'escreva';
-	{normal}if = 'se';
-	{normal}then = 'entao';
-	{normal}else = 'senao';
-	{normal}end_if = 'fim se';
-	{normal}evaluate = 'avalie';
-	{normal}case = 'caso';
-	{normal}end_evaluate = 'fim avalie';
-	{normal}while = 'enquanto';
-	{normal}do = 'faca';
-	{normal}end_while = 'fim enquanto';
-	{normal}repeat = 'repita';
-	{normal}until = 'ate';
-	{normal}for = 'para';
-	{normal}of = 'de';
-	{normal}step = 'passo';
-	{normal}end_for = 'fim para';	
-	{normal}minus = '-';
-	{normal}plus = '+';
-	{normal}star = '*';
-	{normal}bar = '/';
-	{normal}equal = '=';
-	{normal}not_equal = '<>';
-	{normal}l_equal = '<=';
-	{normal}g_equal = '>=';
-	{normal}less = '<';
-	{normal}greater = '>';
-	{normal}not = 'nao';
-	{normal}and = 'e';
-	{normal}or = 'ou';
-	{normal}xor = 'xor';
+{normal}program = 'programa';
+{normal}begin = 'inicio';
+{normal}end = 'fim.';
+{normal}dot = '.';
+{normal}colon = ':';
+{normal}semicolon = ';';
+{normal}const = 'const';
+{normal}comma = ',';
+{normal}real = 'real';
+{normal}integer = 'inteiro';
+{normal}char = 'caractere';
+{normal}l_bkt = '[';
+{normal}r_bkt = ']';
+{normal}l_arrow = '<-';
+{normal}read = 'leia';
+{normal}l_par = '(';
+{normal}r_par = ')';
+{normal}write = 'escreva';
+{normal}if = 'se';
+{normal}then = 'entao';
+{normal}else = 'senao';
+{normal}end_if = 'fim se';
+{normal}evaluate = 'avalie';
+{normal}case = 'caso';
+{normal}end_evaluate = 'fim avalie';
+{normal}while = 'enquanto';
+{normal}do = 'faca';
+{normal}end_while = 'fim enquanto';
+{normal}repeat = 'repita';
+{normal}until = 'ate';
+{normal}for = 'para';
+{normal}of = 'de';
+{normal}step = 'passo';
+{normal}end_for = 'fim para';	
+{normal}minus = '-';
+{normal}plus = '+';
+{normal}star = '*';
+{normal}bar = '/';
+{normal}equal = '=';
+{normal}not_equal = '<>';
+{normal}l_equal = '<=';
+{normal}g_equal = '>=';
+{normal}less = '<';
+{normal}greater = '>';
+{normal}not = 'nao';
+{normal}and = 'e';
+{normal}or = 'ou';
+{normal}xor = 'xor';
 
-	{normal}id = (letter | '_') (letter | digit | '_')*;
-	{normal}line_comment = '//' [anything - [cr + lf ]]*  (lf cr | lf | cr );
-	
-	{normal->comment,comment}block_commnet_start = '/*';
-	{comment->normal}block_comment_end = '*/';
-	{comment}block_comment_body = ([anything - ['*'+'/']]*) | ('*' | '/');
+{normal}id = (letter | '_') (letter | digit | '_')*;
+{normal}line_comment = '//' [anything - [cr + lf ]]*  (lf cr | lf | cr );
 
-	{normal}string = ''' ( letter | digit )* ''';
-	{normal}vector = (letter | '_') (letter | digit | '_')* '[' digit* ']';
-	{normal}n_int = '-'? digit digit*;
-	{normal}n_real = digit digit* '.' digit digit*;
-	{normal}blank = (' ' | cr | lf | tab)+;
+{normal->comment,comment}block_commnet_start = '/*';
+																									{comment->normal}block_comment_end = '*/';
+{comment}block_comment_body = ([anything - ['*'+'/']]*) | ('*' | '/');
+
+{normal}string = ''' ( letter | digit )* ''';
+{normal}vector = (letter | '_') (letter | digit | '_')* '[' digit* ']';
+{normal}n_int = '-'? digit digit*;
+{normal}n_real = digit digit* '.' digit digit*;
+{normal}blank = (' ' | cr | lf | tab)+;
 
 Ignored Tokens
-	blank;
+blank;
 
 
 Productions
+
+
 programa {-> programa} = program id begin declaracao* comando* end{ -> New programa(id,[declaracao],[comando])};
+
+
 
 comando_list {-> comando*} = comando comando_list_tail {-> [comando_list_tail.comando]};
 comando_list_tail {-> comando} = comma comando {-> comando};
 
+
 comando_ou_declaracao = 
-					{declaracao} declaracao |
-					{comando} comando ;
+{declaracao} declaracao |
+{comando} comando ;
 
 var = 
-	{id} id |
-	{id_array} id l_bkt n_int r_bkt; 
+{id} id |
+{id_array} id l_bkt n_int r_bkt; 
 
 valor = 
-	{string} string |
-	{n_int} n_int |
-	{n_real} n_real;
-	
+{string} string |
+{n_int} n_int |
+{n_real} n_real;
+
 tipo = 
-	{real} real |
-	{integer} integer |
-	{char} char;
-	
+{real} real |
+{integer} integer |
+{char} char;
+
 declaracao = 
-	{variable} tipo colon var_list semicolon {-> New declaracao.variable(tipo,[var_list.var])}| 
-	{const} const id valor {-> New declaracao.const(id,valor)};
+{variable} tipo colon var_list semicolon {-> New declaracao.variable(tipo,[var_list.var])}| 
+{const} const id valor {-> New declaracao.const(id,valor)};
 
 var_list {-> var*} = var var_list_tail {-> [var_list_tail.var]};
 var_list_tail {-> var} = comma var {-> var};	
@@ -117,128 +122,132 @@ var_list_tail {-> var} = comma var {-> var};
 semicolon_var = semicolon var;
 
 comando = 
-	{assignment} var l_arrow expression semicolon {-> New comando.assignment(var,expression)}|
-	{read} read l_par var_list r_par semicolon {-> New comando.read([var_list.var])} |
- 	{write} write l_par expression r_par semicolon {-> New comando.write(expression)} |
- 	{if} if l_par expression r_par then comando* else_statement? end_if semicolon {-> New comando.if(expression, [comando],else_statement)}|
- 	{evaluate} evaluate l_par expression r_par evaluate_body* else_evaluate+ end_evaluate semicolon {-> New comando.evaluate(expression,[evaluate_body], [else_evaluate])} | // FALTANDO
- 	{while} while l_par expression r_par do comando* end_while semicolon {-> New comando.while(expression,[comando])} |
- 	{repeat} repeat comando* until l_par expression r_par semicolon {-> New comando.repeat([comando],expression)}|
- 	{for} for var of [begin]:n_int until [end]:n_int do comando* end_for semicolon {-> New comando.for(var,begin,end,[comando])} | 
- 	{for_step} for var of [begin]:n_int step [n_steps]:n_int until [end]:n_int do comando* end_for semicolon {-> New comando.for_step(var,begin,n_steps,end,[comando])};
+{assignment} var l_arrow expression semicolon {-> New comando.assignment(var,expression)}|
+{read} read l_par var_list r_par semicolon {-> New comando.read([var_list.var])} |
+{write} write l_par expression r_par semicolon {-> New comando.write(expression)} |
+{if} if l_par expression r_par then comando* else_statement? end_if semicolon {-> New comando.if(expression, [comando],else_statement)}|
+{evaluate} evaluate l_par expression r_par evaluate_body* else_evaluate+ end_evaluate semicolon {-> New comando.evaluate(expression,[evaluate_body], [else_evaluate])} | // FALTANDO
+{while} while l_par expression r_par do comando* end_while semicolon {-> New comando.while(expression,[comando])} |
+{repeat} repeat comando* until l_par expression r_par semicolon {-> New comando.repeat([comando],expression)}|
+{for} for var of [begin]:n_int until [end]:n_int do comando* end_for semicolon {-> New comando.for(var,begin,end,[comando])} | 
+{for_step} for var of [begin]:n_int step [n_steps]:n_int until [end]:n_int do comando* end_for semicolon {-> New comando.for_step(var,begin,n_steps,end,[comando])};
 
 
 expression =
-    {xor_expression} xor_expression {-> xor_expression.expression} |
-    {or_expression} expression or xor_expression {-> New expression.or_expression(expression.expression, xor_expression.expression)} ;
-	
+{xor_expression} xor_expression {-> xor_expression.expression} |
+{or_expression} expression or xor_expression {-> New expression.or_expression(expression.expression, xor_expression.expression)} ;
+
 xor_expression {-> expression} =
-    {and_expression} and_expression {-> and_expression.expression}|
-    {xor_expression} xor_expression xor and_expression {-> New expression.xor_expression(xor_expression.expression, and_expression.expression)};
+{and_expression} and_expression {-> and_expression.expression}|
+{xor_expression} xor_expression xor and_expression {-> New expression.xor_expression(xor_expression.expression, and_expression.expression)};
 
 and_expression {-> expression} =
-    {equality_expression} equality_expression {-> equality_expression.expression}|
-	{and_expression} and_expression and equality_expression {-> New expression.and_expression(and_expression.expression, equality_expression.expression)};
+{equality_expression} equality_expression {-> equality_expression.expression}|
+{and_expression} and_expression and equality_expression {-> New expression.and_expression(and_expression.expression, equality_expression.expression)};
 
 equality_expression {-> expression} =
-    {relational_expression} relational_expression  {-> relational_expression.expression}|
-    {eq} equality_expression equal relational_expression {-> New expression.eq(equality_expression.expression,relational_expression.expression)}|
-    {neq} equality_expression not_equal relational_expression {-> New expression.neq(equality_expression.expression,relational_expression.expression)};
+{relational_expression} relational_expression  {-> relational_expression.expression}|
+{eq} equality_expression equal relational_expression {-> New expression.eq(equality_expression.expression,relational_expression.expression)}|
+{neq} equality_expression not_equal relational_expression {-> New expression.neq(equality_expression.expression,relational_expression.expression)};
 
 relational_expression {-> expression} =
-    {additive_expression} additive_expression {-> additive_expression.expression}|
-    {lt} relational_expression less additive_expression {-> New expression.lt(relational_expression.expression,additive_expression.expression)}|
-    {gt} relational_expression greater additive_expression {-> New expression.gt(relational_expression.expression,additive_expression.expression)} |
-    {lteq} relational_expression l_equal additive_expression {-> New expression.lteq(relational_expression.expression,additive_expression.expression)} |
-    {gteq} relational_expression g_equal additive_expression {-> New expression.gteq(relational_expression.expression,additive_expression.expression)} ;	
-		
+{additive_expression} additive_expression {-> additive_expression.expression}|
+{lt} relational_expression less additive_expression {-> New expression.lt(relational_expression.expression,additive_expression.expression)}|
+{gt} relational_expression greater additive_expression {-> New expression.gt(relational_expression.expression,additive_expression.expression)} |
+{lteq} relational_expression l_equal additive_expression {-> New expression.lteq(relational_expression.expression,additive_expression.expression)} |
+{gteq} relational_expression g_equal additive_expression {-> New expression.gteq(relational_expression.expression,additive_expression.expression)} ;	
+
 additive_expression {-> expression} =
-    {multiplicative_expression} multiplicative_expression {-> multiplicative_expression.expression}|
-    {plus} additive_expression plus multiplicative_expression {-> New expression.plus(additive_expression.expression,multiplicative_expression.expression)}|
-    {minus} additive_expression minus multiplicative_expression {-> New expression.minus(additive_expression.expression,multiplicative_expression.expression)};
-	
+{multiplicative_expression} multiplicative_expression {-> multiplicative_expression.expression}|
+{plus} additive_expression plus multiplicative_expression {-> New expression.plus(additive_expression.expression,multiplicative_expression.expression)}|
+{minus} additive_expression minus multiplicative_expression {-> New expression.minus(additive_expression.expression,multiplicative_expression.expression)};
+
 multiplicative_expression {-> expression} =
-	{unary_expression} unary_expression {-> unary_expression.expression}|
-    {star} multiplicative_expression star unary_expression {-> New expression.star(multiplicative_expression.expression,unary_expression.expression)}|
-    {div} multiplicative_expression bar unary_expression {-> New expression.div(multiplicative_expression.expression,unary_expression.expression)} ;	
-			
-			
+{unary_expression} unary_expression {-> unary_expression.expression}|
+{star} multiplicative_expression star unary_expression {-> New expression.star(multiplicative_expression.expression,unary_expression.expression)}|
+{div} multiplicative_expression bar unary_expression {-> New expression.div(multiplicative_expression.expression,unary_expression.expression)} ;	
+
+
 unary_expression {-> expression} =
-    {negative} minus unary_expression {-> unary_expression.expression}|
-    {unary_expression_not_plus_minus} unary_expression_not_plus_minus {-> unary_expression_not_plus_minus.expression} ;			
-			
+{negative} minus unary_expression {-> unary_expression.expression}|
+{unary_expression_not_plus_minus} unary_expression_not_plus_minus {-> unary_expression_not_plus_minus.expression} ;			
+
 unary_expression_not_plus_minus {-> expression} =
-    {postfix_expression} postfix_expression {-> postfix_expression.expression}|
-    {complement} not unary_expression {-> unary_expression.expression}|
-	{cast_expression} l_par expression r_par {-> expression};
-			
+{postfix_expression} postfix_expression {-> postfix_expression.expression}|
+{complement} not unary_expression {-> unary_expression.expression}|
+{cast_expression} l_par expression r_par {-> expression};
+
 postfix_expression {-> expression} =
-	{valor} valor {-> New expression.valor(valor)}|
-	{var} var {-> New expression.var(var)} ;	
+{valor} valor {-> New expression.valor(valor)}|
+{var} var {-> New expression.var(var)} ;	
 
 expression_list {-> expression*} = expression expression_list_tail {-> [expression_list_tail.expression]};
 expression_list_tail {-> expression} = comma expression {-> expression} ;
- 	 
+
+
+
+
 else_statement = else comando* ;
 evaluate_body = case valor colon comando* ;
 else_evaluate = else colon comando* ; 
 
 comma_var = comma var;
 comma_exp = comma expression;
-	
+//semicolon_comando = semicolon comando;
+
 
 Abstract Syntax Tree
 
 programa =  id declaracao* comando*;
 
 declaracao = {variable} tipo var*|
-			 {const} id valor;
+{const} id valor;
 
 expression = {or_expression} [l]:expression [r]:expression |
-			 {xor_expression} [l]:expression [r]:expression |
-			 {and_expression} [l]:expression [r]:expression |
-			 {eq} [l]:expression [r]:expression |
-		   {neq} [l]:expression [r]:expression |
-			 {lt} [l]:expression [r]:expression |
-			 {gt} [l]:expression [r]:expression |
-			 {lteq} [l]:expression [r]:expression |
-			 {gteq} [l]:expression [r]:expression |		
-			 {plus} [l]:expression [r]:expression |
-			 {minus} [l]:expression [r]:expression |
-			 {star} [l]:expression [r]:expression |
-			 {div} [l]:expression [r]:expression |
-			 {negative} expression | 
-			 {cast_expression} expression |			 
-			 {complement} expression |			
-			 {var} var|
-			 {valor} valor;
-			 
+{xor_expression} [l]:expression [r]:expression |
+{and_expression} [l]:expression [r]:expression |
+{eq} [l]:expression [r]:expression |
+{neq} [l]:expression [r]:expression |
+{lt} [l]:expression [r]:expression |
+{gt} [l]:expression [r]:expression |
+{lteq} [l]:expression [r]:expression |
+{gteq} [l]:expression [r]:expression |		
+{plus} [l]:expression [r]:expression |
+{minus} [l]:expression [r]:expression |
+{star} [l]:expression [r]:expression |
+{div} [l]:expression [r]:expression |
+{negative} expression | 
+{cast_expression} expression |			 
+{complement} expression |			
+{var} var|
+{valor} valor;
+
 else_statement = else comando* ;
 evaluate_body = case valor colon comando* ;
 else_evaluate = else colon comando* ; 
 
 comando = 
-	{assignment} var expression |
-	{read} var*|
- 	{write} expression|
- 	{if} expression comando* else_statement? |
- 	{evaluate} expression evaluate_body* else_evaluate+ |
- 	{while} expression comando* |
- 	{repeat} comando* expression |
- 	{for} var [begin]:n_int [end]:n_int comando* | 
- 	{for_step} var [begin]:n_int [n_steps]:n_int [end]:n_int comando* ;
-	
+{assignment} var expression |
+{read} var*|
+{write} expression|
+{if} expression comando* else_statement? |
+{evaluate} expression evaluate_body* else_evaluate+ |
+{while} expression comando* |
+{repeat} comando* expression |
+{for} var [begin]:n_int [end]:n_int comando* | 
+{for_step} var [begin]:n_int [n_steps]:n_int [end]:n_int comando* ;
+
 tipo = 
-	{real} real |
-	{integer} integer |
-	{char} char;
-	
-	
+{real} real |
+{integer} integer |
+{char} char;
+
+
 valor = 
-	{string} string |
-	{n_int} n_int |
-	{n_real} n_real;
+{string} string |
+{n_int} n_int |
+{n_real} n_real;
 
 var = 
-	{id} id |
-	{id_array} id n_int; 
+{id} id |
+{id_array} id l_bkt n_int r_bkt; 
